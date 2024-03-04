@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="/front/bootstrap/bootstrap-css/bootstrap.css">
+    <link rel="stylesheet" href="login_style.css">
+    <script src="login.js"></script>
+</head>
+
+<body>
+    <!-- inicio da tela -->
+    <form action="post" class="tela_login">
+
+        <!-- imagens -->
+        <!-- caso seja adicionado uma imagem de "x"  -->
+        <!-- <div class="cancelar">
+            <img src="/imagens/cancel.png" width="40px">
+        </div> -->
+        <div class="img-logo">
+            <img src="/front/imagens/logo/logo-png.png" width="70%">
+        </div>
+        <!-- texto -->
+        <p class="display-5 text-center" id="login_texto">Login</p>
+        <!-- </div> -->
+
+        <!-- inputs  -->
+        <!-- input email -->
+        <div class="input-group" id="input-group-email">
+            <input type="text" required>
+            <span>E-mail</span>
+        </div>
+        <!-- input senha -->
+        <div class="input-group" value="" id="input-group-senha">
+            <input type="password" id="senha" required>
+            <span>Senha</span>
+            <input class="ver" type="checkbox" onclick="mostrarSenha()">
+        </div>
+        <!--  -->
+
+        <!-- alias "ctrl" + ";" comenta tb -->
+        <!-- botoes -->
+        <!-- botao esqueceu a senha -->
+        <div class="div_esqueceu">
+            <a href="cadastro.html" id="botao_esqueceu_senha">esqueceu a senha?</a>
+        </div>
+
+        <!-- botoes finais enviar e cadastrar-se -->
+        <div class="botoes_enviar_cadastrar">
+            <button id="enviar" class="btn btn-primary btn-lg">Enviar</button>
+            <a id="cadastro" href="cadastro.html">não possui conta?</a>
+        </div>
+    </form>
+    <!-- fim da tela login -->
+    <div class="home text-center">
+        <a href="home.html">voltar a página inicial</a>
+    </div>
+</body>
+
+</html>
