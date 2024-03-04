@@ -6,6 +6,7 @@ $password = "";
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+    // armazena os dados enviados do client.js em variaveis
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $docTipo = $_POST['docTipo'];
@@ -14,8 +15,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $telefone = $_POST['telefone'];
     $senha = $_POST['senha'];
 
+    // gera uma senha hash(um tipo de criptografia)
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
+    // realiza conexao com o banco de dados
     $conn = mysqli_connect($severName, $userName, $password, $dataBase);
 
     if(!$conn){

@@ -2,6 +2,7 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
 
     event.preventDefault()
 
+    // pega os dados enviados do formulario
     var nome = document.getElementById('nome').value
     var email = document.getElementById('email').value
     var docTipo = document.getElementById('docTipo').value
@@ -10,6 +11,7 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
     var telefone = document.getElementById('telefone').value
     const senha = document.getElementById('senha').value
 
+    // armazena os dados em um formData
     var formData = new FormData()
     formData.append('nome', nome)
     formData.append('email', email)
@@ -19,6 +21,8 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
     formData.append('telefone', telefone)
     formData.append('senha', senha)
 
+
+    // envia os dados para o server.php
     fetch('server.php', {
         method: 'POST',
         body: formData
