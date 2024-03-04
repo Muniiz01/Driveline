@@ -1,79 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script type="module" src="client.js"></script>
+
 <body>
     <form id="meuFormulario">
-       <table>
-        <tr>
-            <td>
-                <label for="nome">Nome completo</label>
-            </td>
-            <td>
-                <input id="nome" name="nome" type="text">
-            </td>
-        </tr>
 
-        <tr>
-            <td>
-                <label for="email">E-mail</label>
-            </td>
-            <td>
-                <input id="email" type="text" name="email">
-            </td>
-        </tr>
+        <div>
+            <input id="nome" placeholder="nome" type="text">
+        </div>
+        <div>
+            <input id="email" type="email" placeholder="email">
+        </div>
 
-        <tr>
-            <td>
+        <ul>
+            <li>
                 <label for="documento">Documento</label>
-            </td>
-            <td>
-               <select id="docTipo" name="docTipo">
-                <option value="RG">RG</option>
-                <option value="CPF">CPF</option>
-                <option value="passaporte">Passaporte</option>
-               </select> 
-            </td>
-            <td>
-                <input id="documento" name="documento" type="text">
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <label for="genero">Genero</label>
-            </td>
-            <td>
-                <select id="genero" name="genero">
-                    <option value="feminino">Feminino</option>
-                    <option value="masculino">Masculino</option>
-                    <option value="outros">Outros</option>
+            </li>
+            <li>
+                <select id="docTipo" name="docTipo">
+                    <option value="RG">RG</option>
+                    <option value="CPF">CPF</option>
+                    <option value="passaporte">Passaporte</option>
                 </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="telefone">Telefone</label>
-            </td>
-            <td>
-                <input id="telefone" name="telefone" type="text">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="senha">Senha</label>
-            </td>
-            <td>
-                <input id="senha" type="text" name="senha">
-            </td>
-        </tr>
-       </table>
-       <button type="submit" id="btnEnviar"></button>
+            </li>
+            <li>
+                <input id="documento" name="documento" type="text">
+            </li>
+        </ul>
+
+        <div>
+            <input id="telefone" placeholder="telefone" type="text">
+        </div>
+        <div>
+            <input id="senha" type="text" placeholder="senha">
+        </div>
+
+
+        <div>
+            <input type="submit" id="btnEnviar">
+        </div>
     </form>
-    
-</head>
+
+    </head>
 </body>
+
 </html>

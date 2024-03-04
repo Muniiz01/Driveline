@@ -11,7 +11,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = $_POST['email'];
     $docTipo = $_POST['docTipo'];
     $documento = $_POST['documento'];
-    $genero = $_POST['genero'];
     $telefone = $_POST['telefone'];
     $senha = $_POST['senha'];
 
@@ -25,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         die("connection failed: " . $conn->connect_error );
     }
 
-    $sql = "INSERT INTO usuarios (nome, tipo_doc, documento, genero, telefone, email, senha) VALUE ('$nome', '$docTipo', '$documento', '$genero', '$telefone', '$email', '$senhaHash')";
+    $sql = "INSERT INTO usuarios (nome, tipo_doc, documento, telefone, email, senha) VALUE ('$nome', '$docTipo', '$documento', '$telefone', '$email', '$senhaHash')";
 
     if($conn->query($sql)  === TRUE) {
         echo "Dados inseridos";
@@ -37,5 +36,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 } else {
     echo "Metodo nao permitido";
-}
+}   
 ?>
