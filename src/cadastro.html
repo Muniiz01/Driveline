@@ -9,27 +9,29 @@
     <link rel="stylesheet" href="../src/cadastro.css">
     <script type="module" src="client.js"></script>
 </head>
+
 <body>
     <form id="meuFormulario">
         <div class="img-logo">
-            <!-- <img src="../front/imagens/logo/slim-logo-png.png" > -->
+            <img src="../front/imagens/logo/slim-logo-png.png">
         </div>
         <div class="input-group">
-            
+
             <input id="nome" type="text" required>
             <span>Nome</span>
         </div>
 
         <div class="input-group">
-           
-            <input id="email" type="email" required>
-             <span>E-mail</span><!-- por conta do input type ser "email" a animação do span não se aplica -->
+
+            <input id="email" type="text" required>
+            <span>E-mail</span>
+            <!-- por conta do input type ser "email" a animação do span não se aplica -->
         </div>
         <!--  -->
         <div class="input-group" id="tipo_documento">
-        
-        <input id="documento" name="documento" type="text" required>
-        <span>Documento</span>
+
+            <input id="documento" name="documento" type="text" required>
+            <span>Documento</span>
             <select id="docTipo" name="docTipo">
             <option value="RG">RG</option>
             <option value="CPF">CPF</option>
@@ -53,12 +55,13 @@
             <button class="btn btn-lg btn-primary" type="submit" id="btnEnviar">Enviar</button>
         </div>
 
-    </form><!--fim do form-->
+    </form>
+    <!--fim do form-->
 
     <div class="home text-center">
         <a href="home.html">voltar a página inicial</a>
     </div>
-    
+
 </body>
 
 </html>
