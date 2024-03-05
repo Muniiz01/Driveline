@@ -1,9 +1,10 @@
-body{
+body {
     margin: 0%;
     padding: 0%;
     background-color: rgb(238, 237, 237);
 }
-form{
+
+form {
     display: block;
     text-align: center;
     width: 30%;
@@ -13,23 +14,30 @@ form{
     margin-right: auto;
     margin-top: 3%;
 }
-form img{
+
+form img {
     margin-top: 7%;
-    width:70%;
+    width: 70%;
 }
+
+
 /*inputs*/
-.input-group{/*para o grupo de input*/
+
+.input-group {
+    /*para o grupo de input*/
     margin-left: auto;
     margin-right: auto;
     margin-top: 5%;
     width: 60%;
 }
 
-input:focus{/*remove a borda enquanto o campo está selecionado*/
+input:focus {
+    /*remove a borda enquanto o campo está selecionado*/
     outline: none;
 }
 
-.input-group input {/*para os inputs dentro do grupo de inputs*/
+.input-group input {
+    /*para os inputs dentro do grupo de inputs*/
     border-radius: 0%;
     border: none;
     border-bottom: 1px solid gray;
@@ -37,9 +45,15 @@ input:focus{/*remove a borda enquanto o campo está selecionado*/
     width: 100%;
 }
 
+
 /* animação do texto dentro das caixas input */
+
+
 /*caso elas não sejam aplicadas da maneira correta cheque se a posição do input & span o span -->*/
+
+
 /*vem sempre após o input dentro do conteiner "input-group" do bootstrap versão 5.3*/
+
 .input-group input:valid~span,
 .input-group input:focus~span {
     font-size: .85rem;
@@ -53,7 +67,10 @@ input:focus{/*remove a borda enquanto o campo está selecionado*/
     padding: 7px;
     transition: .2s;
 }
+
+
 /*escopo*/
-button{
+
+button {
     margin: 3% auto;
 }
