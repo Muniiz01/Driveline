@@ -57,7 +57,7 @@ input:focus {
 .input-group input:valid~span,
 .input-group input:focus~span {
     font-size: .85rem;
-    transform: translateY(-32px);
+    transform: translateY(-25px);
 }
 
 .input-group span {
