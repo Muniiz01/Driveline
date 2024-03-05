@@ -5,47 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script type="module" src="client.js"></script>
+
+    <link rel="stylesheet" href="/front/bootstrap/bootstrap-css/bootstrap.css">
     <link rel="stylesheet" href="cadastro.css">
+    <script type="module" src="client.js"></script> 
 <body>
     <form id="meuFormulario">
-
-        <div>
-            <input id="nome" placeholder="nome" type="text">
+        <div class="img-logo">
+            <img src="/front/imagens/logo/slim-logo-png.png" >
         </div>
-        <div>
-            <input id="email" type="email" placeholder="email">
-        </div>
-
-        <ul>
-            <li>
-                <label for="documento">Documento</label>
-            </li>
-            <li>
-                <select id="docTipo" name="docTipo">
-                    <option value="RG">RG</option>
-                    <option value="CPF">CPF</option>
-                    <option value="passaporte">Passaporte</option>
-                </select>
-            </li>
-            <li>
-                <input id="documento" name="documento" type="text">
-            </li>
-        </ul>
-
-        <div>
-            <input id="telefone" placeholder="telefone" type="text">
-        </div>
-        <div>
-            <input id="senha" type="text" placeholder="senha">
+        <div class="input-group">
+            
+            <input id="nome" type="text" required>
+            <span>Nome</span>
         </div>
 
+        <div class="input-group">
+           
+            <input id="email" type="email" required>
+             <span>E-mail</span><!-- por conta do input type ser "email" a animação do span não se aplica -->
+        </div>
+        <!--  -->
+        <div class="input-group" id="tipo_documento">
+        
+        <input id="documento" name="documento" type="text" required>
+        <span>Documento</span>
+            <select id="docTipo" name="docTipo">
+            <option value="RG">RG</option>
+            <option value="CPF">CPF</option>
+            <option value="passaporte">Passaporte</option>
+            </select>
+        </div>
+        <!--  -->
+
+        <div class="input-group">
+            <input id="telefone" type="text" required>
+            <span>Telefone</span>
+        </div>
+        <div class="input-group">
+            <input id="senha" type="text" required>
+            <span>Senha</span>
+        </div>
+
+        <!-- botao -->
 
         <div>
-            <input type="submit" id="btnEnviar">
+            <button class="btn btn-lg btn-primary" type="submit" id="btnEnviar">Enviar</button>
         </div>
-    </form>
 
+    </form><!--fim do form-->
+
+    <div class="home text-center">
+        <a href="home.html">voltar a página inicial</a>
+    </div>
     </head>
 </body>
 
