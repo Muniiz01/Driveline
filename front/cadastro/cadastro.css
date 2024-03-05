@@ -68,9 +68,29 @@ input:focus {
     transition: .2s;
 }
 
+.form-select {
+    border-radius: 0%;
+    border: solid gray 1px;
+}
+
 
 /*escopo*/
 
 button {
-    margin: 3% auto;
+    margin: 5% auto;
+    width: 25%;
+    font-size: 100%;
+    border: none;
+}
+
+a {
+    color: gray;
+}
+
+a:hover {
+    color: rgb(0, 136, 255);
+}
+
+.home {
+    margin-top: 1rem;
 }
