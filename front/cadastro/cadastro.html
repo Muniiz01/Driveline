@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../front/bootstrap/bootstrap-css/bootstrap.css">
-    <link rel="stylesheet" href="../src/cadastro.css">
-    <script type="module" src="client.js"></script>
+    <link rel="stylesheet" href="../bootstrap/bootstrap-css/bootstrap.css">
+    <link rel="stylesheet" href="../cadastro/cadastro.css">
+    <script type="module" src="cadastro.js"></script>
 </head>
 
 <body>
     <form id="meuFormulario">
         <div class="img-logo">
-            <img src="../front/imagens/logo/slim-logo-png.png">
+            <img src="/front/imagens/logo/slim-logo-png.png">
         </div>
         <div class="input-group">
-
+            <!-- Jão -->
             <input id="nome" type="text" required>
             <span>Nome</span>
         </div>
@@ -32,7 +32,7 @@
 
             <input id="documento" name="documento" type="text" required>
             <span>Documento</span>
-            <select id="docTipo" name="docTipo">
+            <select id="docTipo" class="form-select" name="docTipo">
             <option value="RG">RG</option>
             <option value="CPF">CPF</option>
             <option value="passaporte">Passaporte</option>
@@ -45,21 +45,22 @@
             <span>Telefone</span>
         </div>
         <div class="input-group">
-            <input id="senha" type="text" required>
+            <input id="senha" type="password" required>
             <span>Senha</span>
         </div>
 
         <!-- botao -->
 
         <div>
-            <button class="btn btn-lg btn-primary" type="submit" id="btnEnviar" onclick="return">Enviar</button>
+            <button class="btn btn-lg btn-primary" type="submit" id="btnEnviar">Enviar</button>
+            <button class="btn btn-primary" type="submit" id="btnEnviar">Enviar</button>
         </div>
 
     </form>
     <!--fim do form-->
 
     <div class="home text-center">
-        <a href="home.html">voltar a página inicial</a>
+        <a href="../home/home.html">voltar a página inicial</a>
     </div>
 
 </body>

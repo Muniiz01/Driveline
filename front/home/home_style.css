@@ -1,0 +1,311 @@
+body {
+    margin: 0%;
+    padding: 0%;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    background-color: rgb(238, 237, 237);
+}
+
+
+/* barra superior */
+
+.barra_superior {
+    background-color: rgb(255, 255, 255);
+    height: 15%;
+    width: 100%;
+    top: 0%;
+    display: flex;
+    position: fixed;
+    align-items: center;
+}
+
+.barra_superior img {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+
+/* botoes */
+
+.botoes {
+    /* essa classe é de uma div que ajusta os botoes dentro da barra superior*/
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 83%;
+    margin-right: 3%;
+}
+
+.barra_superior button {
+    /* alteração para todos os botões dentro da barra superior*/
+    border: none;
+    cursor: pointer;
+    height: 100%;
+}
+
+.botao-branco:hover {
+    /*botão branco é uma classe alternativa para os botões sem cor dentro da barra*/
+    background-color: rgb(190, 190, 190);
+    color: black;
+}
+
+.botao-branco a {
+    color: black;
+    text-decoration: none
+}
+
+.cadastro a {
+    color: rgb(255, 255, 255);
+    text-decoration: none
+}
+
+
+/* dropdown */
+
+.dropdown-toggle {
+    /* classe para o botao que ativa o dropdown*/
+    border-radius: 0%;
+    width: 160px;
+}
+
+.dropdown-item:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+.dropdown-menu.show {
+    /* classe para o campo que contem os links que levam o usuario para cada categoria*/
+    padding: 0%;
+}
+
+.dropdown-divider {
+    /* classe que separa o link diversos dos outros dentro do dropdown */
+    margin: 0%;
+}
+
+.Todos:hover {
+    /* classe para o link "diversos" que abrange todas as categorias de veiculos*/
+    color: white;
+    background-color: #0A58CA;
+}
+
+
+/* cores para cada campo do dropdown */
+
+
+/* .Economico:hover{
+    color: white;
+    background-color: #11ce2a;
+}
+.Conforto:hover{
+    color: white;
+    background-color: #dbca0c;
+}
+.SUV:hover{
+    color: white;
+    background-color: #db390c;
+} */
+
+
+/* slider */
+
+.slider {
+    /* slider inteiro */
+    margin: 0% auto;
+    width: 99%;
+    height: 200px;
+    overflow: hidden;
+    align-items: center;
+    margin-top: 9%;
+}
+
+
+/* slides que contem os itens*/
+
+.slide {
+    width: 25%;
+}
+
+
+/* .slide img{
+    width: 800px;
+  } */
+
+
+/*  */
+
+.slides {
+    /* apenas os items dentro do slider */
+    width: 400%;
+    height: 400px;
+    display: flex;
+}
+
+.slides input {
+    /*  */
+    display: none;
+}
+
+.primeiro {
+    background-color: #0A58CA;
+}
+
+.segundo {
+    background-color: green;
+}
+
+.terceiro {
+    background-color: navajowhite;
+}
+
+.quarto {
+    background-color: yellow;
+}
+
+
+/* manual */
+
+.manual-navigation {
+    margin-top: -14rem;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.manual-btn:not(:last-child) {
+    margin-right: 38px;
+}
+
+#radio1:checked~.primeiro {
+    margin-left: 0;
+    transition: 1s;
+}
+
+#radio2:checked~.primeiro {
+    margin-left: -25%;
+    transition: 1s;
+}
+
+#radio3:checked~.primeiro {
+    margin-left: -50%;
+    transition: 1s;
+}
+
+#radio4:checked~.primeiro {
+    margin-left: -75%;
+    transition: 1s;
+}
+
+
+/*  */
+
+
+/* automatico */
+
+.navigation-auto div {
+    border: solid 2px #4a4a4a;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.navigation-auto {
+    position: absolute;
+    width: 100%;
+    margin-top: 13%;
+    /*mesmo tamanho da div slider*/
+    display: flex;
+    justify-content: center;
+}
+
+.navigation-auto div:not(:last-child) {
+    margin-right: 40px;
+}
+
+
+/*  */
+
+#radio1:checked~.navigation-auto .auto-btn1 {
+    background-color: #4a4a4a;
+}
+
+#radio2:checked~.navigation-auto .auto-btn2 {
+    background-color: #4a4a4a;
+}
+
+#radio3:checked~.navigation-auto .auto-btn3 {
+    background-color: #4a4a4a;
+}
+
+#radio4:checked~.navigation-auto .auto-btn4 {
+    background-color: #4a4a4a;
+}
+
+
+/* menu de categorias */
+
+
+/*  */
+
+
+/*  */
+
+.menu_de_categorias {
+    /* background-color: orange; */
+    align-items: center;
+    justify-content: center;
+    height: 57%;
+    width: 100%;
+    display: flex;
+    margin-top: 5%;
+    gap: 2%;
+}
+
+.categoria {
+    text-align: center;
+    background-color: white;
+    width: 15%;
+    height: 93%;
+    transition: 0.5s;
+}
+
+.categoria:hover {
+    width: 24%;
+    height: 100%;
+    border-radius: 2rem;
+    border: solid 5px rgba(21, 21, 249, 0.811);
+}
+
+.categoria img {
+    margin-top: 1rem;
+}
+
+.categoria p {
+    margin-right: auto;
+    margin-left: auto;
+    height: 26%;
+    width: 12rem;
+}
+
+.categoria a {
+    border-radius: 2rem;
+    color: white;
+    border: none;
+    height: 3rem;
+    width: 8rem;
+    transition: 0.5s;
+}
+
+.categoria a:hover {
+    width: 12rem;
+    background-color: rgba(255, 170, 13, 0.882);
+    color: black;
+}
