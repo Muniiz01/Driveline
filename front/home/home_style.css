@@ -166,15 +166,14 @@ body {
 /* manual */
 
 .manual-navigation {
+    margin-top: -14rem;
     position: absolute;
-    width: 900PX;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .manual-btn {
-    display: none;
-    margin-top: -20px;
     cursor: pointer;
     border-radius: 10px;
     padding: 8px;
@@ -211,7 +210,6 @@ body {
 /* automatico */
 
 .navigation-auto div {
-    display: none;
     border: solid 2px #4a4a4a;
     padding: 5px;
     border-radius: 10px;
@@ -220,10 +218,9 @@ body {
 }
 
 .navigation-auto {
-    display: none;
     position: absolute;
-    width: 900PX;
-    margin-top: 380px;
+    width: 100%;
+    margin-top: 13%;
     /*mesmo tamanho da div slider*/
     display: flex;
     justify-content: center;
@@ -252,14 +249,20 @@ body {
     background-color: #4a4a4a;
 }
 
+
 /* menu de categorias */
+
+
 /*  */
+
+
 /*  */
+
 .menu_de_categorias {
     /* background-color: orange; */
     align-items: center;
     justify-content: center;
-    height: 50%;
+    height: 57%;
     width: 100%;
     display: flex;
     margin-top: 5%;
@@ -273,24 +276,26 @@ body {
     height: 93%;
     transition: 0.5s;
 }
-.categoria:hover{
+
+.categoria:hover {
     width: 24%;
     height: 100%;
     border-radius: 2rem;
     border: solid 5px rgba(21, 21, 249, 0.811);
 }
+
 .categoria img {
     margin-top: 1rem;
 }
 
 .categoria p {
-    margin-right:auto ;
-    margin-left:auto ;
+    margin-right: auto;
+    margin-left: auto;
     height: 26%;
     width: 12rem;
 }
 
-.categoria a{
+.categoria a {
     border-radius: 2rem;
     color: white;
     border: none;
@@ -298,7 +303,8 @@ body {
     width: 8rem;
     transition: 0.5s;
 }
-.categoria a:hover{
+
+.categoria a:hover {
     width: 12rem;
     background-color: rgba(255, 170, 13, 0.882);
     color: black;
