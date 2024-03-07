@@ -5,51 +5,49 @@ body {
     height: 100vh;
     background-color: rgb(238, 237, 237);
 }
-
-
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* barra superior */
-
+/*  */
+/*  */
 .barra_superior {
     background-color: rgb(255, 255, 255);
     height: 15%;
     width: 100%;
     top: 0%;
-    display: flex;
+    display: flex;/*é necessario para manter lado a lado*/
     position: fixed;
-    align-items: center;
+    align-items: center;/*mantem o png da logo centralizado verticalmente*/
 }
 
 .barra_superior img {
+    /* espaçamento simples da logo */
     margin-left: 3%;
     margin-right: 3%;
 }
 
-
-/* botoes */
+/* div dos botões */
 
 .botoes {
     /* essa classe é de uma div que ajusta os botoes dentro da barra superior*/
-    align-items: center;
-    display: flex;
+    display: flex;/*é necessario para manter lado a lado*/
     justify-content: space-between;
     width: 83%;
     margin-right: 3%;
 }
 
-.barra_superior button {
-    /* alteração para todos os botões dentro da barra superior*/
+.botoes button {
+    /* estilização para todos os botões dentro da barra superior*/
     border: none;
     cursor: pointer;
-    height: 100%;
 }
 
-.botao-branco:hover {
+.reservas_btn:hover {
     /*botão branco é uma classe alternativa para os botões sem cor dentro da barra*/
     background-color: rgb(190, 190, 190);
     color: black;
 }
 
-.botao-branco a {
+.reservas_btn a {
     color: black;
     text-decoration: none
 }
@@ -59,12 +57,14 @@ body {
     text-decoration: none
 }
 
-
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* dropdown */
+/*  */
+/*  */
 
 .dropdown-toggle {
     /* classe para o botao que ativa o dropdown*/
-    border-radius: 0%;
+    border-radius: 0%;/*deixa o botão quadrado*/
     width: 160px;
 }
 
@@ -87,94 +87,58 @@ body {
     color: white;
     background-color: #0A58CA;
 }
-
-
-/* cores para cada campo do dropdown */
-
-
-/* .Economico:hover{
-    color: white;
-    background-color: #11ce2a;
-}
-.Conforto:hover{
-    color: white;
-    background-color: #dbca0c;
-}
-.SUV:hover{
-    color: white;
-    background-color: #db390c;
-} */
-
-
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* slider */
-
-.slider {
+/*  */
+/*  */
+.slider_pai {
     /* slider inteiro */
-    margin: 0% auto;
+    overflow: hidden;
     width: 99%;
     height: 200px;
-    overflow: hidden;
-    align-items: center;
     margin-top: 9%;
 }
-
-
-/* slides que contem os itens*/
-
-.slide {
-    width: 25%;
+/* div filha do slider_pai que contem os elementos de botões e imagens */
+.elementos_slide input {
+    display: none;/*não mostra ao usuario*/
 }
-
-.slides {
-    /* apenas os items dentro do slider */
-    width: 400%;
-    height: 400px;
+.elementos_slide {
+    width: 400%;/*deve ser 100% multiplicado pela qntd de imagens */
     display: flex;
 }
+/* slides*/
 
-.slides input {
-    /*  */
-    display: none;
+.slide {
+    width: 25%;/* o tamanho de cada deve ser definido por 100% divido pela qntd de imagens*/
+}
+.slide img{/*a proporção das imagens é 1366px por 200px*/
+    width:100%;
 }
 
-.primeiro {
-    background-color: #0A58CA;
-}
-
-.segundo {
-    background-color: green;
-}
-
-.terceiro {
-    background-color: navajowhite;
-}
-
-.quarto {
-    background-color: yellow;
-}
-
-
+/* Controles: */
 /* manual */
 
-.manual-navigation {
+/* .navegacao_manual {
     margin-top: -14rem;
     position: absolute;
     width: 100%;
     display: flex;
     justify-content: center;
-}
+} */
 
-.manual-btn {
+/* .botao_manual {
     display: none;
-    cursor: pointer;
+    /* cursor: pointer;
     border-radius: 10px;
-    padding: 8px;
+    padding: 8px; 
 }
 
 .manual-btn:not(:last-child) {
     margin-right: 38px;
-}
-
+} */
+/* radios */
+/*essa parte é necessaria para o js realizar o movimento entre slides*/
+/*////////////////////////////*/
 #radio1:checked~.primeiro {
     margin-left: 0;
     transition: 1s;
@@ -194,39 +158,35 @@ body {
     margin-left: -75%;
     transition: 1s;
 }
-
-
-/*  */
-
-
+/*////////////////////////////*/
 /* automatico */
 
-.navigation-auto div {
+/* .navegacao_automatica div {
     display: none;
     /* border: solid 2px #4a4a4a;
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
-    transition: 0.5s; */
+    transition: 0.5s; 
 }
 
-.navigation-auto {
+.navegacao_automatica {
     position: absolute;
     width: 100%;
     margin-top: 13%;
-    /*mesmo tamanho da div slider*/
+    /*mesmo tamanho da div slider
     display: flex;
     justify-content: center;
 }
 
-.navigation-auto div:not(:last-child) {
+.navegacao_automatica div:not(:last-child) {
     margin-right: 40px;
-}
+} 
 
+*/
+/* //////////////////////////////////////////////// */
 
-/*  */
-
-#radio1:checked~.navigation-auto .auto-btn1 {
+/* #radio1:checked~.navigation-auto .auto-btn1 {
     background-color: #4a4a4a;
 }
 
@@ -241,16 +201,11 @@ body {
 #radio4:checked~.navigation-auto .auto-btn4 {
     background-color: #4a4a4a;
 }
-
-
+ */
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* menu de categorias */
-
-
 /*  */
-
-
 /*  */
-
 .menu_de_categorias {
     /* background-color: orange; */
     align-items: center;
