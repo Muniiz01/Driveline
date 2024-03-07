@@ -36,7 +36,7 @@
             <!-- fim do dropdown -->
             <div class="btn-group grupo2"> <!--btn, btn-lg e btn-dark são todas classes do bootstrap-->
                 <button class="reservas_btn btn btn-lg"><a href="test.html">Minhas reservas</a></button>
-                <button class="cadastro btn btn-dark btn-lg"><a href="../login/login.html">Entrar</a></button>
+                <button class="cadastro btn btn-dark btn-lg"><a href="../login/login.php">Entrar</a></button>
             </div>
         </div>
     </div>

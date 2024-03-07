@@ -1,5 +1,5 @@
-body {
-    background-color: rgb(238, 237, 237);
+ body {
+    background-color: rgb (238, 237, 237);
     padding: 0%;
     margin: 0%;
 }
@@ -16,7 +16,7 @@ body {
     width: 30%;
     height: 100%;
     display: block;
-    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(255, 255, 255); */
     margin-left: auto;
     margin-right: auto;
     margin-top: 3%;
@@ -148,5 +148,3 @@ body {
     padding-top: 1rem;
 }
 
-
-/* */
