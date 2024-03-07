@@ -9,48 +9,10 @@
     <link rel="stylesheet" href="login_style.css">
     <script src="senha.js"></script>
 </head>
-<?php 
-include('database.php');
 
-
-if(isset($_POST['email']) && isset($_POST['senha'])){
-    if(strlen($_POST['email'])== 0 ){
-        echo "Preencha seu E-mail.";
-    } else if(strlen($_POST['senha'])== 0 ){
-        echo "Preencha seu E-mail.";
-    } else{
-        $email = $mysqli->real_escape_string($_POST['email']);
-        $senha = $mysqli->real_escape_string($_POST['senha']);
-
-        $sql_code = "SELECT * FROM usuarios WHERE email ='$email' AND senha = '$senha'";
-        $sql_query = $mysqli ->query($sql_code) or die("Falha na conexão");
-
-        $quantidade = $sql_query->num_rows;
-        if($quantidade == 1){
-            $usuario = $sql_query -> fetch_assoc();
-
-            if(!isset($_SESSION)){
-                session_start();
-            }
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['nome'] = $usuario['nome'];
-            header("Location: index.php");
-        }else {
-            echo "Falha ao logar!";
-        }
-    }
-}
-
-?>
 <body>
     <!-- inicio da tela -->
     <form class="tela_login" method="POST">
-
-        <!-- imagens -->
-        <!-- caso seja adicionado uma imagem de "x"  -->
-        <!-- <div class="cancelar">
-            <img src="/imagens/cancel.png" width="40px">
-        </div> -->
         <div class="img-logo">
             <img src="../imagens/logo/logo-png.png" width="70%">
         </div>
@@ -76,7 +38,7 @@ if(isset($_POST['email']) && isset($_POST['senha'])){
         <!-- botoes -->
         <!-- botao esqueceu a senha -->
         <div class="div_esqueceu">
-            <a href="cadastro.html" id="botao_esqueceu_senha">esqueceu a senha?</a>
+            <a href="#" id="botao_esqueceu_senha">esqueceu a senha?</a>
         </div>
 
         <!-- botoes finais enviar e cadastrar-se -->
@@ -88,7 +50,7 @@ if(isset($_POST['email']) && isset($_POST['senha'])){
     </form>
     <!-- fim da tela login -->
     <div class="home text-center">
-        <a href="../home/home.html">voltar a página inicial</a>
+        <a href="../home/index.php">voltar a página inicial</a>
     </div>
 </body>
 
