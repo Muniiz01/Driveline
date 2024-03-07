@@ -37,5 +37,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 } else {
     echo "Metodo nao permitido";
 }   
-
+if(isset($_POST['email']) && isset($_POST['senha'])){
+    if(strlen($_POST['email'])== 0 ){
+        echo "Preencha seu E-mail.";
+    } else if(strlen($_POST['senha'])== 0 ){
+        echo "Preencha seu E-mail.";
+    } 
+}
 ?>
