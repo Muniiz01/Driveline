@@ -10,7 +10,7 @@
     <script src="senha.js"></script>
 </head>
 <?php 
-include('database.php')
+include('database.php');
 
 
 if(isset($_POST['email']) && isset($_POST['senha'])){
@@ -35,9 +35,9 @@ if(isset($_POST['email']) && isset($_POST['senha'])){
             $_SESSION['id'] = $usuario['id'];
             $_SESSION['nome'] = $usuario['nome'];
 
-            header("Location: home.html")
+            header("Location: home.html");
         }else {
-            echo "Falha ao logar!"
+            echo "Falha ao logar!";
         }
     }
 }

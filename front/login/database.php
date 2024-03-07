@@ -6,7 +6,7 @@ $password = "";
 
 
 
-$mysql = new mysql($database,$userName,$password,$severName);
+$mysql = mysqli_connect($severName, $userName, $password, $dataBase);
 
 if($mysql ->error){
     die("Falha". $mysql->error);
