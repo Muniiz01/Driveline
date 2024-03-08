@@ -95,7 +95,7 @@ body {
     /* slider inteiro */
     overflow: hidden;
     width: 99%;
-    height: 200px;
+    height: 50%;
     margin-top: 9%;
 }
 /* div filha do slider_pai que contem os elementos de botões e imagens */
@@ -214,6 +214,7 @@ body {
     width: 100%;
     display: flex;
     margin-top: 5%;
+    margin-bottom: 5%;
     gap: 2%;
 }
 
@@ -256,4 +257,37 @@ body {
     width: 12rem;
     background-color: rgba(255, 170, 13, 0.882);
     color: black;
+}
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
+.rodape{
+    color: white;
+    background-color: rgb(34, 34, 34);
+    width: 100%;
+    height: max-content;
+}
+.copyright{
+    padding-bottom: 5%;
+    text-align: center;
+    color: gray;
+}
+
+.texto_rodape img{
+    margin-left: 4px;
+    margin-bottom: 5px;
+    width: 15px;
+}
+.texto_rodape{
+    padding-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    border-bottom: gray 2px solid;
+}
+.texto_rodape .pequeno_texto{
+    margin-left: 1%;
+}
+.subtitulo{
+    margin-bottom: 0%;
+    font-size: 20px;
+    margin-left: 1%;
 }
