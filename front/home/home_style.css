@@ -94,9 +94,9 @@ body {
 .slider_pai {
     /* slider inteiro */
     overflow: hidden;
-    width: 99%;
-    height: 50%;
-    margin-top: 9%;
+    width: 100%;
+    height: 60%;
+    margin-top: 8%;
 }
 /* div filha do slider_pai que contem os elementos de botões e imagens */
 .elementos_slide input {
