@@ -1,13 +1,9 @@
-ul {
-    list-style-type: none;
-    margin: auto;
-    padding: 0  ;
-  }
-  li {
+
+  .container {
     float: left;
 }
   
-  li button {
+  .container button {
     display: block;
     color: rgb(0, 0, 0);
     text-align: center;
@@ -15,3 +11,27 @@ ul {
     margin-left: 10px;
     text-decoration: none;
   }
+  
+
+  .dropdown-content{
+    display: none;
+    margin-left: 10px;
+    position: absolute;
+    background-color: rgb(151, 150, 149);
+    min-width: 125px;
+    z-index: 1;
+  }
+
+  .dropdown-content button{
+    color: black;
+    margin: auto;
+    margin-top: 5px;
+    width: 127px;
+    padding: 5px 0px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content button:hover {background-color: #ddd;}
+  #exibir-menu:hover .dropdown-content{display: block;}
+  

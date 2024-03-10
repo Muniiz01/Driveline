@@ -7,11 +7,19 @@
     <title>ADM</title>
 </head>
 <body>
-    <ul>
-        <li><button type="submit" id="usuarios">usuarios</button></li>
-        <li><button type="submit" id="veiculos">veiculos</button></li>
-        <li><button type="submit" id="historico">historico</button></li>
-        <li><button type="submit" id="gerenciamento">gerenciamento</button></li>
-      </ul>
+    <div class="container-menu">
+        <div class="container"><button type="submit" id="usuarios">usuarios</button></div>
+        <div class="container"><button type="submit" id="veiculos">veiculos</button></div>
+        <div class="container"><button type="submit" id="historico">historico</button></div>
+        <div class="container" id="exibir-menu"><button> Gerenciamento</button>
+            <div class="dropdown-content">
+                <button>adcionar veiculos</button>
+                <button>outros</button>
+            </div>
+        </div>
+    </div>
+    <ul id="lista">
+        
+    </ul>
 </body>
 </html>
