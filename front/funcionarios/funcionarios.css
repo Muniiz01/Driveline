@@ -1,0 +1,59 @@
+  
+body{
+  display: flex;
+  flex-direction: column;
+}
+  
+  .container {
+    float: left;
+}
+  
+  .container button {
+    display: block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 14px 16px;
+    margin-left: 10px;
+    text-decoration: none;
+  }
+  
+
+  .dropdown-content{
+    display: none;
+    margin-left: 10px;
+    position: absolute;
+    background-color: rgb(151, 150, 149);
+    min-width: 125px;
+    z-index: 1;
+  }
+
+  .dropdown-content button{
+    color: black;
+    margin: auto;
+    margin-top: 5px;
+    width: 127px;
+    padding: 5px 0px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content button:hover {background-color: #ddd;}
+  #exibir-menu:hover .dropdown-content{display: block;}
+
+#lista{
+  overflow: hidden;
+  width: 30%;
+} 
+#form-addCars{
+  display: flex;
+  flex-direction: column;
+ 
+  float: left;
+  margin: 10%;
+} 
+
+#form-addCars button{
+  padding: 10px;
+  width: 100px;
+}
+  

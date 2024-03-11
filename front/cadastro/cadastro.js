@@ -20,8 +20,8 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
     formData.append('senha', senha)
 
 
-    // envia os dados para o server.php
-    fetch('server.php', {
+    // envia os dados para o cadastro.php
+    fetch('cadastro.php', {
         method: 'POST',
         body: formData
     }).then(response => response.text())

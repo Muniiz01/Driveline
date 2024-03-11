@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="funcionarios.css">
+    <title>ADM</title>
+    <script src="funcionarios.js"></script>
+</head>
+<body>
+    <div class="container-menu">
+        <div class="container"><button  id="usuarios" onclick="exibirUsuarios()">usuarios</button></div>
+        <div class="container"><button  id="veiculos" onclick="exibirVeiculos()">veiculos</button></div>
+        <div class="container"><button  id="historico">historico</button></div>
+        <div class="container" id="exibir-menu"><button> Gerenciamento</button>
+            <div class="dropdown-content">
+                <button onclick="adcionarVeiculos()">adcionar veiculos</button>
+                <button>outros</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="lista">
+        
+    </div>
+</body>
+</html>
