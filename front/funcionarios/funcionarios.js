@@ -70,7 +70,7 @@ function exibirUsuarios() {
         dadosDiv.innerHTML = lista.join('')
         console.log(data)
     }).catch(error => {
-        // Trate quaisquer erros que ocorram durante a solicitação fetch
+        
         console.error('Erro ao buscar os dados dos veículos:', error)
     });
 
@@ -84,23 +84,23 @@ function exibirVeiculos() {
         node.parentNode.removeChild(node);
     } */
 
-    // Faça a solicitação fetch para obter os dados dos veículos
+    
     fetch('listaVeiculos.php', { method: 'GET' })
         .then(response => response.json())
         .then(data => {
-            // Exiba os dados dos veículos
+           
             const dadosDiv = document.getElementById('lista')
             const lista = data.map(item => {
                 return `<div>modelo: ${item.modelo}</div> 
                         <div>passageiros: ${item.passageiros}</div>`
             });
 
-            // Adicione a lista ao elemento 'lista'
+            
             dadosDiv.innerHTML = lista.join('')
             console.log(data)
         })
         .catch(error => {
-            // Trate quaisquer erros que ocorram durante a solicitação fetch
+            
             console.error('Erro ao buscar os dados dos veículos:', error)
         });
 }
