@@ -1,4 +1,9 @@
-
+  
+body{
+  display: flex;
+  flex-direction: column;
+}
+  
   .container {
     float: left;
 }
@@ -34,4 +39,21 @@
 
   .dropdown-content button:hover {background-color: #ddd;}
   #exibir-menu:hover .dropdown-content{display: block;}
+
+#lista{
+  overflow: hidden;
+  width: 30%;
+} 
+#form-addCars{
+  display: flex;
+  flex-direction: column;
+ 
+  float: left;
+  margin: 10%;
+} 
+
+#form-addCars button{
+  padding: 10px;
+  width: 100px;
+}
   
