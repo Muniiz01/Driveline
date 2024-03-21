@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../bootstrap/bootstrap-css/bootstrap.css">
     <link rel="stylesheet" href="home_style.css">
     <script src="../bootstrap/js/bootstrap.bundle.js"></script>
-    <script src="../login/senha.js"></script>
     <!-- Não -->
 </head>
 
@@ -33,14 +32,14 @@
                 </ul>
                 <!-- fim do dropdown -->
                 <!--btn, btn-lg e btn-dark são todas classes do bootstrap-->
-                <button class="padrao_btn btn btn-lg"><a href="test.html">Contato</a></button>
-                <button class="padrao_btn btn btn-lg"><a href="test.html">Ofertas</a></button>
-                <button class="padrao_btn btn btn-lg"><a href="test.html">Sobre nós</a></button>
-                <button class="padrao_btn btn btn-lg"><a href="test.html">Como funciona</a></button>
+                <button class="padrao_btn btn btn-lg"><a href="#">Contato</a></button>
+                <button class="padrao_btn btn btn-lg"><a href="#">Ofertas</a></button>
+                <button class="padrao_btn btn btn-lg"><a href="#">Sobre nós</a></button>
+                <button class="padrao_btn btn btn-lg"><a href="#">Ajuda</a></button>
             </div>
             <!--  -->
             <div class="btn-group" id="grupo2">
-                <button class="padrao_btn btn btn-lg"><a href="test.html">Minhas reservas</a></button>
+                <button class="padrao_btn btn btn-lg"><a href="#">Minhas reservas</a></button>
                 <button type="button" class="btn btn-lg padrao_btn dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <img class="perfil" src="../imagens/perfil/profile-icon-9.png" width="25px" alt="">
@@ -98,35 +97,49 @@
     </div>
     <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <!-- fim do slider -->
+    
+    <div class="carta">
+        <img src="../imagens/categorias/land-rover-range-rover-car-png-25.png">
+        <div class="corpo_carta">
+            <h1>Como funciona?</h1>
+            <p>Escolha uma categoria de carro e agende um horário para retira-lo, nós da DriveLine ficamos felizes em te ajudar com qualquer duvida por favor entre em Contato conosco e deixe o seu feedback. Sinta se a vontade para descobrir mais sobre nossa empresa.</p>
+            <div class="input-group" id="grupo3">
+                <button class="btn-azul"><a href="#"></a>Sobre nós</button>
+                <button class="btn-azul2 "><a href="#"></a>Contato</button>
+            </div>
+        </div>
+      </div>
 
-    <!-- <H1 class="display-5 text-center" id="texto_categorias">Categorias:</H1> -->
-
+      <!-- ////////////////////////////////////////////////////////////////////////////////// -->
+      <div id="texto_categorias" class=" text-center">
+        <H1>CATEGORIAS</H1>
+      </div>
+    
     <!-- inicio do menu de categorias -->
-
     <div class="menu_de_categorias">
         <div class="categoria economico">
             <img src="../imagens/categorias/economia.png">
             <h3>Economico</h3>
             <p>Modelos que gastam menos combustivel e são baratos</p>
-            <a class="btn btn-lg btn-primary" href="#">Selecionar</a>
+            <button class="btn-azul"><a href="#"></a>Selecionar</button>
         </div>
         <div class="categoria SUV">
             <img src="../imagens/categorias/SUV.png">
             <h3>SUV</h3>
             <p>Modelos utilitários e esportivos</p>
-            <a class="btn btn-lg btn-primary" href="#">Selecionar</a>
+            <button class="btn-azul"><a href="#"></a>Selecionar</button>
         </div>
         <div class="categoria conforto">
             <img src="../imagens/categorias/conforto.png">
             <h3>Conforto</h3>
             <p>Modelos mais espaçosos e confortaveis para multiplas pessoas</p>
-            <a class="btn btn-lg btn-primary" href="#">Selecionar</a>
+            <button class="btn-azul"><a href="#"></a>Selecionar</button>
         </div>
         <div class="categoria todos">
             <img src="../imagens/categorias/todos.png">
             <h3>Diversos</h3>
             <p>Inclui todos os modelos anteriores na sua busca</p>
-            <a class="btn btn-lg btn-primary" href="#">Selecionar</a>
+            <button class="btn-azul"><a href="#"></a>Selecionar</button>
         </div>
     </div>
     <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -134,7 +147,7 @@
     <div class="rodape">
 
         <div class="texto_rodape">
-            <p class="display-5">Contato</p>
+            <p class="display-5" id="Contato">Contato</p>
             <p class="pequeno_texto">(47)99889-4766 <img src="../imagens/rodape/whatsapp.png" alt="whatsapp"></p>
         </div>
         <div class="texto_rodape">
