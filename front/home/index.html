@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>inicio</title>
-    <link rel="stylesheet" href="../bootstrap/bootstrap-css/bootstrap.css">
     <!--não remover-->
+    <link rel="stylesheet" href="../bootstrap/bootstrap-css/bootstrap.css">
     <link rel="stylesheet" href="home_style.css">
     <script src="../bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="../login/senha.js"></script>
     <!-- Não -->
 </head>
 
@@ -18,28 +19,39 @@
         <img src="../imagens/logo/slim-logo-png.png" width="11%">
         <!-- dropdown -->
         <div class="botoes">
-            <div class="btn-group grupo1">
+            <div class="btn-group" id="grupo1">
                 <!-- dropdown feito com bootstrap depende do bootstrap.bundle.js para funcionar-->
-                <button type="button" class="btn btn-lg btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Alugue-já
+                <button type="button" id="alugue" class="btn btn-lg btn-primary dropdown-toggle"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Alugue já
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item Economico" href="#">Economico</a></li>
                     <li><a class="dropdown-item SUV" href="#">SUV</a></li>
                     <li><a class="dropdown-item Conforto" href="#">Conforto</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <!--divisoria-->
                     <li><a class="dropdown-item Todos" href="#">Diversos</a></li>
                 </ul>
-            </div>
-            <!-- fim do dropdown -->
-            <div class="btn-group grupo2">
+                <!-- fim do dropdown -->
                 <!--btn, btn-lg e btn-dark são todas classes do bootstrap-->
-                <button class="reservas_btn btn btn-lg"><a href="test.html">Minhas reservas</a></button>
-                <button class="cadastro btn btn-dark btn-lg"><a href="../login/login.html">Entrar</a></button>
+                <button class="padrao_btn btn btn-lg"><a href="test.html">Contato</a></button>
+                <button class="padrao_btn btn btn-lg"><a href="test.html">Ofertas</a></button>
+                <button class="padrao_btn btn btn-lg"><a href="test.html">Sobre nós</a></button>
+                <button class="padrao_btn btn btn-lg"><a href="test.html">Como funciona</a></button>
             </div>
+            <!--  -->
+            <div class="btn-group" id="grupo2">
+                <button class="padrao_btn btn btn-lg"><a href="test.html">Minhas reservas</a></button>
+                <button type="button" class="btn btn-lg padrao_btn dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img class="perfil" src="../imagens/perfil/profile-icon-9.png" width="25px" alt="">
+                    Perfil
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="../login/login.html">login</a></li>
+                    <li><a class="dropdown-item" href="../cadastro/cadastro.html">cadastro</a></li>
+                </ul>
+            </div>
+            <!--  -->
         </div>
     </div>
     <!--fim barra superior -->
@@ -128,11 +140,14 @@
         <div class="texto_rodape">
             <p class="display-5">Redes sociais</p>
             <p class="display-5 subtitulo">Github</p>
-            <a href="https://github.com/JhonnyAnthony" class="pequeno_texto">https://github.com/JhonnyAnthony<img src="../imagens/rodape/github.png" alt="github"></a>
+            <a href="https://github.com/JhonnyAnthony" class="pequeno_texto">https://github.com/JhonnyAnthony<img
+                    src="../imagens/rodape/github.png" alt="github"></a>
             <br>
-            <a href="https://github.com/Muniiz01" class="pequeno_texto">https://github.com/Muniiz01<img src="../imagens/rodape/github.png" alt="github"></a>
+            <a href="https://github.com/Muniiz01" class="pequeno_texto">https://github.com/Muniiz01<img
+                    src="../imagens/rodape/github.png" alt="github"></a>
             <br>
-            <a href="https://github.com/vitorSchuster" class="pequeno_texto">https://github.com/vitorSchuster<img src="../imagens/rodape/github.png" alt="github"></a>
+            <a href="https://github.com/vitorSchuster" class="pequeno_texto">https://github.com/vitorSchuster<img
+                    src="../imagens/rodape/github.png" alt="github"></a>
         </div>
 
         <div class="copyright">

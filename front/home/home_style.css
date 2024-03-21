@@ -24,69 +24,64 @@ body {
     margin-left: 3%;
     margin-right: 3%;
 }
-
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /* div dos botões */
 
+button{
+    cursor: pointer;
+}
 .botoes {
     /* essa classe é de uma div que ajusta os botoes dentro da barra superior*/
-    display: flex;/*é necessario para manter lado a lado*/
+    display: flex;/*é necessario para espaçar os 2 grupos de boteos*/
     justify-content: space-between;
     width: 83%;
     margin-right: 3%;
 }
-
-.botoes button {
-    /* estilização para todos os botões dentro da barra superior*/
-    border: none;
-    cursor: pointer;
-}
-
-.reservas_btn:hover {
+.padrao_btn:hover {
     /*botão branco é uma classe alternativa para os botões sem cor dentro da barra*/
     background-color: rgb(190, 190, 190);
     color: black;
 }
 
-.reservas_btn a {
+.padrao_btn a {
     color: black;
     text-decoration: none
 }
-
-.cadastro a {
-    color: rgb(255, 255, 255);
-    text-decoration: none
-}
+/* ///// */
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* dropdown */
 /*  */
-/*  */
 
-.dropdown-toggle {
-    /* classe para o botao que ativa o dropdown*/
-    border-radius: 0%;/*deixa o botão quadrado*/
-    width: 160px;
+/* estilização geral: */
+.dropdown-menu.show{
+   padding: 0%;
 }
+.dropdown-item:hover{
+    background-color: lightgray;
+}
+/**/
 
-.dropdown-item:hover {
+#alugue{
+    border-radius: 0%;
+}
+/* dropdown perfil */
+.perfil{
+    margin-bottom: 5px;
+}
+.perfil_btn a {
+    color: black;
+    text-decoration: none
+}
+.perfil_btn{
+    display: flex;
+}
+.perfil_btn:hover {
+    /*botão branco é uma classe alternativa para os botões sem cor dentro da barra*/
     background-color: rgb(190, 190, 190);
+    color: black;
 }
-
-.dropdown-menu.show {
-    /* classe para o campo que contem os links que levam o usuario para cada categoria*/
-    padding: 0%;
-}
-
-.dropdown-divider {
-    /* classe que separa o link diversos dos outros dentro do dropdown */
-    margin: 0%;
-}
-
-.Todos:hover {
-    /* classe para o link "diversos" que abrange todas as categorias de veiculos*/
-    color: white;
-    background-color: #0A58CA;
-}
+/*  */
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* slider */
 /*  */
