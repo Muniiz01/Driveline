@@ -2,7 +2,7 @@
 body{
   display: flex;
   flex-direction: column;
-  background-color: red;
+  
 }
   
   .container {
@@ -30,7 +30,7 @@ body{
 
   .dropdown-content button{
     color: black;
-    background-color: red;
+    
     margin: auto;
     margin-top: 5px;
     width: 127px;

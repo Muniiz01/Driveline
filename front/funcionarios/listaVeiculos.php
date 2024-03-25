@@ -1,24 +1,28 @@
 <?php
-$severName = "localhost";
-$dataBase = "driveline";
-$userName = "root";
-$password = "";
+$severName = "localhost"; // nome do servidor do banco de dados
+$dataBase = "driveline"; // nome da base de dados
+$userName = "root"; // nome do usuario para acessar o banco de dados
+$password = ""; // senha do usuario para acessar o banco de dados
 
-if($_SERVER["REQUEST_METHOD"] == "GET"){
+if($_SERVER["REQUEST_METHOD"] == "GET"){ // verifica se o metodo requisitado pelo javascript foi  'GET' 
     //dados requisitados pelo funcionario.js
 
-    $conn = mysqli_connect($severName, $userName, $password, $dataBase);
+    $conn = mysqli_connect($severName, $userName, $password, $dataBase); //conexao com o banco de dados 
+
+    if(!$conn){ // testa a conexao com o banco de dados em caso de falha exibi uma mensagem no console do navegador
+        die("connection failed: " . $conn->connect_error ); 
+    }
 
     
-    $query = "SELECT id_veiculos, categoria, modelo, marca, cor, quilometragem, cambio, passageiros, ar_condicionado, airbag, abs, volume_carga, descricao FROM veiculos";
+    $query = "SELECT id_veiculos, categoria, modelo, marca, cor, quilometragem, cambio, passageiros, ar_condicionado, airbag, abs, volume_carga, descricao FROM veiculos"; // atribui a consulta sql na variavel $query
 
-    $resultado = $conn->query($query);
+    $resultado = $conn->query($query); // executa a variavel $query e armazena o resultado na variavel $resultado
     
-    $dadosVeiculos = array();
+    $dadosVeiculos = array(); // define a variavel $dadosUsuarios em um array
 
-    if ($resultado->num_rows > 0){
-        while($valores = $resultado->fetch_assoc()){
-
+    if ($resultado->num_rows > 0){ // verifica se o banco retornou algun registro, se sim..
+        while($valores = $resultado->fetch_assoc()){ // armazena os registros da consulta sql na variavel $valores
+         // armazena os registros da consulta sql no array $dadosUsuarios
         $dadosVeiculos[] = array(
             'id_veiculos' => $valores["id_veiculos"], 
             'categoria' => $valores["categoria"], 
@@ -37,12 +41,12 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
 
         }
 
-        echo json_encode($dadosVeiculos);
+        echo json_encode($dadosVeiculos); // codifica o array $dadosUsuarios em formato json
 
     } else{
-        echo "Nenhum registro encontrado";
+        echo "Nenhum registro encontrado"; // em caso de nao ouver nenhum registro na consulta sql exibi a mensagem
     }
-    $conn->close();
+    $conn->close(); // fecha a conexao com o banco de dados
 
 }
 
