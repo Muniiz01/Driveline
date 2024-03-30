@@ -69,7 +69,7 @@ function exibirUsuarios() {
         })
 
         dadosDiv.innerHTML = lista.join('') // inseri os elementos html no funcionario.html 
-        console.log(data) 
+        /* console.log(data) */ 
     }).catch(error => {
         // exibi o erro no console do navegador 
         console.error('Erro ao buscar os dados dos veículos:', error)
@@ -91,7 +91,7 @@ function exibirVeiculos() {
 
             
             dadosDiv.innerHTML = lista.join('')  // inseri os elementos html no funcionario.html 
-            console.log(data)
+            /* console.log(data) */
         })
         .catch(error => {
             // exibi o erro no console do navegador
