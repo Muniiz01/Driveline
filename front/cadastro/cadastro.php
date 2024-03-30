@@ -1,8 +1,9 @@
 <?php
-$severName = "localhost";
-$dataBase = "driveline";
-$userName = "root";
-$password = "";
+
+// conexao com o banco de dados
+require_once("conexaoDb.php");
+
+$conn = conexaoDb();
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -18,11 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
     // realiza conexao com o banco de dados
-    $conn = mysqli_connect($severName, $userName, $password, $dataBase);
-
-    if(!$conn){
-        die("connection failed: " . $conn->connect_error );
-    }
+    
 
     $sql = "INSERT INTO usuarios (nome, tipo_doc, documento, telefone, email, senha) VALUE ('$nome', '$docTipo', '$documento', '$telefone', '$email', '$senhaHash')";
 

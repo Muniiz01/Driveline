@@ -1,12 +1,13 @@
 <?php
-$severName = "localhost"; // nome do servidor do banco de dados
-$dataBase = "driveline"; // nome da base de dados
-$userName = "root"; // nome do usuario para acessar o banco de dados
-$password = ""; // senha do usuario para acessar o banco de dados
+
+// conexao com o banco de dados
+require_once("conexaoDb.php");
+
+$conn = conexaoDb();
 
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pelo javascript foi  'POST' 
-    //dados requisitados pelo funcionario.js
+if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pelo javascript foi do tipo 'POST' 
+    
     // atribui os valores enviados pelo javascript no metodo FormData em variaveis
     $categoria = $_POST['categoria'];
     $modelo = $_POST['modelo']; 
@@ -21,21 +22,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pe
     $volume_carga = $_POST['volumeCarga'];
     $descricao = $_POST['descricao'];
 
-    $conn = mysqli_connect($severName, $userName, $password, $dataBase); //conexao com o banco de dados 
-
-    if(!$conn){ // testa a conexao com o banco de dados em caso de falha exibi uma mensagem no console do navegador
-        die("connection failed: " . $conn->connect_error );
-    }
+     
 
     // atribui a consulta sql na variavel $sql
     $sql = "INSERT INTO veiculos (categoria, modelo, marca, cor, quilometragem, cambio, passageiros, ar_condicionado, airbag, abs, volume_carga, descricao) VALUE 
     ( '$categoria', '$modelo', '$marca','$cor', '$quilometragem', '$cambio', '$passageiros', '$ar_condicionado', '$airbag', '$abs', '$volume_carga', '$descricao')"; 
 
-    if($conn->query($sql)  === TRUE) { // executa a variavel $sql
-        $id_veiculos = $conn->insert_id; // atribui o id gerado na variavel $id_veiculos caso a consulta tenha tido um sucesso
-        echo "Dados inseridos ", $id_veiculos; // exibi mensagem em caso da consulta sql for executada com sucesso
+    $verifica_car = "SELECT id_veiculos FROM veiculos WHERE modelo = '$modelo' ";
+    $resultado = $conn->query($verifica_car);
+
+    if($resultado->num_rows < 1) { // executa a variavel $sql
+        if( $conn->query($sql) === TRUE){
+            $id_veiculos = $conn->insert_id; 
+            echo "Dados inseridos "; 
+        }else{
+            echo "Erro ao inserir dados: " . $conn->error; 
+        }
     } else {
-        echo "Erro ao inserir dados: " . $conn->error; // exibi mensagem de erro 
+        echo "Este modelo ja existe no banco de dados";
+        $conn->close();
+        exit;
     }
 
 

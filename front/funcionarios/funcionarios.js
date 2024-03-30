@@ -46,10 +46,10 @@ function enviarForm() {
         body: formData             // body: formData o corpo do envio que e todos os valores armazenado no FormData
     }).then(response => response.text())
         .then(data => {
-            console.log('cadastro realizado', data)
+            console.log(data)
             // Exibi mensagens caso o servidor receba os dados
         }).catch(error => {
-            console.log('erro:', error)
+            console.log(error)
             // exibe mensagens em caso de erro ao enviar os dados 
         })
 

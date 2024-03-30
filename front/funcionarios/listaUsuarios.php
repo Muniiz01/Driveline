@@ -1,17 +1,13 @@
 <?php
-$severName = "localhost"; // nome do servidor do banco de dados
-$dataBase = "driveline"; // nome da base de dados
-$userName = "root"; // nome do usuario para acessar o banco de dados
-$password = ""; // senha do usuario para acessar o banco de dados
+
+// conexao com o banco de dados
+require_once("conexaoDb.php");
+
+$conn = conexaoDb();
+
 
 if($_SERVER["REQUEST_METHOD"] == "GET"){ // verifica se o metodo requisitado pelo javascript foi  'GET'
     //dados requisitados pelo funcionario.js
-
-    $conn = mysqli_connect($severName, $userName, $password, $dataBase); //conexao com o banco de dados 
-
-    if(!$conn){ // testa a conexao com o banco de dados em caso de falha exibi uma mensagem no console do navegador
-        die("connection failed: " . $conn->connect_error );
-    }
 
 
     $query = "SELECT id_usuario, nome, tipo_doc, documento, telefone, email FROM usuarios"; // atribui a consulta sql na variavel $query
