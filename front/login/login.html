@@ -7,12 +7,12 @@
     <title>login</title>
     <link rel="stylesheet" href="../bootstrap/bootstrap-css/bootstrap.css">
     <link rel="stylesheet" href="login_style.css">
-    <script src="senha.js"></script>
+    <script src="login.js"></script>
 </head>
 
 <body>
     <!-- inicio da tela -->
-    <form class="tela_login" method="POST">
+    <form class="tela_login" id="formLogin">
         <div class="img-logo">
             <img src="../imagens/logo/logo-png.png" width="70%">
         </div>
@@ -23,7 +23,7 @@
         <!-- inputs  -->
         <!-- input email -->
         <div class="input-group" id="input-group-email">
-            <input type="text" required>
+            <input type="text" id="email" required>
             <span>E-mail</span>
         </div>
         <!-- input senha -->
@@ -43,7 +43,7 @@
 
         <!-- botoes finais enviar e cadastrar-se -->
         <div class="botoes_enviar_cadastrar">
-            <button id="enviar" class="btn btn-primary btn-lg">Enviar</button>
+            <button id="enviar" type="submit" class="btn btn-primary btn-lg">Enviar</button>
             <a id="cadastro" href="../cadastro/cadastro.html">não possui conta?</a>
 
         </div>
