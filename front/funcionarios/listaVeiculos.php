@@ -5,11 +5,11 @@ require_once("conexaoDb.php");
 
 $conn = conexaoDb();
 
-if($_SERVER["REQUEST_METHOD"] == "GET"){ // verifica se o metodo requisitado pelo javascript foi  'GET' 
+if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pelo javascript foi  'GET' 
     //dados requisitados pelo funcionario.js
 
     
-    $query = "SELECT id_veiculos, categoria, modelo, marca, cor, quilometragem, cambio, passageiros, ar_condicionado, airbag, abs, volume_carga, descricao FROM veiculos"; // atribui a consulta sql na variavel $query
+    $query = "SELECT veiculos.id_veiculos, veiculos.categoria, veiculos.modelo, veiculos.marca, veiculos.cor, veiculos.quilometragem, veiculos.cambio, veiculos.passageiros, veiculos.ar_condicionado, veiculos.airbag, veiculos.abs, veiculos.volume_carga, veiculos.descricao, imagens.caminho_imagem FROM veiculos JOIN imagens ON veiculos.id_veiculos = imagens.id_veiculos"; // atribui a consulta sql na variavel $query
 
     $resultado = $conn->query($query); // executa a variavel $query e armazena o resultado na variavel $resultado
     
@@ -31,7 +31,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){ // verifica se o metodo requisitado pel
             'airbag' => $valores["airbag"], 
             'abs' => $valores["abs"], 
             'carga' => $valores["volume_carga"], 
-            'descricao' => $valores["descricao"]
+            'descricao' => $valores["descricao"],
+            'caminho_imagem' => $valores["caminho_imagem"]
         );
 
         }
