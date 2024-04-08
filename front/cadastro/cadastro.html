@@ -17,20 +17,20 @@
             <img src="../imagens/logo/slim-logo-png.png">
         </div>
         <div class="input-group">
-            <input id="nome" type="text" required>
+            <input id="nome" type="text" required autocomplete="name">
             <span>Nome</span>
         </div>
 
         <div class="input-group">
 
-            <input id="email" type="text" required>
+            <input id="email" type="text" required autocomplete="email">
             <span>E-mail</span>
             <!-- por conta do input type ser "email" a animação do span não se aplica -->
         </div>
         <!--  -->
         <div class="input-group" id="tipo_documento">
 
-            <input id="documento" name="documento" type="text" required>
+            <input id="documento" name="documento" type="text" required autocomplete="off">
             <span>Documento</span>
             <select id="docTipo" class="form-select" name="docTipo">
             <option value="RG">RG</option>
@@ -41,11 +41,11 @@
         <!--  -->
 
         <div class="input-group">
-            <input id="telefone" type="text" required>
+            <input id="telefone" type="text" required autocomplete="tel">
             <span>Telefone</span>
         </div>
         <div class="input-group">
-            <input id="senha" type="password" required>
+            <input id="senha" type="password" required autocomplete="current-password">
             <span>Senha</span>
             <input class="ver" type="checkbox" onclick="mostrarSenha()">
         </div>

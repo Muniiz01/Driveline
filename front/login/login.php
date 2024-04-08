@@ -5,7 +5,7 @@ require_once("conexaoDb.php");
 $conn = conexaoDb();
 
 
-if($_SERVER["REQUEST_METHOD" == "POST"]){
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
     $email = $_POST['email'];
@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD" == "POST"]){
 
     $resultado = $conn->query($sql);
 
-    if($resultado->num_rows < 1 ){
+    if($resultado->num_rows > 0 ){
         while($linha = $resultado->fetch_assoc()){
             $senhaCripto = $linha['senha'];
         }

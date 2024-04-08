@@ -22,6 +22,6 @@ document.getElementById("formLogin").addEventListener("submit", function (event)
             // exibe mensagens em caso de erro ao enviar os dados 
         })
 
-
-
 })
+
+

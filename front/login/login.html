@@ -7,7 +7,11 @@
     <title>login</title>
     <link rel="stylesheet" href="../bootstrap/bootstrap-css/bootstrap.css">
     <link rel="stylesheet" href="login_style.css">
-    <script src="login.js"></script>
+    <script type="module" src="login.js"></script>
+    <script src="senha.js"></script>
+    <script>
+        
+    </script>
 </head>
 
 <body>
@@ -23,12 +27,12 @@
         <!-- inputs  -->
         <!-- input email -->
         <div class="input-group" id="input-group-email">
-            <input type="text" id="email" required>
+            <input type="text" id="email" required autocomplete="email">
             <span>E-mail</span>
         </div>
         <!-- input senha -->
         <div class="input-group" value="" id="input-group-senha">
-            <input type="password" id="senha" required>
+            <input type="password" id="senha" required autocomplete="current-password">
             <span>Senha</span>
             <input class="ver" type="checkbox" onclick="mostrarSenha()">
         </div>
