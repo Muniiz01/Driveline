@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pe
                 $caminhoRelativo2 = '/xampp/htdocs/Driveline/front/funcionarios/carros/';
                 move_uploaded_file($caminho_temp, $caminhoRelativo2 . $novoNome); //move a imagem para o caminho designado na variavel $caminhoRelativo
                 
-                $sql = "INSERT INTO imagens (id_veiculos, caminho_imagem) VALUE ('$id_veiculos', '$caminhoCompleto')"; // consulta sql atribuida a variavel $sql para adcionar o caminho da imagem e o id_veiculo no banco de dados
+                $sql = "INSERT INTO imagens (id_veiculo, caminho_imagem) VALUE ('$id_veiculos', '$caminhoCompleto')"; // consulta sql atribuida a variavel $sql para adcionar o caminho da imagem e o id_veiculo no banco de dados
 
                 if($conn->query($sql) === TRUE){ // executa a variavel $sql
                     echo "imagem enviada com sucesso:" . $caminhoRelativo; // exibi mensagem em caso da consulta sql for executada com sucesso

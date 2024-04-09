@@ -16,6 +16,12 @@ document.getElementById("formLogin").addEventListener("submit", function (event)
     }).then(response => response.text())
         .then(data => {
             console.log(data)
+           if(data == 1){
+            window.location.replace("/driveline/front/home/index.html")
+
+           }else if(data == 2){
+            window.location.replace("/driveline/front/funcionarios/funcionarios.html")
+           }
             // Exibi mensagens caso o servidor receba os dados
         }).catch(error => {
             console.log('erro:', error)

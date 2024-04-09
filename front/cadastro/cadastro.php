@@ -14,6 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $documento = $_POST['documento'];
     $telefone = $_POST['telefone'];
     $senha = $_POST['senha'];
+    $nivel = "1";
 
     // gera uma senha hash(um tipo de criptografia)
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
@@ -21,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // realiza conexao com o banco de dados
     
 
-    $sql = "INSERT INTO usuarios (nome, tipo_doc, documento, telefone, email, senha) VALUE ('$nome', '$docTipo', '$documento', '$telefone', '$email', '$senhaHash')";
+    $sql = "INSERT INTO usuarios (nome, tipo_doc, documento, telefone, email, senha, nivel_acs) VALUE ('$nome', '$docTipo', '$documento', '$telefone', '$email', '$senhaHash','$nivel')";
 
     if($conn->query($sql)  === TRUE) {
         echo "Dados inseridos";
