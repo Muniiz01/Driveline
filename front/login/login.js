@@ -21,6 +21,8 @@ document.getElementById("formLogin").addEventListener("submit", function (event)
 
            }else if(data == 2){
             window.location.replace("/driveline/front/funcionarios/funcionarios.html")
+           }else if(data == 3){
+            window.location.replace("/driveline/front/funcionarios/adm.html")
            }
             // Exibi mensagens caso o servidor receba os dados
         }).catch(error => {

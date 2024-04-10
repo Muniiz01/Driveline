@@ -77,6 +77,24 @@ function exibirUsuarios() {
 
 }
 
+function exibirFuncionarios(){
+    fetch('listaFuncionarios.php', {method: 'GET'}).then(response => response.json()).then(data =>{
+        const dadosDiv = document.getElementById('lista')
+        const lista = data.map(item =>{                                               
+            return `<div> id: ${item.idUsuario} </div>
+            <div> nome: ${item.nome} </div>
+           
+            <div> telefone: ${item.telefone} </div>
+            <div> email: ${item.email} </div>`
+        })
+
+        dadosDiv.innerHTML = lista.join('')
+         
+    }).catch(error => {
+        console.error('Erro ao buscar os dados dos veículos:', error)
+    })
+}
+
 function exibirVeiculos() {
 
     

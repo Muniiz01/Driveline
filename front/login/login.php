@@ -31,6 +31,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             case "2" :
                 echo 2;
                 break;
+            case "3" :
+                echo 3;
+                break;
 
             default:
             echo "algum erro ai papai";
