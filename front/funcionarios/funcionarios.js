@@ -65,7 +65,8 @@ function exibirUsuarios() {
             <div> tipo documento: ${item.tipoDoc} </div>
             <div> documento ${item.documento} </div>
             <div> telefone: ${item.telefone} </div>
-            <div> email: ${item.email} </div>`
+            <div> email: ${item.email} </div>
+            <button onclick="deleteUser(${item.idUsuario})">deletar</button>`
         })
 
         dadosDiv.innerHTML = lista.join('') // inseri os elementos html no funcionario.html 
@@ -116,4 +117,20 @@ function exibirVeiculos() {
             // exibi o erro no console do navegador
             console.error('Erro ao buscar os dados dos veículos:', error)
         });
+}
+
+function deleteUser(idUsuario){
+    var formData = new FormData()
+    formData.append('idUsuario', idUsuario)
+
+    fetch('delete.php', {
+        method:'POST',
+        body:formData
+    }).then(response => response.text()).then(data => {
+        console.log('cadastro realizado', data)
+
+    }).catch(error => {
+        console.log('error', error)
+
+    })
 }
