@@ -74,6 +74,8 @@ function exibirUsuarios() {
     }).catch(error => {
         // exibi o erro no console do navegador 
         console.error('Erro ao buscar os dados dos veículos:', error)
+         document.getElementById('lista').innerHTML = "Nenhum registro encontrado"
+
     });
 
 }

@@ -3,7 +3,8 @@
 function exibirUsuarios() {  
     fetch('listaUsuarios.php', { method: 'GET' }).then(response => response.json()).then(data =>{    // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaUsuarios.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
         const dadosDiv = document.getElementById('lista')  // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
-        const lista = data.map(item =>{    // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.idUsuario}" item e o objeto array e idUsuario e a cahve array, todo o bloco e atribuido a const lista                                                
+        const lista = data.map(item =>{  
+                                                              
             return `<div> id: ${item.idUsuario} </div>
             <div> nome: ${item.nome} </div>
             <div> tipo documento: ${item.tipoDoc} </div>
@@ -17,6 +18,8 @@ function exibirUsuarios() {
     }).catch(error => {
         // exibi o erro no console do navegador 
         console.error('Erro ao buscar os dados dos veículos:', error)
+        document.getElementById('lista').innerHTML = "Nenhum registro encontrado"
+
     });
 
 }
@@ -42,6 +45,7 @@ function exibirVeiculos() {
         .catch(error => {
             // exibi o erro no console do navegador
             console.error('Erro ao buscar os dados dos veículos:', error)
+
         });
 }
 

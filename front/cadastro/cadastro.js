@@ -28,7 +28,7 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
         body: formData
     }).then(response => response.text())
         .then(data => {
-            console.log('cadastro realizado', data)
+            console.log(data)
             // Exibi mensagens caso o servidor receba os dados
         }).catch(error => {
             console.log('erro:', error)
