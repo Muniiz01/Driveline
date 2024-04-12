@@ -1,6 +1,20 @@
 function adcionarVeiculos() {
     var div = document.getElementById("lista") // Sera atribuido o elemento html com o id 'lista' na variavel div. 
-    div.innerHTML = "<div id='form-addCars'> <input id='categoria' placeholder='categoria'> <input id='modelo' placeholder='modelo'>  <input id='marca' placeholder='marca'>  <input id='cor' placeholder='cor'>  <input id='quilometragem' placeholder='quilometragem'> <input id='cambio' placeholder='cambio'> <input id='passageiros' placeholder='qtd-passageiros'> <input id='ar-condicionado' placeholder='tem ar-condicionado?'> <input id='airbag' placeholder='tem airbag?'> <input id='abs' placeholder='tem abs?'> <input id='volume-carga' placeholder='volume de carga'> <input id='imagens' type='file' multiple accept='image/jpeg, image/png'> <textarea name='descricao' id='descricao' cols='30' rows='10' placeholder='descricao veiculo'></textarea> <button id='btnEnviar' onclick='enviarForm()'>enviar</button></div>"
+    div.innerHTML = `<div id='form-addCars'> 
+    <input id='categoria' placeholder='categoria'> 
+    <input id='modelo' placeholder='modelo'> 
+     <input id='marca' placeholder='marca'>  
+     <input id='cor' placeholder='cor'>  
+     <input id='quilometragem' placeholder='quilometragem'> 
+     <input id='cambio' placeholder='cambio'> 
+     <input id='passageiros' placeholder='qtd-passageiros'> 
+     <input id='ar-condicionado' placeholder='tem ar-condicionado?'> 
+     <input id='airbag' placeholder='tem airbag?'> <input id='abs' placeholder='tem abs?'> 
+     <input id='volume-carga' placeholder='volume de carga'> 
+     <input id='imagens' type='file' multiple accept='image/jpeg, image/png'> 
+     <textarea name='descricao' id='descricao' cols='30' rows='10' placeholder='descricao veiculo'></textarea>
+     <button id='btnEnviar' onclick='enviarForm()'>enviar</button>
+      </div>`
 }                     //  div.innerHTML inseri todos os elementos html no funcionarios.html 
 
 function enviarForm() {
@@ -95,6 +109,7 @@ function exibirFuncionarios(){
          
     }).catch(error => {
         console.error('Erro ao buscar os dados dos veículos:', error)
+        document.getElementById('lista').innerHTML = "Nenhum registro encontrado"
     })
 }
 
@@ -108,7 +123,7 @@ function exibirVeiculos() {
             const lista = data.map(item => {   // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.modelo}" item e o objeto array e modelo e a cahve array, todo o bloco e atribuido a const lista 
                 return `<div>modelo: ${item.modelo}</div>  
                         <div>passageiros: ${item.passageiros}</div>
-                        <img src="${item.caminho_imagem}" alt="">`
+                        <img class='img-car' src="${item.caminho_imagem}" alt="">`
             });
 
             
@@ -118,6 +133,7 @@ function exibirVeiculos() {
         .catch(error => {
             // exibi o erro no console do navegador
             console.error('Erro ao buscar os dados dos veículos:', error)
+            document.getElementById('lista').innerHTML = "Nenhum registro encontrado"
         });
 }
 

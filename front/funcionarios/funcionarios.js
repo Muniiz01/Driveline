@@ -35,7 +35,7 @@ function exibirVeiculos() {
             const lista = data.map(item => {   // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.modelo}" item e o objeto array e modelo e a cahve array, todo o bloco e atribuido a const lista 
                 return `<div>modelo: ${item.modelo}</div>  
                         <div>passageiros: ${item.passageiros}</div>
-                        <img src="${item.caminho_imagem}" alt="">`
+                        <img class='img-car' src="${item.caminho_imagem}" alt="">`
             });
 
             
@@ -45,6 +45,7 @@ function exibirVeiculos() {
         .catch(error => {
             // exibi o erro no console do navegador
             console.error('Erro ao buscar os dados dos veículos:', error)
+            document.getElementById('lista').innerHTML = "Nenhum registro encontrado"
 
         });
 }
