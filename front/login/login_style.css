@@ -3,37 +3,32 @@
      padding: 0%;
      margin: 0%;
  }
+
+ /* //corpo da tela de login///////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
  .tela_login {
      background-color: white;
      width: 30%;
-     height: 100%;
-     display: block;
-     /* background-color: rgb(255, 255, 255); */
-     margin-left: auto;
-     margin-right: auto;
-     margin-top: 3%;
- }
- 
- #login_texto {
-     margin-bottom: 9%;
- }
- 
- .img-logo {
+     height: max-content;
+     margin: 0% auto;
+     margin-top: 4%;
      text-align: center;
  }
- /* inputs */
- 
+@media(max-width:521){
+    #login_texto{
+        font-size: small;
+    }
+}
+ /* ////////////////////////////// */
+
+ /* campos de input /////////////////////////*/
+.img-logo{
+    padding: 7% 0;
+}
  .input-group {
-     margin-left: auto;
-     margin-right: auto;
+     margin: 7% auto;
      width: 60%;
  }
- 
- .input-group input:focus {
-     outline: none;
-     background: transparent;
- }
- 
+
  .input-group input {
      border-radius: 0%;
      border: none;
@@ -41,21 +36,15 @@
      height: 34px;
      width: 100%;
  }
- 
- #input-group-email {
-     margin-bottom: 7%;
+
+ .input-group input:focus {
+     outline: none;
+     background: transparent;
  }
- 
- #input-group-senha {
-     margin-bottom: 2%;
- }
- 
- .div_esqueceu {
-     text-align: center;
-     margin-bottom: 11%;
- }
+
+ /* Botoes individuais ////////////////////////////////////////////////////////////////////////////////////////////////////*/
  /* botao enviar */
- 
+
  #enviar {
      width: 25%;
      margin-left: auto;
@@ -63,8 +52,9 @@
      font-size: 100%;
      border: none;
  }
+
  /* botao de cadastro */
- 
+
  #cadastro {
      margin-left: auto;
      margin-right: auto;
@@ -74,32 +64,25 @@
      color: gray;
      text-decoration: none;
  }
- 
+
  #cadastro:hover {
      color: black;
  }
+
  /* botoes_enviar_cadastrar */
- 
+
  .botoes_enviar_cadastrar {
      display: grid;
  }
- /* botao esqueceu a senha */
- 
- #botao_esqueceu_senha {
-     color: gray;
- }
- 
- #botao_esqueceu_senha:hover {
-     color: black;
- }
+
  /* animacão dos inputs */
- 
+
  .input-group input:valid~span,
  .input-group input:focus~span {
      font-size: .85rem;
      transform: translateY(-32px);
  }
- 
+
  .input-group span {
      /* posicionar o texto dentro das caixas input*/
      pointer-events: none;
@@ -108,7 +91,7 @@
      padding: 7px;
      transition: .2s;
  }
- 
+
  .input-group .ver {
      margin-left: 20%;
      width: 5%;
@@ -116,15 +99,12 @@
      right: 0%;
      padding: 7px;
  }
- 
+
+ /* link ////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
  .home a {
      color: gray;
  }
- 
+
  .home a:hover {
      color: rgb(0, 136, 255);
- }
- 
- .home {
-     padding-top: 1rem;
  }
