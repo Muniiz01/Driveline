@@ -68,9 +68,9 @@ input:focus {
     transition: .2s;
 }
 
-.input-group .ver {
+.input-group .ver_senha {
     margin-left: 20%;
-    width: 5%;
+    width: 1rem;
     position: absolute;
     right: 0%;
     padding: 7px;
@@ -86,8 +86,7 @@ input:focus {
 
 button {
     margin: 5% auto;
-    width: 25%;
-    font-size: 100%;
+    width: max-content;
     border: none;
 }
 
@@ -98,7 +97,13 @@ a {
 a:hover {
     color: rgb(0, 136, 255);
 }
-
-.home {
-    margin-top: 1rem;
+@media(max-width:561px) {
+    .btn-primary{
+        font-size: 10px;
+    }
+    .input-group input:valid~span,
+    .input-group input:focus~span {
+        font-size: .70rem;
+        transform: translateY(-20px);
+    }
 }

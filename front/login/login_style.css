@@ -2,28 +2,29 @@
      background-color: rgb(238, 237, 237);
      padding: 0%;
      margin: 0%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
  }
 
  /* //corpo da tela de login///////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
  .tela_login {
+    margin-top: 4%;
      background-color: white;
      width: 30%;
      height: max-content;
-     margin: 0% auto;
-     margin-top: 4%;
      text-align: center;
  }
-@media(max-width:521){
-    #login_texto{
-        font-size: small;
-    }
-}
+
+ .img_logo {
+     padding: 7% 0;
+ }
+
  /* ////////////////////////////// */
 
  /* campos de input /////////////////////////*/
-.img-logo{
-    padding: 7% 0;
-}
+
+
  .input-group {
      margin: 7% auto;
      width: 60%;
@@ -46,10 +47,10 @@
  /* botao enviar */
 
  #enviar {
-     width: 25%;
+     width: max-content;
      margin-left: auto;
      margin-right: auto;
-     font-size: 100%;
+     font-size: medium;
      border: none;
  }
 
@@ -92,9 +93,9 @@
      transition: .2s;
  }
 
- .input-group .ver {
+ .input-group .ver_senha {
      margin-left: 20%;
-     width: 5%;
+     width: 1rem;
      position: absolute;
      right: 0%;
      padding: 7px;
@@ -107,4 +108,20 @@
 
  .home a:hover {
      color: rgb(0, 136, 255);
+ }
+
+ /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+ @media(max-width:521px) {
+     #login_texto {
+         font-size: large;
+     }
+
+     #enviar {
+         font-size: 10px;
+     }
+     .input-group input:valid~span,
+     .input-group input:focus~span {
+         font-size: .70rem;
+         transform: translateY(-20px);
+     }
  }
