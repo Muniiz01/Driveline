@@ -9,15 +9,16 @@ function adcionarVeiculos() {
      <input id='cambio' placeholder='cambio'> 
      <input id='passageiros' placeholder='qtd-passageiros'> 
      <input id='ar-condicionado' placeholder='tem ar-condicionado?'> 
-     <input id='airbag' placeholder='tem airbag?'> <input id='abs' placeholder='tem abs?'> 
+     <input id='airbag' placeholder='tem airbag?'> 
+     <input id='abs' placeholder='tem abs?'> 
      <input id='volume-carga' placeholder='volume de carga'> 
      <input id='imagens' type='file' multiple accept='image/jpeg, image/png'> 
      <textarea name='descricao' id='descricao' cols='30' rows='10' placeholder='descricao veiculo'></textarea>
-     <button id='btnEnviar' onclick='enviarForm()'>enviar</button>
+     <button id='btnEnviar' onclick='enviarFormCar()'>enviar</button>
       </div>`
 }                     //  div.innerHTML inseri todos os elementos html no funcionarios.html 
 
-function enviarForm() {
+function enviarFormCar() {
     
     var categoria = document.getElementById('categoria').value // Atribui o valor do input pelo id em uma variavel " variavel contem o mesmo nome do input " 
     var modelo = document.getElementById('modelo').value
@@ -70,6 +71,35 @@ function enviarForm() {
 
 }
 
+function enviarFormFunc(){
+
+    var nome = document.getElementById('nome').value
+    var documento = document.getElementById('documento').value
+    var docTipo = document.getElementById('docTipo').value
+    var telefone = document.getElementById('telefone').value
+    var email = document.getElementById('email').value
+    var senha = document.getElementById('senha').value
+
+    var formData = new FormData()
+    formData.append('nome', nome)
+    formData.append('documento', documento)
+    formData.append('docTipo', docTipo)
+    formData.append('telefone', telefone)
+    formData.append('email', email)
+    formData.append('senha', senha)
+    
+    fetch('addFuncionario.php', {
+        method: 'POST',
+        body: formData
+    }).then(response => response.text())
+    .then(data => {
+        console.log(data)//exibi mensagem enviada do php
+
+    }).catch(error =>{
+        console.log(error) // exibe mensagem de erro enviada do php
+    })
+}
+
 function exibirUsuarios() {  
     fetch('listaUsuarios.php', { method: 'GET' }).then(response => response.json()).then(data =>{    // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaUsuarios.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
         const dadosDiv = document.getElementById('lista')  // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
@@ -100,9 +130,9 @@ function exibirFuncionarios(){
         const lista = data.map(item =>{                                               
             return `<div> id: ${item.idUsuario} </div>
             <div> nome: ${item.nome} </div>
-           
             <div> telefone: ${item.telefone} </div>
-            <div> email: ${item.email} </div>`
+            <div> email: ${item.email} </div>
+            <button onclick="deleteUser(${item.idUsuario})">deletar</button>`
         })
 
         dadosDiv.innerHTML = lista.join('')
@@ -111,6 +141,23 @@ function exibirFuncionarios(){
         console.error('Erro ao buscar os dados dos veículos:', error)
         document.getElementById('lista').innerHTML = "Nenhum registro encontrado"
     })
+}
+
+function addFuncionario(){
+    var div = document.getElementById('lista')
+    div.innerHTML = `<div id='form-addFunc'> 
+    <input id='nome' placeholder='Nome Completo'> 
+    <input id="documento" name="documento" type="text" placeholder='Documento' required autocomplete="off">
+            <select id="docTipo" class="form-select" name="docTipo">
+            <option value="RG">RG</option>
+            <option value="CPF">CPF</option>
+            <option value="passaporte">Passaporte</option>
+            </select> 
+     <input id='telefone' placeholder='Telefone'> 
+     <input id='email' placeholder='E-mail'> 
+     <input id='senha' placeholder='Senha'> 
+     <button id='btnEnviar' onclick='enviarFormFunc()'>enviar</button>
+      </div>`
 }
 
 function exibirVeiculos() {

@@ -59,6 +59,19 @@ body{
   width: 100px;
 }
 
+#form-addFunc{
+  display: flex;
+  flex-direction: column;
+ 
+  float: left;
+  margin: 10%;
+}
+
+#form-addFunc{
+  padding: 15px;
+  width: 200px;
+}
+
 .img-car{
   height: 200px;
   width: 200px;

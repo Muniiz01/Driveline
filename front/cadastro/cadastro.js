@@ -31,7 +31,7 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
             console.log(data)
             // Exibi mensagens caso o servidor receba os dados
         }).catch(error => {
-            console.log('erro:', error)
+            console.log(error)
             // exibe mensagens em caso de erro ao enviar os dados 
         })
 })
