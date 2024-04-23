@@ -104,13 +104,16 @@ function exibirUsuarios() {
     fetch('listaUsuarios.php', { method: 'GET' }).then(response => response.json()).then(data =>{    // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaUsuarios.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
         const dadosDiv = document.getElementById('lista')  // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
         const lista = data.map(item =>{    // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.idUsuario}" item e o objeto array e idUsuario e a cahve array, todo o bloco e atribuido a const lista                                                
-            return `<div> id: ${item.idUsuario} </div>
-            <div> nome: ${item.nome} </div>
-            <div> tipo documento: ${item.tipoDoc} </div>
-            <div> documento ${item.documento} </div>
-            <div> telefone: ${item.telefone} </div>
-            <div> email: ${item.email} </div>
-            <button onclick="deleteUser(${item.idUsuario})">deletar</button>`
+            return `
+            
+            <div class='user'>  id: ${item.idUsuario} </div>
+            <div class='user'>  nome: ${item.nome} </div>
+            <div class='user'>  tipo documento: ${item.tipoDoc} </div>
+            <div class='user'>  documento ${item.documento} </div>
+            <div class='user'>  telefone: ${item.telefone} </div>
+            <div class='user'>  email: ${item.email} </div>
+            <button class='user-button' onclick="deleteUser(${item.idUsuario})">deletar</button>
+            `
         })
 
         dadosDiv.innerHTML = lista.join('') // inseri os elementos html no funcionario.html 

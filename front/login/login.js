@@ -18,7 +18,6 @@ document.getElementById("formLogin").addEventListener("submit", function (event)
             console.log(data)
            if(data == 1){
             window.location.replace("/driveline/front/home/index.html")
-
            }else if(data == 2){
             window.location.replace("/driveline/front/funcionarios/funcionarios.html")
            }else if(data == 3){

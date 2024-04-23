@@ -52,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pe
 
         foreach($imagens['tmp_name'] as $index => $tmp_name){ //aqui o bagulho fica loco kkkk
             $nome_arquivo = $imagens['name'][$index]; //atribui o nome da imagem na variavel $nome_arquivo
-            $novoNome = $modelo . $index . ".jpg"; // defini um novo nome para a imagem de acordo com o modelo do veiculo e o formato da imagem
+            $novoNome = $modelo . $index . ".WEBP"; // defini um novo nome para a imagem de acordo com o modelo do veiculo e o formato da imagem
             $caminho_temp = $tmp_name; // caminho temporario onde a imagem fica salva no php
             $caminhoCompleto = $caminhoRelativo . $novoNome; // junta o caminho onde a imagem sera armazenada e o nome da imagem
 
