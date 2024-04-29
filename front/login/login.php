@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         while($linha = $resultado->fetch_assoc()){
             $senhaCripto = $linha['senha'];
             $idUser = $linha['id_usuario'];
-            $nivel = $linha['nivel_acs'];
+            $nivel = $linha['idNivel_de_Acesso'];
         }
         if(password_verify($senha, $senhaCripto)){
             
