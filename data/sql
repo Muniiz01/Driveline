@@ -1,0 +1,71 @@
+CREATE TABLE Veiculos 
+( 
+ marca VARCHAR(100),  
+ cor VARCHAR(50),  
+ quilometragem VARCHAR(50),  
+ cambio VARCHAR(50),  
+ passageiros VARCHAR(50),  
+ ar_condicionado VARCHAR(50),  
+ id_veiculos int PRIMARY KEY AUTO_INCREMENT,  
+ descricao VARCHAR(250),  
+ abs VARCHAR(50),  
+ volume_carga VARCHAR(50),  
+ airbag VARCHAR(50) 
+); 
+
+CREATE TABLE Img_Veiculo 
+( 
+ caminho_imagem VARCHAR(100),  
+ id_imagem_veiculo int PRIMARY KEY AUTO_INCREMENT,  
+ idVeiculos int  
+); 
+
+CREATE TABLE Usuarios 
+( 
+ id_usuario int PRIMARY KEY AUTO_INCREMENT,  
+ senha VARCHAR(250),  
+ email VARCHAR(100),  
+ telefone VARCHAR(50),  
+ documento VARCHAR(50),  
+ tipo_doc VARCHAR(50),  
+ nome VARCHAR(50),  
+ idNivel_de_Acesso int
+); 
+
+CREATE TABLE Nivel_de_Acesso 
+( 
+ id_nivelacesso int PRIMARY KEY AUTO_INCREMENT  
+); 
+
+CREATE TABLE Funcionarios 
+( 
+ documento VARCHAR(50),  
+ tipo_doc VARCHAR(50),  
+ nome VARCHAR(50),  
+ telefone VARCHAR(50),  
+ senha VARCHAR(250),  
+ documento VARCHAR(50),  
+ email VARCHAR(50),  
+ id_funcionario int PRIMARY KEY AUTO_INCREMENT,  
+ idNivel_de_Acesso int,  
+ id_Img_Funcionario int 
+); 
+
+CREATE TABLE Img_Funcionario 
+( 
+ id_imagem_funcionario int PRIMARY KEY AUTO_INCREMENT,  
+ caminho_imagem VARCHAR(50)  
+); 
+
+CREATE TABLE historico 
+( 
+ data_registro DATE,  
+ idVeiculos int,  
+ idUsuarios int  
+); 
+
+ALTER TABLE img_veiculo ADD FOREIGN KEY(idVeiculos) REFERENCES Veiculos (id_veiculos);
+ALTER TABLE usuarios ADD FOREIGN KEY(idNivel_de_Acesso) REFERENCES nivel_de_acesso (id_nivelacesso);
+ALTER TABLE funcionarios ADD FOREIGN KEY(idNivel_de_Acesso) REFERENCES nivel_de_acesso (id_nivelacesso);
+ALTER TABLE historico ADD FOREIGN KEY(idVeiculos) REFERENCES Veiculos (id_veiculos);
+ALTER TABLE historico ADD FOREIGN KEY(idUsuarios) REFERENCES usuarios (id_usuario);
