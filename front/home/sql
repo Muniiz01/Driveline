@@ -1,0 +1,5 @@
+ALTER TABLE img_veiculo ADD FOREIGN KEY(idVeiculos) REFERENCES Veiculos (id_veiculos);
+ALTER TABLE usuarios ADD FOREIGN KEY(idNivel_de_Acesso) REFERENCES nivel_de_acesso (id_nivelacesso);
+ALTER TABLE funcionarios ADD FOREIGN KEY(idNivel_de_Acesso) REFERENCES nivel_de_acesso (id_nivelacesso);
+ALTER TABLE historico ADD FOREIGN KEY(idVeiculos) REFERENCES Veiculos (id_veiculos);
+ALTER TABLE historico ADD FOREIGN KEY(idUsuarios) REFERENCES usuarios (id_usuario);
