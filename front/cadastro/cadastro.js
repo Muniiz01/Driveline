@@ -28,11 +28,13 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
         body: formData
     }).then(response => response.text())
         .then(data => {
-            console.log(data)
+            /* console.log(data) */
+            document.getElementById('msg-erro').innerHTML = `${data}`
             // Exibi mensagens caso o servidor receba os dados
         }).catch(error => {
-            console.log(error)
+            /* console.log(error) */
             // exibe mensagens em caso de erro ao enviar os dados 
+            
         })
 })
 

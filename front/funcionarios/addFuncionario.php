@@ -12,10 +12,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $telefone = $_POST['telefone'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
+    $nivel = "2";
 
     $senhaCripto = password_hash($senha, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO usuarios(nome, tipo_doc, documento, telefone, email, senha, nivel_acs) VALUES ('$nome', '$docTipo', '$documento', '$telefone', '$email', '$senhaCripto', '2')";
+    $sql = "INSERT INTO usuarios(nome, tipo_doc, documento, telefone, email, senha, idNivel_de_Acesso) VALUES ('$nome', '$docTipo', '$documento', '$telefone', '$email', '$senhaCripto', '$nivel')";
 
     $query = $con->query($sql);
     
