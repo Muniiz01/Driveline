@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pe
     //dados requisitados pelo funcionario.js
 
     
-    $query = "SELECT * FROM veiculos JOIN imagens ON veiculos.id_veiculos = imagens.id_veiculo"; // atribui a consulta sql na variavel $query
+    $query = "SELECT * FROM veiculos JOIN img_veiculo ON veiculos.id_veiculos = img_veiculo.idVeiculos"; // atribui a consulta sql na variavel $query
 
     $resultado = $conn->query($query); // executa a variavel $query e armazena o resultado na variavel $resultado
     

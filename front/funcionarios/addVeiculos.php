@@ -48,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pe
     if(isset($_FILES['imagens'])){ // verifica se a um arquivo 
         $imagens = $_FILES['imagens']; // atribui as imagens na variavel $imagens
 
-        $caminhoRelativo = 'carros/'; // caminho onde a imagens sera armazenada
+        $caminhoRelativo = 'imagem_carros/'; // caminho onde a imagens sera armazenada
 
         foreach($imagens['tmp_name'] as $index => $tmp_name){ //aqui o bagulho fica loco kkkk
             $nome_arquivo = $imagens['name'][$index]; //atribui o nome da imagem na variavel $nome_arquivo
@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pe
             $caminho_temp = $tmp_name; // caminho temporario onde a imagem fica salva no php
             $caminhoCompleto = $caminhoRelativo . $novoNome; // junta o caminho onde a imagem sera armazenada e o nome da imagem
 
-            $sql_caminho = "SELECT id_imagens FROM imagens WHERE caminho_imagem = '$caminhoCompleto'"; // consulta sql verifica a existencia de um caminho igual a variavel $caminhoCompleto no banco de dados
+            $sql_caminho = "SELECT id_imagem_veiculo FROM img_veiculo WHERE caminho_imagem = '$caminhoCompleto'"; // consulta sql verifica a existencia de um caminho igual a variavel $caminhoCompleto no banco de dados
             $resultado = $conn->query($sql_caminho);  // executa a variavel a consulta sql e armazena o resultado na variavel $resultado
 
             if ($resultado->num_rows > 0){ // verifica se o banco retornou algun registro, se sim..
@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pe
                 $caminhoRelativo2 = '/xampp/htdocs/Driveline/front/funcionarios/imagem_carros/';
                 move_uploaded_file($caminho_temp, $caminhoRelativo2 . $novoNome); //move a imagem para o caminho designado na variavel $caminhoRelativo
                 
-                $sql = "INSERT INTO imagens (id_veiculo, caminho_imagem) VALUE ('$id_veiculos', '$caminhoCompleto')"; // consulta sql atribuida a variavel $sql para adcionar o caminho da imagem e o id_veiculo no banco de dados
+                $sql = "INSERT INTO img_veiculo (idVeiculos, caminho_imagem) VALUE ('$id_veiculos', '$caminhoCompleto')"; // consulta sql atribuida a variavel $sql para adcionar o caminho da imagem e o id_veiculo no banco de dados
 
                 if($conn->query($sql) === TRUE){ // executa a variavel $sql
                     echo "imagem enviada com sucesso:" . $caminhoRelativo; // exibi mensagem em caso da consulta sql for executada com sucesso
