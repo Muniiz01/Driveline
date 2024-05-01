@@ -11,7 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $sql = "SELECT * FROM usuarios WHERE email = '$email' ";
+    $sql = "CALL SelecionarDadosDuasTabelas('$email')";
 
     $resultado = $conn->query($sql);
 
