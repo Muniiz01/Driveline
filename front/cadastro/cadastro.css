@@ -97,13 +97,51 @@ a {
 a:hover {
     color: rgb(0, 136, 255);
 }
+
 @media(max-width:561px) {
-    .btn-primary{
+    .btn-primary {
         font-size: 10px;
     }
+
     .input-group input:valid~span,
     .input-group input:focus~span {
         font-size: .70rem;
         transform: translateY(-20px);
     }
+}
+
+.popup-frame{
+    display: block;
+    position: fixed;
+    width: 14%;
+    text-align: center;
+    height: 5%;
+    background: white;
+    border: 1px solid black;
+    padding: 10px;
+    margin: auto;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    animation-name: slidetop;
+    animation-duration: 400ms ;
+    animation-fill-mode: forwards;
+}
+@keyframes slidetop{
+    0%{
+        opacity: 0;
+    }
+    from{
+        top: -5%;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    to{
+        top: 5%;        
+    }
+    100%{
+        opacity: 1;
+    }
+    
 }

@@ -28,14 +28,26 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
         body: formData
     }).then(response => response.text())
         .then(data => {
-            /* console.log(data) */
-            document.getElementById('msg-erro').innerHTML = `${data}`
-            // Exibi mensagens caso o servidor receba os dados
+            // Ainda estou trabalhando nisso // Exibi um popup informando usuario cadastrdo ou se o usuario ja existe
+            console.log(data)
+            var popup = document.getElementById('popup')
+            popup.classList.toggle('popup-frame')
+            document.getElementById('msg').innerHTML = `${data}`
+            
         }).catch(error => {
             /* console.log(error) */
             // exibe mensagens em caso de erro ao enviar os dados 
             
         })
+
+        function limpaCampo() { 
+            // Ainda estou trabalhando nisso // Limpa o popup da tela e redireciona a pagina depois de um teempo (nao sei se e uma boa fazer isso =\) 
+            /* popup.classList.toggle('popup-frame')
+            window.location.replace("/driveline/front/home/index.html") */
+        }
+        setTimeout(limpaCampo, 5000)
+
+
 })
 
 
