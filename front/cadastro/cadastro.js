@@ -29,41 +29,23 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
     }).then(response => response.text())
         .then(data => {
             // Ainda estou trabalhando nisso // Exibi um popup informando usuario cadastrdo ou se o usuario ja existe
-            console.log(data)
-            var popup = document.getElementById('popup')
-            popup.classList.toggle('popup-frame')
+            if(data == "Usuario cadastrado"){
+                //redireciona para a pagina home
+                window.location.replace("/driveline/front/home/index.html")
+            }
+            const popup = document.getElementById('popup')
+            popup.removeAttribute('class')
+            popup.classList.toggle('popup-on')
             document.getElementById('msg').innerHTML = `${data}`
-            
+
         }).catch(error => {
             /* console.log(error) */
             // exibe mensagens em caso de erro ao enviar os dados 
-            
+
         })
+    setTimeout(function () {
+        popup.classList.toggle('popup-off') 
 
-        function limpaCampo() { 
-            // Ainda estou trabalhando nisso // Limpa o popup da tela e redireciona a pagina depois de um teempo (nao sei se e uma boa fazer isso =\) 
-            /* popup.classList.toggle('popup-frame')
-            window.location.replace("/driveline/front/home/index.html") */
-        }
-        setTimeout(limpaCampo, 5000)
-
+    }, 2000)
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
