@@ -1,4 +1,5 @@
 <?php
+session_start();    
 
 require_once("conexaoDb.php");
 
@@ -22,6 +23,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $nivel = $linha['idNivel_de_Acesso'];
         }
         if(password_verify($senha, $senhaCripto)){
+             //Criarao uma sesao aqui
+           
+             $_SESSION['nivelAces'] = $nivel;
+             $_SESSION['idUser'] = $idUser;
+
+                $dados = array(
+                    'idUser' => $idUser,
+                    'nivelAces' => $nivel
+                );
+                
+                $dados_serial = serialize($dados);
+
+                setcookie("dados", $dados_serial, time() + 3600, "/");
+              
+             //cookie do usuario
+
+             
             
            switch($nivel){
             case "1" :
@@ -29,6 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 break;
 
             case "2" :
+                
                 echo 2;
                 break;
             case "3" :
@@ -39,7 +58,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo "algum erro ai papai";
            }
 
-            //Criarao uma sesao aqui
 
 
         }else{
