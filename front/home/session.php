@@ -3,7 +3,6 @@ session_start();
 require_once("conexaoDb.php");
 $conn = conexaoDb();
 
-
 if(isset($_SESSION["idUser"]) && isset($_SESSION['nivelAces'])){
     // puxa os dados da db
     $idUser = $_SESSION["idUser"];
