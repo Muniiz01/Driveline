@@ -68,16 +68,48 @@ function alterarCarro(idVeiculo){
                  <input id='volume-carga' placeholder='volume de carga'> 
                  <input id='imagens' type='file' multiple accept='image/jpeg, image/png'> 
                  <textarea name='descricao' id='descricao' cols='30' rows='10' placeholder='descricao veiculo'></textarea>
-                 <button id='btnEnviar' onclick='enviarFormCar()'>enviar</button>
+                 <button id='btnEnviar' onclick='enviarFo(${idVeiculo})'>enviar</button>
                   </div>`
-                var formData = new FormData()
+
+            }
+
+            function enviarFo(idVeiculo){
+                
+                var categoria = document.getElementById('categoria').value // Atribui o valor do input pelo id em uma variavel " variavel contem o mesmo nome do input " 
+                  var modelo = document.getElementById('modelo').value
+                  var marca = document.getElementById('marca').value
+                  var cor = document.getElementById('cor').value
+                  var quilometragem = document.getElementById('quilometragem').value
+                  var cambio = document.getElementById('cambio').value
+                  var passageiros = document.getElementById('passageiros').value
+                  var arCondicionado = document.getElementById('ar-condicionado').value
+                  var airbag = document.getElementById('airbag').value
+                  var abs = document.getElementById('abs').value
+                  var volumeCarga = document.getElementById('volume-carga').value
+                  var descricao = document.getElementById('descricao').value
+              
+              
+                  var formData = new FormData()  // FormData e um metodo de armazenamemto para envio de arquivos para o lado do servidor 
+                  formData.append('categoria', categoria)  // armazena as variaveis na funcao FormData 
+                  formData.append('modelo', modelo)
+                  formData.append('marca', marca)
+                  formData.append('cor', cor)
+                  formData.append('quilometragem', quilometragem)
+                  formData.append('cambio', cambio)
+                  formData.append('passageiros', passageiros)
+                  formData.append('arCondicionado', arCondicionado)
+                  formData.append('airbag', airbag)
+                  formData.append('abs', abs)
+                  formData.append('volumeCarga', volumeCarga)
+                  formData.append('descricao', descricao)
+              
                 formData.append('idVeiculo', idVeiculo)
             
                 fetch('alterar.php', {
                     method:'POST',
-                    body:formData
+                    body: formData
                 }).then(response => response.text()).then(data => {
-                    console.log('carro alterado', idVeiculo)
+                    console.log('carro alterado', idVeiculo, data)
             
                 }).catch(error => {
                     console.log('error', error)
