@@ -31,7 +31,7 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
             // Ainda estou trabalhando nisso // Exibi um popup informando usuario cadastrdo ou se o usuario ja existe
             if(data == "Usuario cadastrado"){
                 //redireciona para a pagina home
-                window.location.replace("/driveline/front/home/index.html")
+                window.location.replace("/driveline/src/home/index.html")
             }
             const popup = document.getElementById('popup')
             popup.removeAttribute('class')

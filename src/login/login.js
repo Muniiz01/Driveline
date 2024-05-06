@@ -17,11 +17,11 @@ document.getElementById("formLogin").addEventListener("submit", function (event)
         .then(data => {
             console.log(data)
            if(data == 1){
-            window.location.replace("/driveline/front/home/index.html")
+            window.location.replace("/driveline/src/home/index.html")
            }else if(data == 2){
-            window.location.replace("/driveline/front/funcionarios/funcionarios.html")
+            window.location.replace("/driveline/src/funcionarios/funcionarios.html")
            }else if(data == 3){
-            window.location.replace("/driveline/front/funcionarios/adm.html")
+            window.location.replace("/driveline/src/funcionarios/adm.html")
            }
             // Exibi mensagens caso o servidor receba os dados
         }).catch(error => {
