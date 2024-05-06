@@ -25,11 +25,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     $resultado = $conn->query($sql);
 
-    if($resultado->num_rows < 0){
+    if($resultado->num_rows <= 0){
 
-    $sql = "INSERT INTO usuarios (nome, tipo_doc, documento, telefone, email, senha, idNivel_de_Acesso) VALUE ('$nome', '$docTipo', '$documento', '$telefone', '$email', '$senhaHash','$nivel')";
+    $sql2 = "INSERT INTO usuarios (nome, tipo_doc, documento, telefone, email, senha, idNivel_de_Acesso) VALUE ('$nome', '$docTipo', '$documento', '$telefone', '$email', '$senhaHash','$nivel')";
 
-    $conn->query($sql);
+    $conn->query($sql2);
     echo "Usuario cadastrado";
 
    

@@ -1,0 +1,235 @@
+/* tudo */
+*{
+    font-family: "poppins",sans-serif;
+}
+:root{
+    --sombra-e-texto: rgb(0, 0, 0);
+    --principal: white;
+}
+body {
+    --fundo: rgb(216, 216, 216);
+    background-color: var(--fundo);
+    min-width: 440px;
+    padding: 0%;
+    margin: 0%;
+    width: 100%;
+    height: 100vh;
+    transition: 0.5s;
+}
+
+/*//navbar//////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+nav {
+    transition: 0.5s;
+    z-index: 1;
+    top: 0%;
+    transform: translateY(-100px);
+    width: 100%;
+    height: 5rem;
+    position: fixed;
+    align-items: center;
+    display: flex;
+}
+/* grupo de botões */
+.grupo1,
+.grupo2 {
+    border-radius: 2rem;
+    width: auto;
+}
+.grupo1 {
+    margin-left: 3%;
+}
+
+.grupo2 {
+    margin-left: auto;
+    margin-right: 2%;
+}
+/* botões */
+nav .btn-padrao {
+    opacity: 0.28;
+    background-color: var(--principal);
+    font-size: 100%;
+    width: 5rem;
+    height: 2rem;
+    border: none;
+    border-radius: 2rem;
+    color: var(--sombra-e-texto);
+    transition: 0.5s;
+}
+
+nav .btn-padrao:hover {
+    opacity: 1;
+    box-shadow: 2px 3px var(--sombra-e-texto);
+    background-color: rgb(226, 226, 226);
+}
+/* tema */
+nav i{
+    margin: 0% 10px;
+}
+#switch_tema{
+    width: max-content;
+}
+
+@media(max-width:420px) {
+    #navbar .btn-padrao {
+        width: max-content;
+    }
+    #navbar {
+        font-size: 60%;
+    }
+
+}
+
+/* //banner/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.banner{
+    display: flex;
+    position: relative;
+    background: linear-gradient(to right, rgb(9, 102, 251), rgb(0, 105, 157),rgb(0, 55, 175) );
+    width: 100%;
+    height: 70%;
+}
+
+.texto_promocional{
+    margin-left: 53%;
+    height: 100%;
+    padding: 3%;
+    width: max-content;
+    background: linear-gradient(to bottom, rgb(255, 204, 0), rgb(234, 183, 0), rgb(255, 187, 0) );
+}
+.texto_promocional h5{
+    text-decoration: underline;
+    color: green;
+}
+.texto_promocional span{
+    text-decoration: line-through;
+    color: red;
+}
+.banner .icons{
+    text-align: start;
+}
+.icons{
+    bottom: 8%;
+    margin-left: 3%;
+    text-align: center;
+    width: 50%;
+    height: max-content;
+}
+.icons i{
+    margin: 0% 1%;
+    border-radius: 12px;
+    padding: 5px;
+    background-color: white;
+    font-size: 100%;
+}
+.campo_texto1 h4 
+.campo_texto2 h4 {
+    font-size: 100%;
+}
+.campo_texto1 p 
+.campo_texto2 p {
+    font-size: 80%;
+}
+.campo_texto1,
+.campo_texto2{
+    transition: 0.5s;
+    margin-top: 8%;
+}
+.campo_texto2{
+  opacity: 0;
+}
+.campo_texto1,
+.campo_texto2,
+.icons{
+    position: absolute;
+    margin-left: 3%;
+}
+.campo_texto1,
+.campo_texto2{
+    transition: 0.5s;
+    width: 55%;
+    color: white;
+}
+.campo_texto2{
+    opacity: 0;
+}
+.img_banner{
+    bottom: 0%;
+    right: 1%;
+    position: absolute;
+    width: 40%;
+}
+
+/*/fim navbar//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.barra_pesquisa {
+    width: max-content;
+    margin: 4% auto;
+}
+
+.barra {
+    border-radius: 2rem 0 0 2rem;
+    width: 100%;
+    padding: 0 20px;
+    border: none;
+}
+
+.btn,
+.barra {
+    transition: 0.5s;
+}
+
+.barra:focus {
+    box-shadow: 2px 3px var(--sombra-e-texto);
+    outline: none;
+}
+
+.barra:focus~.btn {
+    box-shadow: 2px 3px var(--sombra-e-texto);
+    outline: none;
+}
+
+.btn {
+    border: none;
+    border-radius: 0 2rem 2rem 0;
+}
+
+.btn:hover {
+    border: none;
+    transition: 0.5s;
+    box-shadow: 2px 3px var(--sombra-e-texto);
+    background-color: rgb(226, 226, 226);
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.rodape {
+    margin-top: auto;
+    margin-bottom: 0%;
+    color: white;
+    background-color: rgb(34, 34, 34);
+    width: 100%;
+}
+
+.texto_rodape {
+    padding-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    border-bottom: gray 2px solid;
+}
+
+.texto_rodape .pequeno_texto {
+    margin-left: 1%;
+}
+
+.subtitulo {
+    margin-bottom: 0%;
+    font-size: 20px;
+    margin-left: 1%;
+}
+.copyright {
+    padding-bottom: 5%;
+    text-align: center;
+    color: gray;
+}

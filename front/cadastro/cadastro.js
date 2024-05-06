@@ -28,30 +28,24 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
         body: formData
     }).then(response => response.text())
         .then(data => {
-            /* console.log(data) */
-            document.getElementById('msg-erro').innerHTML = `${data}`
-            // Exibi mensagens caso o servidor receba os dados
+            // Ainda estou trabalhando nisso // Exibi um popup informando usuario cadastrdo ou se o usuario ja existe
+            if(data == "Usuario cadastrado"){
+                //redireciona para a pagina home
+                window.location.replace("/driveline/front/home/index.html")
+            }
+            const popup = document.getElementById('popup')
+            popup.removeAttribute('class')
+            popup.classList.toggle('popup-on')
+            document.getElementById('msg').innerHTML = `${data}`
+
         }).catch(error => {
             /* console.log(error) */
             // exibe mensagens em caso de erro ao enviar os dados 
-            
+
         })
+    setTimeout(function () {
+        popup.classList.toggle('popup-off') 
+
+    }, 2000)
+
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
