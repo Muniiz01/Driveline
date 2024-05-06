@@ -1,14 +1,16 @@
-window.addEventListener('load', function(){
+window.addEventListener('load', function () {
     fetch('session.php')
-    .then(response => response.json())
-    .then(data =>{
-        const msgTeste = this.document.getElementById('nome')
+        .then(response => response.json())
+        .then(data => {
+            if (Array.isArray(data)) {
+                const msgTeste = this.document.getElementById('nome')
 
-        const msg = data.map(item => item.nome)
+                const msg = data.map(item => item.nome)
 
-        msgTeste.innerHTML = msg
+                msgTeste.innerHTML = msg
+            }
 
-    }).catch(error =>{
-        console.log(error)
-    })
+        }).catch(error => {
+            console.log(error)
+        })
 })

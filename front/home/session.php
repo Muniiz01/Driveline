@@ -36,6 +36,6 @@ if(isset($idUser) && isset($nivel)){
     }
     echo json_encode($dadosUsaurio);
 }else{
-    echo $status;
+    echo json_encode($status);
 }
 ?>
