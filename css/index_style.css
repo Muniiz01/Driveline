@@ -130,7 +130,11 @@ nav i{
 }
 .campo_texto1,
 .campo_texto2{
-   margin-top: 8%;
+    transition: 0.5s;
+    margin-top: 8%;
+}
+.campo_texto2{
+  opacity: 0;
 }
 .campo_texto1,
 .campo_texto2,
