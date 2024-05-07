@@ -3,11 +3,12 @@
     font-family: "poppins",sans-serif;
 }
 :root{
+    --fundo: rgb(216, 216, 216);
     --sombra-e-texto: rgb(0, 0, 0);
     --principal: white;
 }
 body {
-    --fundo: rgb(216, 216, 216);
+    
     background-color: var(--fundo);
     min-width: 440px;
     padding: 0%;
@@ -22,7 +23,7 @@ nav {
     transition: 0.5s;
     z-index: 1;
     top: 0%;
-    transform: translateY(-100px);
+    transform: translateY(0px);
     width: 100%;
     height: 5rem;
     position: fixed;
@@ -32,6 +33,7 @@ nav {
 /* grupo de botões */
 .grupo1,
 .grupo2 {
+    background-color: none;
     border-radius: 2rem;
     width: auto;
 }
@@ -45,6 +47,7 @@ nav {
 }
 /* botões */
 nav .btn-padrao {
+    outline: none;
     opacity: 0.28;
     background-color: var(--principal);
     font-size: 100%;
@@ -58,18 +61,21 @@ nav .btn-padrao {
 
 nav .btn-padrao:hover {
     opacity: 1;
-    box-shadow: 2px 3px var(--sombra-e-texto);
-    background-color: rgb(226, 226, 226);
+    box-shadow: 0px 4px var(--sombra-e-texto);
 }
 /* tema */
 nav i{
     margin: 0% 10px;
 }
-#switch_tema{
-    width: max-content;
+
+#switch_tema{/*id do botao de tema*/
+    width: 4rem;
+}
+#icon_sol{
+    display: none;
 }
 
-@media(max-width:420px) {
+@media(max-width <= 420px) {
     #navbar .btn-padrao {
         width: max-content;
     }
@@ -132,6 +138,9 @@ nav i{
 .campo_texto2{
     transition: 0.5s;
     margin-top: 8%;
+    transition: 0.5s;
+    width: 55%;
+    color: white;
 }
 .campo_texto2{
   opacity: 0;
@@ -142,12 +151,6 @@ nav i{
     position: absolute;
     margin-left: 3%;
 }
-.campo_texto1,
-.campo_texto2{
-    transition: 0.5s;
-    width: 55%;
-    color: white;
-}
 .campo_texto2{
     opacity: 0;
 }
@@ -157,7 +160,16 @@ nav i{
     position: absolute;
     width: 40%;
 }
-
+@media(max-width:456px){
+    .campo_texto1 h4 
+.campo_texto2 h4 {
+    font-size: 80%;
+}
+.campo_texto1 p 
+.campo_texto2 p {
+    font-size: 60px;
+}
+}
 /*/fim navbar//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 .barra_pesquisa {
