@@ -114,13 +114,13 @@ function enviarFormFunc(){
         console.log(error) // exibe mensagem de erro enviada do php
     })
 }
-
-function exibirUsuarios() {  
-    fetch('php/listaUsuarios.php', { method: 'GET' }).then(response => response.json()).then(data =>{    // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaUsuarios.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
-        const dadosDiv = document.getElementById('tabelaRegistro')  // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
-        const lista = data.map(item =>{    // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.idUsuario}" item e o objeto array e idUsuario e a cahve array, todo o bloco e atribuido a const lista                                                
-            return `
-
+ //-----------------------------------------------------------------------------------------
+ function exibirUsuarios() {
+    fetch('php/listaUsuarios.php', { method: 'GET' })
+    .then(response => response.json())
+    .then(data => {
+        const dadosDiv = document.getElementById('lista');
+        const lista = data.map(item => `
             <tr>
                 <td>${item.idUsuario}</td>
                 <td>${item.nome}</td>
@@ -128,24 +128,32 @@ function exibirUsuarios() {
                 <td>${item.telefone}</td>
                 <td>${item.documento}</td>
             </tr>
-
-        </table>
-            
-            `
-        })
-
-        dadosDiv.innerHTML = lista.join('') // inseri os elementos html no funcionario.html 
-        
-        /* console.log(data) */ 
-    }).catch(error => {
-        // exibi o erro no console do navegador 
-        console.error('Erro ao buscar os dados dos veículos:', error)
-         document.getElementById('lista').innerHTML = "Nenhum registro encontrado"
-
+        `);
+        dadosDiv.innerHTML = `
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                        <th>Cpf</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${lista.join('')}
+                </tbody>
+            </table>
+        `;
+    })
+    .catch(error => {
+        console.error('Erro ao buscar os dados dos usuários:', error);
+        dadosDiv.innerHTML = "Nenhum registro encontrado";
     });
-
 }
 
+
+//--------------------------------------------------------------------------------------------
 function exibirFuncionarios(){
     fetch('php/listaFuncionarios.php', {method: 'GET'}).then(response => response.json()).then(data =>{
         const dadosDiv = document.getElementById('lista')
