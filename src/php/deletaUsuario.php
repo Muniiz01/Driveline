@@ -6,6 +6,7 @@ $conn = conexaoDb();
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+    
     $idUser = $_POST['idUsuario'];
     $nome = $_POST['nome'];
     $email = $_POST['email'];

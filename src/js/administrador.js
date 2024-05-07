@@ -103,7 +103,7 @@ function enviarFormFunc(){
     formData.append('email', email)
     formData.append('senha', senha)
     
-    fetch('addFuncionario.php', {
+    fetch('php/addFuncionario.php', {
         method: 'POST',
         body: formData
     }).then(response => response.text())
@@ -127,6 +127,7 @@ function enviarFormFunc(){
                 <td>${item.email}</td>
                 <td>${item.telefone}</td>
                 <td>${item.documento}</td>
+                <td><button onclick="deleteUser(${item.idUsuario})">deletar</button></td>
             </tr>
         `);
         dadosDiv.innerHTML = `
@@ -162,7 +163,7 @@ function exibirFuncionarios(){
             <div> nome: ${item.nome} </div>
             <div> telefone: ${item.telefone} </div>
             <div> email: ${item.email} </div>
-            <button onclick="deleteUser(${item.idUsuario})">deletar</button>`
+            `
         })
 
         dadosDiv.innerHTML = lista.join('')
