@@ -6,9 +6,9 @@
     --fundo: rgb(216, 216, 216);
     --sombra-e-texto: rgb(0, 0, 0);
     --principal: white;
+    --barra-pesquisa:white;
 }
 body {
-    
     background-color: var(--fundo);
     min-width: 440px;
     padding: 0%;
@@ -49,16 +49,17 @@ nav {
 nav .btn-padrao {
     outline: none;
     opacity: 0.28;
-    background-color: var(--principal);
     font-size: 100%;
     width: 5rem;
     height: 2rem;
     border: none;
     border-radius: 2rem;
-    color: var(--sombra-e-texto);
     transition: 0.5s;
 }
-
+.btn-padrao{
+    background-color: var(--principal);
+    color: var(--sombra-e-texto);
+}
 nav .btn-padrao:hover {
     opacity: 1;
     box-shadow: 0px 4px var(--sombra-e-texto);
@@ -178,6 +179,7 @@ nav i{
 }
 
 .barra {
+    background-color: var(--barra-pesquisa);
     border-radius: 2rem 0 0 2rem;
     width: 100%;
     padding: 0 20px;
