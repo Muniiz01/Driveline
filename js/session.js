@@ -1,5 +1,5 @@
 window.addEventListener('load', function () {
-    fetch('session.php')
+    fetch('src/php/session.php')
         .then(response => response.json())
         .then(data => {
             if (Array.isArray(data)) {
@@ -7,7 +7,7 @@ window.addEventListener('load', function () {
 
                 const msg = data.map(item => item.nome)
 
-                msgTeste.innerHTML = msg
+                console.log(msg)
             }
 
         }).catch(error => {

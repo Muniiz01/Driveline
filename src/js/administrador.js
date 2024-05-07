@@ -56,7 +56,7 @@ function enviarFormCar() {
     }
 
 
-    fetch('addVeiculos.php', {     // funcao fetch() e damos os seguintes parametros 'addVeiculos.php' script do servidor
+    fetch('php/addVeiculos.php', {     // funcao fetch() e damos os seguintes parametros 'addVeiculos.php' script do servidor
         method: 'POST',            // method: 'POST' que indica o tipo de envio para o servidor
         body: formData             // body: formData o corpo do envio que e todos os valores armazenado no FormData
     }).then(response => response.text())
@@ -101,7 +101,7 @@ function enviarFormFunc(){
 }
 
 function exibirUsuarios() {  
-    fetch('listaUsuarios.php', { method: 'GET' }).then(response => response.json()).then(data =>{    // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaUsuarios.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
+    fetch('php/listaUsuarios.php', { method: 'GET' }).then(response => response.json()).then(data =>{    // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaUsuarios.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
         const dadosDiv = document.getElementById('lista')  // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
         const lista = data.map(item =>{    // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.idUsuario}" item e o objeto array e idUsuario e a cahve array, todo o bloco e atribuido a const lista                                                
             return `
@@ -128,7 +128,7 @@ function exibirUsuarios() {
 }
 
 function exibirFuncionarios(){
-    fetch('listaFuncionarios.php', {method: 'GET'}).then(response => response.json()).then(data =>{
+    fetch('php/listaFuncionarios.php', {method: 'GET'}).then(response => response.json()).then(data =>{
         const dadosDiv = document.getElementById('lista')
         const lista = data.map(item =>{                                               
             return `<div> id: ${item.idUsuario} </div>
@@ -166,7 +166,7 @@ function addFuncionario(){
 function exibirVeiculos() {
 
     
-    fetch('listaVeiculos.php', { method: 'POST' }) // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaVeiculos.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
+    fetch('php/listaVeiculos.php', { method: 'POST' }) // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaVeiculos.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
         .then(response => response.json())
         .then(data => { // Atribui o array json no array data 
             const dadosDiv = document.getElementById('lista') // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
@@ -191,7 +191,7 @@ function deleteUser(idUsuario){
     var formData = new FormData()
     formData.append('idUsuario', idUsuario)
 
-    fetch('deletaUsuario.php', {
+    fetch('php/deletaUsuario.php', {
         method:'POST',
         body:formData
     }).then(response => response.text()).then(data => {

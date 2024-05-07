@@ -23,7 +23,7 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
 
 
     // envia os dados para o cadastro.php
-    fetch('cadastro.php', {
+    fetch('php/cadastro.php', {
         method: 'POST',
         body: formData
     }).then(response => response.text())
@@ -31,7 +31,7 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
             // Ainda estou trabalhando nisso // Exibi um popup informando usuario cadastrdo ou se o usuario ja existe
             if(data == "Usuario cadastrado"){
                 //redireciona para a pagina home
-                window.location.replace("/driveline/front/home/index.html")
+                window.location.replace("../index.html")
             }
             const popup = document.getElementById('popup')
             popup.removeAttribute('class')
