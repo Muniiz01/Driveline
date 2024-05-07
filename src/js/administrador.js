@@ -1,3 +1,18 @@
+window.addEventListener('load', function(){
+ fetch('php/session.php').then(response => response.json())
+ .then(data => {
+    if(Array.isArray(data)){
+        const nivel = data.map(item => item.nivel)
+        console.log(nivel)
+
+        if(nivel == "1"){
+            window.location.replace("../index.html")
+        }
+    }
+ })
+})
+
+
 function adcionarVeiculos() {
     var div = document.getElementById("lista") // Sera atribuido o elemento html com o id 'lista' na variavel div. 
     div.innerHTML = `<div id='form-addCars'> 
@@ -102,21 +117,25 @@ function enviarFormFunc(){
 
 function exibirUsuarios() {  
     fetch('php/listaUsuarios.php', { method: 'GET' }).then(response => response.json()).then(data =>{    // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaUsuarios.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
-        const dadosDiv = document.getElementById('lista')  // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
+        const dadosDiv = document.getElementById('tabelaRegistro')  // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
         const lista = data.map(item =>{    // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.idUsuario}" item e o objeto array e idUsuario e a cahve array, todo o bloco e atribuido a const lista                                                
             return `
+
+            <tr>
+                <td>${item.idUsuario}</td>
+                <td>${item.nome}</td>
+                <td>${item.email}</td>
+                <td>${item.telefone}</td>
+                <td>${item.documento}</td>
+            </tr>
+
+        </table>
             
-            <div class='user'>  id: ${item.idUsuario} </div>
-            <div class='user'>  nome: ${item.nome} </div>
-            <div class='user'>  tipo documento: ${item.tipoDoc} </div>
-            <div class='user'>  documento ${item.documento} </div>
-            <div class='user'>  telefone: ${item.telefone} </div>
-            <div class='user'>  email: ${item.email} </div>
-            <button class='user-button' onclick="deleteUser(${item.idUsuario})">deletar</button>
             `
         })
 
         dadosDiv.innerHTML = lista.join('') // inseri os elementos html no funcionario.html 
+        
         /* console.log(data) */ 
     }).catch(error => {
         // exibi o erro no console do navegador 
@@ -161,6 +180,8 @@ function addFuncionario(){
      <input id='senha' placeholder='Senha'> 
      <button id='btnEnviar' onclick='enviarFormFunc()'>enviar</button>
       </div>`
+
+      
 }
 
 function exibirVeiculos() {

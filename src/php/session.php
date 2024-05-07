@@ -30,7 +30,8 @@ if(isset($idUser) && isset($nivel)){
         $dadosUsaurio[] = array(
             //adciona os dados em um array
             'nome' => $linha['nome'],
-            'email' => $linha['email'] 
+            'email' => $linha['email'],
+            'nivel' => $linha['idNivel_de_Acesso']
         );
     }
     echo json_encode($dadosUsaurio);
