@@ -16,34 +16,30 @@
         <div class="img-logo">
             <img src="imagens/logo/slim-logo-png.png">
         </div>
+        <!-- Nome -->
         <div class="input-group">
             <input id="nome" type="text" required autocomplete="name">
             <span>Nome</span>
         </div>
-
+        <!-- email -->
         <div class="input-group">
 
             <input id="email" type="text" required autocomplete="email">
             <span>E-mail</span>
             <!-- por conta do input type ser "email" a animação do span não se aplica -->
         </div>
-        <!--  -->
+        <!-- cpf  -->
         <div class="input-group" id="tipo_documento">
-
-            <input id="documento" name="documento" type="text" required autocomplete="off">
-            <span>Documento</span>
-            <select id="docTipo" class="form-select" name="docTipo">
-            <option value="RG">RG</option>
-            <option value="CPF">CPF</option>
-            <option value="passaporte">Passaporte</option>
-            </select>
+            <input type="text" name="cpf" id="cpf" onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required>
+            <span>CPF:</span>
         </div>
-        <!--  -->
+        <!-- telefone -->
 
         <div class="input-group">
-            <input id="telefone" type="text" required autocomplete="tel">
+            <input id="telefone" type="text" required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15">
             <span>Telefone</span>
         </div>
+        <!-- senha -->
         <div class="input-group">
             <input id="senha" type="password" required autocomplete="current-password">
             <span>Senha</span>
@@ -63,7 +59,6 @@
     <div class="home text-center">
         <a href="../index.html">voltar a página inicial</a>
     </div>
-
+    <script type="text/javascript" src="js/mascara.js"></script>
 </body>
-
 </html>
