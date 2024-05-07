@@ -16,6 +16,7 @@ body {
   height: 100vh;
   background-color: var(--background-color);
   font-family: sans-serif;
+  flex-direction: column;
 }
 
 .container {
@@ -38,15 +39,7 @@ body {
   justify-content: center;
 }
 
-h1 {
-  position: fixed;
-  left: 50%;
-  top: 0;
-  transform: translate(-50%);
-  font-size: 40px;
-  font-weight: bold;
-  white-space: nowrap;
-}
+
 
 
 /* table */
@@ -146,12 +139,7 @@ tr:nth-child(even) {
   background-color: var(--white);
 }
   
-body{
-  display: flex;
-  flex-direction: column;
-  
-}
-  
+
   .container {
     float: left;
 }
@@ -191,7 +179,7 @@ body{
 
 #lista{
   overflow: hidden;
-  width: 30%;
+  width: 45%;
 } 
 #form-addCars{
   display: flex;
