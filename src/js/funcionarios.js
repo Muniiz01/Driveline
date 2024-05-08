@@ -1,4 +1,22 @@
 
+window.addEventListener('load', function(){
+    fetch('php/session.php').then(response => response.json())
+    .then(data => {
+       if(Array.isArray(data)){
+           const nivel = data.map(item => item.nivel)
+           console.log(nivel)
+   
+           if(nivel != "2" && nivel != "3"){
+               window.location.replace("../index.html")
+           }
+       }else{
+           window.location.replace("../index.html")
+       }
+    })
+   })
+
+
+
 
 function exibirUsuarios() {
     fetch('php/listaUsuarios.php', { method: 'GET' })
