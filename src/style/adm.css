@@ -13,7 +13,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   background-color: var(--background-color);
   font-family: sans-serif;
   flex-direction: column;
@@ -48,17 +47,103 @@ table {
   width: 100%;
 }
 
-th,
-td {
-  text-align: left;
-  padding: 8px;
-}
+
 
 th {
   background-color: var(--primary-color);
   color: var(--light-primary);
 }
 
+
+
+.list-wrapper {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.scrollable-table:nth-child(odd) {
+  background-color: var(--light-gray);
+}
+
+tr:nth-child(even) {
+  background-color: var(--white);
+}
+
+
+.container {
+  float: left;
+}
+
+.container button {
+  display: block;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 14px 16px;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+
+.dropdown-content{
+  display: none;
+  margin-left: 10px;
+  position: absolute;
+  background-color: rgb(151, 150, 149);
+  min-width: 125px;
+  z-index: 1;
+}
+
+.dropdown-content button{
+  color: black;
+  margin: auto;
+  margin-top: 5px;
+  width: 127px;
+  padding: 5px 0px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content button:hover {background-color: #ddd;}
+#exibir-menu:hover .dropdown-content{display: block;}
+
+#lista{
+  overflow: hidden;
+  width: 45%;
+} 
+#form-addCars{
+  display: flex;
+  flex-direction: column;
+  
+  float: left;
+  margin: 10%;
+} 
+
+#form-addCars button{
+  padding: 10px;
+  width: 100px;
+}
+
+#form-addFunc{
+  display: flex;
+  flex-direction: column;
+  
+  float: left;
+  margin: 10%;
+}
+
+#form-addFunc{
+  padding: 125px;
+  width: 200px;
+}
+
+.img-car{
+  height: 100px;
+  width: 100%;
+}
+
+
+
+/* scroll */
 .scrollable-table {
   overflow: auto;
   width: 100%;
@@ -107,111 +192,4 @@ th {
   padding: 8px;
   max-width: 10px;
   text-align: center;
-}
-
-.table-header th:nth-child(1) {
-  padding: 8px;
-  width: 30px;
-  text-align: center;
-}
-
-.table-header th:nth-child(2) {
-  width: 250px;
-}
-
-.table-header th:nth-child(3) {
-  width: 250px;
-}
-.table-header th:nth-child(4) {
-  padding-left: 40px;
-}
-
-.list-wrapper {
-  margin-top: 40px;
-  width: 100%;
-}
-
-.scrollable-table:nth-child(odd) {
-  background-color: var(--light-gray);
-}
-
-tr:nth-child(even) {
-  background-color: var(--white);
-}
-  
-
-  .container {
-    float: left;
-}
-  
-  .container button {
-    display: block;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    padding: 14px 16px;
-    margin-left: 10px;
-    text-decoration: none;
-  }
-  
-
-  .dropdown-content{
-    display: none;
-    margin-left: 10px;
-    position: absolute;
-    background-color: rgb(151, 150, 149);
-    min-width: 125px;
-    z-index: 1;
-  }
-
-  .dropdown-content button{
-    color: black;
-    
-    margin: auto;
-    margin-top: 5px;
-    width: 127px;
-    padding: 5px 0px;
-    text-decoration: none;
-    display: block;
-  }
-
-  .dropdown-content button:hover {background-color: #ddd;}
-  #exibir-menu:hover .dropdown-content{display: block;}
-
-#lista{
-  overflow: hidden;
-  width: 45%;
-} 
-#form-addCars{
-  display: flex;
-  flex-direction: column;
- 
-  float: left;
-  margin: 10%;
-} 
-
-#form-addCars button{
-  padding: 10px;
-  width: 100px;
-}
-
-#form-addFunc{
-  display: flex;
-  flex-direction: column;
- 
-  float: left;
-  margin: 10%;
-}
-
-#form-addFunc{
-  padding: 15px;
-  width: 200px;
-}
-
-.img-car{
-  height: 200px;
-  width: 200px;
-}
-
-.user{
-  color: red;
 }

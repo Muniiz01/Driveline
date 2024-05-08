@@ -7,7 +7,6 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
     // pega os dados enviados do formulario
     var nome = document.getElementById('nome').value
     var email = document.getElementById('email').value
-    var docTipo = document.getElementById('docTipo').value
     var documento = document.getElementById('documento').value
     var telefone = document.getElementById('telefone').value
     const senha = document.getElementById('senha').value
@@ -16,7 +15,6 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
     var formData = new FormData()
     formData.append('nome', nome)
     formData.append('email', email)
-    formData.append('docTipo', docTipo)
     formData.append('documento', documento)
     formData.append('telefone', telefone)
     formData.append('senha', senha)
@@ -33,19 +31,22 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
                 //redireciona para a pagina home
                 window.location.replace("../index.html")
             }
-            const popup = document.getElementById('popup')
-            popup.removeAttribute('class')
-            popup.classList.toggle('popup-on')
-            document.getElementById('msg').innerHTML = `${data}`
+            // const popup = document.getElementById('popup')
+            // popup.removeAttribute('class')
+            // popup.classList.toggle('popup-on')
+            // document.getElementById('msg').innerHTML = `${data}`
 
         }).catch(error => {
-            /* console.log(error) */
+            console.log(error)
             // exibe mensagens em caso de erro ao enviar os dados 
 
         })
-    setTimeout(function () {
-        popup.classList.toggle('popup-off') 
+    // setTimeout(function () {
+    //     popup.classList.toggle('popup-off') 
 
-    }, 2000)
+    // }, 2000)
 
 })
+function removerMascaraCPF(cpf) {
+    return documento.replace(/\D/g, '');
+}

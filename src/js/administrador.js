@@ -139,6 +139,8 @@ function enviarFormFunc(){
                         <th>E-mail</th>
                         <th>Telefone</th>
                         <th>Cpf</th>
+                        <th>Excluir</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -178,8 +180,8 @@ function addFuncionario(){
     var div = document.getElementById('lista')
     div.innerHTML = `<div id='form-addFunc'> 
     <input id='nome' placeholder='Nome Completo'> 
-    <input type="text" name="cpf" id="cpf" onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required placeholder='cpf'>
-    <input id="telefone" type="text" required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15" placeholder='telefone'> 
+    <input type="text" name="cpf" id="cpf" onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required placeholder='Cpf'>
+    <input id="telefone" type="text" required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15" placeholder='Telefone'> 
      <input id='email' placeholder='E-mail'> 
      <input id='senha' placeholder='Senha' type='password'> 
      <button id='btnEnviar' onclick='enviarFormFunc()'>enviar</button>

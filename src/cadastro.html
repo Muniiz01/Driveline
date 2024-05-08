@@ -29,14 +29,14 @@
             <!-- por conta do input type ser "email" a animação do span não se aplica -->
         </div>
         <!-- cpf  -->
-        <div class="input-group" id="tipo_documento">
-            <input type="text" name="cpf" id="cpf" onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required>
+        <div class="input-group">
+            <input type="text" name="documento" id="documento" onkeydown="fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required>
             <span>CPF:</span>
         </div>
         <!-- telefone -->
 
         <div class="input-group">
-            <input id="telefone" type="text" required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15">
+            <input type="text"  name="telefone" id="telefone"  onkeydown="fMasc(this, mTel)" maxlength="15"autocomplete="tel"required>
             <span>Telefone</span>
         </div>
         <!-- senha -->
