@@ -91,7 +91,7 @@ function enviarFormCar() {
 function enviarFormFunc(){
 
     var nome = document.getElementById('nome').value
-    var documento = document.getElementById('documento').value
+    var documento = document.getElementById('cpf').value
     var telefone = document.getElementById('telefone').value
     var email = document.getElementById('email').value
     var senha = document.getElementById('senha').value
