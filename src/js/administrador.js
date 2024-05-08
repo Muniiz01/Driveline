@@ -90,7 +90,6 @@ function enviarFormFunc(){
 
     var nome = document.getElementById('nome').value
     var documento = document.getElementById('documento').value
-    var docTipo = document.getElementById('docTipo').value
     var telefone = document.getElementById('telefone').value
     var email = document.getElementById('email').value
     var senha = document.getElementById('senha').value
@@ -98,7 +97,6 @@ function enviarFormFunc(){
     var formData = new FormData()
     formData.append('nome', nome)
     formData.append('documento', documento)
-    formData.append('docTipo', docTipo)
     formData.append('telefone', telefone)
     formData.append('email', email)
     formData.append('senha', senha)
@@ -148,7 +146,7 @@ function enviarFormFunc(){
         `;
     })
     .catch(error => {
-        console.error('Erro ao buscar os dados dos usuários:', error);
+        console.error('Erro ao buscar os dados dos usuários:', error)
         dadosDiv.innerHTML = "Nenhum registro encontrado";
     });
 }
@@ -178,19 +176,35 @@ function addFuncionario(){
     var div = document.getElementById('lista')
     div.innerHTML = `<div id='form-addFunc'> 
     <input id='nome' placeholder='Nome Completo'> 
-    <input id="documento" name="documento" type="text" placeholder='Documento' required autocomplete="off">
-            <select id="docTipo" class="form-select" name="docTipo">
-            <option value="RG">RG</option>
-            <option value="CPF">CPF</option>
-            <option value="passaporte">Passaporte</option>
-            </select> 
-     <input id='telefone' placeholder='Telefone'> 
+    <input type="text" name="cpf" id="cpf" onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required placeholder='cpf'>
+    <input id="telefone" type="text" required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15" placeholder='telefone'> 
      <input id='email' placeholder='E-mail'> 
-     <input id='senha' placeholder='Senha'> 
+     <input id='senha' placeholder='Senha' type='password'> 
      <button id='btnEnviar' onclick='enviarFormFunc()'>enviar</button>
       </div>`
-
+    
       
+}
+function fMasc(objeto, mascara) {
+    obj = objeto;
+    masc = mascara;
+    setTimeout("fMascEx()", 1)
+}
+function fMascEx() {
+    obj.value = masc(obj.value)
+}
+function mCPF(cpf) {
+    cpf = cpf.replace(/\D/g, "")
+    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+    cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+    return cpf
+}
+function mTel(tel) {
+    tel = tel.replace(/\D/g, "")
+    tel = tel.replace(/^(\d\d)(\d)/g, "($1) $2")
+    tel = tel.replace(/(\d{5})(\d)/, "$1-$2")
+    return tel;
 }
 
 function exibirVeiculos() {
