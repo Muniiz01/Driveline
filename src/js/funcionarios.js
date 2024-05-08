@@ -1,5 +1,6 @@
 
-window.addEventListener('load', function(){
+//sessão//////////////////////////////////
+window.addEventListener('load', function(){//executa a função ao iniciar a página
     fetch('php/session.php').then(response => response.json())
     .then(data => {
        if(Array.isArray(data)){
@@ -14,13 +15,11 @@ window.addEventListener('load', function(){
        }
     })
    })
-
-
-
+///////////////////////////////////////////
 
 function exibirUsuarios() {
     fetch('php/listaUsuarios.php', { method: 'GET' })
-    .then(response => response.json())
+    .then(response => response.json())// dados do form no arquivo json
     .then(data => {
         const dadosDiv = document.getElementById('lista');
         const lista = data.map(item => `
@@ -55,11 +54,10 @@ function exibirUsuarios() {
     });
 }
 
-
 function exibirVeiculos() {
     
     
-    fetch('php/listaVeiculos.php', { method: 'POST' }) // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaVeiculos.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
+    fetch('php/listaVeiculos.php', { method: 'POST' }) // Começamos chamando o metodo fetch() e damos os seguintes parametros 'listaVeiculos.php' Ele chama o arquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
     .then(response => response.json())
     .then(data => { // Atribui o array json no array data 
         const dadosDiv = document.getElementById('lista') // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'

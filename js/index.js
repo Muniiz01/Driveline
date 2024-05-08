@@ -26,28 +26,28 @@ function rolar() {
 var passa_slide = 0
 function passa() {
     passa_slide++//acrescenta de 1 em 1 segundos
-    console.log(passa_slide,'passa_slide')
+    // console.log(passa_slide,'passa_slide')
     ////////////////////////////////////////////////////////////////
     switch(passa_slide){
         case 1:
             texto1.style.opacity = ("1")
             // texto1.style.transform = ("translateX(0px)")
-            console.log("passou 1, trouxe")
+            // console.log("passou 1, trouxe")
         break
         case 11://11
             texto1.style.opacity = ("0")
             // texto1.style.transform = ("translateX(-1000px)")
-            console.log("passou 2, escondeu-se")
+            // console.log("passou 2, escondeu-se")
         break
         case 12://12
         texto2.style.opacity = ("1")
         // texto2.style.transform = ("translateX(0px)")
-        console.log("passou 3, trouxe")
+        // console.log("passou 3, trouxe")
         break
         case 22://22
             texto2.style.opacity = ("0")
             // texto2.style.transform = ("translateX(-1000px)") 
-            console.log("passou 4, escondeu-se")
+            // console.log("passou 4, escondeu-se")
             passa_slide = 0
         break
     }
