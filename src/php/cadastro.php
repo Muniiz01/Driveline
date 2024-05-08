@@ -10,7 +10,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // armazena os dados enviados do client.js em variaveis
     $nome = $_POST['nome'];
     $email = $_POST['email'];
-    $docTipo = $_POST['docTipo'];
     $documento = $_POST['documento'];
     $telefone = $_POST['telefone'];
     $senha = $_POST['senha'];
@@ -27,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if($resultado->num_rows <= 0){
 
-    $sql2 = "INSERT INTO usuarios (nome, tipo_doc, documento, telefone, email, senha, idNivel_de_Acesso) VALUE ('$nome', '$docTipo', '$documento', '$telefone', '$email', '$senhaHash','$nivel')";
+    $sql2 = "INSERT INTO usuarios (nome, documento, telefone, email, senha, idNivel_de_Acesso) VALUE ('$nome', '$docTipo', '$documento', '$telefone', '$email', '$senhaHash','$nivel')";
 
     $conn->query($sql2);
     echo "Usuario cadastrado";

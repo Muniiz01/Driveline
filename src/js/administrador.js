@@ -5,9 +5,11 @@ window.addEventListener('load', function(){
         const nivel = data.map(item => item.nivel)
         console.log(nivel)
 
-        if(nivel == "1"){
+        if(nivel != "3"){
             window.location.replace("../index.html")
         }
+    }else{
+        window.location.replace("../index.html")
     }
  })
 })

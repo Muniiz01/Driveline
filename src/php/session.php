@@ -20,7 +20,7 @@ if(isset($_SESSION["idUser"]) && isset($_SESSION['nivelAces'])){
 }
 ///////////////////////////////
 if(isset($idUser) && isset($nivel)){
-    $stmt = $conn-> prepare("CALL selectAll(?, ?)");
+    $stmt = $conn-> prepare("CALL puxarTabelas(?, ?)");
     $stmt->bind_param("ss", $idUser, $nivel);
     $stmt->execute();
     $resut = $stmt->get_result();
