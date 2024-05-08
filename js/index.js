@@ -64,10 +64,9 @@ function tema(){
         icone_lua.style.display = "none"
         root.style.setProperty('--fundo', 'rgb(41, 41, 41)');    
         root.style.setProperty('--sombra-e-texto', 'white');    
-        root.style.setProperty('--principal', 'rgb(41, 41, 41)');    
+        root.style.setProperty('--principal', 'black');    
         root.style.setProperty("--barra-pesquisa", "black")
-
-        console.log("fundo escuro")
+        root.style.setProperty("--texto2", "white")
     }else{//claro
         icone_sol.style.display = "none"
         icone_lua.style.display = "block"
@@ -75,6 +74,7 @@ function tema(){
         root.style.setProperty('--principal', 'white');  
         root.style.setProperty("--fundo", "rgb(216, 216, 216)")
         root.style.setProperty("--barra-pesquisa", "white")
+        root.style.setProperty("--texto2", "gray")
 
         tema_site = 0
     }

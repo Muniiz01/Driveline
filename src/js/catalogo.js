@@ -8,15 +8,16 @@ function catalogo_index() {
     .then(data => { // Atribui o array json no array data 
         const dadosDiv = document.getElementById('catalogo') // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
         const lista = data.map(item => {   // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.modelo}" item e o objeto array e modelo e a cahve array, todo o bloco e atribuido a const lista 
-            return `<div class=item>
+            return `<div class='item'>
             <img class='img-car' src="src/${item.caminho_imagem}">
             <div class='modelo_carro'>modelo: ${item.modelo}</div>  
             <div class='passageiros'>passageiros: ${item.passageiros}</div>
-            <div class='passageiros'>cor: ${item.cor}</div>
-            <div class='passageiros'>quilometragem: ${item.quilometragem}</div>
-            <div class='passageiros'>airbag: ${item.airbag}</div>
-            <div class='passageiros'>cambio: ${item.cambio}</div>
-                    </div>`
+            <div class='cor'>cor: ${item.cor}</div>
+            <div class='quilometragem'>quilometragem: ${item.quilometragem}</div>
+            <div class='airbag'>airbag: ${item.airbag}</div>
+            <div class='cambio'>cambio: ${item.cambio}</div>
+            <a href='src/login.html'><button class ='btn-aluguel'><i class='fa-solid fa-car'></i></button></a>
+            </div>`
                         
                     });
                     dadosDiv.innerHTML = lista.join('')  // inseri os elementos html no funcionario.html 
