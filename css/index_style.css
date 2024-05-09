@@ -97,21 +97,15 @@ nav i{
 }
 
 .texto_promocional{
+    padding: 2% 2%;
     margin-left: 53%;
     height: 100%;
-    padding: 3%;
-    width: max-content;
+    width: 25%;
     background: linear-gradient(to bottom, rgb(255, 204, 0), rgb(234, 183, 0), rgb(255, 187, 0) );
 }
-.texto_promocional h5{
-    display: none;
-    text-decoration: underline;
-    color: green;
-}
-.texto_promocional span{
-    display: none;
-    text-decoration: line-through;
-    color: red;
+.texto_promocional img{
+ 
+    width:100%;
 }
 .banner .icons{
     text-align: start;
@@ -143,7 +137,7 @@ nav i{
     transition: 0.5s;
     margin-top: 8%;
     transition: 0.5s;
-    width: 55%;
+    width: 45%;
     color: white;
 }
 .campo_texto2{
@@ -164,6 +158,11 @@ nav i{
     position: absolute;
     width: 40%;
 }
+@media(max-width:902px){
+ .banner{
+    height: 60%;
+ }
+}
 @media(max-width:456px){
     .campo_texto1 h4 
 .campo_texto2 h4 {
@@ -182,7 +181,7 @@ nav i{
     display: none;
 }
 .banner{
-    height: 60%;
+    height: 50%;
 }
 }
 /*/fim navbar//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -229,12 +228,6 @@ nav i{
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
-.botao_catalogo{
-    width: 100px;
-    border: none;
-    outline: none;
-    margin-bottom: 2%;
-}
 .catalogo{
     justify-content: center;
     transition: 0.5s;
@@ -243,7 +236,8 @@ nav i{
     flex-direction: row;
     width: 100%;
 }
-.catalogo .btn-aluguel{
+
+.btn-aluguel{
     transition: 0.5s;
     margin: 2% 0%;
     font-size: 100%;
@@ -254,16 +248,21 @@ nav i{
     border-radius: 2rem;
 }
 .btn-aluguel:hover{
+    box-shadow: 2px 4px var(--sombra-e-texto);
     width: 40%;
     background: linear-gradient(to right, rgb(78, 251, 9), rgb(0, 157, 31) );
 }
-.catalogo .item{
+.item{
+    transition: 0.5s;
     border-radius: 1rem;
     text-align: center;
     color: var(--texto2);
     margin: 2% 2%;
     width: 25%;
     background-color: var(--principal);
+}
+.item:hover{
+    box-shadow: 4px 4px var(--sombra-e-texto);
 }
 .catalogo img{
     margin-top: 10%;
@@ -276,8 +275,9 @@ nav i{
         width: 45%;
     }
 }
-@media(max-width:490px){
+@media(max-width:670px){
     .catalogo .item{
+        height: max-content;
         width: 55%;
     }
 }
