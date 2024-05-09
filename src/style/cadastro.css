@@ -1,21 +1,42 @@
 ::-ms-reveal {/*desativar o olho padrão do edge*/
     display: none;
 }
+:root{
+    --fundo: rgb(238, 237, 237);
+    --sombra-e-texto: rgb(0, 0, 0);
+    --principal: white;
+    --barra-pesquisa:white;
+    --texto2:gray;
+}
 body {
-    background-color: rgb(238, 237, 237);
+    
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    
     padding: 0%;
     margin: 0%;
 }
+body{
+    background-color: rgb(238, 237, 237);
+    min-width: 440px;
+    padding: 0%;
+    margin: 0%;
+    width: 100%;
+    height: 100vh;
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 form {
-    display: block;
     text-align: center;
-    width: 30%;
-    height: 100%;
-    background-color: rgb(255, 255, 255);
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 3%;
+    width: 30rem;
+    background-color: var(--principal);
 }
 
 form img {
@@ -183,3 +204,9 @@ a:hover {
     }
     
 }
+@media(max-width:510px){
+    form{
+       width: 20rem;
+       height: max-content;
+    }
+} 

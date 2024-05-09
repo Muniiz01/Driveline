@@ -1,20 +1,32 @@
 ::-ms-reveal {
     display: none;
 }
- body {
-     background-color: rgb(238, 237, 237);
-     padding: 0%;
-     margin: 0%;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
+:root{
+    --fundo: rgb(238, 237, 237);
+    --sombra-e-texto: rgb(0, 0, 0);
+    --principal: white;
+    --barra-pesquisa:white;
+    --texto2:gray;
+}
+ body { 
+    background-color: var(--fundo);
+    min-width: 440px;
+    padding: 0%;
+    margin: 0%;
+    width: 100%;
+    height: 100vh;
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
  }
 
  /* //corpo da tela de login///////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
  .tela_login {
-    margin-top: 4%;
      background-color: white;
-     width: 30%;
+     width: 30rem;
      height: max-content;
      text-align: center;
  }
@@ -22,6 +34,8 @@
  .img_logo {
      padding: 7% 0;
  }
+
+ 
 
  /* ////////////////////////////// */
 
@@ -114,17 +128,17 @@
  }
 
  /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
- @media(max-width:521px) {
-     #login_texto {
-         font-size: large;
+ @media(max-width:510px){
+     .tela_login{
+        width: 20rem;
+        height: max-content;
      }
-
-     #enviar {
-         font-size: 10px;
-     }
-     .input-group input:valid~span,
+     #login_texto{
+        display: none;
+    }
+      /* .input-group input:valid~span,
      .input-group input:focus~span {
          font-size: .70rem;
          transform: translateY(-20px);
-     }
- }
+     }  */
+ } 

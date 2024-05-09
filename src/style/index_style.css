@@ -3,7 +3,7 @@
     font-family: "poppins",sans-serif;
 }
 :root{
-    --fundo: rgb(216, 216, 216);
+    --fundo: rgb(238, 237, 237);
     --sombra-e-texto: rgb(0, 0, 0);
     --principal: white;
     --barra-pesquisa:white;
@@ -16,7 +16,6 @@ body {
     margin: 0%;
     width: 100%;
     height: 100vh;
-    transition: 0.5s;
 }
 
 /*//navbar//////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -93,7 +92,8 @@ nav i{
     position: relative;
     background: linear-gradient(to right, rgb(9, 102, 251), rgb(0, 105, 157),rgb(0, 55, 175) );
     width: 100%;
-    height: 70%;
+    height: 490px;
+
 }
 
 .texto_promocional{
@@ -104,7 +104,6 @@ nav i{
     background: linear-gradient(to bottom, rgb(255, 204, 0), rgb(234, 183, 0), rgb(255, 187, 0) );
 }
 .texto_promocional img{
- 
     width:100%;
 }
 .banner .icons{
@@ -234,6 +233,7 @@ nav i{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    height: max-content;
     width: 100%;
 }
 
@@ -258,6 +258,7 @@ nav i{
     text-align: center;
     color: var(--texto2);
     margin: 2% 2%;
+    height: 25rem;
     width: 25%;
     background-color: var(--principal);
 }
