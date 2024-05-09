@@ -277,9 +277,9 @@ function deleteUser(idUsuario) {
   var formData = new FormData();
   formData.append("idUsuario", idUsuario);
 
-    if (confirm('Voce tem')) {
+    if (confirm('Voce tem certeza que deseja deletar?')) {
         // Save it!
-        console.log('Thing was saved to the database.');
+        console.log('Salvo no Banco de dados.');
         fetch("php/deletaUsuario.php", {
             method: "POST",
             body: formData,
