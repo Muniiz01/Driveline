@@ -5,9 +5,9 @@ window.addEventListener('load', function () {
             if (Array.isArray(data)) {
                 const msgTeste = this.document.getElementById('nome')
 
-                const msg = data.map(item => item.nome)
-
-                console.log(msg)
+                const nivel = data.map((item) => item.nivel);
+        const nome = data.map((item) => item.nome);
+        console.log(`Ola ${nome}, seu nivel e: ${nivel}`);
             }
 
         }).catch(error => {
