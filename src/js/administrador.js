@@ -4,7 +4,8 @@ window.addEventListener("load", function () {
     .then((data) => {
       if (Array.isArray(data)) {
         const nivel = data.map((item) => item.nivel);
-        console.log(nivel);
+        const nome = data.map((item) => item.nome);
+        console.log(`Ola ${nome}, seu nivel e: ${nivel}`);
 
         if (nivel != "3") {
           window.location.replace("../index.html");

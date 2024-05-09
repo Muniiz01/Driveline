@@ -4,8 +4,9 @@ window.addEventListener('load', function(){//executa a função ao iniciar a pá
     fetch('php/session.php').then(response => response.json())
     .then(data => {
        if(Array.isArray(data)){
-           const nivel = data.map(item => item.nivel)
-           console.log(nivel)
+        const nivel = data.map((item) => item.nivel);
+        const nome = data.map((item) => item.nome);
+        console.log(`Ola ${nome}, seu nivel e: ${nivel}`);
    
            if(nivel != "2" && nivel != "3"){
                window.location.replace("../index.html")
