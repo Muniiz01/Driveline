@@ -123,13 +123,13 @@ function exibirUsuarios() {
       const dadosDiv = document.getElementById("lista");
       const lista = data.map(
         (item) => `
-            <tr>
-                <td>${item.idUsuario}</td>
-                <td>${item.nome}</td>
-                <td>${item.email}</td>
-                <td>${item.telefone}</td>
-                <td>${item.documento}</td>
-                <td><button onclick="deleteUser(${item.idUsuario})">deletar</button></td>
+            <tr class='tabela_usuario'>
+                <td class='item_ususario'>${item.idUsuario}</td>
+                <td class='item_ususario'>${item.nome}</td>
+                <td class='item_ususario'>${item.email}</td>
+                <td class='item_ususario'>${item.telefone}</td>
+                <td class='item_ususario'>${item.documento}</td>
+                <td class='item_ususario'><button onclick="deleteUser(${item.idUsuario})">deletar</button></td>
             </tr>
         `
       );
