@@ -1,3 +1,4 @@
+
 window.addEventListener("load", function () {
   fetch("php/session.php")
     .then((response) => response.json())
@@ -15,12 +16,15 @@ window.addEventListener("load", function () {
       }
     });
 });
+//Funções////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function adcionarVeiculos() {
+//Adicionar/forms////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function adicionarVeiculos() {
   var div = document.getElementById("lista"); // Sera atribuido o elemento html com o id 'lista' na variavel div.
-  div.innerHTML = `<div id='form-addCars'> 
-    <input id='categoria' placeholder='categoria'> 
-    <input id='modelo' placeholder='modelo'> 
+  div.innerHTML = `<div class='form_carros' id='form-addCars'> 
+      <input id='categoria' placeholder='categoria'> 
+      <input id='modelo' placeholder='modelo'> 
      <input id='marca' placeholder='marca'>  
      <input id='cor' placeholder='cor'>  
      <input id='quilometragem' placeholder='quilometragem'> 
@@ -35,7 +39,18 @@ function adcionarVeiculos() {
      <button id='btnEnviar' onclick='enviarFormCar()'>enviar</button>
       </div>`;
 } //  div.innerHTML inseri todos os elementos html no funcionarios.html
-
+function adicionarFuncionario() {
+  var div = document.getElementById("lista");
+  div.innerHTML = `<div class='form_funcionarios' id='form-addFunc'> 
+    <input id='nome' placeholder='Nome Completo'> 
+    <input type="text" name="cpf" id="cpf" onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required placeholder='Cpf'>
+    <input id="telefone" type="text" required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15" placeholder='Telefone'> 
+     <input id='email' placeholder='E-mail'> 
+     <input id='senha' placeholder='Senha' type='password'> 
+     <button id='btnEnviar' onclick='enviarFormFunc()'>enviar</button>
+      </div>
+       `;
+}
 function enviarFormCar() {
   var categoria = document.getElementById("categoria").value; // Atribui o valor do input pelo id em uma variavel " variavel contem o mesmo nome do input "
   var modelo = document.getElementById("modelo").value;
@@ -88,7 +103,6 @@ function enviarFormCar() {
       // exibe mensagens em caso de erro ao enviar os dados
     });
 }
-
 function enviarFormFunc() {
   var nome = document.getElementById("nome").value;
   var documento = document.getElementById("cpf").value;
@@ -115,6 +129,7 @@ function enviarFormFunc() {
       console.log(error); // exibe mensagem de erro enviada do php
     });
 }
+//exibir/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------------------
 function exibirUsuarios() {
   fetch("php/listaUsuarios.php", { method: "GET" })
@@ -124,17 +139,17 @@ function exibirUsuarios() {
       const lista = data.map(
         (item) => `
             <tr class='tabela_usuario'>
-                <td class='item_ususario'>${item.idUsuario}</td>
-                <td class='item_ususario'>${item.nome}</td>
-                <td class='item_ususario'>${item.email}</td>
-                <td class='item_ususario'>${item.telefone}</td>
-                <td class='item_ususario'>${item.documento}</td>
-                <td class='item_ususario'><button onclick="deleteUser(${item.idUsuario})">deletar</button></td>
+                <td class='item_usuario'>${item.idUsuario}</td>
+                <td class='item_usuario'>${item.nome}</td>
+                <td class='item_usuario'>${item.email}</td>
+                <td class='item_usuario'>${item.telefone}</td>
+                <td class='item_usuario'>${item.documento}</td>
+                <td class='item_usuario'><button onclick="deleteUser(${item.idUsuario})">deletar</button></td>
             </tr>
         `
       );
       dadosDiv.innerHTML = `
-            <table>
+            <table class='tabela_usuario'>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -166,50 +181,75 @@ function exibirFuncionarios() {
       const dadosDiv = document.getElementById("lista");
       const lista = data.map((item) => {
         return `
-    <div class="container">
-            <table>
-                <tr>
-                    <td>
-                        <div class="scrollable-table">
-                            <table id=\"vertical\">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                </tr>
-                                <tr>
-                                    <th>Nome</th>
-                                </tr>
-                                <tr>
-                                    <th>Telefone</th>
-                                </tr>
-                                <tr>
-                                    <th>Email</th>
-                                </tr>
-                            </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>${item.idUsuario}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>${item.nome}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>${item.telefone}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>${item.email}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-    </div>
+
+        <tr class='tabela_funcionario'>
+        <td class='item_funcionario'>${item.idUsuario}</td>
+        <td class='item_funcionario'>${item.nome}</td>
+        <td class='item_funcionario'>${item.email}</td>
+        <td class='item_funcionario'>${item.telefone}</td>
+        <td class='item_funcionario'>${item.documento}</td>
+        <td class='item_funcionario'><button onclick="">Alterar</button></td>
+        </tr>
     `;
       });
+// <div class="container">
+    //         <table>
+    //             <tr>
+    //                 <td>
+    //                     <div class="scrollable-table">
+    //                         <table id="vertical">
+    //                         <thead>
+    //                             <tr>
+    //                                 <th>Id</th>
+    //                             </tr>
+    //                             <tr>
+    //                                 <th>Nome</th>
+    //                             </tr>
+    //                             <tr>
+    //                                 <th>Telefone</th>
+    //                             </tr>
+    //                             <tr>
+    //                                 <th>Email</th>
+    //                             </tr>
+    //                         </thead>
+    //                             <tbody>
+    //                                 <tr>
+    //                                     <td>${item.idUsuario}</td>
+    //                                 </tr>
+    //                                 <tr>
+    //                                     <td>${item.nome}</td>
+    //                                 </tr>
+    //                                 <tr>
+    //                                     <td>${item.telefone}</td>
+    //                                 </tr>
+    //                                 <tr>
+    //                                     <td>${item.email}</td>
+    //                                 </tr>
+    //                             </tbody>
+    //                         </table>
+    //                     </div>
+    //                 </td>
+    //             </tr>
+    //         </table>
+    // </div>
+    dadosDiv.innerHTML = `
+    <table class='tabela_funcionario'>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Cpf</th>
+                <th>Excluir</th>
 
-      dadosDiv.innerHTML = lista.join("");
+            </tr>
+        </thead>
+        <tbody>
+            ${lista.join("")}
+        </tbody>
+    </table>
+`;
     })
     .catch((error) => {
       console.error("Erro ao buscar os dados dos veículos:", error);
@@ -217,18 +257,61 @@ function exibirFuncionarios() {
     });
 }
 
-function addFuncionario() {
-  var div = document.getElementById("lista");
-  div.innerHTML = `<div id='form-addFunc'> 
-    <input id='nome' placeholder='Nome Completo'> 
-    <input type="text" name="cpf" id="cpf" onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required placeholder='Cpf'>
-    <input id="telefone" type="text" required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15" placeholder='Telefone'> 
-     <input id='email' placeholder='E-mail'> 
-     <input id='senha' placeholder='Senha' type='password'> 
-     <button id='btnEnviar' onclick='enviarFormFunc()'>enviar</button>
-      </div>
-       `;
+function exibirVeiculos() {
+  fetch("php/listaVeiculos.php", { method: "POST" }) // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaVeiculos.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
+    .then((response) => response.json())
+    .then((data) => {
+      // Atribui o array json no array data
+      const dadosDiv = document.getElementById("lista"); // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
+      const lista = data.map((item) => {
+        // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.modelo}" item e o objeto array e modelo e a cahve array, todo o bloco e atribuido a const lista
+        return `<section class='item_lista_veiculo'>
+                  <img class='img-car' src="${item.caminho_imagem}" alt="">
+                  <article class='info_veiculo'>
+                  <div>modelo: ${item.modelo}</div>  
+                  <div>passageiros: ${item.passageiros}</div>
+                  </article>
+                </section>`;
+      });
+
+      dadosDiv.innerHTML = lista.join(""); // inseri os elementos html no funcionario.html
+      /* console.log(data) */
+    })
+    .catch((error) => {
+      // exibi o erro no console do navegador
+      console.error("Erro ao buscar os dados dos veículos:", error);
+      document.getElementById("lista").innerHTML = "Nenhum registro encontrado";
+    });
 }
+
+//deleter//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function deleteUser(idUsuario) {
+  var formData = new FormData();
+  formData.append("idUsuario", idUsuario);
+
+  if (confirm('Voce tem certeza que deseja deletar?')) {
+    // Save it!
+    console.log('Salvo no Banco de dados.');
+    fetch("php/deletaUsuario.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        console.log("usuario deletado", data);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  } else {
+    // Do nothing!
+    console.log('Coisas não foram salvas no banco de dados');
+  }
+}
+
+//mascaras/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 function fMasc(objeto, mascara) {
   obj = objeto;
   masc = mascara;
@@ -249,51 +332,4 @@ function mTel(tel) {
   tel = tel.replace(/^(\d\d)(\d)/g, "($1) $2");
   tel = tel.replace(/(\d{5})(\d)/, "$1-$2");
   return tel;
-}
-
-function exibirVeiculos() {
-  fetch("php/listaVeiculos.php", { method: "POST" }) // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaVeiculos.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
-    .then((response) => response.json())
-    .then((data) => {
-      // Atribui o array json no array data
-      const dadosDiv = document.getElementById("lista"); // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
-      const lista = data.map((item) => {
-        // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.modelo}" item e o objeto array e modelo e a cahve array, todo o bloco e atribuido a const lista
-        return `<div>modelo: ${item.modelo}</div>  
-                        <div>passageiros: ${item.passageiros}</div>
-                        <img class='img-car' src="${item.caminho_imagem}" alt="">`;
-      });
-
-      dadosDiv.innerHTML = lista.join(""); // inseri os elementos html no funcionario.html
-      /* console.log(data) */
-    })
-    .catch((error) => {
-      // exibi o erro no console do navegador
-      console.error("Erro ao buscar os dados dos veículos:", error);
-      document.getElementById("lista").innerHTML = "Nenhum registro encontrado";
-    });
-}
-
-function deleteUser(idUsuario) {
-  var formData = new FormData();
-  formData.append("idUsuario", idUsuario);
-
-    if (confirm('Voce tem certeza que deseja deletar?')) {
-        // Save it!
-        console.log('Salvo no Banco de dados.');
-        fetch("php/deletaUsuario.php", {
-            method: "POST",
-            body: formData,
-          })
-          .then((response) => response.text())
-    .then((data) => {
-      console.log("usuario deletado", data);
-    })
-    .catch((error) => {
-      console.log("error", error);
-    });
-      } else {
-        // Do nothing!
-        console.log('Coisas não foram salvas no banco de dados');
-      }
 }

@@ -11,162 +11,180 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: var(--background-color);
   font-family: sans-serif;
-  flex-direction: column;
   width: 100%;
-  height: 100vh;
+  flex-direction: column;
+  align-items: center;
   overflow: auto;
 }
 
 /* menu //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-.container-menu .container button{
+.container-menu{
+  position: absolute;
+  margin-bottom: 5%;
+  z-index: 1;
+}
+
+.btn-dropdown:hover , .btn{
   color: var(--light-gray);
   background-color: var(--primary-color);
-    border: none;
-    outline: none;
-}
-.container-menu .container button:active{
+  border: none;
   outline: none;
-
 }
-.container-menu .container button:hover{
+.btn-dropdown:hover , .btn:active{
+  outline: none;
+}
+.btn-dropdown:hover ,.btn:hover{
   background-color: var(--background-color);
 }
-.container {
+.btn-dropdown:hover ,.btn {
   text-align: center;
   float: left;
 }
 
-.container button {
+.btn-dropdown:hover ,.btn {
   color: rgb(0, 0, 0);
   text-align: center;
   padding: 14px 16px;
 }
-/* dropdown "gerenciamento" //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-#exibir-menu, .dropdown-content{
-  width: 5rem;
-}
-.dropdown-content{
-  display: none;
-  /* margin-left: 10px;
-  position: absolute;
-  background-color: rgb(151, 150, 149);
-  min-width: 125px;
-  z-index: 1; */
-}
 
-.dropdown-content button{
-  /* color: black;
-  margin: auto;
-  margin-top: 5px;
-  width: 127px;
-  padding: 5px 0px;
-  text-decoration: none; */
+
+/* dropdown "gerenciamento" //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+#exibir-menu:hover ~ .dropdown-content, .dropdown-content:hover{
   display: block;
 }
 
-/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.btn-dropdown, .dropdown-content{
+  width: 7rem;
+}
+.dropdown-content{
+  display: none;
+}
 
-.wrapper {
-  background-color: var(--white);
-  position: absolute;
-  width: 800px;
-  height: 650px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 25px;
-  box-shadow: 15px 15px #232323;
+.gerenciamento{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
+/* lista ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-
-table {
-  border-collapse: collapse;
+.lista{
+  margin: 6% 0px;
+  flex-direction: column;
+  height: max-content;
+  align-items: center;
+  display: flex;
   width: 100%;
 }
+/* tabela usuarios //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
+.tabela_usuario, .tabela_funcionario{
+  width:max-content;
+  border-collapse: collapse;
+}
 
+.tabela_funcionario td, .tabela_usuario td{
+  text-align: center;
+  padding: 5px 5px;
+}
 
-th {
+.tabela_usuario th , .tabela_funcionario th{
   background-color: var(--primary-color);
   color: var(--light-primary);
 }
-
-
-
-.list-wrapper {
-  margin-top: 40px;
-  width: 100%;
+.tabela_usuario tr, .tabela_funcionario tr{
+  background-color: var(--light-gray);
 }
+.tabela_usuario tr:nth-child(even),
+.tabela_funcionario tr:nth-child(even) {/*pula um filho dentro do elemento*/
+  background-color: var(--white);
+}
+.tabela_usuario button,
+.tabela_funcionario button{
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  background-color: var(--primary-color);
+  border: none;
+  outline: none;
+}
+.tabela_usuario button:active,
+.tabela_funcionario button:active{
+  outline: none;
+}
+.tabela_usuario button:hover,
+.tabela_funcionario button:hover{
+  background-color: var(--white);
+}
+/* exibir veiculos/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-.scrollable-table:nth-child(odd) {
+
+.item_lista_veiculo{
+  gap: 4%;
+  align-items: center;
+  margin: 1% 0;
+  display: flex;
+  height: 8rem;
+  width: 20rem;
   background-color: var(--light-gray);
 }
 
-tr:nth-child(even) {
-  background-color: var(--white);
+.img-car{
+  margin-left: 5%;
+  object-fit: fill;
+  height: 100px;
+  width: 100px;
 }
+@media(max-width:686px){
+  .lista{
+    margin-top:13%;
+  }
+}
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-
-
-
-
-
-.dropdown-content button:hover {background-color: #ddd;}
-#exibir-menu:hover .dropdown-content{display: block;}
-
-#lista{
-  overflow: hidden;
-  width: 45%;
-} 
-#form-addCars{
+#form-addCars, #form-addFunc{
   display: flex;
   flex-direction: column;
-  
-  float: left;
-  margin: 10%;
 } 
+#form-addCars input, #form-addFunc input{
+  border: none;
+  border-bottom: solid gray 2px;
+}
+#form-addCars input:valid,
+#form-addCars input:active,
+#form-addFunc input:valid,
+#form-addFunc input:active{
+  outline: none;
+}
 
 #form-addCars button{
+  margin-top: 3px;
+  border: none;
+  outline: none;
+  background-color: var(--primary-color);
   padding: 10px;
   width: 100px;
 }
-
-#form-addFunc{
-  display: flex;
-  flex-direction: column;
-  
-  float: left;
-  margin: 10%;
+#form-addCars textarea{
+  resize: none;
+  height: 3rem;
 }
+/* ////////////////////////////////// */
 
-#form-addFunc{
-  padding: 125px;
-  width: 200px;
-}
-
-.img-car{
-  height: 100px;
-  width: 100%;
+#form-addFunc button{
+  margin-top: 3px;
+  border: none;
+  outline: none;
+  background-color: var(--primary-color);
 }
 
 
 
-/* scroll */
+/* scroll
 .scrollable-table {
   overflow: auto;
   width: 450px;
@@ -227,6 +245,7 @@ tr:nth-child(even) {
 }
 
 /* table */
+/*
 .wrapper {
   background-color: var(--white);
   position: absolute;
@@ -253,9 +272,7 @@ h1 {
   white-space: nowrap;
 }
 
-table {
-  border-collapse: collapse;
-}
+
 
 
 .list-wrapper {
@@ -285,4 +302,4 @@ table {
   background-color: var(--light-gray);
   
 }
-
+ */

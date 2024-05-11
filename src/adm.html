@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/adm.css">
     <title>ADM</title>
+    <script src="js/dropdown.js"></script>
+    <script src="js/administrador.js"></script> 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -12,25 +14,25 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="js/administrador.js"></script> 
 </head>
 <body>
     
     <div class="container-menu">   <!-- Conteiner que agrupa os botoes usuario, veiculos, historico e gerenciamento -->
-        <div class="container"><button  id="usuarios" onclick="exibirUsuarios()"> Usuários </button></div> <!-- Botao usuario ao clicar chama a funcao exibirUsuarios() -->
-        <div class="container"><button  id="funcionarios" onclick="exibirFuncionarios()"> Funcionários </button></div>
-        <div class="container"><button  id="veiculos" onclick="exibirVeiculos()"> Veiculos </button></div> <!-- Botao veiculos ao clicar chama a funcao exibirVeiculos() -->
-        <div class="container"><button  id="historico">Historico</button></div> <!-- Botao historico ao clicar chama a funcao exibirHistorico() " funcao nao implementada " -->
-        <div class="container" id="exibir-menu"><button> Gerenciamento</button> <!-- Dropdown gerenciar ao passar o cursor do mouse sobre o botao exibi dois botoes: adcionar veiculos e outros -->
-            <div class="dropdown-content"> <!-- container dropdown armazena os botoes adcionar veiculos e outros -->
-                <button onclick="adcionarVeiculos()">Adicionar Veiculos</button> <!-- Botao adcionar veiculos ao clicar chama a funcao adcionarVeiculos() -->
-                <button onclick="addFuncionario()">Cadastrar Funcionario</button> <!-- Botao Cadastrar Funcionarios ao clicar gera um formulario para ser preenchido -->
+        <button class="btn" id="usuarios" onclick="exibirUsuarios()"> Usuários </button><!-- Botao usuario ao clicar chama a funcao exibirUsuarios() -->
+        <button class="btn" id="funcionarios" onclick="exibirFuncionarios()"> Funcionários </button>
+        <button class="btn" id="veiculos" onclick="exibirVeiculos()"> Veiculos </button> <!-- Botao veiculos ao clicar chama a funcao exibirVeiculos() -->
+        <button class="btn" id="historico">Historico</button> <!-- Botao historico ao clicar chama a funcao exibirHistorico() " funcao nao implementada " -->
+        <section class="gerenciamento">
+        <button class="btn btn-dropdown" id="exibir-menu" onclick="dropdown()">Gerenciamento</button> <!-- Dropdown gerenciar ao passar o cursor do mouse sobre o botao exibi dois botoes: adcionar veiculos e outros -->
+            <div class="dropdown-content" id="dropdown_content"> <!-- container dropdown armazena os botoes adcionar veiculos e outros -->
+                <button class="btn dropdown_item" onclick="adicionarVeiculos()">Adicionar Veiculos</button> <!-- Botao adcionar veiculos ao clicar chama a funcao adcionarVeiculos() -->
+                <button class="btn dropdown_item" onclick="adicionarFuncionario()">Cadastrar Funcionario</button> <!-- Botao Cadastrar Funcionarios ao clicar gera um formulario para ser preenchido -->
             </div>
-        
-        </div>
+        </section>
     </div>
-     <div id="lista">  <!-- div conteiner, neste espaco sera gerado listas, ao clicar em um dos botoes acima sera gerado o resultado dentro da div  -->
-        
-    </div> 
+     <div class="lista" id="lista">  <!-- div conteiner, neste espaco sera gerado listas, ao clicar em um dos botoes acima sera gerado o resultado dentro da div  -->
+
+    </div>
+    
 </body>
 </html>
