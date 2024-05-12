@@ -132,10 +132,13 @@ function enviarFormFunc() {
 //exibir/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------------------
 function exibirUsuarios() {
+
+  const dadosDiv = document.getElementById("lista");
+
   fetch("php/listaUsuarios.php", { method: "GET" })
     .then((response) => response.json())
     .then((data) => {
-      const dadosDiv = document.getElementById("lista");
+      
       const lista = data.map(
         (item) => `
             <tr class='tabela_usuario' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
@@ -180,10 +183,12 @@ function exibirUsuarios() {
 
 //--------------------------------------------------------------------------------------------
 function exibirFuncionarios() {
+  const dadosDiv = document.getElementById("lista");
+
   fetch("php/listaFuncionarios.php", { method: "GET" })
     .then((response) => response.json())
     .then((data) => {
-      const dadosDiv = document.getElementById("lista");
+      
       const lista = data.map((item) => {
         return `
 
@@ -278,11 +283,13 @@ function selecionaTabela(idUser){
 }
 
 function exibirVeiculos() {
+  const dadosDiv = document.getElementById("lista"); // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
+
   fetch("php/listaVeiculos.php", { method: "POST" }) // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaVeiculos.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
     .then((response) => response.json())
     .then((data) => {
       // Atribui o array json no array data
-      const dadosDiv = document.getElementById("lista"); // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
+      
       const lista = data.map((item) => {
         // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.modelo}" item e o objeto array e modelo e a cahve array, todo o bloco e atribuido a const lista
         return `<section class='item_lista_veiculo'>
