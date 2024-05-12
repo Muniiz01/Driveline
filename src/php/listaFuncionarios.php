@@ -18,7 +18,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
             'idUsuario' => $linha['id_usuario'],
             'nome' => $linha['nome'],
             'telefone' => $linha["telefone"],
-            'email' => $linha["email"]
+            'email' => $linha["email"],
+            'documento' => $linha["documento"]
             );
         }
 

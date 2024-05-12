@@ -138,13 +138,12 @@ function exibirUsuarios() {
       const dadosDiv = document.getElementById("lista");
       const lista = data.map(
         (item) => `
-            <tr class='tabela_usuario'>
+            <tr class='tabela_usuario' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
                 <td class='item_usuario'>${item.idUsuario}</td>
                 <td class='item_usuario'>${item.nome}</td>
                 <td class='item_usuario'>${item.email}</td>
                 <td class='item_usuario'>${item.telefone}</td>
                 <td class='item_usuario'>${item.documento}</td>
-                <td class='item_usuario'><button onclick="deleteUser(${item.idUsuario})">deletar</button></td>
             </tr>
         `
       );
@@ -157,9 +156,11 @@ function exibirUsuarios() {
                         <th>E-mail</th>
                         <th>Telefone</th>
                         <th>Cpf</th>
-                        <th>Excluir</th>
-
                     </tr>
+                    <div class='tabela_usuario_btn'> 
+                    <button onclick='alterar()'>Alterar</button>
+                    <button onclick='deletar()'>Excluir</button>
+                    </div>
                 </thead>
                 <tbody>
                     ${lista.join("")}
@@ -173,6 +174,10 @@ function exibirUsuarios() {
     });
 }
 
+
+
+
+
 //--------------------------------------------------------------------------------------------
 function exibirFuncionarios() {
   fetch("php/listaFuncionarios.php", { method: "GET" })
@@ -182,7 +187,7 @@ function exibirFuncionarios() {
       const lista = data.map((item) => {
         return `
 
-        <tr class='tabela_funcionario'>
+        <tr class='tabela_funcionario' id='tabelaFuncionario'>
         <td class='item_funcionario'>${item.idUsuario}</td>
         <td class='item_funcionario'>${item.nome}</td>
         <td class='item_funcionario'>${item.email}</td>
@@ -257,6 +262,21 @@ function exibirFuncionarios() {
     });
 }
 
+////////////Seleciona tabela para alteracoes ou deletar
+var id
+var statusTr = null
+function selecionaTabela(idUser){
+  if(statusTr !== null){
+    document.getElementById(statusTr).classList.remove('tabelaSelect')
+    id = idUser
+  }
+  document.getElementById(idUser).classList.add('tabelaSelect')
+  statusTr = idUser
+  id = idUser
+  
+  console.log(id)
+}
+
 function exibirVeiculos() {
   fetch("php/listaVeiculos.php", { method: "POST" }) // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaVeiculos.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
     .then((response) => response.json())
@@ -285,10 +305,10 @@ function exibirVeiculos() {
 }
 
 //deleter//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function deleteUser(idUsuario) {
+function deletar(){
+  idUser = id
   var formData = new FormData();
-  formData.append("idUsuario", idUsuario);
+  formData.append("idUsuario", idUser);
 
   if (confirm('Voce tem certeza que deseja deletar?')) {
     // Save it!

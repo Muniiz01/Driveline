@@ -85,6 +85,7 @@ body {
 .tabela_usuario, .tabela_funcionario{
   width:max-content;
   border-collapse: collapse;
+  cursor: default;
 }
 
 .tabela_funcionario td, .tabela_usuario td{
@@ -103,7 +104,23 @@ body {
 .tabela_funcionario tr:nth-child(even) {/*pula um filho dentro do elemento*/
   background-color: var(--white);
 }
-.tabela_usuario button,
+.tabela_usuario_btn{
+  margin-right: 22.7rem;
+  padding: 10px;
+  width: max-content;
+}
+
+.tabela_usuario_btn button{
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  background-color: var(--primary-color);
+  border: none;
+  outline: none;
+  height: 1.7rem;
+}
+
+/* .tabela_usuario button,
 .tabela_funcionario button{
   font-weight: bold;
   text-align: center;
@@ -111,14 +128,18 @@ body {
   background-color: var(--primary-color);
   border: none;
   outline: none;
-}
-.tabela_usuario button:active,
-.tabela_funcionario button:active{
+} */
+
+.tabela_usuario_btn button:active
+{
   outline: none;
 }
-.tabela_usuario button:hover,
-.tabela_funcionario button:hover{
+.tabela_usuario_btn button:hover{
   background-color: var(--white);
+}
+
+.tabelaSelect{
+  mix-blend-mode: difference;
 }
 /* exibir veiculos/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
