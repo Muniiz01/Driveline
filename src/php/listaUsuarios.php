@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){ // verifica se o metodo requisitado pel
     //dados requisitados pelo funcionario.js
 
 
-    $query = "SELECT id_usuario, nome,  documento, telefone, email FROM usuarios WHERE idNivel_de_Acesso = 1"; // atribui a consulta sql na variavel $query
+    $query = "SELECT * FROM usuarios WHERE idNivel_de_Acesso = 1"; // atribui a consulta sql na variavel $query
     
     $resultado = $conn->query($query); // executa a variavel $query e armazena o resultado na variavel $resultado
 
@@ -24,7 +24,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){ // verifica se o metodo requisitado pel
                 'nome' => $valores["nome"],
                 'documento' => $valores["documento"],
                 'telefone' => $valores["telefone"],
-                'email' => $valores["email"]
+                'email' => $valores["email"],
+                'nivelAcess' => $valores["idNivel_de_Acesso"]
             );
         }
 

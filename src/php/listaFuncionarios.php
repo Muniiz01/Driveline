@@ -6,7 +6,7 @@ $conn = conexaoDb();
 
 if($_SERVER["REQUEST_METHOD"] == "GET"){
 
-    $sql = "SELECT id_usuario, nome, documento, telefone, email FROM funcionarios WHERE idNivel_de_Acesso = 2";
+    $sql = "SELECT * FROM funcionarios WHERE idNivel_de_Acesso = 2";
 
     $resultado = $conn->query($sql);
 
@@ -19,7 +19,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
             'nome' => $linha['nome'],
             'telefone' => $linha["telefone"],
             'email' => $linha["email"],
-            'documento' => $linha["documento"]
+            'documento' => $linha["documento"],
+            'nivelAcess' => $linha["idNivel_de_Acesso"]
             );
         }
 

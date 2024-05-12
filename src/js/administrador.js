@@ -132,7 +132,7 @@ function enviarFormFunc() {
 //exibir/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------------------
 function exibirUsuarios() {
-
+  selectedDiv = null
   const dadosDiv = document.getElementById("lista");
 
   fetch("php/listaUsuarios.php", { method: "GET" })
@@ -183,6 +183,7 @@ function exibirUsuarios() {
 
 //--------------------------------------------------------------------------------------------
 function exibirFuncionarios() {
+  selectedDiv = null
   const dadosDiv = document.getElementById("lista");
 
   fetch("php/listaFuncionarios.php", { method: "GET" })
@@ -192,13 +193,13 @@ function exibirFuncionarios() {
       const lista = data.map((item) => {
         return `
 
-        <tr class='tabela_funcionario' id='tabelaFuncionario'>
+        <tr class='tabela_funcionario' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
         <td class='item_funcionario'>${item.idUsuario}</td>
         <td class='item_funcionario'>${item.nome}</td>
         <td class='item_funcionario'>${item.email}</td>
         <td class='item_funcionario'>${item.telefone}</td>
         <td class='item_funcionario'>${item.documento}</td>
-        <td class='item_funcionario'><button onclick="">Alterar</button></td>
+        
         </tr>
     `;
       });
@@ -250,11 +251,13 @@ function exibirFuncionarios() {
                 <th>Nome</th>
                 <th>E-mail</th>
                 <th>Telefone</th>
-                <th>Cpf</th>
-                <th>Excluir</th>
-
+                <th>Cpf</th>   
             </tr>
         </thead>
+        <div class='tabela_usuario_btn'> 
+                 <button onclick='alterar()'>Alterar</button>
+                 <button onclick='deletar()'>Excluir</button>
+            </div>
         <tbody>
             ${lista.join("")}
         </tbody>
@@ -268,19 +271,35 @@ function exibirFuncionarios() {
 }
 
 ////////////Seleciona tabela para alteracoes ou deletar
+var nivel
 var id
-var statusTr = null
-function selecionaTabela(idUser){
-  if(statusTr !== null){
-    document.getElementById(statusTr).classList.remove('tabelaSelect')
-    id = idUser
-  }
-  document.getElementById(idUser).classList.add('tabelaSelect')
-  statusTr = idUser
-  id = idUser
-  
-  console.log(id)
+var selectedDiv = null;
+
+function selecionaTabela(idUser, nivelAcess) {
+      var div = document.getElementById(idUser);
+      
+      
+      if (div.classList.contains('tabelaSelect')) {
+          div.classList.remove('tabelaSelect');
+          selectedDiv = null;
+          id = null
+          nivel = null
+      } else {
+          
+          if (selectedDiv !== null) {
+              document.getElementById(selectedDiv).classList.remove('tabelaSelect');
+              
+          }
+          
+        
+          div.classList.add('tabelaSelect');
+          id = idUser
+          nivel = nivelAcess
+          selectedDiv = idUser;
+
+      }
 }
+
 
 function exibirVeiculos() {
   const dadosDiv = document.getElementById("lista"); // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
@@ -314,8 +333,10 @@ function exibirVeiculos() {
 //deleter//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function deletar(){
   idUser = id
+  nivelAcess = nivel
   var formData = new FormData();
   formData.append("idUsuario", idUser);
+  formData.append("nivelAcess", nivelAcess);
 
   if (confirm('Voce tem certeza que deseja deletar?')) {
     // Save it!

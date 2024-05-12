@@ -105,9 +105,10 @@ body {
   background-color: var(--white);
 }
 .tabela_usuario_btn{
-  margin-right: 22.7rem;
+  margin-right: 19.5rem;
   padding: 10px;
   width: max-content;
+  
 }
 
 .tabela_usuario_btn button{
