@@ -99,7 +99,7 @@ body {
 
 .tabela_usuario th , .tabela_funcionario th{
   background-color: var(--principal);
-  color: var(--light-primary);
+  color: var(--sombra-e-texto);
 }
 .tabela_usuario tr, .tabela_funcionario tr{
   background-color: var(--light-gray);
@@ -179,6 +179,7 @@ body {
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 #form-addCars, #form-addFunc{
+  color: var(--sombra-e-texto);
   display: flex;
   flex-direction: column;
 } 
