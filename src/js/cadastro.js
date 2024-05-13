@@ -31,6 +31,7 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
                 //redireciona para a pagina home
                 window.location.replace("../index.html")
             }
+
             // const popup = document.getElementById('popup')
             // popup.removeAttribute('class')
             // popup.classList.toggle('popup-on')
