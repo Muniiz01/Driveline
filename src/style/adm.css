@@ -1,17 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap");
 :root {
-  --background-color: #454545;
-  --primary-color: #3aafb9;
+
   --white: #ffff;
   --light-gray: #eeee;
   --light-primary: #e6fcff;
+  --fundo: #454545;
+  --sombra-e-texto: rgb(228, 228, 228);
+  --principal: rgb(39, 39, 39);
+  --barra-pesquisa:white;
+  --texto2:gray;
 }
 
 body {
   margin: 0;
   padding: 0;
   display: flex;
-  background-color: var(--background-color);
+  background-color: var(--fundo);
   font-family: sans-serif;
   width: 100%;
   flex-direction: column;
@@ -30,7 +34,7 @@ body {
 
 .btn-dropdown:hover , .btn{
   color: var(--light-gray);
-  background-color: var(--primary-color);
+  background-color: var(--principal);
   border: none;
   outline: none;
 }
@@ -38,7 +42,7 @@ body {
   outline: none;
 }
 .btn-dropdown:hover ,.btn:hover{
-  background-color: var(--background-color);
+  background-color: var(--fundo);
 }
 .btn-dropdown:hover ,.btn {
   text-align: center;
@@ -46,7 +50,7 @@ body {
 }
 
 .btn-dropdown:hover ,.btn {
-  color: rgb(0, 0, 0);
+  color: var(--sombra-e-texto);
   text-align: center;
   padding: 14px 16px;
 }
@@ -83,7 +87,7 @@ body {
 /* tabela usuarios //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .tabela_usuario, .tabela_funcionario{
-  width:max-content;
+  width: max-content;
   border-collapse: collapse;
   cursor: default;
 }
@@ -94,7 +98,7 @@ body {
 }
 
 .tabela_usuario th , .tabela_funcionario th{
-  background-color: var(--primary-color);
+  background-color: var(--principal);
   color: var(--light-primary);
 }
 .tabela_usuario tr, .tabela_funcionario tr{
@@ -104,21 +108,27 @@ body {
 .tabela_funcionario tr:nth-child(even) {/*pula um filho dentro do elemento*/
   background-color: var(--white);
 }
+
+
 .tabela_usuario_btn{
-  margin-right: 19.5rem;
-  padding: 10px;
+  margin-bottom: 10px;
   width: max-content;
   
+}
+
+.tabela_usuario_btn{
+  gap: 2%;
+  display: flex;
+  justify-content: center;
 }
 
 .tabela_usuario_btn button{
   font-weight: bold;
   text-align: center;
-  color: black;
-  background-color: var(--primary-color);
+  color: var(--sombra-e-texto);
+  background-color: var(--principal);
   border: none;
   outline: none;
-  height: 1.7rem;
 }
 
 /* .tabela_usuario button,
@@ -187,7 +197,8 @@ body {
   margin-top: 3px;
   border: none;
   outline: none;
-  background-color: var(--primary-color);
+  background-color: var(--principal);
+  color: var(--sombra-e-texto);
   padding: 10px;
   width: 100px;
 }
@@ -201,10 +212,60 @@ body {
   margin-top: 3px;
   border: none;
   outline: none;
-  background-color: var(--primary-color);
+  color: var(--sombra-e-texto);
+  background-color: var(--principal);
 }
 
+/*///////////////////////////////////*/
 
+.barra_pesquisa {
+  display: flex;
+  width: max-content;
+  margin: 4% auto;
+}
+
+.barra {
+  background-color: var(--white);
+  border-radius: 2rem 0 0 2rem;
+  width: 100%;
+  padding: 7px 20px;
+  border: none;
+  outline: none;
+}
+.barra:focus ~ .btn_barra{
+  box-shadow: 2px 3px var(--sombra-e-texto);
+
+}
+
+.btn_barra,
+.barra {
+  color: var(--sombra-e-texto);
+  background-color: var(--principal);
+  transition: 0.5s;
+}
+
+.barra:focus {
+  box-shadow: 2px 3px var(--sombra-e-texto);
+  outline: none;
+}
+
+.barra:focus~.btn {
+  box-shadow: 2px 3px var(--sombra-e-texto);
+  outline: none;
+}
+
+.btn_barra {
+  border: none;
+  border-radius: 0 2rem 2rem 0;
+}
+
+.btn_barra:hover {
+  color: black;
+  border: none;
+  transition: 0.5s;
+  box-shadow: 2px 3px var(--sombra-e-texto);
+  background-color: rgb(226, 226, 226);
+}
 
 /* scroll
 .scrollable-table {

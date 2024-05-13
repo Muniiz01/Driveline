@@ -3,7 +3,6 @@ window.onload = catalogo_index
 
 var tabela = 0
 var quantidade_items = 0
-var limite = 6
 
 function load_more() {
     

@@ -83,7 +83,7 @@ function enviarFormCar() {
   formData.append("descricao", descricao);
 
   for (var i = 0; i < imagens.length; i++) {
-    // laco de repeticao que percorre o array imagens e armazena na funcao FormData em formato de array
+    // laço de repeticao que percorre o array imagens e armazena na funcao FormData em formato de array
     var imagem = imagens[i];
     formData.append("imagens[]", imagem);
   }
@@ -193,7 +193,7 @@ function exibirFuncionarios() {
       const lista = data.map((item) => {
         return `
 
-        <tr class='tabela_funcionario' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
+        <tr class='tabela_funcionario' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario}, ${item.nivelAcess})'>
         <td class='item_funcionario'>${item.idUsuario}</td>
         <td class='item_funcionario'>${item.nome}</td>
         <td class='item_funcionario'>${item.email}</td>
@@ -348,6 +348,12 @@ function deletar(){
       .then((response) => response.text())
       .then((data) => {
         console.log("usuario deletado", data);
+        if(nivel == 2){
+          exibirFuncionarios()
+        }else{
+          exibirUsuarios()
+        }
+       
       })
       .catch((error) => {
         console.log("error", error);
@@ -355,7 +361,10 @@ function deletar(){
   } else {
     // Do nothing!
     console.log('Coisas não foram salvas no banco de dados');
+
+   
   }
+  
 }
 
 //mascaras/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -364,6 +373,9 @@ function fMasc(objeto, mascara) {
   obj = objeto;
   masc = mascara;
   setTimeout("fMascEx()", 1);
+}
+function retornaHome(){
+  window.location.replace("../index.html")
 }
 function fMascEx() {
   obj.value = masc(obj.value);

@@ -21,7 +21,7 @@ body {
 /*//navbar//////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 nav {
     transition: 0.5s;
-    z-index: 1;
+    z-index: 0;
     top: 0%;
     transform: translateY(0px);
     width: 100%;
@@ -88,6 +88,7 @@ nav i{
 
 /* //banner/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 .banner{
+    z-index: -1;
     display: flex;
     position: relative;
     background: linear-gradient(to right, rgb(9, 102, 251), rgb(0, 105, 157),rgb(0, 55, 175) );
@@ -188,6 +189,7 @@ nav i{
 .barra_pesquisa {
     width: max-content;
     margin: 4% auto;
+    z-index: -2;
 }
 
 .barra {
