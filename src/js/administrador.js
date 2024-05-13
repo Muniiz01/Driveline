@@ -83,7 +83,7 @@ function enviarFormCar() {
   formData.append("descricao", descricao);
 
   for (var i = 0; i < imagens.length; i++) {
-    // laco de repeticao que percorre o array imagens e armazena na funcao FormData em formato de array
+    // laço de repeticao que percorre o array imagens e armazena na funcao FormData em formato de array
     var imagem = imagens[i];
     formData.append("imagens[]", imagem);
   }

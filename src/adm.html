@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/adm.css">
+    <link rel="stylesheet" href="src/bootstrap/bootstrap-css/bootstrap.css">
     <title>ADM</title>
     <script src="js/dropdown.js"></script>
     <script src="js/administrador.js"></script> 
@@ -18,7 +19,7 @@
 <body>
     
     <div class="container-menu">   <!-- Conteiner que agrupa os botoes usuario, veiculos, historico e gerenciamento -->
-        <button class="btn" id="usuarios">Home</button>
+        <button class="btn" id="usuarios">Home</a></button>
         <button class="btn" id="usuarios" onclick="exibirUsuarios()"> Usuários </button><!-- Botao usuario ao clicar chama a funcao exibirUsuarios() -->
         <button class="btn" id="funcionarios" onclick="exibirFuncionarios()"> Funcionários </button>
         <button class="btn" id="veiculos" onclick="exibirVeiculos()"> Veiculos </button> <!-- Botao veiculos ao clicar chama a funcao exibirVeiculos() -->
@@ -31,6 +32,10 @@
             </div>
         </section>
     </div>
+    <form action="Buscar.php" class="barra_pesquisa">
+            <input class="barra" type="text" placeholder="Buscar">
+            <button type="submit" class="btn_barra">Buscar</button>
+    </form>
      <div class="lista" id="lista">  <!-- div conteiner, neste espaco sera gerado listas, ao clicar em um dos botoes acima sera gerado o resultado dentro da div  -->
 
     </div>
