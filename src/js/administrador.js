@@ -362,7 +362,6 @@ function deletar(){
     // Do nothing!
     console.log('Coisas não foram salvas no banco de dados');
 
-   
   }
   
 }
