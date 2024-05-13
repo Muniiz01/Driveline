@@ -24,16 +24,17 @@ function exibirUsuarios() {
     .then(data => {
         const dadosDiv = document.getElementById('lista');
         const lista = data.map(item => `
-            <tr>
-                <td>${item.idUsuario}</td>
-                <td>${item.nome}</td>
-                <td>${item.email}</td>
-                <td>${item.telefone}</td>
-                <td>${item.documento}</td>
-            </tr>
+        <tr class='tabela_usuario' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
+            <td class='item_usuario'>${item.idUsuario}</td>
+            <td class='item_usuario'>${item.nome}</td>
+            <td class='item_usuario'>${item.email}</td>
+            <td class='item_usuario'>${item.telefone}</td>
+            <td class='item_usuario'>${item.documento}</td>
+        </tr>
+    
         `);
         dadosDiv.innerHTML = `
-            <table>
+            <table class='tabela_usuario'>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -63,14 +64,21 @@ function exibirVeiculos() {
     .then(data => { // Atribui o array json no array data 
         const dadosDiv = document.getElementById('lista') // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
         const lista = data.map(item => {   // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.modelo}" item e o objeto array e modelo e a cahve array, todo o bloco e atribuido a const lista 
-            return `<div>modelo: ${item.modelo}</div>  
-            <div>passageiros: ${item.passageiros}</div>
-                        <img class='img-car' src="${item.caminho_imagem}" alt="">
-                        <button class='user-button' onclick="alterarCarro(${item.id_veiculos})">ALTERAR</button>`
+            return `
+                <section class='item_lista_veiculo'>                
+                <img class='img-car' src="${item.caminho_imagem}" alt="">
+                <article class='info_veiculo'>
+                <div>modelo: ${item.modelo}</div>  
+                <div>passageiros: ${item.passageiros}</div>
+                  
+                  </article>
+                </section>`;
                     });
                     
                     
-                    dadosDiv.innerHTML = lista.join('')  // inseri os elementos html no funcionario.html 
+                    dadosDiv.innerHTML = `<div class='tabela_usuario_btn'> 
+                    <button onclick='alterar()'>Alterar</button>
+                    </div> ${lista.join('')}`;   // inseri os elementos html no funcionario.html 
                     /* console.log(data) */
                 })
                 .catch(error => {
@@ -146,3 +154,7 @@ function alterarCarro(idVeiculo){
             
                 })
             }
+
+function retornaHome(){
+    window.location.replace("../index.html")
+}

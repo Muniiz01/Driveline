@@ -4,24 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/func.css">
-    <title>ADM</title>
+    <title>Funcionarios</title>
     <script src="js/funcionarios.js"></script> 
 </head>
 <body>
    
     <div class="container-menu">   <!-- Conteiner que agrupa os botoes usuario, veiculos, historico e gerenciamento -->
-        <div class="container"><button  id="usuarios" onclick="exibirUsuarios()">usuarios</button></div> <!-- Botao usuario ao clicar chama a funcao exibirUsuarios() -->
-        <div class="container"><button  id="veiculos" onclick="exibirVeiculos()">veiculos</button></div> <!-- Botao veiculos ao clicar chama a funcao exibirVeiculos() -->
-        <div class="container"><button  id="historico">historico</button></div> <!-- Botao historico ao clicar chama a funcao exibirHistorico() " funcao nao implementada " -->
-            <div class="dropdown-content"> <!-- container dropdown armazena os botoes adcionar veiculos e outros -->
-                <button onclick="adcionarVeiculos()">adcionar veiculos</button> <!-- Botao adcionar veiculos ao clicar chama a funcao adcionarVeiculos() -->
-                <button>outros</button> <!-- Botao outros " funcao nao implementada " -->
-            </div>
-           
-        </div>
+        <button class="btn" id="home" onclick="retornaHome()">Home</button>
+        <button class="btn" id="usuarios" onclick="exibirUsuarios()">usuarios</button> <!-- Botao usuario ao clicar chama a funcao exibirUsuarios() -->
+        <button class="btn" id="veiculos" onclick="exibirVeiculos()">veiculos</button> <!-- Botao veiculos ao clicar chama a funcao exibirVeiculos() -->
+        <button class="btn" id="historico">historico</button> <!-- Botao historico ao clicar chama a funcao exibirHistorico() " funcao nao implementada " --> 
     </div>
     <div id="idVeiculo"></div>
-    <div id="lista">  <!-- div conteiner, neste espaco sera gerado listas, ao clicar em um dos botoes acima sera gerado o resultado dentro da div -->
+    <div class="lista" id="lista">  <!-- div conteiner, neste espaco sera gerado listas, ao clicar em um dos botoes acima sera gerado o resultado dentro da div -->
         
     </div>
 </body>

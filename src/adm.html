@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/adm.css">
-    <link rel="stylesheet" href="src/bootstrap/bootstrap-css/bootstrap.css">
     <title>ADM</title>
     <script src="js/dropdown.js"></script>
     <script src="js/administrador.js"></script> 
@@ -25,7 +24,7 @@
         <button class="btn" id="veiculos" onclick="exibirVeiculos()"> Veiculos </button> <!-- Botao veiculos ao clicar chama a funcao exibirVeiculos() -->
         <button class="btn" id="historico">Historico</button> <!-- Botao historico ao clicar chama a funcao exibirHistorico() " funcao nao implementada " -->
         <section class="gerenciamento">
-        <button class="btn btn-dropdown" id="exibir-menu" onclick="dropdown()">Gerenciamento</button> <!-- Dropdown gerenciar ao passar o cursor do mouse sobre o botao exibi dois botoes: adcionar veiculos e outros -->
+        <button class="btn btn-dropdown" id="exibir-menu" >Gerenciamento</button> <!-- Dropdown gerenciar ao passar o cursor do mouse sobre o botao exibi dois botoes: adcionar veiculos e outros -->
             <div class="dropdown-content" id="dropdown_content"> <!-- container dropdown armazena os botoes adcionar veiculos e outros -->
                 <button class="btn dropdown_item" onclick="adicionarVeiculos()">Adicionar Veiculos</button> <!-- Botao adcionar veiculos ao clicar chama a funcao adcionarVeiculos() -->
                 <button class="btn dropdown_item" onclick="adicionarFuncionario()">Cadastrar Funcionario</button> <!-- Botao Cadastrar Funcionarios ao clicar gera um formulario para ser preenchido -->
