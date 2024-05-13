@@ -203,46 +203,7 @@ function exibirFuncionarios() {
         </tr>
     `;
       });
-// <div class="container">
-    //         <table>
-    //             <tr>
-    //                 <td>
-    //                     <div class="scrollable-table">
-    //                         <table id="vertical">
-    //                         <thead>
-    //                             <tr>
-    //                                 <th>Id</th>
-    //                             </tr>
-    //                             <tr>
-    //                                 <th>Nome</th>
-    //                             </tr>
-    //                             <tr>
-    //                                 <th>Telefone</th>
-    //                             </tr>
-    //                             <tr>
-    //                                 <th>Email</th>
-    //                             </tr>
-    //                         </thead>
-    //                             <tbody>
-    //                                 <tr>
-    //                                     <td>${item.idUsuario}</td>
-    //                                 </tr>
-    //                                 <tr>
-    //                                     <td>${item.nome}</td>
-    //                                 </tr>
-    //                                 <tr>
-    //                                     <td>${item.telefone}</td>
-    //                                 </tr>
-    //                                 <tr>
-    //                                     <td>${item.email}</td>
-    //                                 </tr>
-    //                             </tbody>
-    //                         </table>
-    //                     </div>
-    //                 </td>
-    //             </tr>
-    //         </table>
-    // </div>
+
     dadosDiv.innerHTML = `
     <table class='tabela_funcionario'>
         <thead>
@@ -317,6 +278,7 @@ function exibirVeiculos() {
                   <div>modelo: ${item.modelo}</div>  
                   <div>passageiros: ${item.passageiros}</div>
                   </article>
+                  <button class='user-button' onclick="alterarCarro(${item.id_veiculos})">ALTERAR</button>
                 </section>`;
       });
 
@@ -329,7 +291,26 @@ function exibirVeiculos() {
       document.getElementById("lista").innerHTML = "Nenhum registro encontrado";
     });
 }
+function alterarCarro(idVeiculo){
+  var div= document.getElementById("lista")
+  div.innerHTML = `<div id='form-addCars'> 
+  <input id='categoria' placeholder='categoria'> 
+  <input id='modelo' placeholder='modelo'> 
+   <input id='marca' placeholder='marca'>  
+   <input id='cor' placeholder='cor'>  
+   <input id='quilometragem' placeholder='quilometragem'> 
+   <input id='cambio' placeholder='cambio'> 
+   <input id='passageiros' placeholder='qtd-passageiros'> 
+   <input id='ar-condicionado' placeholder='tem ar-condicionado?'> 
+   <input id='airbag' placeholder='tem airbag?'> 
+   <input id='abs' placeholder='tem abs?'> 
+   <input id='volume-carga' placeholder='volume de carga'> 
+   <input id='imagens' type='file' multiple accept='image/jpeg, image/png'> 
+   <textarea name='descricao' id='descricao' cols='30' rows='10' placeholder='descricao veiculo'></textarea>
+   <button id='btnEnviar' onclick='enviarFo(${idVeiculo})'>enviar</button>
+    </div>`
 
+}
 //deleter//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function deletar(){
   idUser = id
@@ -366,7 +347,43 @@ function deletar(){
   }
   
 }
-
+function alterar(){
+  var div= document.getElementById("lista")
+  div.innerHTML = `<div class='form_funcionarios' id='form-addFunc'> 
+  <input id='nome' placeholder='Nome Completo'> 
+  <input type="text" id="documento" onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required placeholder='Cpf'>
+  <input id="telefone" type="text" required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15" placeholder='Telefone'> 
+   <input id='email' placeholder='E-mail'> 
+   <button id='btnEnviar' onclick='enviarUsuario(${id})'>enviar</button>
+    </div>
+     `;
+}
+function enviarUsuario(idUsuario){
+                  var nome = document.getElementById('nome').value // Atribui o valor do input pelo id em uma variavel " variavel contem o mesmo nome do input " 
+                  var documento = document.getElementById('documento').value
+                  var telefone = document.getElementById('telefone').value
+                  var email = document.getElementById('email').value
+                  
+                  var formData = new FormData()  // FormData e um metodo de armazenamemto para envio de arquivos para o lado do servidor 
+                  formData.append('nome', nome)  // armazena as variaveis na funcao FormData 
+                  formData.append('documento', documento)
+                  formData.append('telefone', telefone)
+                  formData.append('email', email)
+                  formData.append('idUsuario', idUsuario)
+                  formData.append('nivel', nivel)
+                  
+            
+                fetch('php/alterarUsuario.php', {
+                    method:'POST',
+                    body: formData
+                }).then(response => response.text()).then(data => {
+                    console.log('usuario alterado', idUsuario, data)
+            
+                }).catch(error => {
+                    console.log('error', error)
+            
+                })
+}
 //mascaras/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function fMasc(objeto, mascara) {
