@@ -71,7 +71,7 @@ function exibirVeiculos() {
                 <div>modelo: ${item.modelo}</div>  
                 <div>passageiros: ${item.passageiros}</div>
                   
-                  </article>
+                </article>
                 </section>`;
                     });
                     

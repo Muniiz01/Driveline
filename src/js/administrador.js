@@ -298,7 +298,7 @@ function alterarCarro(idVeiculo){
   <input id='modelo' placeholder='modelo'> 
    <input id='marca' placeholder='marca'>  
    <input id='cor' placeholder='cor'>  
-   <input id='quilometragem' placeholder='quilometragem'> 
+   <input id='quilometragem' placeholder='quilometragem' maxlenght = '6'> 
    <input id='cambio' placeholder='cambio'> 
    <input id='passageiros' placeholder='qtd-passageiros'> 
    <input id='ar-condicionado' placeholder='tem ar-condicionado?'> 

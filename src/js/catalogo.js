@@ -25,12 +25,14 @@ function catalogo_index() {
                     return `<div class='item'>
             <img class='img-car' src="src/${item.caminho_imagem}">
             
+        <div class='info_carro'>
             <div class='modelo_carro'>modelo: ${item.modelo}</div>  
             <div class='passageiros'>passageiros: ${item.passageiros}</div>
             <div class='cor'>cor: ${item.cor}</div>
             <div class='quilometragem'>quilometragem: ${item.quilometragem}</div>
             <div class='airbag'>airbag: ${item.airbag}</div>
             <div class='cambio'>cambio: ${item.cambio}</div>
+        </div>
 
             <a href='src/login.html'><button class ='btn-aluguel'><i class='fa-solid fa-car'></i></button></a>
             </div>`
