@@ -160,6 +160,10 @@ function exibirUsuarios() {
                         <th>Telefone</th>
                         <th>Cpf</th>
                     </tr>
+                    <div action="Buscar.php" class="barra_pesquisa">
+            <input class="barra" type="text" placeholder="Buscar">
+            <button type="submit" class="btn_barra">Buscar</button>
+    </div>
                     <div class='tabela_usuario_btn'> 
                     <button onclick='alterar()'>Alterar</button>
                     <button onclick='deletar()'>Excluir</button>
@@ -192,6 +196,7 @@ function exibirFuncionarios() {
       
       const lista = data.map((item) => {
         return `
+        
 
         <tr class='tabela_funcionario' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario}, ${item.nivelAcess})'>
         <td class='item_funcionario'>${item.idUsuario}</td>
@@ -215,10 +220,15 @@ function exibirFuncionarios() {
                 <th>Cpf</th>   
             </tr>
         </thead>
+        <div action="Buscar.php" class="barra_pesquisa">
+            <input class="barra" type="text" placeholder="Buscar">
+            <button type="submit" class="btn_barra">Buscar</button>
+    </div>
         <div class='tabela_usuario_btn'> 
                  <button onclick='alterar()'>Alterar</button>
                  <button onclick='deletar()'>Excluir</button>
             </div>
+
         <tbody>
             ${lista.join("")}
         </tbody>
