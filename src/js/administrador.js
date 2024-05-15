@@ -357,16 +357,29 @@ function deletar(){
   
 }
 function alterar(){
-  var div= document.getElementById("lista")
-  div.innerHTML = `<div class='form_funcionarios' id='form-addFunc'> 
-  <input id='nome' placeholder='Nome Completo'> 
-  <input type="text" id="documento" onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required placeholder='Cpf'>
-  <input id="telefone" type="text" required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15" placeholder='Telefone'> 
-   <input id='email' placeholder='E-mail'> 
-   <button id='btnEnviar' onclick='enviarUsuario(${id})'>enviar</button>
-    </div>
-     `;
+  var div= document.getElementById("lista");
+  fetch("php/listaUsuarios.php", {method: "GET"})
+  .then((response) => response.json())
+  .then((data) => {
+
+    const lista = data.map((item) =>{
+      return `
+      <div class='form_funcionarios' id='form-addFunc'> 
+      <input id='nome' placeholder='Nome Completo' value='${item.nome}'> 
+      <input type="text" id="documento" value='${item.documento}' onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required placeholder='Cpf'>
+      <input id="telefone" type="text" value='${item.telefone}' required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15" placeholder='Telefone'> 
+      <input id='email' placeholder='E-mail' value='${item.email}'> 
+      <button id='btnEnviar' onclick='enviarUsuario(${id})'>enviar</button>
+      </div>`;
+    });
+    div.innerHTML = "";
+    div.innerHTML = lista.join("");
+    
+    // Desvincula o evento de clique após o primeiro clique
+    document.getElementById("btnEnviar").removeEventListener("click", alterar);
+  });
 }
+
 function enviarUsuario(idUsuario){
                   var nome = document.getElementById('nome').value // Atribui o valor do input pelo id em uma variavel " variavel contem o mesmo nome do input " 
                   var documento = document.getElementById('documento').value

@@ -32,20 +32,20 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
                 window.location.replace("../index.html")
             }
 
-            // const popup = document.getElementById('popup')
-            // popup.removeAttribute('class')
-            // popup.classList.toggle('popup-on')
-            // document.getElementById('msg').innerHTML = `${data}`
+            const popup = document.getElementById('popup')
+            popup.removeAttribute('class')
+            popup.classList.toggle('popup-on')
+            document.getElementById('msg').innerHTML = `${data}`
 
         }).catch(error => {
             console.log(error)
             // exibe mensagens em caso de erro ao enviar os dados 
 
         })
-    // setTimeout(function () {
-    //     popup.classList.toggle('popup-off') 
+    setTimeout(function () {
+        popup.classList.toggle('popup-off') 
 
-    // }, 2000)
+    }, 2000)
 
 })
 function removerMascaraCPF(cpf) {
