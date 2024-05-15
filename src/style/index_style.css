@@ -239,6 +239,9 @@ nav i{
     height: max-content;
     width: 100%;
 }
+#catalogo1{
+    background-color: tomato;
+}
 
 .btn-aluguel{
     transition: 0.5s;
@@ -273,7 +276,7 @@ nav i{
 .item:hover{
     box-shadow: 4px 4px var(--sombra-e-texto);
 }
-.catalogo img{
+.item img{
     margin-top: 10%;
     object-fit: contain;
     width: 55%;
@@ -290,7 +293,21 @@ nav i{
         width: 55%;
     }
 }
-
+.navegar_catalogo{
+    margin-bottom: 2%;
+    height: max-content;
+    text-align: center;
+    width: 100%;
+}
+.navegar_catalogo button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background:none;
+}
+.btn_catalgo_anterior i{
+    pointer-events: none;
+}
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */

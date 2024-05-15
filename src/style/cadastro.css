@@ -9,12 +9,10 @@
     --texto2:gray;
 }
 body {
-    
     align-items: center;
     justify-content: center;
     flex-direction: column;
     display: flex;
-    
     padding: 0%;
     margin: 0%;
 }

@@ -358,11 +358,7 @@ function deletar(){
 }
 function alterar(){
   var div= document.getElementById("lista")
-  var formData = new FormData()
-  formData.append('idUser', id)
-  formData.append('nvUser', nivel)
-
-  fetch("php/selecaoAlterar.php", {method: "POST", body: formData})
+  fetch("php/listaUsuarios.php", {method: "GET"})
   .then((response) => response.json())
   .then((data) => {
 
@@ -374,15 +370,16 @@ function alterar(){
       <input id="telefone" type="text" value='${item.telefone}' required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15" placeholder='Telefone'> 
       <input id='email' placeholder='E-mail' value='${item.email}'> 
       <button id='btnEnviar' onclick='enviarUsuario(${id})'>enviar</button>
-      </div>
-        
-        `;
-    })
-  div.innerHTML = lista.join("")
-   
-  })
+      </div>`;
+    });
+    div.innerHTML = "";
+    div.innerHTML = lista.join("");
     
+    // Desvincula o evento de clique após o primeiro clique
+    document.getElementById("btnEnviar").removeEventListener("click", alterar);
+  });
 }
+
 function enviarUsuario(idUsuario){
                   var nome = document.getElementById('nome').value // Atribui o valor do input pelo id em uma variavel " variavel contem o mesmo nome do input " 
                   var documento = document.getElementById('documento').value
