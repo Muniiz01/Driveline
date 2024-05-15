@@ -1,13 +1,9 @@
 <?php 
 require_once('conexaoDb.php');
 
-session_start();
-
 $conn = conexaoDb();
 
-// quando ele logar no site vai crrar uma chave sessao, na chave vai ter o nivle dele verigico se e 2, 3 adm ou funcionario 
-// 2 carro
-// 3 tudo 
+
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -17,6 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = $_POST['email'];
     $idUsuario = $_POST['idUsuario'];
     $nivel = $_POST['nivel'];
+
     if($nivel==2){
         $sql= "UPDATE `funcionarios` SET nome='$nome', documento='$documento', telefone='$telefone', email='$email' WHERE id_usuario='$idUsuario'";
         echo $sql."<br>";   
@@ -27,7 +24,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         
     }
     
-
     $conn->query($sql);
 
 }
