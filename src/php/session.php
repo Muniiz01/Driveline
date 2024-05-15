@@ -36,6 +36,9 @@ if(isset($idUser) && isset($nivel)){
     }
     echo json_encode($dadosUsaurio);
 }else{
-    echo json_encode($status);
+    $dadosUsaurio[] = array(
+        'erro' => $status
+    );
+    echo json_encode($dadosUsaurio);
 }
 ?>
