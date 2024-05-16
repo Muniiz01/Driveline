@@ -4,9 +4,9 @@ window.addEventListener("load", function () {
     .then((response) => response.json())
     .then((data) => {
       if (Array.isArray(data)) {
-        const nivel = data.map((item) => item.nivel);
-        const nome = data.map((item) => item.nome);
-        console.log(`Ola ${nome}, seu nivel e: ${nivel}`);
+        var nivel = data.map((item) => item.nivel);
+        var nome = data.map((item) => item.nome);
+        console.log(data);
 
         if (nivel != "3") {
           window.location.replace("../index.html");
@@ -30,9 +30,12 @@ function adicionarVeiculos() {
      <input id='quilometragem' placeholder='quilometragem'> 
      <input id='cambio' placeholder='cambio'> 
      <input id='passageiros' placeholder='qtd-passageiros'> 
-     <input id='ar-condicionado' placeholder='tem ar-condicionado?'> 
-     <input id='airbag' placeholder='tem airbag?'> 
-     <input id='abs' placeholder='tem abs?'> 
+     <input id='ar-condicionado' type='checkbox' value='Sim' name='ar-condicionado'>
+     <label for 'opcionais'>Ar-condicionado</label>
+     <input id='airbag' type='checkbox' value='Sim' name='airbag'>
+     <label for 'opcionais'>Airbag</label>
+     <input id='abs' type='checkbox' value='Sim' name='abs'>
+     <label for 'opcionais'>abs</label>     
      <input id='volume-carga' placeholder='volume de carga'> 
      <input id='imagens' type='file' multiple accept='image/jpeg, image/png'> 
      <textarea name='descricao' id='descricao' cols='30' rows='10' placeholder='descricao veiculo'></textarea>

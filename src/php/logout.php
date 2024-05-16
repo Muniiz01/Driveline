@@ -5,5 +5,5 @@ session_start();
 setcookie("dados", "", time() - 3600, "/");
 
 session_destroy();
-echo "teste";
+echo "opa saiu";
 ?>
