@@ -24,21 +24,19 @@ if(isset($idUser) && isset($nivel)){
     $stmt->bind_param("ss", $idUser, $nivel);
     $stmt->execute();
     $resut = $stmt->get_result();
-    $dadosUsaurio = array();
+    $dadosUsuario = array();
 
     while ($linha = $resut->fetch_assoc()){
-        $dadosUsaurio[] = array(
+        $dadosUsuario[] = array(
             //adciona os dados em um array
             'nome' => $linha['nome'],
             'email' => $linha['email'],
             'nivel' => $linha['idNivel_de_Acesso']
         );
     }
-    echo json_encode($dadosUsaurio);
+    echo json_encode($dadosUsuario);
 }else{
-    $dadosUsaurio[] = array(
-        'erro' => $status
-    );
-    echo json_encode($dadosUsaurio);
+        echo json_encode($status);
+    
 }
 ?>
