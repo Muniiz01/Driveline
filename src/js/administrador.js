@@ -30,12 +30,22 @@ function adicionarVeiculos() {
      <input id='quilometragem' placeholder='quilometragem'> 
      <input id='cambio' placeholder='cambio'> 
      <input id='passageiros' placeholder='qtd-passageiros'> 
+     
+     <div>
+     <label for='ar-condicionado'>Ar-condicionado</label>
      <input id='ar-condicionado' type='checkbox' value='Sim' name='ar-condicionado'>
-     <label for 'opcionais'>Ar-condicionado</label>
+     </div>
+
+     <div>
+     <label for='airbag'>Airbag</label>
      <input id='airbag' type='checkbox' value='Sim' name='airbag'>
-     <label for 'opcionais'>Airbag</label>
+     </div>
+     
+     <div>
+     <label for='abs'>abs</label>     
      <input id='abs' type='checkbox' value='Sim' name='abs'>
-     <label for 'opcionais'>abs</label>     
+     </div>
+     
      <input id='volume-carga' placeholder='volume de carga'> 
      <input id='imagens' type='file' multiple accept='image/jpeg, image/png'> 
      <textarea name='descricao' id='descricao' cols='30' rows='10' placeholder='descricao veiculo'></textarea>
