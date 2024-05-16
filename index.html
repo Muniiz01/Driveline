@@ -22,15 +22,15 @@
                 </button>
         </div>
         <div class="input-group grupo2">
-            <button class="btn-lg btn-padrao">Reservas</button>
+            <button class="btn-lg btn-padrao" id="btn_reservas">Reservas</button>
             <button type="button" id="alugue" class="btn-padrao btn-lg dropdown-toggle"
             data-bs-toggle="dropdown" aria-expanded="false">
             Perfil
         </button>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="src/login.html">Login    </a></li>
+            <li><a class="dropdown-item" href="src/login.html">Login</a></li>
             <li><a class="dropdown-item" href="src/cadastro.html">Cadastrar se</a></li>
-            <li><button class="dropdown-item" onclick="logout()">Sair     </button></li>
+            <li><button class="dropdown-item" onclick="logout()">Sair</button></li>
 
         </ul>
         </div>
@@ -66,12 +66,12 @@
     <!-- //////////////////////////////////////////////////////////////////////////// -->
     <!-- //////////////////////////////////////////////////////////////////////////// -->
     <!-- //////////////////////////////////////////////////////////////////////////// -->
-    <form action="Buscar.php" class="barra_pesquisa">
-        <div class="btn-group">
-            <input class="barra" type="text" placeholder="Buscar">
-            <button type="submit" class="btn btn-padrao">Buscar</button>
-        </div>
-    </form>
+    <section class="barra_pesquisa">
+            <div class="btn-group">
+                <input class="barra" type="text" placeholder="Buscar">
+                <button type="submit" class="btn btn-padrao">Buscar</button>
+            </div>
+    </section>
 
     <div class="catalogo" id="catalogo0">
     </div>
@@ -82,8 +82,8 @@
     <div class="catalogo" id="catalogo3">
     </div>
     <div class="navegar_catalogo">
-    <button class="btn_catalgo_anterior" id="btn_anterior" onclick="catalogo_anterior()"><i class="fa-solid fa-arrow-left" id="flecha_esquerda"></i></button>
-    <button class="btn_catalgo_proximo" id="btn_proximo" onclick="catalogo_proximo()"><i class="fa-solid fa-arrow-right" id="flecha_direita"></i></button>
+    <button class="btn_catalago_anterior" id="btn_anterior" onclick="catalogo_anterior()"><i class="fa-solid fa-arrow-left" id="flecha_esquerda"></i></button>
+    <button class="btn_catalago_proximo" id="btn_proximo" onclick="catalogo_proximo()"><i class="fa-solid fa-arrow-right" id="flecha_direita"></i></button>
     </div>
 
     <!-- footer -->

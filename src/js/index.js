@@ -54,6 +54,7 @@ function passa() {
 }
 
 ////////////////////////////////////////////////////////////////////
+
 var tema_site = 0
 var icone_lua = document.getElementById('icon_lua')
 var icone_sol = document.getElementById('icon_sol')
@@ -63,14 +64,14 @@ function tema(){
         icone_sol.style.display = "block"
         icone_lua.style.display = "none"
         root.style.setProperty('--fundo', 'rgb(41, 41, 41)');    
-        root.style.setProperty('--sombra-e-texto', 'white');    
+        root.style.setProperty('--texto', 'white');    
         root.style.setProperty('--principal', 'black');    
         root.style.setProperty("--barra-pesquisa", "black")
         root.style.setProperty("--texto2", "white")
     }else{//claro
         icone_sol.style.display = "none"
         icone_lua.style.display = "block"
-        root.style.setProperty('--sombra-e-texto', 'rgb(0, 0, 0)');    
+        root.style.setProperty('--texto', 'rgb(0, 0, 0)');    
         root.style.setProperty('--principal', 'white');  
         root.style.setProperty("--fundo", "rgb(216, 216, 216)")
         root.style.setProperty("--barra-pesquisa", "white")

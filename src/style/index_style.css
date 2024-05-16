@@ -4,7 +4,8 @@
 }
 :root{
     --fundo: rgb(238, 237, 237);
-    --sombra-e-texto: rgb(0, 0, 0);
+    --texto: rgb(0, 0, 0);
+    --sombra: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     --principal: white;
     --barra-pesquisa:white;
     --texto2:gray;
@@ -21,7 +22,6 @@ body {
 /*//navbar//////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 nav {
     transition: 0.5s;
-    z-index: 0;
     top: 0%;
     transform: translateY(0px);
     width: 100%;
@@ -48,7 +48,6 @@ nav {
 /* botões */
 nav .btn-padrao {
     outline: none;
-    opacity: 0.28;
     font-size: 100%;
     width: 5rem;
     height: 2rem;
@@ -56,18 +55,27 @@ nav .btn-padrao {
     border-radius: 2rem;
     transition: 0.5s;
 }
-.btn-padrao{
-    background-color: var(--principal);
-    color: var(--sombra-e-texto);
+nav #btn_reservas{
+    width: max-content;
+    padding-left: 13px;
 }
-nav .btn-padrao:hover {
-    opacity: 1;
-    box-shadow: 0px 4px var(--sombra-e-texto);
-}
-/* tema */
 nav i{
     margin: 0% 10px;
 }
+.btn-padrao{
+    background-color: var(--principal);
+    color: var(--texto);
+}
+.btn-padrao:hover, .barra:focus {
+    outline: none;
+    opacity: 1;
+    box-shadow: var(--sombra);
+}
+.barra:focus~.btn{
+    box-shadow: var(--sombra);
+}
+/* tema */
+
 
 #switch_tema{/*id do botao de tema*/
     width: 4rem;
@@ -75,8 +83,25 @@ nav i{
 #icon_sol{
     display: none;
 }
+nav .btn-padrao,.dropdown-menu,.dropdown-item{
+    opacity: 0.28;
+    transition: 0.5s;
+}
 
-@media(max-width <= 420px) {
+.dropdown-menu{
+    z-index: 0;
+    background-color: var(--principal);
+}
+.dropdown-menu:hover, .dropdown-item:hover{
+    opacity: 1 ;
+    box-shadow: var(--sombra);
+}
+.dropdown-item{
+    color: var(--texto);
+    background-color: var(--principal);
+}
+
+@media(max-width : 420px) {
     #navbar .btn-padrao {
         width: max-content;
     }
@@ -140,9 +165,6 @@ nav i{
     width: 45%;
     color: white;
 }
-.campo_texto2{
-  opacity: 0;
-}
 .campo_texto1,
 .campo_texto2,
 .icons{
@@ -205,16 +227,6 @@ nav i{
     transition: 0.5s;
 }
 
-.barra:focus {
-    box-shadow: 2px 3px var(--sombra-e-texto);
-    outline: none;
-}
-
-.barra:focus~.btn {
-    box-shadow: 2px 3px var(--sombra-e-texto);
-    outline: none;
-}
-
 .btn {
     border: none;
     border-radius: 0 2rem 2rem 0;
@@ -223,7 +235,7 @@ nav i{
 .btn:hover {
     border: none;
     transition: 0.5s;
-    box-shadow: 2px 3px var(--sombra-e-texto);
+    box-shadow: var(--sombra);
     background-color: rgb(226, 226, 226);
 }
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -231,9 +243,10 @@ nav i{
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 
 .catalogo{
+    overflow: hidden;
     justify-content: center;
     transition: 0.5s;
-    display: flex;
+    display: flex;  
     flex-wrap: wrap;
     flex-direction: row;
     height: max-content;
@@ -254,8 +267,7 @@ nav i{
     border-radius: 2rem;
 }
 .btn-aluguel:hover{
-    box-shadow: 2px 4px var(--sombra-e-texto);
-    width: 40%;
+    box-shadow: var(--sombra);
     background: linear-gradient(to right, rgb(78, 251, 9), rgb(0, 157, 31) );
 }
 .item{
@@ -274,7 +286,7 @@ nav i{
     text-align: left;
 }
 .item:hover{
-    box-shadow: 4px 4px var(--sombra-e-texto);
+    box-shadow: var(--sombra);
 }
 .item img{
     margin-top: 10%;
@@ -282,17 +294,7 @@ nav i{
     width: 55%;
     height: 40%;
 }
-@media(max-width:890px){
-    .catalogo .item{
-        width: 45%;
-    }
-}
-@media(max-width:670px){
-    .catalogo .item{
-        height: max-content;
-        width: 55%;
-    }
-}
+
 .navegar_catalogo{
     margin-bottom: 2%;
     height: max-content;
@@ -307,6 +309,19 @@ nav i{
 }
 .btn_catalgo_anterior i{
     pointer-events: none;
+}
+
+/*breakpoints*/
+@media(max-width:890px){
+    .catalogo .item{
+        width: 45%;
+    }
+}
+@media(max-width:670px){
+    .catalogo .item{
+        height: max-content;
+        width: 55%;
+    }
 }
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
