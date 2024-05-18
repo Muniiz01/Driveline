@@ -6,13 +6,11 @@ window.addEventListener("load", function () {
       if (Array.isArray(data)) {
         var nivel = data.map((item) => item.nivel);
         var nome = data.map((item) => item.nome);
-        console.log(data);
+        console.log(`Ola ${nome}, seu nivel e: ${nivel}`);
 
         if (nivel != "3") {
           window.location.replace("../index.html");
         }
-      } else {
-        window.location.replace("../index.html");
       }
     });
 });

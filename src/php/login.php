@@ -20,17 +20,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         while($linha = $resultado->fetch_assoc()){
             $senhaCripto = $linha['senha'];
             $idUser = $linha['id_usuario'];
+            $nome = $linha['nome'];
             $nivel = $linha['idNivel_de_Acesso'];
         }
         if(password_verify($senha, $senhaCripto)){
              //Criarao uma sesao aqui
            
-             $_SESSION['nivelAces'] = $nivel;
-             $_SESSION['idUser'] = $idUser;
+             /* $_SESSION['nivelAces'] = $nivel;
+             $_SESSION['idUser'] = $idUser; */
+
 
                 $dados = array(
                     'idUser' => $idUser,
-                    'nivelAces' => $nivel
+                    'nivelAces' => $nivel,
+                    'nome' =>  $nome
                 );
                 
                 $dados_serial = serialize($dados);
