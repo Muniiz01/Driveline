@@ -9,8 +9,8 @@ $conn = conexaoDb();
 if($_SERVER["REQUEST_METHOD"] == "GET"){ // verifica se o metodo requisitado pelo javascript foi  'GET'
     //dados requisitados pelo funcionario.js
 
-    
-    $query = "SELECT * FROM usuarios WHERE idNivel_de_Acesso = 1 "; // atribui a consulta sql na variavel $query
+    $id = $_GET["id"];
+    $query = "SELECT * FROM usuarios WHERE idNivel_de_Acesso = 1 AND id_usuario = $id"; // atribui a consulta sql na variavel $query
     
     $resultado = $conn->query($query); // executa a variavel $query e armazena o resultado na variavel $resultado
 

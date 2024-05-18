@@ -371,7 +371,7 @@ function deletar(){
 }
 function alterar(){
   var div= document.getElementById("lista")
-  fetch("php/listaUsuarios.php", {method: "GET"})
+  fetch("php/listaUsuariosAlterar.php"+"?id="+id, {method: "GET"})
   .then((response) => response.json())
   .then((data) => {
 
