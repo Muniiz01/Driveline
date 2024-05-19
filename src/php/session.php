@@ -27,7 +27,7 @@ if(isset($idUser) && isset($nivel)){
     $dadosUsuario = array();
 
     while ($linha = $resut->fetch_assoc()){
-        $dadosUsuario[] = array(
+        $dadosUsuario = array(
             //adciona os dados em um array
             'nome' => $linha['nome'],
             'email' => $linha['email'],
@@ -36,6 +36,7 @@ if(isset($idUser) && isset($nivel)){
     }
     echo json_encode($dadosUsuario);
 }else{
+    
         echo json_encode($status);
     
 }
