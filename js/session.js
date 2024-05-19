@@ -1,19 +1,20 @@
+window.addEventListener('load', function () {
+    fetch('src/php/session.php')
+        .then(response => response.json())
+        .then(data => {
+            
 
-window.addEventListener("load", function () {
-  fetch("src/php/session.php")
-    .then((response) => response.json())
-    .then((data) => {
-      if (Array.isArray(data)) {
-        var nivel = data.map((item) => item.nivel);
-        var nome = data.map((item) => item.nome);
+            var nivel = data.map((item) => item.nivel);
+            var nome = data.map((item) => item.email);
+            
+            console.log(nome);
+            
 
-        console.log(`Ola ${nome}, seu nivel e: ${nivel}`);
-      }else{
-        console.log(data)
-      }
-      
-    });
-});
+        }).catch(error => {
+            console.log(error)
+        })
+})
+
 function logout(){
 
 fetch ('src/php/logout.php',{
