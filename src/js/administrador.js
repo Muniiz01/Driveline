@@ -6,7 +6,7 @@ window.addEventListener("load", function () {
       if (Array.isArray(data)) {
         var nivel = data.map((item) => item.nivel);
         var nome = data.map((item) => item.nome);
-        console.log(data);
+        console.log(`Ola ${nome}, seu nivel e: ${nivel}`);
 
         if (nivel != "3") {
           window.location.replace("../index.html");
@@ -154,7 +154,7 @@ function exibirUsuarios() {
 
       const lista = data.map(
         (item) => `
-            <tr class='tabela_usuario tabelaUsuarioR' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
+            <tr class='tabela_usuario' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
                 <td class='item_usuario'>${item.idUsuario}</td>
                 <td class='item_usuario'>${item.nome}</td>
                 <td class='item_usuario'>${item.email}</td>
@@ -175,14 +175,14 @@ function exibirUsuarios() {
                     </tr>
                     <div action="Buscar.php" class="barra_pesquisa">
             <input id="pesquisa" class="barra" type="text" placeholder="Buscar">
-            <button onclick="barraPesquisa()" class="btn_barra">Buscar</button>
+            <button onclick="barraPesquisa('u')" class="btn_barra">Buscar</button>
     </div>
                     <div class='tabela_usuario_btn'> 
                     <button onclick='alterar()'>Alterar</button>
                     <button onclick='deletar()'>Excluir</button>
                     </div>
                 </thead>
-                <tbody>
+                <tbody id='listaDinamica'>
                     ${lista.join("")}
                 </tbody>
             </table>
@@ -194,21 +194,26 @@ function exibirUsuarios() {
     });
 }
 
-function barraPesquisa() {
+function barraPesquisa(tipo) {
   var query = document.getElementById('pesquisa').value
 
   var formData = new FormData();
   formData.append("query", query);
-
-  var dadosDiv = document.getElementById("lista");
+  formData.append("tipo", tipo);
   fetch("php/pesquisa.php", {
     method: "POST",
     body: formData,
   }).then(response => response.json())
     .then(data => {
-      const dadosDiv = document.getElementById('lista')
+      const dadosDiv = document.getElementById('listaDinamica')
       const lista = data.map(item => {
+        var msg = item.msg
+        if(msg == "Nenhum registro encontrado"){
+          confirm('Nenhum registro encontrado')
+          exibirFuncionarios()
+        }else{
         return `
+        
         <tr class='tabela_usuario tabelaUsuarioR' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
         <td class='item_usuario'>${item.idUsuario}</td>
         <td class='item_usuario'>${item.nome}</td>
@@ -216,11 +221,12 @@ function barraPesquisa() {
         <td class='item_usuario'>${item.telefone}</td>
         <td class='item_usuario'>${item.documento}</td>
     </tr>
-    `;
+    `}
       });
 
 
       dadosDiv.innerHTML = lista.join('');
+      
 
     }).catch(error => {
 
@@ -268,15 +274,15 @@ function exibirFuncionarios() {
             </tr>
         </thead>
         <div action="Buscar.php" class="barra_pesquisa">
-            <input class="barra" type="text" placeholder="Buscar">
-            <button type="submit" class="btn_barra">Buscar</button>
+            <input class="barra" id="pesquisa" type="text" placeholder="Buscar">
+            <button onclick="barraPesquisa('f')" class="btn_barra">Buscar</button>
     </div>
         <div class='tabela_usuario_btn'> 
                  <button onclick='alterar()'>Alterar</button>
                  <button onclick='deletar()'>Excluir</button>
             </div>
 
-        <tbody>
+        <tbody id='listaDinamica'>
             ${lista.join("")}
         </tbody>
     </table>

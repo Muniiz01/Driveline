@@ -1,32 +1,17 @@
-/* window.addEventListener('load', function () {
-/*   fetch('src/php/session.php')
-    .then(response => response.json())
-    .then(data) => {
-      if (Array.isArray(data)) {
-        var nivel = data.map((item) => item.nivel);
-        var nome = data.map((item) => item.nome);
-        
-        console.log(data);
-
-      }
-
-
-    }).catch(error => {
-      console.log(error)
-    })
-}) */
 
 window.addEventListener("load", function () {
   fetch("src/php/session.php")
     .then((response) => response.json())
     .then((data) => {
       if (Array.isArray(data)) {
-        var nivel = data.map((item) => item.erro);
+        var nivel = data.map((item) => item.nivel);
         var nome = data.map((item) => item.nome);
-        console.log(nome, nivel);
 
-        
-      } 
+        console.log(`Ola ${nome}, seu nivel e: ${nivel}`);
+      }else{
+        console.log(data)
+      }
+      
     });
 });
 

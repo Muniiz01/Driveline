@@ -21,16 +21,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $senhaCripto = $linha['senha'];
             $idUser = $linha['id_usuario'];
             $nivel = $linha['idNivel_de_Acesso'];
+            $nome = $linha['nome'];
+            $email = $linha['email'];
         }
         if(password_verify($senha, $senhaCripto)){
              //Criarao uma sesao aqui
            
              $_SESSION['nivelAces'] = $nivel;
              $_SESSION['idUser'] = $idUser;
+             $_SESSION['nome'] = $nome;
+             $_SESSION['email'] = $email;
 
                 $dados = array(
                     'idUser' => $idUser,
-                    'nivelAces' => $nivel
+                    'nivelAces' => $nivel,
+                    'nome' => $nome,
+                    'email' => $email
+
                 );
                 
                 $dados_serial = serialize($dados);
