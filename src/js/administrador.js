@@ -149,10 +149,10 @@ function exibirUsuarios() {
   fetch("php/listaUsuarios.php", { method: "GET" })
     .then((response) => response.json())
     .then((data) => {
-      
+
       const lista = data.map(
         (item) => `
-            <tr class='tabela_usuario' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
+            <tr class='tabela_usuario tabelaUsuarioR' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
                 <td class='item_usuario'>${item.idUsuario}</td>
                 <td class='item_usuario'>${item.nome}</td>
                 <td class='item_usuario'>${item.email}</td>
@@ -172,8 +172,8 @@ function exibirUsuarios() {
                         <th>Cpf</th>
                     </tr>
                     <div action="Buscar.php" class="barra_pesquisa">
-            <input class="barra" type="text" placeholder="Buscar">
-            <button type="submit" class="btn_barra">Buscar</button>
+            <input id="pesquisa" class="barra" type="text" placeholder="Buscar">
+            <button onclick="barraPesquisa()" class="btn_barra">Buscar</button>
     </div>
                     <div class='tabela_usuario_btn'> 
                     <button onclick='alterar()'>Alterar</button>
@@ -192,6 +192,40 @@ function exibirUsuarios() {
     });
 }
 
+function barraPesquisa() {
+  var query = document.getElementById('pesquisa').value
+
+  var formData = new FormData();
+  formData.append("query", query);
+
+  var dadosDiv = document.getElementById("lista");
+  fetch("php/pesquisa.php", {
+    method: "POST",
+    body: formData,
+  }).then(response => response.json())
+    .then(data => {
+      const dadosDiv = document.getElementById('lista')
+      const lista = data.map(item => {
+        return `
+        <tr class='tabela_usuario tabelaUsuarioR' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
+        <td class='item_usuario'>${item.idUsuario}</td>
+        <td class='item_usuario'>${item.nome}</td>
+        <td class='item_usuario'>${item.email}</td>
+        <td class='item_usuario'>${item.telefone}</td>
+        <td class='item_usuario'>${item.documento}</td>
+    </tr>
+    `;
+      });
+
+
+      dadosDiv.innerHTML = lista.join('');
+
+    }).catch(error => {
+
+     
+    });
+}
+
 
 
 
@@ -204,7 +238,7 @@ function exibirFuncionarios() {
   fetch("php/listaFuncionarios.php", { method: "GET" })
     .then((response) => response.json())
     .then((data) => {
-      
+
       const lista = data.map((item) => {
         return `
         
@@ -220,7 +254,7 @@ function exibirFuncionarios() {
     `;
       });
 
-    dadosDiv.innerHTML = `
+      dadosDiv.innerHTML = `
     <table class='tabela_funcionario'>
         <thead>
             <tr>
@@ -258,28 +292,28 @@ var id
 var selectedDiv = null;
 
 function selecionaTabela(idUser, nivelAcess) {
-      var div = document.getElementById(idUser);
-      
-      
-      if (div.classList.contains('tabelaSelect')) {
-          div.classList.remove('tabelaSelect');
-          selectedDiv = null;
-          id = null
-          nivel = null
-      } else {
-          
-          if (selectedDiv !== null) {
-              document.getElementById(selectedDiv).classList.remove('tabelaSelect');
-              
-          }
-          
-        
-          div.classList.add('tabelaSelect');
-          id = idUser
-          nivel = nivelAcess
-          selectedDiv = idUser;
+  var div = document.getElementById(idUser);
 
-      }
+
+  if (div.classList.contains('tabelaSelect')) {
+    div.classList.remove('tabelaSelect');
+    selectedDiv = null;
+    id = null
+    nivel = null
+  } else {
+
+    if (selectedDiv !== null) {
+      document.getElementById(selectedDiv).classList.remove('tabelaSelect');
+
+    }
+
+
+    div.classList.add('tabelaSelect');
+    id = idUser
+    nivel = nivelAcess
+    selectedDiv = idUser;
+
+  }
 }
 
 
@@ -290,7 +324,7 @@ function exibirVeiculos() {
     .then((response) => response.json())
     .then((data) => {
       // Atribui o array json no array dataF
-      
+
       const lista = data.map((item) => {
         // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.modelo}" item e o objeto array e modelo e a cahve array, todo o bloco e atribuido a const lista
         return `<section class='item_lista_veiculo'>
@@ -312,8 +346,8 @@ function exibirVeiculos() {
       document.getElementById("lista").innerHTML = "Nenhum registro encontrado";
     });
 }
-function alterarCarro(idVeiculo){
-  var div= document.getElementById("lista")
+function alterarCarro(idVeiculo) {
+  var div = document.getElementById("lista")
   div.innerHTML = `<div id='form-addCars'> 
   <input id='categoria' placeholder='categoria'> 
   <input id='modelo' placeholder='modelo'> 
@@ -333,7 +367,7 @@ function alterarCarro(idVeiculo){
 
 }
 //deleter//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function deletar(){
+function deletar() {
   idUser = id
   nivelAcess = nivel
   var formData = new FormData();
@@ -350,12 +384,12 @@ function deletar(){
       .then((response) => response.text())
       .then((data) => {
         console.log("usuario deletado", data);
-        if(nivel == 2){
+        if (nivel == 2) {
           exibirFuncionarios()
-        }else{
+        } else {
           exibirUsuarios()
         }
-       
+
       })
       .catch((error) => {
         console.log("error", error);
@@ -365,16 +399,16 @@ function deletar(){
     console.log('Coisas não foram salvas no banco de dados');
 
   }
-  
-}
-function alterar(){
-  var div= document.getElementById("lista")
-  fetch("php/listaUsuariosAlterar.php"+"?id="+id, {method: "GET"})
-  .then((response) => response.json())
-  .then((data) => {
 
-    const lista = data.map((item) =>{
-      return `
+}
+function alterar() {
+  var div = document.getElementById("lista")
+  fetch("php/listaUsuariosAlterar.php" + "?id=" + id, { method: "GET" })
+    .then((response) => response.json())
+    .then((data) => {
+
+      const lista = data.map((item) => {
+        return `
       <div class='form_funcionarios' id='form-addFunc'> 
       <input id='nome' placeholder='Nome Completo' value='${item.nome}'> 
       <input type="text" id="documento" value='${item.documento}' onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required placeholder='Cpf'>
@@ -382,40 +416,40 @@ function alterar(){
       <input id='email' placeholder='E-mail' value='${item.email}'> 
       <button id='btnEnviar' onclick='enviarUsuario(${id})'>enviar</button>
       </div>`;
+      });
+      div.innerHTML = "";
+      div.innerHTML = lista.join("");
+
+      // Desvincula o evento de clique após o primeiro clique
+      document.getElementById("btnEnviar").removeEventListener("click", alterar);
     });
-    div.innerHTML = "";
-    div.innerHTML = lista.join("");
-    
-    // Desvincula o evento de clique após o primeiro clique
-    document.getElementById("btnEnviar").removeEventListener("click", alterar);
-  });
 }
 
-function enviarUsuario(idUsuario){
-                  var nome = document.getElementById('nome').value // Atribui o valor do input pelo id em uma variavel " variavel contem o mesmo nome do input " 
-                  var documento = document.getElementById('documento').value
-                  var telefone = document.getElementById('telefone').value
-                  var email = document.getElementById('email').value
-                  
-                  var formData = new FormData()  // FormData e um metodo de armazenamemto para envio de arquivos para o lado do servidor 
-                  formData.append('nome', nome)  // armazena as variaveis na funcao FormData 
-                  formData.append('documento', documento)
-                  formData.append('telefone', telefone)
-                  formData.append('email', email)
-                  formData.append('idUsuario', idUsuario)
-                  formData.append('nivel', nivel)
-                  
-            
-                fetch('php/alterarUsuario.php', {
-                    method:'POST',
-                    body: formData
-                }).then(response => response.text()).then(data => {
-                    console.log('usuario alterado', idUsuario, data)
-            
-                }).catch(error => {
-                    console.log('error', error)
-            
-                })
+function enviarUsuario(idUsuario) {
+  var nome = document.getElementById('nome').value // Atribui o valor do input pelo id em uma variavel " variavel contem o mesmo nome do input " 
+  var documento = document.getElementById('documento').value
+  var telefone = document.getElementById('telefone').value
+  var email = document.getElementById('email').value
+
+  var formData = new FormData()  // FormData e um metodo de armazenamemto para envio de arquivos para o lado do servidor 
+  formData.append('nome', nome)  // armazena as variaveis na funcao FormData 
+  formData.append('documento', documento)
+  formData.append('telefone', telefone)
+  formData.append('email', email)
+  formData.append('idUsuario', idUsuario)
+  formData.append('nivel', nivel)
+
+
+  fetch('php/alterarUsuario.php', {
+    method: 'POST',
+    body: formData
+  }).then(response => response.text()).then(data => {
+    console.log('usuario alterado', idUsuario, data)
+
+  }).catch(error => {
+    console.log('error', error)
+
+  })
 }
 //mascaras/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -424,7 +458,7 @@ function fMasc(objeto, mascara) {
   masc = mascara;
   setTimeout("fMascEx()", 1);
 }
-function retornaHome(){
+function retornaHome() {
   window.location.replace("../index.html")
 }
 function fMascEx() {

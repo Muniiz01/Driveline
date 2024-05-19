@@ -5,7 +5,7 @@ require_once("conexaoDb.php");
 
 $conn = conexaoDb();
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pelo javascript foi  'GET' 
+if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pelo javascript foi  'POST' 
     //dados requisitados pelo funcionario.js
 
     
