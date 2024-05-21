@@ -1,37 +1,40 @@
 <?php
 
+// conexao com o banco de dados
 require_once("conexaoDb.php");
 
 $conn = conexaoDb();
 
-if($_SERVER["REQUEST_METHOD"] == "GET"){
+
+if($_SERVER["REQUEST_METHOD"] == "GET"){ // verifica se o metodo requisitado pelo javascript foi  'GET'
+    //dados requisitados pelo funcionario.js
 
     $id = $_GET["id"];
     $query = "SELECT * FROM funcionarios WHERE idNivel_de_Acesso = 2 AND id_usuario = $id"; // atribui a consulta sql na variavel $query
     
-    $resultado = $conn->query($sql);
+    $resultado = $conn->query($query); // executa a variavel $query e armazena o resultado na variavel $resultado
 
-    $dadosFuncionarios = array();
+    $dadosUsuarios = array(); // define a variavel $dadosUsuarios em um array
 
-    if($resultado->num_rows > 0){
-        while($linha = $resultado->fetch_assoc()){
-            $dadosFuncionarios[] = array(
-            'idUsuario' => $linha['id_usuario'],
-            'nome' => $linha['nome'],
-            'telefone' => $linha["telefone"],
-            'email' => $linha["email"],
-            'documento' => $linha["documento"],
-            'nivelAcess' => $linha["idNivel_de_Acesso"]
+    if ($resultado->num_rows > 0){ // verifica se o banco retornou algun registro, se sim..
+        while($valores = $resultado->fetch_assoc()){ // armazena os registros da consulta sql na variavel $valores 
+            $dadosUsuarios[] = array(  
+                // armazena os registros da consulta sql no array $dadosUsuarios
+                'idUsuario' => $valores["id_usuario"],
+                'nome' => $valores["nome"],
+                'documento' => $valores["documento"],
+                'telefone' => $valores["telefone"],
+                'email' => $valores["email"],
+                'nivelAcess' => $valores["idNivel_de_Acesso"]
             );
         }
 
-        echo json_encode($dadosFuncionarios);
+        echo json_encode($dadosUsuarios); // codifica o array $dadosUsuarios em formato json
+
     }else{
-        echo "Nenhum registro encontrado";
+        echo "Nenhum registro encontrado"; // em caso de nao ouver nenhum registro na consulta sql exibi a mensagem
     }
+    $conn->close(); // fecha a conexao com o banco de dados
 
-    $conn->close();
-
-    
 }
 ?>
