@@ -325,7 +325,7 @@ function alterarFuncionario() {
             <input type="text" id="documento" value='${item.documento}' onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required placeholder='Cpf'>
             <input id="telefone" type="text" value='${item.telefone}' required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15" placeholder='Telefone'> 
             <input id='email' placeholder='E-mail' value='${item.email}'> 
-            <button id='btnEnviar' onclick='enviarUsuario(${id})'>enviar</button>
+            <button id='btnEnviar' onclick='enviarFuncionario(${id})'>enviar</button>
             </div>`;
       });
       div.innerHTML = "";
@@ -363,6 +363,34 @@ function selecionaTabela(idUser, nivelAcess) {
     selectedDiv = idUser;
 
   }
+}
+
+function enviarFuncionario(idUsuario) {
+  
+  var nome = document.getElementById('nome').value // Atribui o valor do input pelo id em uma variavel " variavel contem o mesmo nome do input " 
+  var documento = document.getElementById('documento').value
+  var telefone = document.getElementById('telefone').value
+  var email = document.getElementById('email').value
+
+  var formData = new FormData()  // FormData e um metodo de armazenamemto para envio de arquivos para o lado do servidor 
+  formData.append('nome', nome)  // armazena as variaveis na funcao FormData 
+  formData.append('documento', documento)
+  formData.append('telefone', telefone)
+  formData.append('email', email)
+  formData.append('idUsuario', idUsuario)
+  formData.append('nivel', nivel)
+
+
+  fetch('php/alterarFuncionario.php', {
+    method: 'POST',
+    body: formData
+  }).then(response => response.text()).then(data => {
+    console.log('Funcionário alterado', idUsuario, data)
+
+  }).catch(error => {
+    console.log('error', error)
+
+  })
 }
 
 

@@ -15,10 +15,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $nivel = $_POST['nivel'];
 
     
-        $sql= "UPDATE `usuarios` SET nome='$nome', documento='$documento', telefone='$telefone', email='$email' WHERE id_usuario='$idUsuario'";
+        $sql= "UPDATE `funcionarios` SET nome='$nome', documento='$documento', telefone='$telefone', email='$email' WHERE id_usuario='$idUsuario'";
         echo $sql."<br>";   
-        
     
+   
     
     $conn->query($sql);
 
