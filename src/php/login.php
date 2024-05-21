@@ -18,10 +18,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if($resultado->num_rows > 0 ){
         while($linha = $resultado->fetch_assoc()){
+            // $nome = $linha['nome'];
             $senhaCripto = $linha['senha'];
             $idUser = $linha['id_usuario'];
             $nivel = $linha['idNivel_de_Acesso'];
-            $nome = $linha['nome'];
             $email = $linha['email'];
         }
         if(password_verify($senha, $senhaCripto)){
@@ -29,13 +29,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
            
              $_SESSION['nivelAces'] = $nivel;
              $_SESSION['idUser'] = $idUser;
-             $_SESSION['nome'] = $nome;
+            //  $_SESSION['nome'] = $nome;
              $_SESSION['email'] = $email;
 
                 $dados = array(
                     'idUser' => $idUser,
                     'nivelAces' => $nivel,
-                    'nome' => $nome,
+                    // 'nome' => $nome,
                     'email' => $email
 
                 );

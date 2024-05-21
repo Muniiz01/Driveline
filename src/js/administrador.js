@@ -187,13 +187,36 @@ function exibirUsuarios() {
                 </tbody>
             </table>
         `;
-    })
-    .catch((error) => {
-      console.error("Erro ao buscar os dados dos usuários:", error);
-      dadosDiv.innerHTML = "Nenhum registro encontrado";
-    });
-}
-
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar os dados dos usuários:", error);
+        dadosDiv.innerHTML = "Nenhum registro encontrado";
+      });
+    }
+    
+    function alterar() {
+      var div = document.getElementById("lista")
+      fetch("php/listaUsuariosAlterar.php" + "?id=" + id, { method: "GET" })
+        .then((response) => response.json())
+        .then((data) => {
+    
+          const lista = data.map((item) => {
+            return `
+          <div class='form_funcionarios' id='form-addFunc'> 
+          <input id='nome' placeholder='Nome Completo' value='${item.nome}'> 
+          <input type="text" id="documento" value='${item.documento}' onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required placeholder='Cpf'>
+          <input id="telefone" type="text" value='${item.telefone}' required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15" placeholder='Telefone'> 
+          <input id='email' placeholder='E-mail' value='${item.email}'> 
+          <button id='btnEnviar' onclick='enviarUsuario(${id})'>enviar</button>
+          </div>`;
+          });
+          div.innerHTML = "";
+          div.innerHTML = lista.join("");
+    
+          // Desvincula o evento de clique após o primeiro clique
+          document.getElementById("btnEnviar").removeEventListener("click", alterar);
+        });
+    }
 function barraPesquisa(tipo) {
   var query = document.getElementById('pesquisa').value
 
@@ -223,77 +246,95 @@ function barraPesquisa(tipo) {
     </tr>
     `}
       });
-
-
+      
+      
       dadosDiv.innerHTML = lista.join('');
       
-
+      
     }).catch(error => {
-
-     
+      
+      
     });
+  }
+  
+  
+  
+  
+  
+  //--------------------------------------------------------------------------------------------
+  function exibirFuncionarios() {
+    selectedDiv = null
+    const dadosDiv = document.getElementById("lista");
+  
+    fetch("php/listaFuncionarios.php", { method: "GET" })
+      .then((response) => response.json())
+      .then((data) => {
+  
+        const lista = data.map(
+          (item) => `
+              <tr class='tabela_usuario' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
+                  <td class='item_usuario'>${item.idUsuario}</td>
+                  <td class='item_usuario'>${item.nome}</td>
+                  <td class='item_usuario'>${item.email}</td>
+                  <td class='item_usuario'>${item.telefone}</td>
+                  <td class='item_usuario'>${item.documento}</td>
+              </tr>
+          `
+        );
+        dadosDiv.innerHTML = `
+              <table class='tabela_usuario'>
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>Nome</th>
+                          <th>E-mail</th>
+                          <th>Telefone</th>
+                          <th>Cpf</th>
+                      </tr>
+                      <div action="Buscar.php" class="barra_pesquisa">
+              <input id="pesquisa" class="barra" type="text" placeholder="Buscar">
+              <button onclick="barraPesquisa('u')" class="btn_barra">Buscar</button>
+      </div>
+                      <div class='tabela_usuario_btn'> 
+                      <button onclick='alterarFuncionario()'>Alterar</button>
+                      <button onclick='deletar()'>Excluir</button>
+                      </div>
+                  </thead>
+                  <tbody id='listaDinamica'>
+                      ${lista.join("")}
+                  </tbody>
+              </table>
+          `;
+        })
+        .catch((error) => {
+          console.error("Erro ao buscar os dados dos usuários:", error);
+          dadosDiv.innerHTML = "Nenhum registro encontrado";
+        });
 }
-
-
-
-
-
-//--------------------------------------------------------------------------------------------
-function exibirFuncionarios() {
-  selectedDiv = null
-  const dadosDiv = document.getElementById("lista");
-
-  fetch("php/listaFuncionarios.php", { method: "GET" })
-    .then((response) => response.json())
+function alterarFuncionario() {
+  var div = document.getElementById("lista")
+  fetch("php/listaAlterarFuncionario.php" + "?id=" + id, { method: "GET" })
+    
+  .then((response) => response.json())
     .then((data) => {
 
       const lista = data.map((item) => {
         return `
-        
-
-        <tr class='tabela_funcionario' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario}, ${item.nivelAcess})'>
-        <td class='item_funcionario'>${item.idUsuario}</td>
-        <td class='item_funcionario'>${item.nome}</td>
-        <td class='item_funcionario'>${item.email}</td>
-        <td class='item_funcionario'>${item.telefone}</td>
-        <td class='item_funcionario'>${item.documento}</td>
-        
-        </tr>
-    `;
+            <div class='form_funcionarios' id='form-addFunc'> 
+            <input id='nome' placeholder='Nome Completo' value='${item.nome}'> 
+            <input type="text" id="documento" value='${item.documento}' onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required placeholder='Cpf'>
+            <input id="telefone" type="text" value='${item.telefone}' required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15" placeholder='Telefone'> 
+            <input id='email' placeholder='E-mail' value='${item.email}'> 
+            <button id='btnEnviar' onclick='enviarUsuario(${id})'>enviar</button>
+            </div>`;
       });
+      div.innerHTML = "";
+      div.innerHTML = lista.join("");
 
-      dadosDiv.innerHTML = `
-    <table class='tabela_funcionario'>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>E-mail</th>
-                <th>Telefone</th>
-                <th>Cpf</th>   
-            </tr>
-        </thead>
-        <div action="Buscar.php" class="barra_pesquisa">
-            <input class="barra" id="pesquisa" type="text" placeholder="Buscar">
-            <button onclick="barraPesquisa('f')" class="btn_barra">Buscar</button>
-    </div>
-        <div class='tabela_usuario_btn'> 
-                 <button onclick='alterar()'>Alterar</button>
-                 <button onclick='deletar()'>Excluir</button>
-            </div>
-
-        <tbody id='listaDinamica'>
-            ${lista.join("")}
-        </tbody>
-    </table>
-`;
-    })
-    .catch((error) => {
-      console.error("Erro ao buscar os dados dos veículos:", error);
-      document.getElementById("lista").innerHTML = "Nenhum registro encontrado";
+      // Desvincula o evento de clique após o primeiro clique
+      document.getElementById("btnEnviar").removeEventListener("click", alterarFuncionario);
     });
 }
-
 ////////////Seleciona tabela para alteracoes ou deletar
 var nivel
 var id
@@ -371,9 +412,9 @@ function alterarCarro(idVeiculo) {
    <input id='imagens' type='file' multiple accept='image/jpeg, image/png'> 
    <textarea name='descricao' id='descricao' cols='30' rows='10' placeholder='descricao veiculo'></textarea>
    <button id='btnEnviar' onclick='enviarFo(${idVeiculo})'>enviar</button>
-    </div>`
-
-}
+   </div>`
+  }
+   
 //deleter//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function deletar() {
   idUser = id
@@ -408,29 +449,6 @@ function deletar() {
 
   }
 
-}
-function alterar() {
-  var div = document.getElementById("lista")
-  fetch("php/listaUsuariosAlterar.php" + "?id=" + id, { method: "GET" })
-    .then((response) => response.json())
-    .then((data) => {
-
-      const lista = data.map((item) => {
-        return `
-      <div class='form_funcionarios' id='form-addFunc'> 
-      <input id='nome' placeholder='Nome Completo' value='${item.nome}'> 
-      <input type="text" id="documento" value='${item.documento}' onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required placeholder='Cpf'>
-      <input id="telefone" type="text" value='${item.telefone}' required autocomplete="tel" onkeydown="fMasc(this, mTel)" maxlength="15" placeholder='Telefone'> 
-      <input id='email' placeholder='E-mail' value='${item.email}'> 
-      <button id='btnEnviar' onclick='enviarUsuario(${id})'>enviar</button>
-      </div>`;
-      });
-      div.innerHTML = "";
-      div.innerHTML = lista.join("");
-
-      // Desvincula o evento de clique após o primeiro clique
-      document.getElementById("btnEnviar").removeEventListener("click", alterar);
-    });
 }
 
 function enviarUsuario(idUsuario) {

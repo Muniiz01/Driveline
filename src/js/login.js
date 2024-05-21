@@ -22,7 +22,8 @@ document.getElementById("formLogin").addEventListener("submit", function (event)
             window.location.replace("../src/funcionarios.html")
            }else if(data == 3){
             window.location.replace("../src/adm.html")
-           }
+            }
+           
             // Exibi mensagens caso o servidor receba os dados
         }).catch(error => {
             console.log('erro:', error)
