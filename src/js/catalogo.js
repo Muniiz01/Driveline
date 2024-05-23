@@ -40,6 +40,7 @@ function catalogo_index() {
                     <div class='quilometragem'>quilometragem: ${item.quilometragem}</div>
                     <div class='airbag'>airbag:               ${item.airbag}       </div>
                     <div class='cambio'>cambio:               ${item.cambio}       </div>
+                    <div class='preco_veiculo'>Preco:         ${item.preco_veiculo}</div>
                 </div>
         
                     <a href='src/login.html'><button class ='btn-aluguel'><i class='fa-solid fa-car'></i></button></a>

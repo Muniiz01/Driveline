@@ -31,8 +31,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pe
             'airbag' => $valores["airbag"], 
             'abs' => $valores["abs"], 
             'carga' => $valores["volume_carga"], 
+            'preco_veiculo' => $valores["preco_veiculo"], 
             'descricao' => $valores["descricao"],
             'caminho_imagem' => $valores["caminho_imagem"]
+
         );
 
         }

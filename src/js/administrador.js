@@ -47,6 +47,7 @@ function adicionarVeiculos() {
      </div>
      
      <input id='volume-carga' placeholder='volume de carga'> 
+     <input id='preco_veiculo' placeholder='Preço'> 
      <input id='imagens' type='file' multiple accept='image/jpeg, image/png'> 
      <textarea name='descricao' id='descricao' cols='30' rows='10' placeholder='descricao veiculo'></textarea>
      <button id='btnEnviar' onclick='enviarFormCar()'>enviar</button>
@@ -76,6 +77,7 @@ function enviarFormCar() {
   var airbag = document.getElementById("airbag").value;
   var abs = document.getElementById("abs").value;
   var volumeCarga = document.getElementById("volume-carga").value;
+  var preco_veiculo = document.getElementById("preco_veiculo").value;
   var descricao = document.getElementById("descricao").value;
   var input = document.getElementById("imagens"); //  pega imagens atribuida no input do tipo file
 
@@ -93,6 +95,7 @@ function enviarFormCar() {
   formData.append("airbag", airbag);
   formData.append("abs", abs);
   formData.append("volumeCarga", volumeCarga);
+  formData.append("preco_veiculo", preco_veiculo);
   formData.append("descricao", descricao);
 
   for (var i = 0; i < imagens.length; i++) {
@@ -437,6 +440,7 @@ function alterarCarro(idVeiculo) {
    <input id='airbag' placeholder='tem airbag?'> 
    <input id='abs' placeholder='tem abs?'> 
    <input id='volume-carga' placeholder='volume de carga'> 
+   <input id='preco_veiculos' placeholder='Preço'> 
    <input id='imagens' type='file' multiple accept='image/jpeg, image/png'> 
    <textarea name='descricao' id='descricao' cols='30' rows='10' placeholder='descricao veiculo'></textarea>
    <button id='btnEnviar' onclick='enviarFo(${idVeiculo})'>enviar</button>

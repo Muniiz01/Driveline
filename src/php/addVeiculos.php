@@ -20,13 +20,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pe
     $airbag = $_POST['airbag'];
     $abs = $_POST['abs'];
     $volume_carga = $_POST['volumeCarga'];
+    $preco_veiculo = $_POST['preco_veiculo'];
     $descricao = $_POST['descricao'];
 
      
 
     // atribui a consulta sql na variavel $sql
-    $sql = "INSERT INTO veiculos (categoria, modelo, marca, cor, quilometragem, cambio, passageiros, ar_condicionado, airbag, abs, volume_carga, descricao) VALUE 
-    ( '$categoria', '$modelo', '$marca','$cor', '$quilometragem', '$cambio', '$passageiros', '$ar_condicionado', '$airbag', '$abs', '$volume_carga', '$descricao')"; 
+    $sql = "INSERT INTO veiculos (categoria, modelo, marca, cor, quilometragem, cambio, passageiros, ar_condicionado, airbag, abs, volume_carga, preco_veiculo, descricao) VALUE 
+    ( '$categoria', '$modelo', '$marca','$cor', '$quilometragem', '$cambio', '$passageiros', '$ar_condicionado', '$airbag', '$abs', '$volume_carga','$preco_veiculo', '$descricao')"; 
 
     $verifica_car = "SELECT id_veiculos FROM veiculos WHERE modelo = '$modelo' ";
     $resultado = $conn->query($verifica_car);
