@@ -157,39 +157,16 @@ function exibirUsuarios() {
 
       const lista = data.map(
         (item) => `
-            <tr class='tabela_usuario' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
-                <td class='item_usuario'>${item.idUsuario}</td>
-                <td class='item_usuario'>${item.nome}</td>
-                <td class='item_usuario'>${item.email}</td>
-                <td class='item_usuario'>${item.telefone}</td>
-                <td class='item_usuario'>${item.documento}</td>
-            </tr>
+        <tr id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
+        <th scope="row">${item.idUsuario}</th>
+  <td class='item_usuario'>${item.nome}</td>
+  <td class='item_usuario'>${item.email}</td>
+  <td class='item_usuario'>${item.telefone}</td>
+  <td class='item_usuario'>${item.documento}</td>
+</tr>
         `
       );
-      dadosDiv.innerHTML = `
-            <table class='tabela_usuario'>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                        <th>Telefone</th>
-                        <th>Cpf</th>
-                    </tr>
-                    <div action="Buscar.php" class="barra_pesquisa">
-            <input id="pesquisa" class="barra" type="text" placeholder="Buscar">
-            <button onclick="barraPesquisa('u')" class="btn_barra">Buscar</button>
-    </div>
-                    <div class='tabela_usuario_btn'> 
-                    <button onclick='alterar()'>Alterar</button>
-                    <button onclick='deletar()'>Excluir</button>
-                    </div>
-                </thead>
-                <tbody id='listaDinamica'>
-                    ${lista.join("")}
-                </tbody>
-            </table>
-        `;
+      dadosDiv.innerHTML = lista.join("");
       })
       .catch((error) => {
         console.error("Erro ao buscar os dados dos usuários:", error);
@@ -345,7 +322,7 @@ var selectedDiv = null;
 
 function selecionaTabela(idUser, nivelAcess) {
   var div = document.getElementById(idUser);
-
+  console.log(div)
 
   if (div.classList.contains('tabelaSelect')) {
     div.classList.remove('tabelaSelect');

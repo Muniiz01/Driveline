@@ -1,6 +1,12 @@
 .btn-hover{
   transition: 0.5s;
 }
+.w-35{
+  width: 26rem;
+}
+.w-5{
+  width: 3rem;
+}
 
 .btn-hover:hover { background-color: #0056b3;
 color: white; }
@@ -17,15 +23,21 @@ color: white; }
 }
 
 .table-container{
+  display: none;
   transition: 0.5s ease;
 }
 
 .table-container.shifted {
-  padding-right: 20rem;
+  padding-right: 16rem;
 }
 
 .table-container.shiftedB {
   margin-top: 20rem;
+}
+
+.tabelaSelect{
+  mix-blend-mode: darken;
+  
 }
 
 @media (max-width: 600px) {
@@ -36,5 +48,36 @@ color: white; }
 
   header {
       font-size: 1.5em;
+  }
+}
+@media (min-width: 601px) and (max-width: 898px) {
+  .table-container {
+    margin-right: 0%;
+  }
+
+  header {
+      font-size: 2em;
+  }
+}
+
+/* Estilos para tablets em paisagem e desktops pequenos */
+@media (min-width: 899px) and (max-width: 1065px) {
+ .table-container {
+  margin-right: 23%;
+  }
+
+  header {
+      font-size: 2.5em;
+  }
+}
+
+/* Estilos para desktops grandes */
+@media (min-width: 1025px) {
+  .table-container {
+    margin-right: 0%;
+  }
+
+  header {
+      font-size: 3em;
   }
 }

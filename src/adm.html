@@ -1,283 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>ADM</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <title>Bootstrap Example</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="js/dropdown.js"></script>
-    <script src="js/administrador.js"></script> 
-    <link rel="stylesheet" href="style/adm.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ADM</title>
+  <link rel="stylesheet" href="../src/bootstrap/bootstrap-css/bootstrap.css">
+  <title>ADMIN</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="../src/bootstrap/js/bootstrap.bundle.js"></script>
+  <script src="js/dropdown.js"></script>
+  <script src="js/administrador.js"></script>
+  <link rel="stylesheet" href="../fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.css">
+  <link rel="stylesheet" href="style/adm.css">
 </head>
+
 <body>
-    <nav class="navbar bg-body-tertiary fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Voltar home</a>
-          <button class="btn" type="button" id="sidebarToggle"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="offcanvas offcanvas-end p-0" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Perfil Funcionario</h5>
-                <button type="button" id="sidebarClose" class="btn-close" data-bs-dismiss="offcanvas" aria-label="close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 p-3">
-                <button type="button" class="btn btn-hover container-fluid text-start fs-5 p-3 ">Usuarios</button>
-                <li class="nav-item dropdown ">
-                    <button type="button" class="dropdown-toggle btn btn-hover container-fluid text-start fs-5 p-3" role="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">Funcionarios</button>
-                    <ul class="dropdown-menu dropdown-menu-dark p-0">
-                        <li>
-                            <button class="dropdown-item btn-hover text-start fs-6 p-2">Lista de Funcionarios</button>
-                        </li> 
-                        <li>
-                            <button class="dropdown-item btn-hover text-start fs-6 p-2">Adcionar Funcionarios</button>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown ">
-                    <button type="button" class="dropdown-toggle btn btn-hover container-fluid text-start fs-5 p-3" role="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">Veiculos</button>
-                    <ul class="dropdown-menu dropdown-menu-dark p-0 ">
-                        <li>
-                            <button class="dropdown-item btn-hover text-start fs-6 p-2">Lista de veiculos</button>
-                        </li> 
-                        <li>
-                            <button class="dropdown-item btn-hover text-start fs-6 p-2">Adcionar veiculos</button>
-                        </li>
-                    </ul>
-                </li>
-                <button type="button" class="btn btn-hover container-fluid text-start fs-5 p-3">historio</button>
-            </ul>
-            </div>
-          </div>
+  <nav class="navbar bg-body-tertiary fixed-top">
+    <div class="container-fluid">
+      <button class="btn ">
+        <i class="fas fa-home"></i> Home
+      </button>
+
+
+      <button class="btn" type="button" id="sidebarToggle" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end p-0" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+        id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Perfil Funcionario</h5>
+          <button type="button" id="sidebarClose" class="btn-close" data-bs-dismiss="offcanvas"
+            aria-label="close"></button>
         </div>
-      </nav>
-      <div class="table-responsive mt-6 table-container">
-        <table class="table caption-top table-striped w-50  mx-auto">
-            <caption>List of users</caption>
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-         </table>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 p-3">
+            <button type="button" class="btn btn-hover container-fluid text-start fs-5 p-3 "  onclick="ativar(1);  exibirUsuarios()">Usuarios</button>
+            <li class="nav-item dropdown ">
+              <button type="button" class="dropdown-toggle btn btn-hover container-fluid text-start fs-5 p-3"
+                role="button" data-bs-toggle="dropdown" data-bs-auto-close="false"
+                aria-expanded="false">Funcionarios</button>
+              <ul class="dropdown-menu dropdown-menu-dark p-0">
+                <li>
+                  <button class="dropdown-item btn-hover text-start fs-6 p-2">Lista de Funcionarios</button>
+                </li>
+                <li>
+                  <button class="dropdown-item btn-hover text-start fs-6 p-2">Adcionar Funcionarios</button>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown ">
+              <button type="button" class="dropdown-toggle btn btn-hover container-fluid text-start fs-5 p-3"
+                role="button" data-bs-toggle="dropdown" data-bs-auto-close="false"
+                aria-expanded="false">Veiculos</button>
+              <ul class="dropdown-menu dropdown-menu-dark p-0 ">
+                <li>
+                  <button class="dropdown-item btn-hover text-start fs-6 p-2">Lista de veiculos</button>
+                </li>
+                <li>
+                  <button class="dropdown-item btn-hover text-start fs-6 p-2"  onclick="ativar(2)">Adcionar veiculos</button>
+                </li>
+              </ul>
+            </li>
+            <button type="button" class="btn btn-hover container-fluid text-start fs-5 p-3">historio</button>
+          </ul>
         </div>
-        <script>
-          
-          $(document).ready(function(){
-            
-            $('#sidebarToggle').on('click', function(){
-              if(window.innerWidth < 1360){  
-                $('.table-container').removeClass('shiftedB') 
-              $('.table-container').toggleClass('shifted')
-              if(window.innerWidth < 700){
-                $('.table-container').removeClass('shifted')
-                $('.table-container').toggleClass('shiftedB')
-                
-              }
-              }
-            })
-            //////////////////////////////////////////
-            $('#sidebarClose').on('click', function(){
-              $('.table-container').removeClass('shifted')
-              $('.table-container').removeClass('shiftedB')
-            })
+      </div>
+    </div>
+  </nav>
+  <div class="table-responsive mt-6 table-container" id="contr1">
+    <table class="table caption-top table-striped w-50  mx-auto">
+      <caption>List of users</caption>
+      <thead>
+                    <tr>
+                      <th >#id</th>
+                      <th >Nome</th>
+                      <th >Email</th>
+                      <th >Telefone</th>
+                      <th >Documento</th>
+                    </tr>
+                  </thead>
+                  <tbody id="lista">
+                    
+                  
+                    
+                  </tbody>
+      </table>
+  </div>
+  <div class="table-responsive mt-6 table-container" id="contr2">    
+    <div class="input-group mb-3 w-35 mx-auto">
+      <label class="input-group-text" for="inputGroupSelect01">Categorias</label>
+      <select class="form-select" id="inputGroupSelect01">
+        <option value="grupo-b">Grupo B - Economico Compacto</option>
+        <option value="grupo-be">Grupo BE - Eletrico Compacto</option>
+        <option value="grupo-s">Grupo S - Economico Sedan</option>
+        <option value="grupo-bf">Grupo BF - Intermediário Compacto</option>
+        <option value="grupo-sf">Grupo SF - Intermediário Sedan</option>
+        <option value="grupo-g">Grupo G - SUV</option>
+        <option value="grupo-bg">Grupo BG - SUV Compacto</option>
+        <option value="grupo-l">Grupo L - Executio</option>
+        <option value="grupo-u">Grupo U - Utilitarios</option>
+        <option value="SUV">SUV</option>
+      </select>
+    </div>
+    <div class="input-group mb-3  w-35 mx-auto">
+      <i class="input-group-text fa-solid fa-car w-5" id="basic-addons1"></i>
+      <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" aria-describedby="basic-addons1">
+    </div>
+    <div class="mb-3">
+      <div class="input-group mx-auto w-35">
+        <i class="input-group-text fa-solid fa-car-side w-5" id="basic-addons2"></i>
+        <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addons2">
+      </div>
+      <div class="form-text mx-auto w-35" id="basic-addons2">Marca do veiculo por exemplo: fiat, ford..</div>
+    </div>
+    <div class="input-group mb-3 mx-auto w-35">
+      <i class="input-group-text fa-solid fa-palette w-5" id="basic-addons3"></i>
+      <input class="form-control" type="text" placeholder="Cor" aria-label="cor" aria-describedby="basic-addons3">
+    </div>
+    <div class="input-group mb-3 mx-auto w-35">
+      <i class="input-group-text fa-solid fa-road w-5" id="basic-addons4"></i>
+      <input class="form-control" type="text" placeholder="Quilometragem" aria-label="quilometragem"
+        aria-describedby="basic-addons4">
+    </div>
+    <div class="mb-3 ">
+      <div class="input-group mx-auto w-35">
+        <i class="input-group-text fa-solid fa-user w-5" id="basic-addons5"></i>
+        <input class="form-control" type="text" placeholder="Passageiros" aria-label="quilometragem"
+          aria-describedby="basic-addons4">
+      </div>
+      <div class="mx-auto form-text w-35" id="basic-addons5">Quantidade suportada de Passageiros</div>
+    </div>
+    <div class="input-group mb-3 mx-auto w-35">
+      <i class="fa-solid fa-weight-hanging input-group-text w-5"></i>
+      <input class="form-control" type="text" placeholder="Volume de carga" aria-label="carga" aria-describedby="basic-addons5">
+    </div>
+    <div class="input-group mb-3 mx-auto w-35">
+      <i class="fa-solid fa-dollar-sign input-group-text w-5"></i>
+      <input class="form-control" type="text" placeholder="Valor do aluguel" aria-label="preco" aria-describedby="basic-addons5">
+    </div>
+    <div class="mb-3 mx-auto w-35">
+      <label for="FormControlTextarea1" class="form-label">Descricão do veiculo</label>
+      <textarea class="form-control" id="FormControlTextarea1" rows="4"></textarea>
+    </div>
+    <div class="mb-3 mx-auto w-35">
+      <label for="">Possui ar-condicionado?</label>
+      <div class="input-group-text mb-3 w-35">
+        <label class="me-2" for="Checkbox1">Sim</label>
+        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox1">
+      </div>
+      <div class="input-group-text mb-3 w-35">
+        <label class="me-2" for="Checkbox2">Não</label>
+        <input class="form-check-input input-end mt-0" type="checkbox" value="" aria-label="Checkbox1">
+      </div>
+    </div>
+    <div class="mb-3 mx-auto w-35">
+      <label for="">Possui airbag?</label>
+      <div class="input-group-text mb-3 w-35">
+        <label class="me-2" for="Checkbox1">Sim</label>
+        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox1">
+      </div>
+      <div class="input-group-text mb-3 w-35">
+        <label class="me-2" for="Checkbox2">Não</label>
+        <input class="form-check-input input-end mt-0" type="checkbox" value="" aria-label="Checkbox1">
+      </div>
+    </div>
+    <div class="mb-3 mx-auto w-35">
+      <label for="">Possui abs?</label>
+      <div class="input-group-text mb-3 w-35">
+        <label class="me-2" for="Checkbox1">Sim</label>
+        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox1">
+      </div>
+      <div class="input-group-text mb-3 w-35">
+        <label class="me-2" for="Checkbox2">Não</label>
+        <input class="form-check-input input-end mt-0" type="checkbox" value="" aria-label="Checkbox1">
+      </div>
+    </div>
+    <div class="mb-3 mx-auto w-35">
+      <label for="">Adcione imagens</label>
+      <input class="form-control" type="file" id="formFileMultiple" multiple>
+    </div>
+    <div class="container-fluid w-35  text-end">
+      <button class="btn btn-primary mt-3 mb-4">Enviar</button>
+    </div>
+    
 
-            //////////////////////////////////////////
-           var $offcanvas = $('#offcanvasScrolling')
+  </div>
+  <script>
 
-           function offCanvas (){
-            if ($(window).width()  < 700){
-              
-              $offcanvas.removeClass('offcanvas-end').addClass('offcanvas-top')
-              
-            }else{
-              $offcanvas.removeClass('offcanvas-top').addClass('offcanvas-end')
-              
-            }
-           }
-           offCanvas()
+    function ativar(x){
+      if(x == 1){
+        document.getElementById('contr1').style.display = 'block'
+        document.getElementById('contr2').style.display = 'none'
+      }else{
+        document.getElementById('contr2').style.display = 'block'
+        document.getElementById('contr1').style.display = 'none'
+      }
+      
+    }
 
-           $(window).resize(offCanvas)
+    $(document).ready(function () {
 
-            
+      $('#sidebarToggle').on('click', function () {
+        if (window.innerWidth < 1360) {
+          $('.table-container').removeClass('shiftedB')
+          $('.table-container').toggleClass('shifted')
+          if (window.innerWidth < 900) {
+            $('.table-container').removeClass('shifted')
+            $('.table-container').toggleClass('shiftedB')
 
           }
-          )
-        </script>
-     
-    
+        }
+      })
+      //////////////////////////////////////////
+      $('#sidebarClose').on('click', function () {
+        $('.table-container').removeClass('shifted')
+        $('.table-container').removeClass('shiftedB')
+      })
+
+      //////////////////////////////////////////
+      var $offcanvas = $('#offcanvasScrolling')
+
+      function offCanvas() {
+        if ($(window).width() < 900) {
+
+          $offcanvas.removeClass('offcanvas-end').addClass('offcanvas-top')
+
+        } else {
+          $offcanvas.removeClass('offcanvas-top').addClass('offcanvas-end')
+
+        }
+      }
+      offCanvas()
+
+      $(window).resize(offCanvas)
+
+
+
+    }
+    )
+  </script>
+
+
 </body>
+
 </html>
