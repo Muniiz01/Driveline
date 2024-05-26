@@ -20,7 +20,7 @@ window.addEventListener("load", function () {
 
 //Adicionar/forms////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function adicionarVeiculos() {
+/* function adicionarVeiculos() {
   var div = document.getElementById("lista"); // Sera atribuido o elemento html com o id 'lista' na variavel div.
   div.innerHTML = `<div class='form_carros' id='form-addCars'> 
       <input id='categoria' placeholder='categoria'> 
@@ -52,8 +52,8 @@ function adicionarVeiculos() {
      <textarea name='descricao' id='descricao' cols='30' rows='10' placeholder='descricao veiculo'></textarea>
      <button id='btnEnviar' onclick='enviarFormCar()'>enviar</button>
       </div>`;
-} //  div.innerHTML inseri todos os elementos html no funcionarios.html
-function adicionarFuncionario() {
+} */ //  div.innerHTML inseri todos os elementos html no funcionarios.html
+/* function adicionarFuncionario() {
   var div = document.getElementById("lista");
   div.innerHTML = `<div class='form_funcionarios' id='form-addFunc'> 
     <input id='nome' placeholder='Nome Completo'> 
@@ -64,7 +64,7 @@ function adicionarFuncionario() {
      <button id='btnEnviar' onclick='enviarFormFunc()'>enviar</button>
       </div>
        `;
-}
+} */
 function enviarFormCar() {
   var categoria = document.getElementById("categoria").value; // Atribui o valor do input pelo id em uma variavel " variavel contem o mesmo nome do input "
   var modelo = document.getElementById("modelo").value;
@@ -252,39 +252,19 @@ function barraPesquisa(tipo) {
   
         const lista = data.map(
           (item) => `
-              <tr class='tabela_usuario' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
-                  <td class='item_usuario'>${item.idUsuario}</td>
-                  <td class='item_usuario'>${item.nome}</td>
-                  <td class='item_usuario'>${item.email}</td>
-                  <td class='item_usuario'>${item.telefone}</td>
-                  <td class='item_usuario'>${item.documento}</td>
-              </tr>
+          <tr id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
+          <th scope="row">${item.idUsuario}</th>
+    <td class='item_usuario'>${item.nome}</td>
+    <td class='item_usuario'>${item.email}</td>
+    <td class='item_usuario'>${item.telefone}</td>
+    <td class='item_usuario'>${item.documento}</td>
+  </tr>
           `
         );
-        dadosDiv.innerHTML = `
-              <table class='tabela_usuario'>
-                  <thead>
-                      <tr>
-                          <th>ID</th>
-                          <th>Nome</th>
-                          <th>E-mail</th>
-                          <th>Telefone</th>
-                          <th>Cpf</th>
-                      </tr>
-                      <div action="Buscar.php" class="barra_pesquisa">
-              <input id="pesquisa" class="barra" type="text" placeholder="Buscar">
-              <button onclick="barraPesquisa('u')" class="btn_barra">Buscar</button>
-      </div>
-                      <div class='tabela_usuario_btn'> 
-                      <button onclick='alterarFuncionario()'>Alterar</button>
-                      <button onclick='deletar()'>Excluir</button>
-                      </div>
-                  </thead>
-                  <tbody id='listaDinamica'>
-                      ${lista.join("")}
-                  </tbody>
-              </table>
-          `;
+        dadosDiv.innerHTML =  lista.join("")
+                     
+                 
+          
         })
         .catch((error) => {
           console.error("Erro ao buscar os dados dos usuários:", error);

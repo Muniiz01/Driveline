@@ -44,10 +44,10 @@
                 aria-expanded="false">Funcionarios</button>
               <ul class="dropdown-menu dropdown-menu-dark p-0">
                 <li>
-                  <button class="dropdown-item btn-hover text-start fs-6 p-2">Lista de Funcionarios</button>
+                  <button class="dropdown-item btn-hover text-start fs-6 p-2" onclick="exibirFuncionarios(); ativar(1)">Lista de Funcionarios</button>
                 </li>
                 <li>
-                  <button class="dropdown-item btn-hover text-start fs-6 p-2">Adcionar Funcionarios</button>
+                  <button class="dropdown-item btn-hover text-start fs-6 p-2" onclick="ativar(3)">Adcionar Funcionarios</button>
                 </li>
               </ul>
             </li>
@@ -83,12 +83,39 @@
                     </tr>
                   </thead>
                   <tbody id="lista">
-                    
-                  
-                    
+                    <!-- js ira gerar os elementos aqui -->
                   </tbody>
       </table>
   </div>
+  <div class="table-responsive mt-6 table-container" id="contr3">
+    <form >
+    <div class="input-group mb-3  w-35 mx-auto">
+      <i class="input-group-text fa-solid fa-user w-5"></i>
+      <input type="text" id="nome" class="form-control" placeholder="Nome Completo" aria-label="Nome Completo" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3  w-35 mx-auto">
+      <i class="input-group-text fa-solid fa-address-card w-5"></i>
+      <input type="text" id="cpf" class="form-control" onkeydown="javascript: fMasc(this, mCPF)" maxlength="14" autocomplete="cpf" required placeholder="Documento" aria-label="Documento" aria-describedby="basic-addons1">
+    </div>
+    <div class="input-group mb-3  w-35 mx-auto">
+      <i class="input-group-text fa-solid fa-phone w-5"></i>
+      <input type="text" id="telefone" class="form-control" required autocomplete="tel" onkeydown="fMasc(this, mTel)" placeholder="Telefone" maxlength="15" aria-label="Telefone" aria-describedby="basic-addons1">
+    </div>
+    <div class="input-group mb-3  w-35 mx-auto">
+      <span class="input-group-text w-5">@</span>
+      <input type="text" id="email" class="form-control" placeholder="E-mail" autocomplete="new-email" aria-label="modelo" aria-describedby="basic-addons1">
+    </div>
+    <div class="input-group mb-3 w-35 mx-auto">
+      <i class="input-group-text w-5 fa-solid fa-lock"></i>
+      <input type="password" id="senha" class="form-control" placeholder="Senha" autocomplete="new-password" aria-label="modelo" aria-describedby="basic-addons1">
+    </div>
+    <div class="container-fluid w-35  text-end">
+      <button class="btn btn-primary mt-3 mb-4" id="btnEnviar" onclick="enviarFormFunc()">Enviar</button>
+    </div>
+  </form>
+                
+  </div>
+
   <div class="table-responsive mt-6 table-container" id="contr2">    
     <div class="input-group mb-3 w-35 mx-auto">
       <label class="input-group-text" for="inputGroupSelect01">Categorias</label>
@@ -191,15 +218,29 @@
   <script>
 
     function ativar(x){
-      if(x == 1){
+      switch (x) {
+        case 1:
         document.getElementById('contr1').style.display = 'block'
         document.getElementById('contr2').style.display = 'none'
-      }else{
-        document.getElementById('contr2').style.display = 'block'
+        document.getElementById('contr3').style.display = 'none'
+        break;
+        case 2:
         document.getElementById('contr1').style.display = 'none'
-      }
-      
+        document.getElementById('contr2').style.display = 'block'
+        document.getElementById('contr3').style.display = 'none'       
+        break;
+        case 3: 
+        document.getElementById('contr1').style.display = 'none'
+        document.getElementById('contr2').style.display = 'none'
+        document.getElementById('contr3').style.display = 'block' 
+        break;
+        default: 
+        console.log('nenhuma funcao selecionada')
+        document.getElementById('contr1').style.display = 'none'
+        document.getElementById('contr2').style.display = 'none'
+        document.getElementById('contr3').style.display = 'none' 
     }
+  }
 
     $(document).ready(function () {
 
