@@ -73,11 +73,12 @@ function enviarFormCar() {
   var quilometragem = document.getElementById("quilometragem").value;
   var cambio = document.getElementById("cambio").value;
   var passageiros = document.getElementById("passageiros").value;
-  var arCondicionado = document.getElementById("ar-condicionado").value;
-  var airbag = document.getElementById("airbag").value;
-  var abs = document.getElementById("abs").value;
+  var arCondicionado = document.querySelector('input[name="ar-cond"]:checked').value;
+  var airbag = document.querySelector('input[name="airbag"]:checked').value;
+  var abs = document.querySelector('input[name="airbag"]:checked').value;
   var volumeCarga = document.getElementById("volume-carga").value;
-  var preco_veiculo = document.getElementById("preco_veiculo").value;
+  var preco = document.getElementById("preco_veiculo").value;
+  var preco_veiculo = preco.replace(/[^0-9]/g, '')
   var descricao = document.getElementById("descricao").value;
   var input = document.getElementById("imagens"); //  pega imagens atribuida no input do tipo file
 
@@ -166,6 +167,12 @@ function exibirUsuarios() {
 </tr>
         `
       );
+      document.getElementById('nomeLista').innerHTML = "Lista de Usuarios" 
+      document.getElementById('tableT2').innerHTML = "Nome"
+      document.getElementById('tableT3').innerHTML = "Email"
+      document.getElementById('tableT4').innerHTML = "Telefone"
+      document.getElementById('tableT5').innerHTML = "Documento"
+      
       dadosDiv.innerHTML = lista.join("");
       })
       .catch((error) => {
@@ -261,6 +268,12 @@ function barraPesquisa(tipo) {
   </tr>
           `
         );
+      document.getElementById('nomeLista').innerHTML = "Lista de Funcionarios" 
+      document.getElementById('tableT2').innerHTML = "Nome"
+      document.getElementById('tableT3').innerHTML = "Email"
+      document.getElementById('tableT4').innerHTML = "Telefone"
+      document.getElementById('tableT5').innerHTML = "Documento"
+
         dadosDiv.innerHTML =  lista.join("")
                      
                  
@@ -364,15 +377,22 @@ function exibirVeiculos() {
 
       const lista = data.map((item) => {
         // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.modelo}" item e o objeto array e modelo e a cahve array, todo o bloco e atribuido a const lista
-        return `<section class='item_lista_veiculo'>
-                  <img class='img-car' src="${item.caminho_imagem}" alt="">
-                  <article class='info_veiculo'>
-                  <div>modelo: ${item.modelo}</div>  
-                  <div>passageiros: ${item.passageiros}</div>
-                  </article>
-                  <button class='user-button' onclick="alterarCarro(${item.id_veiculos})">ALTERAR</button>
-                </section>`;
+        return `
+      <tr id='${item.id_veiculos}'>
+        <th scope="row">${item.id_veiculos}</th>
+        <td class='item_usuario'>${item.categoria}</td>
+        <td class='item_usuario'>${item.marca}</td>
+        <td class='item_usuario'>${item.modelo}</td>
+        <td class='item_usuario'>${dolar(item.preco_veiculo)}</td>
+      </tr>
+        `;
       });
+
+      document.getElementById('tableT2').innerHTML = "Categoria"
+      document.getElementById('tableT3').innerHTML = "Marca"
+      document.getElementById('tableT4').innerHTML = "Modelo"
+      document.getElementById('tableT5').innerHTML = "Preco"
+
 
       dadosDiv.innerHTML = lista.join(""); // inseri os elementos html no funcionario.html
       /* console.log(data) */
@@ -383,6 +403,7 @@ function exibirVeiculos() {
       document.getElementById("lista").innerHTML = "Nenhum registro encontrado";
     });
 }
+
 function alterarCarro(idVeiculo) {
   var div = document.getElementById("lista")
   div.innerHTML = `<div id='form-addCars'> 
@@ -466,33 +487,22 @@ function enviarUsuario(idUsuario) {
 
   })
 }
-//mascaras/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function fMasc(objeto, mascara) {
-  obj = objeto;
-  masc = mascara;
-  setTimeout("fMascEx()", 1);
-}
+//retornaHome/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function retornaHome() {
   window.location.replace("../index.html")
 }
-function fMascEx() {
-  obj.value = masc(obj.value);
-}
-function mCPF(cpf) {
-  cpf = cpf.replace(/\D/g, "");
-  cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
-  cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
-  cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-  return cpf;
-}
-function mTel(tel) {
-  tel = tel.replace(/\D/g, "");
-  tel = tel.replace(/^(\d\d)(\d)/g, "($1) $2");
-  tel = tel.replace(/(\d{5})(\d)/, "$1-$2");
-  return tel;
+//mascara/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function dolar(e){
+  var num = parseInt(e, 10)
+  var input = num
+  var value = input
+ 
+  value = (value / 100).toFixed(2).replace('.', ',')
+  value = 'R$ ' + value
+  input.value = value
+
+  return value
 }
 
-//style////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

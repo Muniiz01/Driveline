@@ -7,9 +7,9 @@ $conn = conexaoDb();
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pelo javascript foi  'POST' 
     //dados requisitados pelo funcionario.js
-
+ 
     
-    $query = "SELECT * FROM veiculos JOIN img_veiculo ON veiculos.id_veiculos = img_veiculo.idVeiculos"; // atribui a consulta sql na variavel $query
+    $query = "SELECT * FROM veiculos"; // atribui a consulta sql na variavel $query
 
     $resultado = $conn->query($query); // executa a variavel $query e armazena o resultado na variavel $resultado
     
@@ -32,9 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){ // verifica se o metodo requisitado pe
             'abs' => $valores["abs"], 
             'carga' => $valores["volume_carga"], 
             'preco_veiculo' => $valores["preco_veiculo"], 
-            'descricao' => $valores["descricao"],
-            'caminho_imagem' => $valores["caminho_imagem"]
-
+            'descricao' => $valores["descricao"]
         );
 
         }

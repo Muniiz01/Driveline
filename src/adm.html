@@ -19,7 +19,7 @@
 <body>
   <nav class="navbar bg-body-tertiary fixed-top">
     <div class="container-fluid">
-      <button class="btn ">
+      <button class="btn" onclick="retornaHome()">
         <i class="fas fa-home"></i> Home
       </button>
 
@@ -57,7 +57,7 @@
                 aria-expanded="false">Veiculos</button>
               <ul class="dropdown-menu dropdown-menu-dark p-0 ">
                 <li>
-                  <button class="dropdown-item btn-hover text-start fs-6 p-2">Lista de veiculos</button>
+                  <button class="dropdown-item btn-hover text-start fs-6 p-2" onclick="ativar(1); exibirVeiculos()">Lista de veiculos</button>
                 </li>
                 <li>
                   <button class="dropdown-item btn-hover text-start fs-6 p-2"  onclick="ativar(2)">Adcionar veiculos</button>
@@ -70,16 +70,17 @@
       </div>
     </div>
   </nav>
+  <!-- Tabela que ira conter a lista de funcionarios e usuarios -->
   <div class="table-responsive mt-6 table-container" id="contr1">
     <table class="table caption-top table-striped w-50  mx-auto">
-      <caption>List of users</caption>
-      <thead>
+      <caption id="nomeLista" style="font-weight: bold;"></caption>
+      <thead id="formText">
                     <tr>
                       <th >#id</th>
-                      <th >Nome</th>
-                      <th >Email</th>
-                      <th >Telefone</th>
-                      <th >Documento</th>
+                      <th id="tableT2"></th>
+                      <th id="tableT3"></th>
+                      <th id="tableT4"></th>
+                      <th id="tableT5"></th>
                     </tr>
                   </thead>
                   <tbody id="lista">
@@ -87,11 +88,12 @@
                   </tbody>
       </table>
   </div>
+  <!-- Input Group para adcionar novos funcionarios -->
   <div class="table-responsive mt-6 table-container" id="contr3">
     <form >
     <div class="input-group mb-3  w-35 mx-auto">
       <i class="input-group-text fa-solid fa-user w-5"></i>
-      <input type="text" id="nome" class="form-control" placeholder="Nome Completo" aria-label="Nome Completo" aria-describedby="basic-addon1">
+      <input type="text" id="nome" class="form-control" placeholder="Nome Completo" required aria-label="Nome Completo" aria-describedby="basic-addon1">
     </div>
     <div class="input-group mb-3  w-35 mx-auto">
       <i class="input-group-text fa-solid fa-address-card w-5"></i>
@@ -103,23 +105,23 @@
     </div>
     <div class="input-group mb-3  w-35 mx-auto">
       <span class="input-group-text w-5">@</span>
-      <input type="text" id="email" class="form-control" placeholder="E-mail" autocomplete="new-email" aria-label="modelo" aria-describedby="basic-addons1">
+      <input type="text" id="email" class="form-control" required placeholder="E-mail" autocomplete="new-email" aria-label="modelo" aria-describedby="basic-addons1">
     </div>
     <div class="input-group mb-3 w-35 mx-auto">
       <i class="input-group-text w-5 fa-solid fa-lock"></i>
-      <input type="password" id="senha" class="form-control" placeholder="Senha" autocomplete="new-password" aria-label="modelo" aria-describedby="basic-addons1">
+      <input type="password" id="senha" class="form-control" required placeholder="Senha" autocomplete="new-password" aria-label="modelo" aria-describedby="basic-addons1">
     </div>
     <div class="container-fluid w-35  text-end">
-      <button class="btn btn-primary mt-3 mb-4" id="btnEnviar" onclick="enviarFormFunc()">Enviar</button>
+      <button class="btn btn-success mt-3 mb-4" id="btnEnviar" onclick="enviarFormFunc()">Enviar</button>
     </div>
   </form>
                 
   </div>
-
+  <!-- Input Group para adcionar novos veiculos -->
   <div class="table-responsive mt-6 table-container" id="contr2">    
     <div class="input-group mb-3 w-35 mx-auto">
       <label class="input-group-text" for="inputGroupSelect01">Categorias</label>
-      <select class="form-select" id="inputGroupSelect01">
+      <select class="form-select" id="categoria">
         <option value="grupo-b">Grupo B - Economico Compacto</option>
         <option value="grupo-be">Grupo BE - Eletrico Compacto</option>
         <option value="grupo-s">Grupo S - Economico Sedan</option>
@@ -134,87 +136,95 @@
     </div>
     <div class="input-group mb-3  w-35 mx-auto">
       <i class="input-group-text fa-solid fa-car w-5" id="basic-addons1"></i>
-      <input type="text" class="form-control" placeholder="Modelo" aria-label="modelo" aria-describedby="basic-addons1">
+      <input type="text" class="form-control" id="modelo"  placeholder="Modelo" autocomplete="off" aria-label="modelo" aria-describedby="basic-addons1">
     </div>
     <div class="mb-3">
       <div class="input-group mx-auto w-35">
         <i class="input-group-text fa-solid fa-car-side w-5" id="basic-addons2"></i>
-        <input type="text" class="form-control" placeholder="Marca" aria-label="marca" aria-describedby="basic-addons2">
+        <input type="text" class="form-control" id="marca" autocomplete="off" placeholder="Marca" aria-label="marca" aria-describedby="basic-addons2" >
       </div>
       <div class="form-text mx-auto w-35" id="basic-addons2">Marca do veiculo por exemplo: fiat, ford..</div>
     </div>
+    <div class="input-group mb-3 w-35 mx-auto">
+      <label class="input-group-text" for="inputGroupSelect01">Tipo de Cambio</label>
+      <select class="form-select" id="cambio" required>
+        <option value="grupo-b">Automatico</option>
+        <option value="grupo-be">Manual</option>
+      </select>
+    </div>
     <div class="input-group mb-3 mx-auto w-35">
       <i class="input-group-text fa-solid fa-palette w-5" id="basic-addons3"></i>
-      <input class="form-control" type="text" placeholder="Cor" aria-label="cor" aria-describedby="basic-addons3">
+      <input class="form-control" id="cor" type="text" autocomplete="off" placeholder="Cor" aria-label="cor" aria-describedby="basic-addons3" >
     </div>
     <div class="input-group mb-3 mx-auto w-35">
       <i class="input-group-text fa-solid fa-road w-5" id="basic-addons4"></i>
-      <input class="form-control" type="text" placeholder="Quilometragem" aria-label="quilometragem"
-        aria-describedby="basic-addons4">
+      <input class="form-control" id="quilometragem" type="text" autocomplete="off" placeholder="Quilometragem" aria-label="quilometragem" aria-describedby="basic-addons4">
     </div>
     <div class="mb-3 ">
       <div class="input-group mx-auto w-35">
         <i class="input-group-text fa-solid fa-user w-5" id="basic-addons5"></i>
-        <input class="form-control" type="text" placeholder="Passageiros" aria-label="quilometragem"
+        <input class="form-control" id="passageiros" type="text" autocomplete="off" placeholder="Passageiros" aria-label="quilometragem"
           aria-describedby="basic-addons4">
       </div>
       <div class="mx-auto form-text w-35" id="basic-addons5">Quantidade suportada de Passageiros</div>
     </div>
     <div class="input-group mb-3 mx-auto w-35">
       <i class="fa-solid fa-weight-hanging input-group-text w-5"></i>
-      <input class="form-control" type="text" placeholder="Volume de carga" aria-label="carga" aria-describedby="basic-addons5">
+      <input class="form-control" id="volume-carga" type="text" autocomplete="off" placeholder="Volume de carga" aria-label="carga" aria-describedby="basic-addons5" >
     </div>
     <div class="input-group mb-3 mx-auto w-35">
       <i class="fa-solid fa-dollar-sign input-group-text w-5"></i>
-      <input class="form-control" type="text" placeholder="Valor do aluguel" aria-label="preco" aria-describedby="basic-addons5">
+      <input class="form-control" type="text" id="preco_veiculo" autocomplete="off" placeholder="Valor do aluguel" aria-label="preco" aria-describedby="basic-addons5" >
     </div>
     <div class="mb-3 mx-auto w-35">
-      <label for="FormControlTextarea1" class="form-label">Descricão do veiculo</label>
-      <textarea class="form-control" id="FormControlTextarea1" rows="4"></textarea>
+      <label for="FormControl1" class="form-label">Descricão do veiculo</label>
+      <textarea class="form-control" name="FormControl1" id="descricao" rows="4"></textarea>
     </div>
     <div class="mb-3 mx-auto w-35">
       <label for="">Possui ar-condicionado?</label>
       <div class="input-group-text mb-3 w-35">
-        <label class="me-2" for="Checkbox1">Sim</label>
-        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox1">
+        <label class="me-2" for="ar-cond">Sim</label>
+        <input class="form-check-inputA mt-0" type="radio" name="ar-cond" value="Sim" aria-label="ar-cond">
       </div>
       <div class="input-group-text mb-3 w-35">
-        <label class="me-2" for="Checkbox2">Não</label>
-        <input class="form-check-input input-end mt-0" type="checkbox" value="" aria-label="Checkbox1">
+        <label class="me-2" for="ar-cond">Não</label>
+        <input class="form-check-inputA input-end mt-0" type="radio" name="ar-cond" value="Não" aria-label="ar-cond">
       </div>
     </div>
     <div class="mb-3 mx-auto w-35">
       <label for="">Possui airbag?</label>
       <div class="input-group-text mb-3 w-35">
-        <label class="me-2" for="Checkbox1">Sim</label>
-        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox1">
+        <label class="me-2" for="airbag">Sim</label>
+        <input class="form-check-inputB mt-0" type="radio" name="airbag" value="Sim" aria-label="airbag"> 
       </div>
       <div class="input-group-text mb-3 w-35">
-        <label class="me-2" for="Checkbox2">Não</label>
-        <input class="form-check-input input-end mt-0" type="checkbox" value="" aria-label="Checkbox1">
+        <label class="me-2" for="airbag">Não</label>
+        <input class="form-check-inputB input-end mt-0" type="radio" name="airbag" value="Não" aria-label="airbag">
       </div>
     </div>
     <div class="mb-3 mx-auto w-35">
       <label for="">Possui abs?</label>
       <div class="input-group-text mb-3 w-35">
-        <label class="me-2" for="Checkbox1">Sim</label>
-        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox1">
+        <label class="me-2" for="abs">Sim</label>
+        <input class="form-check-inputS mt-0" type="radio" name="abs" value="Sim" aria-label="abs">
       </div>
       <div class="input-group-text mb-3 w-35">
-        <label class="me-2" for="Checkbox2">Não</label>
-        <input class="form-check-input input-end mt-0" type="checkbox" value="" aria-label="Checkbox1">
+        <label class="me-2" for="abs">Não</label>
+        <input class="form-check-inputS input-end mt-0" type="radio" name="abs" value="Não" aria-label="abs" >
       </div>
     </div>
     <div class="mb-3 mx-auto w-35">
       <label for="">Adcione imagens</label>
-      <input class="form-control" type="file" id="formFileMultiple" multiple>
+      <input class="form-control" type="file" id="imagens" multiple >
     </div>
     <div class="container-fluid w-35  text-end">
-      <button class="btn btn-primary mt-3 mb-4">Enviar</button>
+      <button class="btn btn-success mt-3 mb-4" onclick="enviarFormCar()">Enviar</button>
     </div>
     
-
   </div>
+<!-- Script para responsividade da pagina -->
+<script src="js/mascara.js"></script>
+
   <script>
 
     function ativar(x){
