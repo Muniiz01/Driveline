@@ -242,23 +242,52 @@ nav .btn-padrao,.dropdown-menu,.dropdown-item{
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 
-.catalogo{
-    overflow: hidden;
-    justify-content: center;
-    transition: 0.5s;
-    display: flex;  
-    flex-wrap: wrap;
-    flex-direction: row;
-    height: max-content;
-    width: 100%;
+.pagination{
+    margin: auto;
+    margin-bottom: 5%;
+    width: max-content;
 }
-#catalogo1{
-    background-color: tomato;
+#get-data{
+    width: 100%;
+    background-color: var(--fundo);
 }
 
+#get-data .catalogo_veiculos{
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2%;
+}
+.info_carro img{
+    object-fit: cover;
+    width: 160px;
+    margin-top: 6%;
+}
+.info_carro{/*vulgo item de catalogo*/
+    text-align: center;
+    margin: 2%;
+    transition: 0.5s;
+    border-radius: 1rem;
+    height: 25rem;
+    width: 25%;
+    background-color:white;
+}
+.desc_veiculo{
+    font-weight: bold;
+    color: gray;
+    margin-left: 20%;
+    text-align: start;
+}
+.page-link:hover{
+    background-color: #0D6EFD;
+    color: white;
+}
+.active{
+    border: none;
+}
 .btn-aluguel{
     transition: 0.5s;
-    margin: 2% 0%;
+    margin: 5% 0%;
     font-size: 100%;
     color: white;
     width: 30%;
@@ -270,59 +299,20 @@ nav .btn-padrao,.dropdown-menu,.dropdown-item{
     box-shadow: var(--sombra);
     background: linear-gradient(to right, rgb(78, 251, 9), rgb(0, 157, 31) );
 }
-.item{
-    transition: 0.5s;
-    border-radius: 1rem;
-    text-align: center;
-    color: var(--texto2);
-    margin: 2% 2%;
-    height: 25rem;
-    width: 25%;
-    background-color: var(--principal);
-}
-.info_carro{
-    height: max-content;
-    margin-left: 22%;
-    text-align: left;
-}
-.item:hover{
-    box-shadow: var(--sombra);
-}
-.item img{
-    margin-top: 10%;
-    object-fit: contain;
-    width: 55%;
-    height: 40%;
-}
-
-.navegar_catalogo{
-    margin-bottom: 2%;
-    height: max-content;
-    text-align: center;
-    width: 100%;
-}
-.navegar_catalogo button{
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background:none;
-}
-.btn_catalgo_anterior i{
-    pointer-events: none;
-}
-
 /*breakpoints*/
 @media(max-width:890px){
-    .catalogo .item{
+    .info_carro{
         width: 45%;
     }
 }
 @media(max-width:670px){
-    .catalogo .item{
+    .info_carro{
         height: max-content;
         width: 55%;
     }
 }
+
+
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////////////////////////////////////////////// */

@@ -4,12 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/bootstrap/bootstrap-css/bootstrap.css">
+    <link rel="stylesheet" href="src/bootstrap/bootstrap-css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="src/style/index_style.css">
     <link rel="stylesheet" href="fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.css">
+
     <script src="src/bootstrap/js/bootstrap.bundle.js"></script>
-    <script src="src/js/catalogo.js"></script> 
-    <script src="js/session.js"></script>
+    <script src="jquery/jquery-3.7.1.min.js"></script>
+    <script src="src/js/session.js"></script>
+    
     <title>Home</title>
 </head>
 
@@ -73,18 +76,7 @@
             </div>
     </section>
 
-    <div class="catalogo" id="catalogo0">
-    </div>
-    <div class="catalogo" id="catalogo1">
-    </div>
-    <div class="catalogo" id="catalogo2">
-    </div>
-    <div class="catalogo" id="catalogo3">
-    </div>
-    <div class="navegar_catalogo">
-    <button class="btn_catalago_anterior" id="btn_anterior" onclick="catalogo_anterior()"><i class="fa-solid fa-arrow-left" id="flecha_esquerda"></i></button>
-    <button class="btn_catalago_proximo" id="btn_proximo" onclick="catalogo_proximo()"><i class="fa-solid fa-arrow-right" id="flecha_direita"></i></button>
-    </div>
+    <div id="get-data"></div>
 
     <!-- footer -->
     <footer class="rodape">
@@ -114,7 +106,30 @@
 </html>
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 </div>
-<script src="src/js/index.js"></script>
-</body>
 
+<script src="src/js/index.js"></script>
+<script type="text/javascript">
+
+//////////////////////////////////////////
+
+function fetch_data(page){
+            $.ajax({
+                url: "src/php/pagination_driveline.php",//refere ao arquivo de paginação e linka ele aqui.
+                method: "POST",
+                data:{
+                    page: page
+                },
+                success: function(data){
+                    $("#get-data").html(data);
+                }
+            });
+        }
+        fetch_data();
+
+        $(document).on("click", ".page-item", function(){
+            var page = $(this).attr("id");
+            fetch_data(page);
+        })
+    </script>
+</body>
 </html>
