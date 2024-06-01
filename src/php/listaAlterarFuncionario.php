@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){ // verifica se o metodo requisitado pel
     //dados requisitados pelo funcionario.js
 
     $id = $_GET["id"];
-    $query = "SELECT * FROM funcionarios WHERE idNivel_de_Acesso = 2 AND id_usuario = $id"; // atribui a consulta sql na variavel $query
+    $query = "SELECT * FROM funcionarios WHERE idNivel_de_Acesso = 2 AND id_usuario = ' $id'"; // atribui a consulta sql na variavel $query
     
     $resultado = $conn->query($query); // executa a variavel $query e armazena o resultado na variavel $resultado
 

@@ -42,7 +42,7 @@
               <button type="button" class="dropdown-toggle btn btn-hover container-fluid text-start fs-5 p-3"
                 role="button" data-bs-toggle="dropdown" data-bs-auto-close="false"
                 aria-expanded="false">Funcionarios</button>
-              <ul class="dropdown-menu dropdown-menu-dark p-0">
+              <ul class="dropdown-menu p-0">
                 <li>
                   <button class="dropdown-item btn-hover text-start fs-6 p-2" onclick="exibirFuncionarios(); ativar(1)">Lista de Funcionarios</button>
                 </li>
@@ -55,7 +55,7 @@
               <button type="button" class="dropdown-toggle btn btn-hover container-fluid text-start fs-5 p-3"
                 role="button" data-bs-toggle="dropdown" data-bs-auto-close="false"
                 aria-expanded="false">Veiculos</button>
-              <ul class="dropdown-menu dropdown-menu-dark p-0 ">
+              <ul class="dropdown-menu p-0 ">
                 <li>
                   <button class="dropdown-item btn-hover text-start fs-6 p-2" onclick="ativar(1); exibirVeiculos()">Lista de veiculos</button>
                 </li>
@@ -72,12 +72,12 @@
   </nav>
   <!-- Tabela que ira conter a lista de funcionarios e usuarios -->
   <div class="table-responsive mt-6 table-container" id="contr1">
-<!-- Modal -->
+<!-- Modal barra de pesquisa-->
 <div class="modal fade" id="meuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Driveline diz:</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" id="modalBody">
@@ -87,8 +87,26 @@
   </div>
 </div>
 
+<!-- Modal Alterar -->
+<div class="modal fade" id="alterBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Alterar Registros</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <section id="modalAlterar">
+          
+        </section>
+      </div>
+      <div class="modal-footer" id="botaoAlterar">
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- Modal -->
+<!-- Modal Confirma excluir-->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -100,22 +118,23 @@
         Tem certeza que deseja excluir? 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" onclick="deletar()" data-bs-dismiss="modal">Excluir</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" onclick="deletar()" data-bs-dismiss="modal">Sim</button>
       </div>
     </div>
   </div>
 </div>
-<!-- Fim Modal -->
+
+
+<!-- Fim Modals -->
 
     <div class="d-flex mt-3">
       <div class=" input-group ms-6 w-35 mx-auto" id="barraP"> 
       </div>
     </div>
     
-    <div class="container-fluid w-50 text-end position-static mt-6">
-      <button class="btn btn-secondary btn-sm">Alterar</button>
-      <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Excluir</button>
+    <div class="container-fluid w-50 text-end position-static mt-6" id="butoesADV">
+      
     </div>
     <table class="table caption-top table-hover w-50 mx-auto">
       <caption id="nomeLista" style="font-weight: bold;"></caption>
