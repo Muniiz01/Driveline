@@ -72,7 +72,52 @@
   </nav>
   <!-- Tabela que ira conter a lista de funcionarios e usuarios -->
   <div class="table-responsive mt-6 table-container" id="contr1">
-    <table class="table caption-top table-striped w-50  mx-auto">
+<!-- Modal -->
+<div class="modal fade" id="meuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Registro</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Tem certeza que deseja excluir? 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" onclick="deletar()" data-bs-dismiss="modal">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fim Modal -->
+
+    <div class="d-flex mt-3">
+      <div class=" input-group ms-6 w-35 mx-auto" id="barraP"> 
+      </div>
+    </div>
+    
+    <div class="container-fluid w-50 text-end position-static mt-6">
+      <button class="btn btn-secondary btn-sm">Alterar</button>
+      <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Excluir</button>
+    </div>
+    <table class="table caption-top table-hover w-50 mx-auto">
       <caption id="nomeLista" style="font-weight: bold;"></caption>
       <thead id="formText">
                     <tr>
@@ -83,6 +128,7 @@
                       <th id="tableT5"></th>
                     </tr>
                   </thead>
+                  
                   <tbody id="lista">
                     <!-- js ira gerar os elementos aqui -->
                   </tbody>
@@ -223,7 +269,20 @@
     
   </div>
 <!-- Script para responsividade da pagina -->
-<script src="js/mascara.js"></script>
+<script>
+  document.getElementById('preco_veiculo').addEventListener('input', function(e){
+    var input = e.target
+    var value = input.value
+
+    value = value.replace(/\D/g, '')
+
+    value = (value / 100).toFixed(2).replace('.', ',')
+    value = 'R$ ' + value
+    input.value = value
+
+
+})
+</script>
 
   <script>
 

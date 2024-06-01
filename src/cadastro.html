@@ -5,16 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="bootstrap/bootstrap-css/bootstrap.css">
+    <link rel="stylesheet" href="../src/bootstrap/bootstrap-css/bootstrap.css">
+    <script src="../src/bootstrap/js/bootstrap.bundle.js"></script>
     <link rel="stylesheet" href="style/cadastro.css">
     <script type="module" src="js/cadastro.js"></script>
+    <script type="text/javascript" src="js/mascara.js"></script>
     <script src="js/senha.js"></script>
 </head>
 
 <body>
-    <div id="popup">
-        <p id="msg"></p>
-    </div>
+    <div class="modal fade" id="meuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+          </div>
+        </div>
+      </div>
     <form id="meuFormulario">
         <div class="img-logo">
             <img src="imagens/logo/slim-logo-png.png">
@@ -44,7 +56,7 @@
         </div>
         <!-- senha -->
         <div class="input-group">
-            <input id="senha" type="password" required autocomplete="current-password">
+            <input id="senha" type="password" required autocomplete="new-password">
             <span>Senha</span>
             <input class="ver_senha" type="checkbox" onclick="mostrarSenha()">
         </div>
@@ -62,6 +74,6 @@
     <div class="home text-center">
         <a href="../index.html">voltar a página inicial</a>
     </div>
-    <script type="text/javascript" src="js/mascara.js"></script>
+    
 </body>
 </html>

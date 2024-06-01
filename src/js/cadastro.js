@@ -1,5 +1,4 @@
 
-
 document.getElementById("meuFormulario").addEventListener("submit", function (event) {
 
     event.preventDefault()
@@ -7,8 +6,11 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
     // pega os dados enviados do formulario
     var nome = document.getElementById('nome').value
     var email = document.getElementById('email').value
+
     var documento = document.getElementById('documento').value
+    documento = documento.replace(/[^0-9]/g, '')
     var telefone = document.getElementById('telefone').value
+    telefone  = telefone.replace(/[^0-9]/g, '')
     const senha = document.getElementById('senha').value
 
     // armazena os dados em um formData
@@ -30,24 +32,22 @@ document.getElementById("meuFormulario").addEventListener("submit", function (ev
             if(data == "Usuario cadastrado"){
                 //redireciona para a pagina home
                 window.location.replace("../index.html")
+            }else{
+               popup() 
             }
 
-            const popup = document.getElementById('popup')
-            popup.removeAttribute('class')
-            popup.classList.toggle('popup-on')
-            document.getElementById('msg').innerHTML = `${data}`
+          
+            
 
         }).catch(error => {
             console.log(error)
             // exibe mensagens em caso de erro ao enviar os dados 
 
         })
-    setTimeout(function () {
-        popup.classList.toggle('popup-off') 
-
-    }, 2000)
 
 })
-function removerMascaraCPF(cpf) {
-    return documento.replace(/\D/g, '');
-}
+//popup///////////
+function popup(){
+    var myModal = new bootstrap.Modal(document.getElementById('meuModal'));
+        myModal.show();
+  }

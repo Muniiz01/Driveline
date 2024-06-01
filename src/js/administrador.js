@@ -1,5 +1,4 @@
-
-window.addEventListener("load", function () {
+swindow.addEventListener("load", function () {
   fetch("php/session.php")
     .then((response) => response.json())
     .then((data) => {
@@ -160,11 +159,11 @@ function exibirUsuarios() {
         (item) => `
         <tr id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
         <th scope="row">${item.idUsuario}</th>
-  <td class='item_usuario'>${item.nome}</td>
-  <td class='item_usuario'>${item.email}</td>
-  <td class='item_usuario'>${item.telefone}</td>
-  <td class='item_usuario'>${item.documento}</td>
-</tr>
+        <td>${item.nome}</td>
+        <td>${item.email}</td>
+        <td>${item.telefone}</td>
+        <td>${item.documento}</td>
+        </tr>
         `
       );
       document.getElementById('nomeLista').innerHTML = "Lista de Usuarios" 
@@ -172,6 +171,12 @@ function exibirUsuarios() {
       document.getElementById('tableT3').innerHTML = "Email"
       document.getElementById('tableT4').innerHTML = "Telefone"
       document.getElementById('tableT5').innerHTML = "Documento"
+
+document.getElementById('barraP').innerHTML = `
+<input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('u')" type="search" placeholder="Search" aria-label="Search">
+<button class="btn btn-outline-success">Search</button>
+
+`
       
       dadosDiv.innerHTML = lista.join("");
       })
@@ -215,17 +220,16 @@ function barraPesquisa(tipo) {
     body: formData,
   }).then(response => response.json())
     .then(data => {
-      const dadosDiv = document.getElementById('listaDinamica')
+      const dadosDiv = document.getElementById('lista')
       const lista = data.map(item => {
         var msg = item.msg
         if(msg == "Nenhum registro encontrado"){
-          confirm('Nenhum registro encontrado')
-          exibirFuncionarios()
+          popup("Nenhum registro encontrado")
         }else{
         return `
         
-        <tr class='tabela_usuario tabelaUsuarioR' id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
-        <td class='item_usuario'>${item.idUsuario}</td>
+        <tr id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
+        <th scope="row">${item.idUsuario}</th>
         <td class='item_usuario'>${item.nome}</td>
         <td class='item_usuario'>${item.email}</td>
         <td class='item_usuario'>${item.telefone}</td>
@@ -317,20 +321,20 @@ function selecionaTabela(idUser, nivelAcess) {
   var div = document.getElementById(idUser);
   console.log(div)
 
-  if (div.classList.contains('tabelaSelect')) {
-    div.classList.remove('tabelaSelect');
+  if (div.classList.contains('table-active')) {
+    div.classList.remove('table-active');
     selectedDiv = null;
     id = null
     nivel = null
   } else {
 
     if (selectedDiv !== null) {
-      document.getElementById(selectedDiv).classList.remove('tabelaSelect');
+      document.getElementById(selectedDiv).classList.remove('table-active');
 
     }
 
 
-    div.classList.add('tabelaSelect');
+    div.classList.add('table-active');
     id = idUser
     nivel = nivelAcess
     selectedDiv = idUser;
@@ -433,16 +437,13 @@ function deletar() {
   formData.append("idUsuario", idUser);
   formData.append("nivelAcess", nivelAcess);
 
-  if (confirm('Voce tem certeza que deseja deletar?')) {
-    // Save it!
-    console.log('Salvo no Banco de dados.');
     fetch("php/deletaUsuario.php", {
       method: "POST",
       body: formData,
     })
       .then((response) => response.text())
       .then((data) => {
-        console.log("usuario deletado", data);
+        console.log("usuario deletado");
         if (nivel == 2) {
           exibirFuncionarios()
         } else {
@@ -453,11 +454,6 @@ function deletar() {
       .catch((error) => {
         console.log("error", error);
       });
-  } else {
-    // Do nothing!
-    console.log('Coisas não foram salvas no banco de dados');
-
-  }
 
 }
 
@@ -502,6 +498,13 @@ function dolar(e){
   input.value = value
 
   return value
+}
+
+//popup///////////
+function popup(msg){
+  var myModal = new bootstrap.Modal(document.getElementById('meuModal'));
+  document.getElementById('modalBody').innerHTML = msg
+      myModal.show();
 }
 
 

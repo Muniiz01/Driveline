@@ -21,17 +21,6 @@ function mTel(tel) {
 }
 
 
-document.getElementById('preco_veiculo').addEventListener('input', function(e){
-    var input = e.target
-    var value = input.value
 
-    value = value.replace(/\D/g, '')
-
-    value = (value / 100).toFixed(2).replace('.', ',')
-    value = 'R$ ' + value
-    input.value = value
-
-
-})
 
 
