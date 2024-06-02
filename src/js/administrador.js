@@ -385,6 +385,8 @@ function exibirVeiculos() {
         `;
       });
 
+      document.getElementById('nomeLista').innerHTML = "Lista de Veiculos"
+
       document.getElementById('tableT2').innerHTML = "Categoria"
       document.getElementById('tableT3').innerHTML = "Marca"
       document.getElementById('tableT4').innerHTML = "Modelo"

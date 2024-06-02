@@ -1,23 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/func.css">
-    <title>Funcionarios</title>
-    <script src="js/funcionarios.js"></script> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ADM</title>
+  <link rel="stylesheet" href="../src/bootstrap/bootstrap-css/bootstrap.css">
+  <title>ADMIN</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="../src/bootstrap/js/bootstrap.bundle.js"></script>
+  <script src="js/dropdown.js"></script>
+  <script src="js/funcionarios.js"></script>
+  <link rel="stylesheet" href="../fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.css">
+  <link rel="stylesheet" href="style/adm.css">
 </head>
+
 <body>
-   
-    <div class="container-menu">   <!-- Conteiner que agrupa os botoes usuario, veiculos, historico e gerenciamento -->
-        <button class="btn" id="home" onclick="retornaHome()">Home</button>
-        <button class="btn" id="usuarios" onclick="exibirUsuarios()">usuarios</button> <!-- Botao usuario ao clicar chama a funcao exibirUsuarios() -->
-        <button class="btn" id="veiculos" onclick="exibirVeiculos()">veiculos</button> <!-- Botao veiculos ao clicar chama a funcao exibirVeiculos() -->
-        <button class="btn" id="historico">historico</button> <!-- Botao historico ao clicar chama a funcao exibirHistorico() " funcao nao implementada " --> 
+  <nav class="navbar bg-body-tertiary fixed-top">
+    <div class="container-fluid">
+      <button class="btn" onclick="retornaHome()">
+        <i class="fas fa-home"></i> Home
+      </button>
+
+
+      <button class="btn" type="button" id="sidebarToggle" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end p-0" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+        id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Perfil Funcionario</h5>
+          <button type="button" id="sidebarClose" class="btn-close" data-bs-dismiss="offcanvas"
+            aria-label="close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 p-3">
+            <button type="button" class="btn btn-hover container-fluid text-start fs-5 p-3 "  onclick="exibirUsuarios(); ativar(1)">Usuarios</button>
+            <li class="nav-item dropdown ">
+              <button type="button" class="btn btn-hover container-fluid text-start fs-5 p-3"
+                role="button" onclick="exibirVeiculos(); ativar(2)"
+                aria-expanded="false">Veiculos</button>
+            </li>
+            <button type="button" class="btn btn-hover container-fluid text-start fs-5 p-3" onclick="ativar(3)">historio</button>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div id="idVeiculo"></div>
-    <div class="lista" id="lista">  <!-- div conteiner, neste espaco sera gerado listas, ao clicar em um dos botoes acima sera gerado o resultado dentro da div -->
+  </nav>
+  <!-- Tabela que ira conter a lista de funcionarios e usuarios -->
+  <div class="table-responsive mt-6 table-container" id="contr1">
+<!-- Modal barra de pesquisa-->
+<div class="modal fade" id="meuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Driveline diz:</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Fim Modals -->
+
+    <div class="d-flex mt-3">
+      <div class=" input-group ms-6 w-35 mx-auto" id="barraP"> 
+      </div>
+    </div>
+    
+    <div class="container-fluid w-50 text-end position-static mt-6" id="butoesADV">
+      
+    </div>
+    <table class="table caption-top table-hover w-50 mx-auto">
+      <caption id="nomeLista" style="font-weight: bold;"></caption>
+      <thead id="formText">
+                    <tr>
+                      <th >#id</th>
+                      <th id="tableT2"></th>
+                      <th id="tableT3"></th>
+                      <th id="tableT4"></th>
+                      <th id="tableT5"></th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody id="lista">
+                    <!-- js ira gerar os elementos aqui -->
+                  </tbody>
+      </table>
+  </div>
+ 
+<!-- Script para responsividade da pagina -->
+<script>
+    function ativar(x){
+      switch (x) {
+        case 1:
+        document.getElementById('contr1').style.display = 'block'
+      
+        break;
+        case 2:
+        document.getElementById('contr1').style.display = 'block'
+             
+        break;
+        case 3: 
+        document.getElementById('contr1').style.display = 'block'
         
-    </div>
+        break;
+        default: 
+        console.log('nenhuma funcao selecionada')
+        document.getElementById('contr1').style.display = 'none'
+        
+    }
+  }
+</script>
+
+  <script>
+
+
+    $(document).ready(function () {
+
+      $('#sidebarToggle').on('click', function () {
+        if (window.innerWidth < 1360) {
+          $('.table-container').removeClass('shiftedB')
+          $('.table-container').toggleClass('shifted')
+          if (window.innerWidth < 900) {
+            $('.table-container').removeClass('shifted')
+            $('.table-container').toggleClass('shiftedB')
+
+          }
+        }
+      })
+      //////////////////////////////////////////
+      $('#sidebarClose').on('click', function () {
+        $('.table-container').removeClass('shifted')
+        $('.table-container').removeClass('shiftedB')
+      })
+
+      //////////////////////////////////////////
+      var $offcanvas = $('#offcanvasScrolling')
+
+      function offCanvas() {
+        if ($(window).width() < 900) {
+
+          $offcanvas.removeClass('offcanvas-end').addClass('offcanvas-top')
+
+        } else {
+          $offcanvas.removeClass('offcanvas-top').addClass('offcanvas-end')
+
+        }
+      }
+      offCanvas()
+
+      $(window).resize(offCanvas)
+
+
+
+    }
+    )
+  </script>
+
+
 </body>
+
 </html>
