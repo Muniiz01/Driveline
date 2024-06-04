@@ -87,3 +87,4 @@ function tema(){
 setInterval(() => {
     passa()
 }, 1000)//1 segundo
+

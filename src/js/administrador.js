@@ -390,7 +390,7 @@ function exibirVeiculos() {
       document.getElementById('tableT2').innerHTML = "Categoria"
       document.getElementById('tableT3').innerHTML = "Marca"
       document.getElementById('tableT4').innerHTML = "Modelo"
-      document.getElementById('tableT5').innerHTML = "Preco"
+      document.getElementById('tableT5').innerHTML = "Preço"
 
       document.getElementById('butoesADV').innerHTML = `
       <button class="btn btn-secondary btn-sm">Visualizar</button>
