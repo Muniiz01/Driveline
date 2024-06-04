@@ -17,8 +17,9 @@
     }
 
     $start_from =($page - 1)*$limit;
+ 
     
-    $query = mysqli_query($con, "SELECT * from veiculos ORDER BY id_veiculos ASC LIMIT $start_from, $limit");//busca no sql
+    $query = mysqli_query($con, "SELECT * from veiculos JOIN img_veiculo ON veiculos.id_veiculos = img_veiculo.idVeiculos ORDER BY id_veiculos ASC LIMIT $start_from, $limit");//busca no sql
     
     ///////////////////////////////
     $output .= " 
@@ -31,12 +32,12 @@
     /////////////////////////////////////////////////////////////
     $output .= " 
             <section class='info_carro'>
-                <div class='img_carro'><img src='src/imagem_carros/Onix10.WEBP'></div>
+                <div class='img_carro'><img src='src/".($row["caminho_imagem"])."'></div>
                     <article class='desc_veiculo'>
                 <div class='modelo_carro'>modelo:        ".($row["modelo"])."</div>  
                 <div class='passageiros'>passageiros:    ".($row["passageiros"])."</div>
                 <div class='cor'>cor:                    ".($row["cor"])."</div>
-                <div class='quilometragem'>quilometragem:".($row["marca"])."</div>
+                <div class='quilometragem'>quilometragem:".($row["quilometragem"])."</div>
                 <div class='airbag'>airbag:              ".($row["airbag"])."</div>
                 <div class='cambio'>cambio:              ".($row["cambio"])."</div>
                 <div class='preco_veiculo'>Preco:        ".($row["preco_veiculo"])."</div>
