@@ -21,6 +21,31 @@ function rolar() {
         }
     ultimaposicao = posicaoatual;
 }
+var tema_site
+
+window.addEventListener('load', function(){
+    var theme = localStorage.getItem("theme")
+    tema_site = 1
+    if(theme == 'dark'){
+        icone_sol.style.display = "block"
+        icone_lua.style.display = "none"
+        root.style.setProperty('--fundo', 'rgb(41, 41, 41)');    
+        root.style.setProperty('--texto', 'white');    
+        root.style.setProperty('--principal', 'black');    
+        root.style.setProperty("--barra-pesquisa", "black")
+        root.style.setProperty("--texto2", "white")
+    }else{
+        tema_site = 2
+        icone_sol.style.display = "none"
+        icone_lua.style.display = "block"
+        root.style.setProperty('--texto', 'rgb(0, 0, 0)')    
+        root.style.setProperty('--principal', 'white') 
+        root.style.setProperty("--fundo", "rgb(216, 216, 216)")
+        root.style.setProperty("--barra-pesquisa", "white")
+        root.style.setProperty("--texto2", "gray")
+    }
+
+})
 //////////////////////////////////////////////////////////////////
 
 var passa_slide = 0
@@ -55,11 +80,10 @@ function passa() {
 
 ////////////////////////////////////////////////////////////////////
 
-var tema_site = 0
 var icone_lua = document.getElementById('icon_lua')
 var icone_sol = document.getElementById('icon_sol')
+
 function tema(){
-    tema_site++
     if(tema_site == 1){//escuro
         icone_sol.style.display = "block"
         icone_lua.style.display = "none"
@@ -67,17 +91,21 @@ function tema(){
         root.style.setProperty('--texto', 'white');    
         root.style.setProperty('--principal', 'black');    
         root.style.setProperty("--barra-pesquisa", "black")
-        root.style.setProperty("--texto2", "white")
-    }else{//claro
+        root.style.setProperty("--texto2", "white")        
+        localStorage.setItem("theme", "dark")
+        tema_site = 2
+    }else if(tema_site == 2){//claro
+
         icone_sol.style.display = "none"
         icone_lua.style.display = "block"
-        root.style.setProperty('--texto', 'rgb(0, 0, 0)');    
-        root.style.setProperty('--principal', 'white');  
+        root.style.setProperty('--texto', 'rgb(0, 0, 0)')    
+        root.style.setProperty('--principal', 'white') 
         root.style.setProperty("--fundo", "rgb(216, 216, 216)")
         root.style.setProperty("--barra-pesquisa", "white")
         root.style.setProperty("--texto2", "gray")
+        tema_site = 1
+        localStorage.setItem("theme", "light")
 
-        tema_site = 0
     }
     
 }
