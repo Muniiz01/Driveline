@@ -25,7 +25,7 @@ var tema_site
 
 window.addEventListener('load', function(){
     var theme = localStorage.getItem("theme")
-    tema_site = 1
+    
     if(theme == 'dark'){
         icone_sol.style.display = "block"
         icone_lua.style.display = "none"
@@ -34,8 +34,8 @@ window.addEventListener('load', function(){
         root.style.setProperty('--principal', 'black');    
         root.style.setProperty("--barra-pesquisa", "black")
         root.style.setProperty("--texto2", "white")
+        tema_site = 0
     }else{
-        tema_site = 2
         icone_sol.style.display = "none"
         icone_lua.style.display = "block"
         root.style.setProperty('--texto', 'rgb(0, 0, 0)')    
@@ -43,6 +43,7 @@ window.addEventListener('load', function(){
         root.style.setProperty("--fundo", "rgb(216, 216, 216)")
         root.style.setProperty("--barra-pesquisa", "white")
         root.style.setProperty("--texto2", "gray")
+        tema_site = 1
     }
 
 })
@@ -93,8 +94,8 @@ function tema(){
         root.style.setProperty("--barra-pesquisa", "black")
         root.style.setProperty("--texto2", "white")        
         localStorage.setItem("theme", "dark")
-        tema_site = 2
-    }else if(tema_site == 2){//claro
+        tema_site = 0
+    }else{//claro
 
         icone_sol.style.display = "none"
         icone_lua.style.display = "block"

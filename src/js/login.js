@@ -1,3 +1,32 @@
+var root = document.documentElement
+window.addEventListener('load', function(){
+    var theme = localStorage.getItem("theme")
+    
+    if(theme == 'dark'){
+        root.style.setProperty('--fundo', 'rgb(33,37,41)')
+        root.style.setProperty('--fundo-tela-login', '#2b3035')
+        root.style.setProperty('--hover', '#8bb9fe')
+        root.style.setProperty('--hover2', '#8bb9fe')
+        root.style.setProperty('--input', 'transparent')
+        root.style.setProperty('--texto2', '#dee2e6')
+        root.style.setProperty('--text-input', '#dee2e6')
+        document.getElementById('imgLogo').src = 'imagens/logo/slim-logo-white.png'
+
+
+    }else{
+        root.style.setProperty('--fundo', 'rgb(238, 237, 237)')
+        root.style.setProperty('--fundo-tela-login', 'white')
+        root.style.setProperty('--hover', '#8bb9fe')
+        root.style.setProperty('--hover2', 'black')
+        root.style.setProperty('--input', 'transparent')
+        root.style.setProperty('--texto2', 'grey')
+        root.style.setProperty('--texto-input', 'black')
+        document.getElementById('imgLogo').src = 'imagens/logo/slim-logo-png.png'
+
+
+    }
+})
+
 document.getElementById("formLogin").addEventListener("submit", function (event){
 
     event.preventDefault()
