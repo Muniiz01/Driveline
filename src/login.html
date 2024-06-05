@@ -7,7 +7,7 @@
     <title>login</title>
     <link rel="stylesheet" href="bootstrap/bootstrap-css/bootstrap.css">
     <link rel="stylesheet" href="style/login_style.css">
-    <script type="module" src="js/login.js"></script>
+    
     <script src="js/senha.js"></script>
     <script>
         
@@ -19,7 +19,7 @@
     <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <form class="tela_login" id="formLogin">
         <aside class="img_logo">
-            <img src="imagens/logo/slim-logo-png.png" width="70%">
+            <img id="imgLogo" src="" width="70%">
         </aside>
         <!-- texto //////////////////////////////////////////////////////////////////////////////////////////////////-->
         <p class="display-5" id="login_texto">Bem vindo</p>   
@@ -28,12 +28,12 @@
         <!-- inputs  ////////////////////////////////////////////////////////////////////////////////////////////////-->
         <!-- input email ///////////////////////////////-->
         <container class="input-group" id="input-group-email">
-            <input type="text" id="email" required autocomplete="email">
+            <input type="text" id="email" required autocomplete="off">
             <span>E-mail</span>
         </container>
         <!-- input senha ///////////////////////////////-->
         <container class="input-group" value="" id="input-group-senha">
-            <input type="password" id="senha" required autocomplete="current-password">
+            <input type="password" id="senha" required autocomplete="off">
             <span>Senha</span>
             <input class="ver_senha" type="checkbox" onclick="mostrarSenha()">
         </container>
@@ -52,5 +52,5 @@
     </footer>
     <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 </body>
-
+<script src="js/login.js"></script>
 </html>

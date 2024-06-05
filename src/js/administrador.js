@@ -14,7 +14,25 @@ window.addEventListener("load", function () {
         window.location.replace("../index.html");
       }
     });
+    var theme = localStorage.getItem("theme")
+    document.documentElement.setAttribute('data-bs-theme', theme)
 });
+
+function fetchText(a,b,c,d){
+
+  fetch(`${a}`, {
+    method: b,
+    body: c,
+  })
+  .then((response) => response.text())
+  .then((data) => {
+    return console.log(data)
+  }).catch((error) => {
+    return console.log(error)
+  })
+}
+
+
 //Funções////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function enviarFormCar() {
   var categoria = document.getElementById("categoria").value; // Atribui o valor do input pelo id em uma variavel " variavel contem o mesmo nome do input "
@@ -56,21 +74,10 @@ function enviarFormCar() {
     formData.append("imagens[]", imagem);
   }
 
-  fetch("php/addVeiculos.php", {
-    // funcao fetch() e damos os seguintes parametros 'addVeiculos.php' script do servidor
-    method: "POST", // method: 'POST' que indica o tipo de envio para o servidor
-    body: formData, // body: formData o corpo do envio que e todos os valores armazenado no FormData
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      console.log(data);
-      // Exibi mensagens caso o servidor receba os dados
-    })
-    .catch((error) => {
-      console.log(error);
-      // exibe mensagens em caso de erro ao enviar os dados
-    });
+  fetchText("php/addVeiculos.php", "POST", formData)
+
 }
+
 function enviarFormFunc() {
   var nome = document.getElementById("nome").value;
   var documento = document.getElementById("cpf").value;
@@ -85,20 +92,24 @@ function enviarFormFunc() {
   formData.append("email", email);
   formData.append("senha", senha);
 
-  fetch("php/addFuncionario.php", {
-    method: "POST",
-    body: formData,
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      console.log(data); //exibi mensagem enviada do php
-    })
-    .catch((error) => {
-      console.log(error); // exibe mensagem de erro enviada do php
-    });
+  fetchText("php/addFuncionario.php", "POST", formData)
 }
 //exibir/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------------------
+
+function fetchJson(){
+  fetch(`${a}`, {
+    method: b,
+    body: c,
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    return data
+  }).catch((error) => {
+    return error
+  })
+}
+
 function exibirUsuarios() {
   selectedDiv = null
   const dadosDiv = document.getElementById("lista");
@@ -126,7 +137,6 @@ function exibirUsuarios() {
 
       document.getElementById('barraP').innerHTML = `
 <input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('u')" type="search" placeholder="Search" aria-label="Search">
-<button class="btn btn-outline-success">Search</button>
 `
       document.getElementById('butoesADV').innerHTML = `
       <button class="btn btn-secondary btn-sm" id="buttonA" data-bs-toggle="modal" data-bs-target="#alterBackdrop" onclick="alterar()" disabled>Alterar</button>
@@ -237,7 +247,7 @@ function exibirFuncionarios() {
       );
       document.getElementById('barraP').innerHTML = `
 <input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('f')" type="search" placeholder="Search" aria-label="Search">
-<button class="btn btn-outline-success" onclick="barraPesquisa('f')">Search</button>`
+`
 
       document.getElementById('nomeLista').innerHTML = "Lista de Funcionarios"
       document.getElementById('tableT2').innerHTML = "Nome"
@@ -382,16 +392,14 @@ function exibirVeiculos() {
         <td class='item_usuario'>${item.modelo}</td>
         <td class='item_usuario'>${dolar(item.preco_veiculo)}</td>
       </tr>
-        `;
+        `
       });
 
       document.getElementById('nomeLista').innerHTML = "Lista de Veiculos"
-
       document.getElementById('tableT2').innerHTML = "Categoria"
       document.getElementById('tableT3').innerHTML = "Marca"
       document.getElementById('tableT4').innerHTML = "Modelo"
       document.getElementById('tableT5').innerHTML = "Preço"
-
       document.getElementById('butoesADV').innerHTML = `
       <button class="btn btn-secondary btn-sm">Visualizar</button>
       <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Excluir</button>

@@ -9,6 +9,4 @@ $sql = "SELECT * FROM veiculos JOIN imagens ON veiculos.id_veiculos = imagens.id
 
 $resultado = $con->query($sql);
 
-
-
 ?>

@@ -3,10 +3,14 @@
 }
 :root{
     --fundo: rgb(238, 237, 237);
-    --sombra-e-texto: rgb(0, 0, 0);
-    --principal: white;
+    --fundo-tela-login: #2b3035;
+    --hover: #8bb9fe;
+    --hover2: black; 
+    --input: transparent; 
     --barra-pesquisa:white;
-    --texto2:gray;
+    --texto2:#dee2e6;
+    --text-input: black; 
+
 }
  body { 
     background-color: var(--fundo);
@@ -20,15 +24,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: var(--texto2);
     justify-content: center;
  }
 
  /* //corpo da tela de login///////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
  .tela_login {
-     background-color: white;
+     background-color: var(--fundo-tela-login);
      width: 30rem;
      height: max-content;
      text-align: center;
+     
  }
 
  .img_logo {
@@ -50,6 +56,8 @@
  .input-group input {
      border-radius: 0%;
      border: none;
+     background: var(--input);
+     color: var(--text-input);
      border-bottom: 1px solid gray;
      height: 34px;
      width: 100%;
@@ -76,7 +84,7 @@
  #cadastro {
      margin-left: auto;
      margin-right: auto;
-     background-color: white;
+     background-color: transparent;
      margin-bottom: 7%;
      margin-top: 1%;
      color: gray;
@@ -84,7 +92,7 @@
  }
 
  #cadastro:hover {
-     color: black;
+     color: var(--hover);
  }
 
  /* botoes_enviar_cadastrar */
@@ -124,7 +132,7 @@
  }
 
  .home a:hover {
-     color: rgb(0, 136, 255);
+     color: var(--hover2);
  }
 
  /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
