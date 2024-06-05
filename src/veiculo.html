@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/bootstrap-css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/index_style.css">
+    <link rel="stylesheet" href="style/pag_veiculo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script src="bootstrap/js/bootstrap.bundle.js"></script>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="input-group grupo2">
+            <button class="btn-lg btn-padrao" id="btn_reservas">Reservas</button>
+            <button type="button" id="alugue" class="btn-padrao btn-lg dropdown-toggle"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Perfil
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/index.html">Home</a></li>
+            <li><button class="dropdown-item" onclick="logout()">Sair</button></li>
+        </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5 mb-5 bg-light d-flex gap-3 align-items-center text-secondary">
+        <div class="d-flex flex-column m-4">
+            
+            <img src="/src/imagem_carros/Onix10.WEBP" class="rounded float-start" width="500px" height="400px">
+            
+            
+        </div>
+        <div class="d-flex flex-column">
+            <h1 class="display-6 mb-3 mt-3">Chevrolet Onix</h1>
+            <div class="d-flex align-items-end">
+            <h2>R$90.54</h2><p class="ms-2">Diaria</p>
+            </div>
+            <p class="text-md-start pt-2 text-break ">Carro Intermediario compacto, seguro e confortavel, para você e sua familia por um preço acessivel.</p>
+            <div class="d-flex">
+                <div>
+                <ul style="list-style: none;">
+                    <li><p><i class="fa-solid fa-paint-roller"></i> Cor: Cinza</p></li>
+                    <li><p><i class="fa-solid fa-gears"></i> Câmbio: manual</p></li>
+                    <li><p><i class="fa-solid fa-car"></i> Quilometragem: 55km</p></li>
+                    <li><p><i class="fa-solid fa-person"></i> Passageiros: 4 pessoas</p></li>
+                    <li><p><i class="fa-solid fa-wind"></i> Airbag: Sim</p></li>
+                    <li><p><i class="fa-solid fa-gears"></i> Abs: Sim</p></li>
+                </ul>
+                </div>
+                <div class="d-flex justify-content-end align-items-end" style="width: 55%;">
+                    <button class="btn btn-lg btn-primary mb-2" style="border-radius: 2rem;">Reservar</button>
+                </div>
+            </div>
+
+           
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <footer class="rodape">
+
+        <div class="texto_rodape">
+            <p class="display-5" id="Contato">Contato</p>
+            <p class="display-5 subtitulo">Whatsapp</p>
+            <i class="fa-brands fa-whatsapp"></i><span class="pequeno_texto">(47)99889-4766 </span>
+        </div>
+
+        <div class="texto_rodape">
+            <p class="display-5">Redes sociais</p>
+            <p class="display-5 subtitulo">Github</p>
+            <i class="fa-brands fa-github" style="color: white;"></i><a href="https://github.com/JhonnyAnthony" class="pequeno_texto">https://github.com/JhonnyAnthony</a>
+            <br>
+            <i class="fa-brands fa-github" style="color: white;"></i><a href="https://github.com/Muniiz01" class="pequeno_texto">https://github.com/Muniiz01</a>
+            <br>
+            <i class="fa-brands fa-github" style="color: white;"></i><a href="https://github.com/vitorSchuster" class="pequeno_texto">https://github.com/vitorSchuster</a>
+        </div>
+
+        <div class="copyright">
+            <h1 class="display-5">DriveLine</h1>
+            <p>Copyright 2024 todos os <br> direitos reservados</p>
+        </div>
+    </footer>
+
+<script src="src/js/index.js"></script>
+
+</body>
+</html>
