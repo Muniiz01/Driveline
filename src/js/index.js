@@ -29,10 +29,10 @@ window.addEventListener('load', function(){
     if(theme == 'dark'){
         icone_sol.style.display = "block"
         icone_lua.style.display = "none"
-        root.style.setProperty('--fundo', 'rgb(41, 41, 41)');    
+        root.style.setProperty('--fundo', 'rgb(33,37,41)');    
         root.style.setProperty('--texto', 'white');    
-        root.style.setProperty('--principal', 'black');    
-        root.style.setProperty("--barra-pesquisa", "black")
+        root.style.setProperty('--principal', '#2b3035');    
+        root.style.setProperty("--barra-pesquisa", "#2b3035")
         root.style.setProperty("--texto2", "white")
         tema_site = 0
     }else{
@@ -88,10 +88,10 @@ function tema(){
     if(tema_site == 1){//escuro
         icone_sol.style.display = "block"
         icone_lua.style.display = "none"
-        root.style.setProperty('--fundo', 'rgb(41, 41, 41)');    
+        root.style.setProperty('--fundo', 'rgb(33,37,41)');    
         root.style.setProperty('--texto', 'white');    
-        root.style.setProperty('--principal', 'black');    
-        root.style.setProperty("--barra-pesquisa", "black")
+        root.style.setProperty('--principal', '#2b3035');    
+        root.style.setProperty("--barra-pesquisa", "#2b3035")
         root.style.setProperty("--texto2", "white")        
         localStorage.setItem("theme", "dark")
         tema_site = 0

@@ -10,11 +10,14 @@ $tipo = $_POST['tipo'];
 
 if($tipo == 'u'){
 
-    $sql = "SELECT * FROM usuarios WHERE email LIKE '$pesquisa%' OR nome LIKE '%$pesquisa%'";
+    $sql = "SELECT * FROM usuarios WHERE email LIKE '%$pesquisa%' OR nome LIKE '%$pesquisa%' OR id_usuario LIKE '$pesquisa'";
 
-}else if($tipo == 'f'){
+}elseif($tipo == 'f'){
 
-    $sql = "SELECT * FROM funcionarios WHERE idNivel_de_Acesso = 2 AND (email LIKE '$pesquisa%' OR nome LIKE '%$pesquisa%') ";
+    $sql = "SELECT * FROM funcionarios WHERE idNivel_de_Acesso = 2 AND (email LIKE '%$pesquisa%' OR nome LIKE '%$pesquisa%' OR id_usuario LIKE '$pesquisa') ";
+
+}elseif($tipo == 'v'){
+    $sql = "SELECT * FROM veiculos WHERE marca = '%$pesquisa%' AND  ";
 
 }
     

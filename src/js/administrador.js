@@ -515,7 +515,7 @@ function popup(msg) {
   var myModal = new bootstrap.Modal(document.getElementById('meuModal'));
   document.getElementById('modalBody').innerHTML = msg
   myModal.show();
+  setTimeout(function() {
+    myModal.hide()
+  },3000)
 }
-
-
-
