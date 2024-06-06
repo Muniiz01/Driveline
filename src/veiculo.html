@@ -11,6 +11,28 @@
     <script src="bootstrap/js/bootstrap.bundle.js"></script>
 </head>
 <body>
+
+<script src="src/js/index.js"></script>
+<script>
+    function enviarVeiculo(){
+        var selecionado = localStorage.getItem("id_veiculo")
+        console.log(selecionado)
+        var formData = new FormData(); // FormData e um metodo de armazenamemto para envio de arquivos para o lado do servidor
+        formData.append("veiculoSelecionado" ,selecionado);
+        fetch(`php/veiculos.php`, {
+            method: 'POST',
+            body: formData,
+        })
+        .then((response) => response.text())
+        .then((data) => {
+            return console.log(data)
+        }).catch((error) => {
+            return console.log(error)
+        })
+    }
+    enviarVeiculo()
+</script>
+
     <nav id="navbar">
         <div class="input-group grupo2">
             <button class="btn-lg btn-padrao" id="btn_reservas">Reservas</button>
@@ -89,7 +111,6 @@
         </div>
     </footer>
 
-<script src="src/js/index.js"></script>
 
 </body>
 </html>

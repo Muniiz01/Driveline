@@ -117,3 +117,8 @@ setInterval(() => {
     passa()
 }, 1000)//1 segundo
 
+function veiculo_selecionado(id_veiculos){
+    localStorage.setItem("id_veiculo", id_veiculos)
+    console.log(id_veiculos)
+    window.location.href = "src/veiculo.html";
+}

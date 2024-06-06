@@ -2,7 +2,7 @@
     //conexão com o banco//
     $con = mysqli_connect("localhost" , "root" , "" , "driveline");
     ////
-
+     
     //limite//
     $limit = 6;
     $page = 0;
@@ -43,7 +43,7 @@
                 <div class='preco_veiculo'>Preco:        ".($row["preco_veiculo"])."</div>
                     </article>
                     <div>
-                    <a href='src/login.html'><button class ='btn-aluguel'><i class='fa-solid fa-car'></i></button></a>
+                    <button class ='btn-aluguel' onclick = 'veiculo_selecionado(".($row['id_veiculos']).")'><i class='fa-solid fa-car'></i></button>
                     </div>
             </section>";
             ///////////////////////////////////////////////////////////////
