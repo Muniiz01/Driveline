@@ -223,6 +223,9 @@ nav .btn-padrao,.dropdown-menu,.dropdown-item{
     padding: 0 20px;
     border: none;
 }
+.barra_pesquisa input{
+    color: var(--texto);
+}
 
 .btn,
 .barra {
