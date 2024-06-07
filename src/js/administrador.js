@@ -382,10 +382,9 @@ function exibirVeiculos() {
     .then((data) => {
       // Atribui o array json no array dataF
 
-      const lista = data.map((item) => {
-        // A funcao data.map() cria um novo array com os resultados do array enviado pelo arquivo php json, nele e criado novos elementos html e inserido os resultados por exemplo: "${item.modelo}" item e o objeto array e modelo e a cahve array, todo o bloco e atribuido a const lista
-        return `
-      <tr id='${item.id_veiculos}'>
+      const lista = data.map(
+        (item) => `
+      <tr id='${item.id_veiculos}' onclick= 'selecionaTabela(${item.id_veiculos})'>
         <th scope="row">${item.id_veiculos}</th>
         <td class='item_usuario'>${item.categoria}</td>
         <td class='item_usuario'>${item.marca}</td>
@@ -393,7 +392,7 @@ function exibirVeiculos() {
         <td class='item_usuario'>${dolar(item.preco_veiculo)}</td>
       </tr>
         `
-      });
+      );
 
       document.getElementById('nomeLista').innerHTML = "Lista de Veiculos"
       document.getElementById('tableT2').innerHTML = "Categoria"
@@ -401,8 +400,8 @@ function exibirVeiculos() {
       document.getElementById('tableT4').innerHTML = "Modelo"
       document.getElementById('tableT5').innerHTML = "Preço"
       document.getElementById('butoesADV').innerHTML = `
-      <button class="btn btn-secondary btn-sm">Visualizar</button>
-      <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Excluir</button>
+      <button class="btn btn-secondary btn-sm" id="buttonA" data-bs-toggle="modal" data-bs-target="#alterBackdrop" onclick="alterarCarro(idVeiculo)" disabled>Alterar</button>
+      <button class="btn btn-danger btn-sm" id="buttonH" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled>Excluir</button>
       `
 
 
@@ -415,7 +414,27 @@ function exibirVeiculos() {
       document.getElementById("lista").innerHTML = "Nenhum registro encontrado";
     });
 }
+function alterarVeiculo(){
+  var div = document.getElementById("lista")
+  div.innerHTML = `<div id='form-addCars'> 
+  <input id='categoria' placeholder='categoria'> 
+  <input id='modelo' placeholder='modelo'> 
+   <input id='marca' placeholder='marca'>  
+   <input id='cor' placeholder='cor'>  
+   <input id='quilometragem' placeholder='quilometragem' maxlenght = '6'> 
+   <input id='cambio' placeholder='cambio'> 
+   <input id='passageiros' placeholder='qtd-passageiros'> 
+   <input id='ar-condicionado' placeholder='tem ar-condicionado?'> 
+   <input id='airbag' placeholder='tem airbag?'> 
+   <input id='abs' placeholder='tem abs?'> 
+   <input id='volume-carga' placeholder='volume de carga'> 
+   <input id='preco_veiculos' placeholder='Preço'> 
+   <input id='imagens' type='file' multiple accept='image/jpeg, image/png'> 
+   <textarea name='descricao' id='descricao' cols='30' rows='10' placeholder='descricao veiculo'></textarea>
+   <button id='btnEnviar' onclick='enviarFo(${idVeiculo})'>enviar</button>
+   </div>`
 
+}
 function alterarCarro(idVeiculo) {
   var div = document.getElementById("lista")
   div.innerHTML = `<div id='form-addCars'> 

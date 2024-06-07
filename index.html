@@ -71,15 +71,23 @@
     <!-- //////////////////////////////////////////////////////////////////////////// -->
     <!-- //////////////////////////////////////////////////////////////////////////// -->
     <!-- //////////////////////////////////////////////////////////////////////////// -->
-    <section class="barra_pesquisa">
-            <div class="btn-group">
-                
-                <input class="barra" type="search" placeholder="Buscar">
-                <button type="submit" class="btn btn-padrao">Buscar</button>
-            </div>
-            <div class="content">
 
-            </div>
+    <!-- document.getElementById('barraP').innerHTML = `
+                <input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('u')" type="search" placeholder="Search" aria-label="Search">`
+    -->
+    <div class="d-flex mt-3">
+        <div class=" input-group ms-6 w-35 mx-auto" id="barraP"> 
+        </div>
+      </div>
+    <section class="barra_pesquisa">
+        <div class="btn-group">
+            
+            <input class="barra" type="search" placeholder="Buscar">
+            <button type="submit" class="btn btn-padrao">Buscar</button>
+        </div>
+        <div class="content">
+
+        </div>
     </section>
 
     <div id="get-data"></div>

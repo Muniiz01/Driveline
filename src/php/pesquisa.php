@@ -33,6 +33,11 @@ if($tipo == 'u'){
                 'documento' => $valores["documento"],
                 'telefone' => $valores["telefone"],
                 'email' => $valores["email"],
+                'categoria' => $valores["categoria"],
+                'marca' => $valores["marca"],
+                'modelo' => $valores["modelo"],
+                'preco_veiculo' => $valores["preco_veiculo"],
+                
             );
                
         }
