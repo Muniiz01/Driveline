@@ -143,6 +143,13 @@ function fetch_data(page){
             var page = $(this).attr("id");
             fetch_data(page);
         })
+
+    function veiculo_selecionado(id_veiculos){
+        localStorage.setItem("id_veiculo", id_veiculos)
+        console.log(id_veiculos)
+        window.location.href = "src/veiculo.html";
+    }
     </script>
+    
 </body>
 </html>

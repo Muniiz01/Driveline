@@ -117,6 +117,7 @@ setInterval(() => {
     passa()
 }, 1000)//1 segundo
 
+<<<<<<< HEAD
 function veiculo_selecionado(id_veiculos){
     localStorage.setItem("id_veiculo", id_veiculos)
     console.log(id_veiculos)
@@ -166,3 +167,5 @@ function veiculo_selecionado(id_veiculos){
 //                 <input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('u')" type="search" placeholder="Search" aria-label="Search">
 // `
 // }
+=======
+>>>>>>> 3699d0b79b2f91c44915403e4a8156a979209d79

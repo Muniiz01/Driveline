@@ -3,35 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="bootstrap/bootstrap-css/bootstrap.min.css">
     <link rel="stylesheet" href="style/index_style.css">
     <link rel="stylesheet" href="style/pag_veiculo.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <script src="bootstrap/js/bootstrap.bundle.js"></script>
+    
 </head>
 <body>
-
-<script src="src/js/index.js"></script>
-<script>
-    function enviarVeiculo(){
-        var selecionado = localStorage.getItem("id_veiculo")
-        console.log(selecionado)
-        var formData = new FormData(); // FormData e um metodo de armazenamemto para envio de arquivos para o lado do servidor
-        formData.append("veiculoSelecionado" ,selecionado);
-        fetch(`php/veiculos.php`, {
-            method: 'POST',
-            body: formData,
-        })
-        .then((response) => response.text())
-        .then((data) => {
-            return console.log(data)
-        }).catch((error) => {
-            return console.log(error)
-        })
-    }
-    enviarVeiculo()
-</script>
 
     <nav id="navbar">
         <div class="input-group grupo2">
@@ -47,7 +27,8 @@
         </div>
     </nav>
 
-    <div class="container mt-5 mb-5 bg-light d-flex gap-3 align-items-center text-secondary">
+    <div id="get-data"></div>
+    <!-- <div class="container mt-5 mb-5 bg-light d-flex gap-3 align-items-center text-secondary">
         <div class="d-flex flex-column m-4">
             
             <img src="/src/imagem_carros/Onix10.WEBP" class="rounded float-start" width="500px" height="400px">
@@ -57,7 +38,7 @@
         <div class="d-flex flex-column">
             <h1 class="display-6 mb-3 mt-3">Chevrolet Onix</h1>
             <div class="d-flex align-items-end">
-            <h2>R$90.54</h2><p class="ms-2">Diaria</p>
+                <h2>R$90.54</h2><p class="ms-2">Diaria</p>
             </div>
             <p class="text-md-start pt-2 text-break ">Carro Intermediario compacto, seguro e confortavel, para você e sua familia por um preço acessivel.</p>
             <div class="d-flex">
@@ -78,7 +59,7 @@
 
            
         </div>
-    </div>
+    </div> -->
 
     <br>
     <br>
@@ -111,6 +92,26 @@
         </div>
     </footer>
 
-
+    <script type="text/javascript">
+        function enviarVeiculo(){
+            
+            var selecionado = localStorage.getItem("id_veiculo")
+            console.log(selecionado)
+    
+            fetch("php/carregarveiculos.php",{
+                "method" : "POST",
+                "headers":{
+                    "content-type": "aplication/json; charset=utf-8"
+                },
+                "body": JSON.stringify(selecionado)
+            }).then(function(response){
+                return response.text()
+            }).then(function(data){
+                document.getElementById('get-data').innerHTML = data
+            })
+        }
+        enviarVeiculo()
+        
+    </script>
 </body>
 </html>
