@@ -8,15 +8,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 $pesquisa = $_POST['query'];
 $tipo = $_POST['tipo'];
 
-if($tipo == 'u'){
+if($tipo === 'u'){
 
-    $sql = "SELECT * FROM usuarios WHERE email LIKE '%$pesquisa%' OR nome LIKE '%$pesquisa%' OR id_usuario LIKE '$pesquisa'";
+    $sql = "SELECT * FROM usuarios WHERE email LIKE '%$pesquisa%' OR nome LIKE '%$pesquisa%' OR id_usuario LIKE '%$pesquisa%'";
 
-}elseif($tipo == 'f'){
+}elseif($tipo === 'f'){
 
-    $sql = "SELECT * FROM funcionarios WHERE idNivel_de_Acesso = 2 AND (email LIKE '%$pesquisa%' OR nome LIKE '%$pesquisa%' OR id_usuario LIKE '$pesquisa') ";
+    $sql = "SELECT * FROM funcionarios WHERE idNivel_de_Acesso = 2 AND (email LIKE '%$pesquisa%' OR nome LIKE '%$pesquisa%' OR id_usuario LIKE '%$pesquisa') ";
 
-}elseif($tipo == 'v'){
+}elseif($tipo === 'v'){
     $sql = "SELECT * FROM veiculos WHERE marca = '%$pesquisa%' AND  ";
 
 }
@@ -33,11 +33,6 @@ if($tipo == 'u'){
                 'documento' => $valores["documento"],
                 'telefone' => $valores["telefone"],
                 'email' => $valores["email"],
-                'categoria' => $valores["categoria"],
-                'marca' => $valores["marca"],
-                'modelo' => $valores["modelo"],
-                'preco_veiculo' => $valores["preco_veiculo"],
-                
             );
                
         }

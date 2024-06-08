@@ -12,6 +12,7 @@
   <script src="../src/bootstrap/js/bootstrap.bundle.js"></script>
   <script src="js/dropdown.js"></script>
   <script src="js/administrador.js"></script>
+  <script src="js/mascara.js"></script>
   <link rel="stylesheet" href="../fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.css">
   <link rel="stylesheet" href="style/adm.css">
 </head>
@@ -72,6 +73,7 @@
   </nav>
   <!-- Tabela que ira conter a lista de funcionarios e usuarios -->
   <div class="table-responsive mt-6 table-container" id="contr1">
+
 <!-- Modal barra de pesquisa-->
 <div class="modal fade" id="meuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -123,7 +125,82 @@
     </div>
   </div>
 </div>
+<!-- Modal Visualizar info veicuos -->
+<div class="modal fade" id="visualizarV" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="visualizarVLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist"> 
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Ficha</button>
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Alterar</button>
+            <div class="position-absolute p-2 end-0">
+              <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+            </div>
+      </div>
+      <!-- Carousel -->
+      <div class=" modal-body" id="infoCarBody">
+        <div class="float-start p-2 item">
+          <h1>Nome carro</h1>
+        </div>
+        <div class="float-end fichaTecnica item">
+          <table class="table vertical-table caption-top">
+            <caption>Ficha Tecnica</caption>
+            <thead>
+              <tr>
+                <th>Campo</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Nome</th>
+                <td>João Silva</td>
+              </tr>
+              <tr>
+                <th scope="row">Idade</th>
+                <td>30</td>
+              </tr>
+              <tr>
+                <th scope="row">Email</th>
+                <td>joao.silva@example.com</td>
+              </tr>
+              <tr>
+                <th scope="row">Telefone</th>
+                <td>(11) 98765-4321</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="carouselInfoCar" class="carousel slide mt-5  item" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselInfoCar" data-bs-slide-to="0" class="active" aria-current="true" aria-label="slide 1"></button>
+            <button type="button" data-bs-target="#carouselInfoCar" data-bs-slide-to="1"  aria-current="true" aria-label="slide 2"></button>
+            <!-- Aqui tera os indicadores na parte inferior do slide -->
+          </div>
+          <div class="carousel-inner rounded">
+            <div class="carousel-item active">
+              <img src="imagem_carros/10.WEBP" class="d-block w-100 " alt="#">
+            </div>
+            <div class="carousel-item">
+              <img src="imagem_carros/Onix10.WEBP" class="d-block w-100" alt="#">
+            </div>
+            <!-- Aqui onde sera xebido as imagens (geradas pelo javascript) -->
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselInfoCar" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselInfoCar" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
 
+      <div class="modal-footer" id="botaoAlterar">
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Fim Modals -->
 
@@ -350,17 +427,22 @@
 
       //////////////////////////////////////////
       var $offcanvas = $('#offcanvasScrolling')
+      var $modalBody = $('.modal-body')
+      var $carousel = $('#carouselInfoCar')
 
       function offCanvas() {
         if ($(window).width() < 900) {
-
+          
           $offcanvas.removeClass('offcanvas-end').addClass('offcanvas-top')
 
         } else {
           $offcanvas.removeClass('offcanvas-top').addClass('offcanvas-end')
+          $modalBody.removeClass('d-flex flex-column')
 
         }
       }
+      
+      
       offCanvas()
 
       $(window).resize(offCanvas)

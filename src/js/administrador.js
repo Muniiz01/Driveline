@@ -329,6 +329,7 @@ function selecionaTabela(idUser, nivelAcess) {
   } else {
 
     if (selectedDiv !== null) {
+      console.log(selectedDiv)
       document.getElementById(selectedDiv).classList.remove('table-active');
 
     }
@@ -375,8 +376,9 @@ function enviarFuncionario(idUsuario) {
 
 
 function exibirVeiculos() {
+  selectedDiv = null
   const dadosDiv = document.getElementById("lista"); // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
-
+  
   fetch("php/listaVeiculos.php", { method: "POST" }) // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaVeiculos.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
     .then((response) => response.json())
     .then((data) => {
@@ -400,7 +402,7 @@ function exibirVeiculos() {
       document.getElementById('tableT4').innerHTML = "Modelo"
       document.getElementById('tableT5').innerHTML = "Preço"
       document.getElementById('butoesADV').innerHTML = `
-      <button class="btn btn-secondary btn-sm" id="buttonA" data-bs-toggle="modal" data-bs-target="#alterBackdrop" onclick="alterarCarro(idVeiculo)" disabled>Alterar</button>
+      <button class="btn btn-secondary btn-sm" id="buttonA" data-bs-toggle="modal" data-bs-target="#visualizarV" disabled>Visualizar</button>
       <button class="btn btn-danger btn-sm" id="buttonH" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled>Excluir</button>
       `
 
