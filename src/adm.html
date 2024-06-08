@@ -130,14 +130,14 @@
   <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
       <div class="nav nav-tabs" id="nav-tab" role="tablist"> 
-            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Ficha</button>
-            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Alterar</button>
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#infoCarBody" type="button" role="tab" aria-controls="infoCarBody" aria-selected="true">Ficha</button>
+            <button class="nav-link" id="nav-alter-tab" data-bs-toggle="tab" data-bs-target="#alteraVeiculo" type="button" role="tab" aria-controls="alteraVeiculo" aria-selected="false">Alterar</button>
             <div class="position-absolute p-2 end-0">
               <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
             </div>
       </div>
       <!-- Carousel -->
-      <div class=" modal-body" id="infoCarBody">
+      <div class=" modal-body tab-pane fade show active"  role="tabpanel" tabindex="0" aria-labelledby="nav-home-tab" id="infoCarBody">
         <div class="float-start p-2 item">
           <h1>Nome carro</h1>
         </div>
@@ -194,6 +194,9 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
+      </div>
+      <div class="modal-body2 tab-pane fade show active"  role="tabpanel" tabindex="0" aria-labelledby="nav-alter-tab" id="alteraVeiculo">
+
       </div>
 
       <div class="modal-footer" id="botaoAlterar">
