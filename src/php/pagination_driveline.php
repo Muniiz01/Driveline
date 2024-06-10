@@ -15,7 +15,6 @@
     }else{
         $page = 1;
     }
-    
     if(isset($_POST["filter"])){
         $filter = $_POST['filter'];
     }else{
@@ -44,15 +43,22 @@ LIMIT $start_from, $limit");//busca no sql
     $output .= " 
             <section class='info_carro'>
                 <div class='img_carro'><img src='src/".($row["caminho_imagem"])."'></div>
-                    <article class='desc_veiculo'>
-                <div class='modelo_carro'>modelo:        ".($row["modelo"])."</div>  
-                <div class='passageiros'>passageiros:    ".($row["passageiros"])."</div>
-                <div class='cor'>cor:                    ".($row["cor"])."</div>
-                <div class='quilometragem'>quilometragem:".($row["quilometragem"])."</div>
-                <div class='airbag'>airbag:              ".($row["airbag"])."</div>
-                <div class='cambio'>cambio:              ".($row["cambio"])."</div>
-                <div class='preco_veiculo'>Preco:        ".($row["preco_veiculo"])."</div>
-                    </article>
+                <div class='modelo_carro'>Modelo:        ".($row["modelo"])."</div>
+                <article class='desc_veiculo'>
+                    <button class='btn btn-secondary rounded-4 mt-5 ' type='button' data-bs-toggle='collapse' data-bs-target='#".($row["modelo"])."' aria-expanded='false' aria-controls='collapseWidthExample'>
+                    Mais Detalhes
+                    </button>
+                    <div class='collapse custom-collapse mt-3' id='".($row["modelo"])."'>
+                        <div class='card card-body' style='width: 300px;'>  
+                        <div class='passageiros'>passageiros:    ".($row["passageiros"])."</div>
+                        <div class='cor'>cor:                    ".($row["cor"])."</div>
+                        <div class='quilometragem'>quilometragem:".($row["quilometragem"])."</div>
+                        <div class='airbag'>airbag:              ".($row["airbag"])."</div>
+                        <div class='cambio'>cambio:              ".($row["cambio"])."</div>
+                        <div class='preco_veiculo'>Preco:        ".($row["preco_veiculo"])."</div>
+                    </div>
+                </div>
+                </article>
                     <div>
                     <button class ='btn-aluguel' onclick = 'veiculo_selecionado(".($row['id_veiculos']).")'><i class='fa-solid fa-car'></i></button>
                     </div>

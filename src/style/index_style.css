@@ -306,6 +306,9 @@ nav .btn-padrao,.dropdown-menu,.dropdown-item{
     margin-left: 20%;
     text-align: start;
 }
+.desc_veiculo button{
+    margin-left: 12%;
+}
 .page-link:hover{
     background-color: var(--azul) ;
     color: white;
@@ -369,4 +372,9 @@ nav .btn-padrao,.dropdown-menu,.dropdown-item{
     padding-bottom: 5%;
     text-align: center;
     color: gray;
+}
+
+.custom-collapse{
+    height: 50px;
+    color: #0D6EFD  ;
 }
