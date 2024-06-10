@@ -114,14 +114,16 @@
         </div>
             
         <div class="btn-group">
-            <input class="barra" type="search" placeholder="Buscar">
-            <button type="submit" class="btn btn-padrao">Buscar</button>
+            <input class="barra" type="search" id="barra_pesquisa" placeholder="Buscar">
+            <button type="submit" class="btn btn-padrao" onclick="pesquisa()">Buscar</button>
         </div>
-        <div class="content">
-
+            <table class="d-flex bg-light mt-4 rounded" id="resposta_pesquisa">
+            </table>
         </div>
+        
     </section>
     <!-- paginaçao -->
+
     <div id="get-data"></div>
 
         <!-- footer -->
@@ -171,13 +173,6 @@ function fetch_data(page, filter){
                 }
             });
         }
-        
-
-    function veiculo_selecionado(id_veiculos){
-        localStorage.setItem("id_veiculo", id_veiculos)
-        console.log(id_veiculos)
-        window.location.href = "src/veiculo.html";
-    }
 
     var filterInputs = document.getElementsByName('filter');
 var filterValue = "1"

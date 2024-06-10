@@ -128,55 +128,28 @@ function veiculo_selecionado(id_veiculos){
     window.location.href = "src/veiculo.html";
 }
 
-
-
-
-
-
-
-
-
-// function barraPesquisa(tipo) {
-//     var query = document.getElementById('pesquisa').value
+function pesquisa() {//realiza a pesquisa
   
-//     var formData = new FormData();
-//     formData.append("query", query);
-//     formData.append("tipo", tipo);
-//     fetch("php/pesquisa.php", {
-//       method: "POST",
-//       body: formData,
-//     }).then(response => response.json())
-//       .then(data => {
-//         const dadosDiv = document.getElementById('lista')
-//         const lista = data.map(item => {
-//           var msg = item.msg
-//           if (msg == "Nenhum registro encontrado") {
-//             popup("Nenhum registro encontrado")
-//           } else {
-//             return `
-          
-//           <tr id='${item.id_veiculos}' onclick='selecionaTabela(${item.id_veiculos})'>
-//           <th scope="row">${item.idUsuario}</th>
-//           <td class='item_usuario'>${item.nome}</td>
-//           <td class='item_usuario'>${item.email}</td>
-//           <td class='item_usuario'>${item.telefone}</td>
-//           <td class='item_usuario'>${item.documento}</td>
-//       </tr>
-//       `}
-//         });
+const valorbarra = document.getElementById('barra_pesquisa')
+const valor = valorbarra.value
+
+fetch("src/php/pesquisa_home.php",{
+    "method" : "POST",
+    "headers":{
+        "content-type": "aplication/json; charset=utf-8"
+    },
+    "body": JSON.stringify(valor)
+}).then(function(response){
+    return response.text()
+}).then(function(data){
+    document.getElementById('resposta_pesquisa').innerHTML = data
+})
+}
+
+function veiculo_selecionado(id_veiculos){
+    localStorage.setItem("id_veiculo", id_veiculos)
+    console.log(id_veiculos)
+    window.location.href = "src/veiculo.html";
+}
   
-  
-//         dadosDiv.innerHTML = lista.join('');
-  
-  
-//       }).catch(() => {
-  
-  
-//       });
-//   }
-  
-// function buscar(){
-//     document.getElementById('barraP').innerHTML = `
-//                 <input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('u')" type="search" placeholder="Search" aria-label="Search">
-// `
-// }
+
