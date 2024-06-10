@@ -97,7 +97,7 @@ nav i{
     display: none;
 }
 nav .btn-padrao,.dropdown-menu,.dropdown-item{
-    opacity: 0.28;
+    opacity: 0.75;
     transition: 0.5s;
 }
 

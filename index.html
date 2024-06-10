@@ -203,9 +203,12 @@ fetch_data();
         $(document).on("click", ".page-item", function(){
             var page = $(this).attr("id");
             fetch_data(page);
-        })
+    })
 
-     
+     function catalogo(modelo){
+        $(modelo).css("display", "block")
+     }
+
     </script>
     
 </body>

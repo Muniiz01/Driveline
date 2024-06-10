@@ -45,18 +45,18 @@ LIMIT $start_from, $limit");//busca no sql
                 <div class='img_carro'><img src='src/".($row["caminho_imagem"])."'></div>
                 <div class='modelo_carro'>Modelo:        ".($row["modelo"])."</div>
                 <article class='desc_veiculo'>
-                    <button class='btn btn-secondary rounded-4 mt-5 ' type='button' data-bs-toggle='collapse' data-bs-target='#".($row["modelo"])."' aria-expanded='false' aria-controls='collapseWidthExample'>
+                    <button class='btn btn-secondary rounded-4 mt-5 ' type='button' onclick='catalogo(".$row["modelo"].")'>
                     Mais Detalhes
                     </button>
-                    <div class='collapse custom-collapse mt-3' id='".($row["modelo"])."'>
-                        <div class='card card-body' style='width: 300px;'>  
+                    <div class='desc_veiculo' style='display: none' id='".($row["modelo"])."'>
+                         
                         <div class='passageiros'>passageiros:    ".($row["passageiros"])."</div>
                         <div class='cor'>cor:                    ".($row["cor"])."</div>
                         <div class='quilometragem'>quilometragem:".($row["quilometragem"])."</div>
                         <div class='airbag'>airbag:              ".($row["airbag"])."</div>
                         <div class='cambio'>cambio:              ".($row["cambio"])."</div>
                         <div class='preco_veiculo'>Preco:        ".($row["preco_veiculo"])."</div>
-                    </div>
+                    
                 </div>
                 </article>
                     <div>
