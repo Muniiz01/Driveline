@@ -11,6 +11,7 @@
     --barra-pesquisa:white;
     --texto2:gray;
     --azul:#0D6EFD;
+    --icon: black;
 }
 body {
     background-color: var(--fundo);
@@ -75,6 +76,16 @@ nav i{
 }
 .barra:focus~.btn{
     box-shadow: var(--sombra);
+}
+.filter i{
+    color: var(--icon);
+    transition: 0.5s;
+}
+.filter:hover{
+    i {
+        color: black;
+    }
+    
 }
 /* tema */
 

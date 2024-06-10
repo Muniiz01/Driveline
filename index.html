@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/bootstrap/bootstrap-css/bootstrap.min.css">
+    <link rel="stylesheet" href="src/bootstrap/bootstrap-css/bootstrap.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="src/style/index_style.css">
     <link rel="stylesheet" href="fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.css">
@@ -36,7 +38,6 @@
             <li><a class="dropdown-item" href="src/login.html">Login</a></li>
             <li><a class="dropdown-item" href="src/cadastro.html">Cadastrar se</a></li>
             <li><button class="dropdown-item" onclick="logout()">Sair</button></li>
-
         </ul>
         </div>
     </nav>
@@ -80,8 +81,39 @@
         </div>
       </div>
     <section class="barra_pesquisa">
-        <div class="btn-group">
+        <div class="btn-group dropstart">
+            <button class="btn dropdown-toggle rounded-5 filter" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false" type="button">
+                <i class="fa-solid fa-filter"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="filter" id="option1" value="grupo-b">
+                        <label class="form-check-label" for="option1">
+                        Grupo B - Economico Compacto
+                        </label>
+                      </div>
+                </li>
+                <li class="dropdown-item">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="filter" id="option2" value="grupo-be">
+                        <label class="form-check-label" for="option2">
+                        Grupo BE - Eletrico Compacto
+                        </label>
+                      </div>
+                </li>
+                <li class="dropdown-item">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="filter" id="option3" value="grupo-s">
+                        <label class="form-check-label" for="option3">
+                        Grupo S - Economico Sedan
+                        </label>
+                      </div>
+                </li>
+              </ul>
+        </div>
             
+        <div class="btn-group">
             <input class="barra" type="search" placeholder="Buscar">
             <button type="submit" class="btn btn-padrao">Buscar</button>
         </div>
@@ -126,11 +158,12 @@
 
 //////////////////////////////////////////
 
-function fetch_data(page){
+function fetch_data(page, filter){
             $.ajax({
                 url: "src/php/pagination_driveline.php",//refere ao arquivo de paginação e linka ele aqui.
                 method: "POST",
                 data:{
+                    filter: filter,
                     page: page
                 },
                 success: function(data){
@@ -138,18 +171,41 @@ function fetch_data(page){
                 }
             });
         }
-        fetch_data();
-
-        $(document).on("click", ".page-item", function(){
-            var page = $(this).attr("id");
-            fetch_data(page);
-        })
+        
 
     function veiculo_selecionado(id_veiculos){
         localStorage.setItem("id_veiculo", id_veiculos)
         console.log(id_veiculos)
         window.location.href = "src/veiculo.html";
     }
+
+    var filterInputs = document.getElementsByName('filter');
+var filterValue = "1"
+
+for (var i = 0; i < filterInputs.length; i++) {
+filterInputs[i].addEventListener('change', function() {
+    // Seleciona o input com name="filter" que está marcado
+    var filter = document.querySelector('input[name="filter"]:checked');
+    if(filter){
+        var filterValue = filter.value
+        console.log(filterValue);
+        
+    }else{
+        filterValue = "nada"
+        console.log(filterValue);
+    }
+    fetch_data(undefined, filterValue);
+});
+}
+
+fetch_data();
+
+        $(document).on("click", ".page-item", function(){
+            var page = $(this).attr("id");
+            fetch_data(page);
+        })
+
+     
     </script>
     
 </body>

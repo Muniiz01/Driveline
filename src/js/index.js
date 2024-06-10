@@ -33,6 +33,7 @@ window.addEventListener('load', function(){
         root.style.setProperty('--texto', 'white');    
         root.style.setProperty('--principal', '#2b3035');    
         root.style.setProperty("--barra-pesquisa", "#2b3035")
+        root.style.setProperty("--icon", "white")
         root.style.setProperty("--texto2", "white")
         tema_site = 0
     }else{
@@ -42,6 +43,7 @@ window.addEventListener('load', function(){
         root.style.setProperty('--principal', 'white') 
         root.style.setProperty("--fundo", "rgb(216, 216, 216)")
         root.style.setProperty("--barra-pesquisa", "white")
+        root.style.setProperty("--icon", "black")
         root.style.setProperty("--texto2", "gray")
         tema_site = 1
     }
@@ -92,6 +94,7 @@ function tema(){
         root.style.setProperty('--texto', 'white');    
         root.style.setProperty('--principal', '#2b3035');    
         root.style.setProperty("--barra-pesquisa", "#2b3035")
+        root.style.setProperty("--icon", "white")
         root.style.setProperty("--texto2", "white")        
         localStorage.setItem("theme", "dark")
         tema_site = 0
@@ -103,6 +106,8 @@ function tema(){
         root.style.setProperty('--principal', 'white') 
         root.style.setProperty("--fundo", "rgb(216, 216, 216)")
         root.style.setProperty("--barra-pesquisa", "white")
+        
+        root.style.setProperty("--icon", "black")
         root.style.setProperty("--texto2", "gray")
         tema_site = 1
         localStorage.setItem("theme", "light")
@@ -122,6 +127,15 @@ function veiculo_selecionado(id_veiculos){
     console.log(id_veiculos)
     window.location.href = "src/veiculo.html";
 }
+
+
+
+
+
+
+
+
+
 // function barraPesquisa(tipo) {
 //     var query = document.getElementById('pesquisa').value
   

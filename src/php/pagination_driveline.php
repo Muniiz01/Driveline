@@ -15,11 +15,22 @@
     }else{
         $page = 1;
     }
-
+    
+    if(isset($_POST["filter"])){
+        $filter = $_POST['filter'];
+    }else{
+        $filter = "grupo-b";
+    }
     $start_from =($page - 1)*$limit;
  
     
-    $query = mysqli_query($con, "SELECT * from veiculos JOIN img_veiculo ON veiculos.id_veiculos = img_veiculo.idVeiculos ORDER BY id_veiculos ASC LIMIT $start_from, $limit");//busca no sql
+$query = mysqli_query($con, "SELECT veiculos.*, img_veiculo.*
+FROM veiculos
+JOIN (SELECT idVeiculos, MIN(id_imagem_veiculo) as min_idImg FROM img_veiculo GROUP BY idVeiculos) as img_min ON veiculos.id_veiculos = img_min.idVeiculos
+JOIN img_veiculo ON img_min.idVeiculos = img_veiculo.idVeiculos AND img_min.min_idImg = img_veiculo.id_imagem_veiculo
+WHERE veiculos.categoria = '$filter'
+ORDER BY veiculos.id_veiculos ASC
+LIMIT $start_from, $limit");//busca no sql
     
     ///////////////////////////////
     $output .= " 
