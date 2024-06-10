@@ -129,15 +129,13 @@ function exibirUsuarios() {
         </tr>
         `
       );
-      document.getElementById('nomeLista').innerHTML = "Lista de Usuarios"
+      
       document.getElementById('tableT2').innerHTML = "Nome"
       document.getElementById('tableT3').innerHTML = "Email"
       document.getElementById('tableT4').innerHTML = "Telefone"
       document.getElementById('tableT5').innerHTML = "Documento"
 
-      document.getElementById('barraP').innerHTML = `
-<input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('u')" type="search" placeholder="Search" aria-label="Search">
-`
+
       document.getElementById('butoesADV').innerHTML = `
       <button class="btn btn-secondary btn-sm" id="buttonA" data-bs-toggle="modal" data-bs-target="#alterBackdrop" onclick="alterar()" disabled>Alterar</button>
       <button class="btn btn-danger btn-sm" id="buttonH" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled>Excluir</button>
@@ -149,7 +147,13 @@ function exibirUsuarios() {
       console.error("Erro ao buscar os dados dos usuários:", error);
       dadosDiv.innerHTML = "Nenhum registro encontrado";
     });
-}
+    document.getElementById('barraP').innerHTML = `
+    <input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('u')" type="search" placeholder="Search" aria-label="Search">
+    `
+    document.getElementById('nomeLista').innerHTML = "Lista de Usuarios"
+  }
+
+
 
 function alterar() {
   var div = document.getElementById("modalAlterar")
@@ -199,6 +203,12 @@ function barraPesquisa(tipo) {
   }).then(response => response.json())
     .then(data => {
       const dadosDiv = document.getElementById('lista')
+      function verificaD(msg,value){
+        if(msg == "v"){
+          return dolar(value)
+        }
+        return value
+      }
       const lista = data.map(item => {
         var msg = item.msg
         if (msg == "Nenhum registro encontrado") {
@@ -206,12 +216,12 @@ function barraPesquisa(tipo) {
         } else {
           return `
         
-        <tr id='${item.idUsuario}' onclick='selecionaTabela(${item.idUsuario})'>
-        <th scope="row">${item.idUsuario}</th>
-        <td class='item_usuario'>${item.nome}</td>
-        <td class='item_usuario'>${item.email}</td>
-        <td class='item_usuario'>${item.telefone}</td>
-        <td class='item_usuario'>${item.documento}</td>
+        <tr id='${item.registro1}' onclick='selecionaTabela(${item.registro1})'>
+        <th scope="row">${item.registro1}</th>
+        <td class='item_usuario'>${item.registro2}</td>
+        <td class='item_usuario'>${item.registro3}</td>
+        <td class='item_usuario'>${item.registro4}</td>
+        <td class='item_usuario'>${verificaD(tipo, item.registro5)}</td>
     </tr>
     `}
       });
@@ -242,14 +252,11 @@ function exibirFuncionarios() {
     <td class='item_usuario'>${item.email}</td>
     <td class='item_usuario'>${item.telefone}</td>
     <td class='item_usuario'>${item.documento}</td>
+    
   </tr>
           `
       );
-      document.getElementById('barraP').innerHTML = `
-<input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('f')" type="search" placeholder="Search" aria-label="Search">
-`
-
-      document.getElementById('nomeLista').innerHTML = "Lista de Funcionarios"
+ 
       document.getElementById('tableT2').innerHTML = "Nome"
       document.getElementById('tableT3').innerHTML = "Email"
       document.getElementById('tableT4').innerHTML = "Telefone"
@@ -267,6 +274,11 @@ function exibirFuncionarios() {
       console.error("Erro ao buscar os dados dos usuários:", error);
       dadosDiv.innerHTML = "Nenhum registro encontrado";
     });
+    document.getElementById('barraP').innerHTML = `
+    <input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('f')" type="search" placeholder="Search" aria-label="Search">
+    `
+    
+          document.getElementById('nomeLista').innerHTML = "Lista de Funcionarios"
 }
 function alterarFuncionario() {
   var div = document.getElementById("modalAlterar")
@@ -342,6 +354,7 @@ function selecionaTabela(idUser, nivelAcess) {
     nivel = nivelAcess
     selectedDiv = idUser;
     console.log(id)
+    console.log(nivel)
 
   }
 }
@@ -386,7 +399,7 @@ function exibirVeiculos() {
 
       const lista = data.map(
         (item) => `
-      <tr id='${item.id_veiculos}' onclick= 'selecionaTabela(${item.id_veiculos})'>
+      <tr id='${item.id_veiculos}' onclick= 'selecionaTabela(${item.id_veiculos},4)'>
         <th scope="row">${item.id_veiculos}</th>
         <td class='item_usuario'>${item.categoria}</td>
         <td class='item_usuario'>${item.marca}</td>
@@ -395,8 +408,7 @@ function exibirVeiculos() {
       </tr>
         `
       );
-
-      document.getElementById('nomeLista').innerHTML = "Lista de Veiculos"
+      
       document.getElementById('tableT2').innerHTML = "Categoria"
       document.getElementById('tableT3').innerHTML = "Marca"
       document.getElementById('tableT4').innerHTML = "Modelo"
@@ -415,6 +427,11 @@ function exibirVeiculos() {
       console.error("Erro ao buscar os dados dos veículos:", error);
       document.getElementById("lista").innerHTML = "Nenhum registro encontrado";
     });
+    document.getElementById('barraP').innerHTML = `
+      <input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('v')" type="search" placeholder="Search" aria-label="Search">
+      `
+
+      document.getElementById('nomeLista').innerHTML = "Lista de Veiculos"
 }
 function alterarVeiculo(){
   var div = document.getElementById("lista")
@@ -473,14 +490,14 @@ function deletar() {
     .then((response) => response.text())
     .then((data) => {
       console.log("usuario deletado");
-      if (nivel == 2) {
+      if (data == 2) {
         exibirFuncionarios()
         var buttonHab = document.getElementById("buttonH")
     buttonHab.disabled = true
-      } else {
+      }else if(data == 1) {
         exibirUsuarios()
-      }
-
+      }else if(data == 4)
+        exibirVeiculos()
     })
     .catch((error) => {
       console.log("error", error);
