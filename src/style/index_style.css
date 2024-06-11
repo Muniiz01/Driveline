@@ -96,20 +96,20 @@ nav i{
 #icon_sol{
     display: none;
 }
-nav .btn-padrao,.dropdown-menu,.dropdown-item{
+nav .btn-padrao,#navdrop, #navdrop .dropdown-item{
     opacity: 0.75;
     transition: 0.5s;
 }
 
-.dropdown-menu{
+#navdrop{
     z-index: 0;
     background-color: var(--principal);
 }
-.dropdown-menu:hover, .dropdown-item:hover{
+#navdrop:hover, .dropdown-item:hover{
     opacity: 1 ;
     box-shadow: var(--sombra);
 }
-.dropdown-item{
+#navdrop .dropdown-item{
     color: var(--texto);
     background-color: var(--principal);
 }
@@ -284,8 +284,9 @@ nav .btn-padrao,.dropdown-menu,.dropdown-item{
 .info_carro img{
     margin-top: 3rem;
     margin-bottom: 1rem;
-    object-fit: cover;
-    width: 250px;
+    object-fit: contain;
+    width: 300px;
+    height: 300px;
 }
 
 .info_carro{/*vulgo item de catalogo*/  

@@ -34,7 +34,7 @@
             data-bs-toggle="dropdown" aria-expanded="false">
             Perfil
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" id="navdrop">
             <li><a class="dropdown-item" href="src/login.html">Login</a></li>
             <li><a class="dropdown-item" href="src/cadastro.html">Cadastrar se</a></li>
             <li><button class="dropdown-item" onclick="logout()">Sair</button></li>
@@ -82,7 +82,7 @@
       </div>
     <section class="barra_pesquisa">
         <div class="btn-group dropstart">
-            <button class="btn dropdown-toggle rounded-5 filter" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false" type="button">
+            <button class="btn dropdown-toggle rounded-5 filter" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false" type="button">
                 <i class="fa-solid fa-filter"></i>
               </button>
               <ul class="dropdown-menu">
@@ -208,11 +208,29 @@ fetch_data();
             fetch_data(page);
     })
 
-     function catalogo(modelo){
-        $(modelo).css("display", "block")
-     }
+var last
+var active = 0
+function catalogo(id_veiculos){
 
-    </script>
+    current = id_veiculos
+    active++
+    
+    var drop = document.getElementById(`${current}`)
+
+    if(active == 1){
+        drop.style.display = "block"
+        
+        last = current
+    }
+    else if(active != 1 && last == current){
+        drop.style.display = "none"
+
+        active = 0
+    }
+    // console.log('atual',current)
+    // console.log('ultima',last)
+}
+</script>
     
 </body>
 </html>
