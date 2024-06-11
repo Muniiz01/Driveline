@@ -55,7 +55,7 @@
                         <div class='quilometragem'>quilometragem:".($row["quilometragem"])."</div>
                         <div class='airbag'>airbag:              ".($row["airbag"])."</div>
                         <div class='cambio'>cambio:              ".($row["cambio"])."</div>
-                        <div class='preco_veiculo'>Preco:        ".($row["preco_veiculo"])."</div>
+                        <div class='preco_veiculo'>Preço: R$        ".($row["preco_veiculo"])."</div>
                     
                         </article>
                     

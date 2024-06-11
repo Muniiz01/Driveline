@@ -19,6 +19,7 @@ if(mysqli_num_rows($query) > 0){
             <td class='ps-4 text-secondary p-3' onclick='veiculo_selecionado(".($row['id_veiculos']).")'>
                 ".($row['marca'])."
                 ".($row['modelo'])."        
+                Aluguel: R$ ".($row['preco_veiculo'])."        
             </td>
         </tr>";
     }

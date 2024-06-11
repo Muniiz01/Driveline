@@ -157,6 +157,7 @@ nav .btn-padrao,#navdrop, #navdrop .dropdown-item{
     height: max-content;
 }
 .icons i{
+    color: black;
     width: 8rem;
     margin: 5px 1%;
     border-radius: 12px;
@@ -288,7 +289,11 @@ nav .btn-padrao,#navdrop, #navdrop .dropdown-item{
     width: 300px;
     height: 300px;
 }
-
+.info_carro .modelo_carro,
+.info_carro #toggle_catalogo{
+    color: var(--texto);
+    transition: 0.5s;
+}
 .info_carro{/*vulgo item de catalogo*/  
     margin: 3%;
     text-align: center;

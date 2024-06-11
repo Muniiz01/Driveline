@@ -11,7 +11,7 @@ $output = '';
 
 $query = mysqli_query($conn, "SELECT * from veiculos JOIN img_veiculo ON veiculos.id_veiculos = img_veiculo.idVeiculos WHERE id_veiculos = '$id_Veiculo'");
 
-$output .= "<div class= 'container mt-5 mb-5 bg-light d-flex gap-3 align-items-center text-secondary' id='tela_veiculo'>
+$output .= "<div class= 'container mt-5 mb-5 d-flex gap-3 align-items-center text-secondary' id='tela_veiculo'>
 <div class='d-flex flex-column m-4'>"; 
 
 if(mysqli_num_rows($query) > 0){
