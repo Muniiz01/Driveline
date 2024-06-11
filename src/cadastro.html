@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-bs-theme="">
 
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap/bootstrap-css/bootstrap.css">
     <link rel="stylesheet" href="style/cadastro.css">
+    <link rel="shortcut icon" type="imagex/png" href="imagens/catalogo/786c3c42b40d3cc6b29ce9f474b4e305.png">
+
     
     <script type="text/javascript" src="js/mascara.js"></script>
     <script type="module" src="js/cadastro.js"></script>
@@ -15,38 +17,7 @@
 </head>
 
 <body>
-    <script>
-    var root = document.documentElement
-    window.addEventListener('load', function(){
-    var theme = localStorage.getItem("theme")
     
-    if(theme == 'dark'){
-        root.style.setProperty('--fundo', 'rgb(33,37,41)')
-        root.style.setProperty('--fundo-tela-login', '#2b3035')
-        root.style.setProperty('--hover', '#8bb9fe')
-        root.style.setProperty('--hover2', '#8bb9fe')
-        root.style.setProperty('--input', 'transparent')
-        root.style.setProperty('--texto2', '#dee2e6')
-        root.style.setProperty('--text-input', '#dee2e6')
-        document.getElementById('imgLogo').src = 'imagens/logo/slim-logo-white.png'
-
-
-    }else{
-        root.style.setProperty('--fundo', 'rgb(238, 237, 237)')
-        root.style.setProperty('--fundo-tela-login', 'white')
-        root.style.setProperty('--hover', '#8bb9fe')
-        root.style.setProperty('--hover2', 'black')
-        root.style.setProperty('--input', 'transparent')
-        root.style.setProperty('--texto2', 'grey')
-        root.style.setProperty('--texto-input', 'black')
-        document.getElementById('imgLogo').src = 'imagens/logo/slim-logo-png.png'
-
-
-    }
-    var theme = localStorage.getItem("theme")
-    document.documentElement.setAttribute('data-bs-theme', theme)
-})
-    </script>
     <div class="modal fade" id="meuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -62,7 +33,7 @@
       </div>
     <form id="meuFormulario">
         <div class="img-logo">
-            <img src="imagens/logo/slim-logo-png.png">
+            <img id="imgLogo" src="imagens/logo/slim-logo-png.png">
         </div>
         <!-- Nome -->
         <div class="input-group">

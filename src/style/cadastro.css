@@ -3,7 +3,7 @@
 }
 :root{
     --fundo: rgb(238, 237, 237);
-    --fundo-tela-login: #2b3035;
+    --fundo-tela-cadastro: #2b3035;
     --hover: #8bb9fe;
     --hover2: black; 
     --input: transparent; 
@@ -11,14 +11,6 @@
     --texto2:#dee2e6;
     --text-input: black; 
 
-}
-body {
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    display: flex;
-    padding: 0%;
-    margin: 0%;
 }
 body{
     background-color: var(--fundo);
@@ -32,42 +24,42 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: var(--texto2);
     justify-content: center;
 }
 
-form {
-    text-align: center;
+#meuFormulario {
+    background-color: var(--fundo-tela-cadastro);
     width: 30rem;
-    background-color: var(--principal);
+    height: max-content;
+    text-align: center;
 }
 
-form img {
+#meuFormulario img {
     margin-top: 7%;
     width: 70%;
 }
 
 /*inputs*/
-
 .input-group {
     /*para o grupo de input*/
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5%;
+    margin: 7% auto;
     width: 60%;
 }
-
-input:focus {
-    /*remove a borda enquanto o campo está selecionado*/
-    outline: none;
-}
-
-.input-group input {
-    /*para os inputs dentro do grupo de inputs*/
+.input-group input{
+    background: var(--input);
+    color: var(--text-input);
     border-radius: 0%;
     border: none;
     border-bottom: 1px solid gray;
     height: 34px;
     width: 100%;
+}
+
+input:focus {
+    /*remove a borda enquanto o campo está selecionado*/
+    background: transparent;
+    outline: none;
 }
 
 

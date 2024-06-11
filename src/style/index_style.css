@@ -36,7 +36,6 @@ nav {
 /* grupo de botões */
 .grupo1,
 .grupo2 {
-    background-color: none;
     border-radius: 2rem;
     width: auto;
 }
@@ -96,16 +95,16 @@ nav i{
 #icon_sol{
     display: none;
 }
-nav .btn-padrao,#navdrop, #navdrop .dropdown-item{
+nav .btn-padrao,#dropdownNav, #dropdownNav .dropdown-item{
     opacity: 0.75;
     transition: 0.5s;
 }
 
-#navdrop{
+#dropdownNav{
     z-index: 0;
     background-color: var(--principal);
 }
-#navdrop:hover, .dropdown-item:hover{
+#dropdownNav:hover, .dropdown-item:hover{
     opacity: 1 ;
     box-shadow: var(--sombra);
 }
