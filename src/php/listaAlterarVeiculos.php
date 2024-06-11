@@ -33,8 +33,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){ // verifica se o metodo requisitado pel
                 'abs' => $valores["abs"], 
                 'carga' => $valores["volume_carga"], 
                 'preco_veiculo' => $valores["preco_veiculo"], 
-                'descricao' => $valores["descricao"],
-                'caminho_imagem' => $valores["caminho_imagem"]
+                'descricao' => $valores["descricao"]
+                
             );
         }
 

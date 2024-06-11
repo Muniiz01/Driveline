@@ -435,7 +435,7 @@ function exibirVeiculos() {
       document.getElementById('tableT4').innerHTML = "Modelo"
       document.getElementById('tableT5').innerHTML = "Preço"
       document.getElementById('butoesADV').innerHTML = `
-      <button class="btn btn-secondary btn-sm" id="buttonA" data-bs-toggle="modal" data-bs-target="#visualizarV" disabled>Visualizar</button>
+      <button class="btn btn-secondary btn-sm" id="buttonA" data-bs-toggle="modal" data-bs-target="#alterBackdrop" onclick="alterarVeiculo()" disabled>Alterar</button>
       <button class="btn btn-danger btn-sm" id="buttonH" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled>Excluir</button>
       `
 
@@ -454,48 +454,182 @@ function exibirVeiculos() {
 
   document.getElementById('nomeLista').innerHTML = "Lista de Veiculos"
 }
+
 function alterarVeiculo() {
-  var div = document.getElementById("lista")
-  div.innerHTML = `<div id='form-addCars'> 
-  <input id='categoria' placeholder='categoria'> 
-  <input id='modelo' placeholder='modelo'> 
-   <input id='marca' placeholder='marca'>  
-   <input id='cor' placeholder='cor'>  
-   <input id='quilometragem' placeholder='quilometragem' maxlenght = '6'> 
-   <input id='cambio' placeholder='cambio'> 
-   <input id='passageiros' placeholder='qtd-passageiros'> 
-   <input id='ar-condicionado' placeholder='tem ar-condicionado?'> 
-   <input id='airbag' placeholder='tem airbag?'> 
-   <input id='abs' placeholder='tem abs?'> 
-   <input id='volume-carga' placeholder='volume de carga'> 
-   <input id='preco_veiculos' placeholder='Preço'> 
-   <input id='imagens' type='file' multiple accept='image/jpeg, image/png'> 
-   <textarea name='descricao' id='descricao' cols='30' rows='10' placeholder='descricao veiculo'></textarea>
-   <button id='btnEnviar' onclick='enviarFo(${idVeiculo})'>enviar</button>
-   </div>`
+  var div = document.getElementById("modalAlterar")
+  fetch("php/listaAlterarVeiculos.php" + "?id=" + id, { method: "GET" })
+
+    .then((response) => response.json())
+    .then((data) => {
+
+      const lista = data.map((item) => {
+        return `
+      
+      <div class="input-group mb-3 w-35 mx-auto">
+      <label class="input-group-text" for="inputGroupSelect01">Categorias</label>
+      <select class="form-select" id="categoria" value="${item.categoria}" required>
+        <option value="grupo-b">Grupo B - Economico Compacto</option>
+        <option value="grupo-be">Grupo BE - Eletrico Compacto</option>
+        <option value="grupo-s">Grupo S - Economico Sedan</option>
+        <option value="grupo-bf">Grupo BF - Intermediário Compacto</option>
+        <option value="grupo-sf">Grupo SF - Intermediário Sedan</option>
+        <option value="grupo-g">Grupo G - SUV</option>
+        <option value="grupo-bg">Grupo BG - SUV Compacto</option>
+        <option value="grupo-l">Grupo L - Executio</option>
+        <option value="grupo-u">Grupo U - Utilitarios</option>
+        <option value="SUV">SUV</option>
+      </select>
+    </div>
+
+    <div class="input-group mb-3  w-35 mx-auto">
+      <i class="input-group-text fa-solid fa-car w-5" id="basic-addons1"></i>
+      <input type="text" class="form-control" id="modelo" placeholder="Modelo" value="${item.modelo}" autocomplete="off" aria-label="modelo"
+        aria-describedby="basic-addons1">
+    </div>
+
+    <div class="mb-3">
+      <div class="input-group mx-auto w-35">
+        <i class="input-group-text fa-solid fa-car-side w-5" id="basic-addons2"></i>
+        <input type="text" class="form-control" value="${item.marca}" id="marca" autocomplete="off" placeholder="Marca" aria-label="marca"
+          aria-describedby="basic-addons2">
+      </div>
+
+      <div class="form-text mx-auto w-35" id="basic-addons2">Marca do veiculo por exemplo: fiat, ford..</div>
+    </div>
+
+    <div class="input-group mb-3 w-35 mx-auto">
+      <label class="input-group-text" for="inputGroupSelect01">Tipo de Cambio</label>
+      <select class="form-select" id="cambio" value="${item.cambio}" required>
+        <option value="Automatico">Automatico</option>
+        <option value="Manual">Manual</option>
+      </select>
+    </div>
+
+    <div class="input-group mb-3 mx-auto w-35">
+      <i class="input-group-text fa-solid fa-palette w-5" id="basic-addons3"></i>
+      <input class="form-control" id="cor" value="${item.cor}" type="text" autocomplete="off" placeholder="Cor" aria-label="cor"
+        aria-describedby="basic-addons3">
+    </div>
+    <div class="input-group mb-3 mx-auto w-35">
+      <i class="input-group-text fa-solid fa-road w-5" id="basic-addons4"></i>
+      <input class="form-control" value="${item.quilometragem}" id="quilometragem" type="text" autocomplete="off" placeholder="Quilometragem"
+        aria-label="quilometragem" aria-describedby="basic-addons4">
+    </div>
+    <div class="mb-3 ">
+      <div class="input-group mx-auto w-35">
+        <i class="input-group-text fa-solid fa-user w-5" id="basic-addons5"></i>
+        <input class="form-control" value="${item.passageiros}" id="passageiros" type="text" autocomplete="off" placeholder="Passageiros"
+          aria-label="quilometragem" aria-describedby="basic-addons4">
+      </div>
+      <div class="mx-auto form-text w-35" id="basic-addons5">Quantidade suportada de Passageiros</div>
+    </div>
+    <div class="input-group mb-3 mx-auto w-35">
+      <i class="fa-solid fa-weight-hanging input-group-text w-5"></i>
+      <input class="form-control" value="${item.carga}" id="volume-carga" type="text" autocomplete="off" placeholder="Volume de carga"
+        aria-label="carga" aria-describedby="basic-addons5">
+    </div>
+    <div class="input-group mb-3 mx-auto w-35">
+      <i class="fa-solid fa-dollar-sign input-group-text w-5"></i>
+      <input class="form-control" value="${item.preco_veiculo}" type="text" id="preco_veiculo" autocomplete="off" placeholder="Valor do aluguel"
+        aria-label="preco" aria-describedby="basic-addons5">
+    </div>
+    <div class="mb-3 mx-auto w-35">
+      <label for="FormControl1" class="form-label">Descricão do veiculo</label>
+      <textarea class="form-control" name="FormControl1" placeholder="Coloque uma descricao" id="descricao" rows="4"></textarea>
+    </div>
+    <div class="mb-3 mx-auto w-35">
+      <label for="">Possui ar-condicionado?</label>
+      <div class="input-group-text mb-3 w-35">
+        <label class="me-2" for="ar-cond">Sim</label>
+        <input class="form-check-inputA mt-0" type="radio" name="ar-cond" value="Sim" aria-label="ar-cond">
+      </div>
+      <div class="input-group-text mb-3 w-35">
+        <label class="me-2" for="ar-cond">Não</label>
+        <input class="form-check-inputA input-end mt-0" type="radio" name="ar-cond" value="Não" aria-label="ar-cond">
+      </div>
+    </div>
+    <div class="mb-3 mx-auto w-35">
+      <label for="">Possui airbag?</label>
+      <div class="input-group-text mb-3 w-35">
+        <label class="me-2" for="airbag">Sim</label>
+        <input class="form-check-inputB mt-0" type="radio" name="airbag" value="Sim" aria-label="airbag">
+      </div>
+      <div class="input-group-text mb-3 w-35">
+        <label class="me-2" for="airbag">Não</label>
+        <input class="form-check-inputB input-end mt-0" type="radio" name="airbag" value="Não" aria-label="airbag">
+      </div>
+    </div>
+    <div class="mb-3 mx-auto w-35">
+      <label for="">Possui abs?</label>
+      <div class="input-group-text mb-3 w-35">
+        <label class="me-2" for="abs">Sim</label>
+        <input class="form-check-inputS mt-0" type="radio" name="abs" value="Sim" aria-label="abs">
+      </div>
+      <div class="input-group-text mb-3 w-35">
+        <label class="me-2" for="abs">Não</label>
+        <input class="form-check-inputS input-end mt-0" type="radio" name="abs" value="Não" aria-label="abs">
+      </div>
+    </div>
+
+        `
+        ;
+      });
+      document.getElementById("botaoAlterar").innerHTML = `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      <button class="btn btn-success" id="btnEnviar" onclick='enviarVeiculo(${id}); exibirVeiculos()' data-bs-dismiss="modal">Enviar</button> `
+      div.innerHTML = "";
+      div.innerHTML = lista.join("");
+
+
+
+      // Desvincula o evento de clique após o primeiro clique
+      document.getElementById("btnEnviar").removeEventListener("click", alterarFuncionario);
+    });
+
 
 }
-function alterarCarro(idVeiculo) {
-  var div = document.getElementById("lista")
-  div.innerHTML = `<div id='form-addCars'> 
-  <input id='categoria' placeholder='categoria'> 
-  <input id='modelo' placeholder='modelo'> 
-   <input id='marca' placeholder='marca'>  
-   <input id='cor' placeholder='cor'>  
-   <input id='quilometragem' placeholder='quilometragem' maxlenght = '6'> 
-   <input id='cambio' placeholder='cambio'> 
-   <input id='passageiros' placeholder='qtd-passageiros'> 
-   <input id='ar-condicionado' placeholder='tem ar-condicionado?'> 
-   <input id='airbag' placeholder='tem airbag?'> 
-   <input id='abs' placeholder='tem abs?'> 
-   <input id='volume-carga' placeholder='volume de carga'> 
-   <input id='preco_veiculos' placeholder='Preço'> 
-   <input id='imagens' type='file' multiple accept='image/jpeg, image/png'> 
-   <textarea name='descricao' id='descricao' cols='30' rows='10' placeholder='descricao veiculo'></textarea>
-   <button id='btnEnviar' onclick='enviarFo(${idVeiculo})'>enviar</button>
-   </div>`
-}
+ function enviarVeiculo(id){
+  var id_veiculos = id
+  var categoria = document.getElementById("categoria").value;
+  var modelo = document.getElementById("modelo").value;
+  var marca = document.getElementById("marca").value;
+  var cor = document.getElementById("cor").value;
+  var quilometragem = document.getElementById("quilometragem").value;
+  var cambio = document.getElementById("cambio").value;
+  var passageiros = document.getElementById("passageiros").value;
+  var arCondicionado = document.querySelector('input[name="ar-cond"]:checked').value;
+  var airbag = document.querySelector('input[name="airbag"]:checked').value;
+  var abs = document.querySelector('input[name="airbag"]:checked').value;
+  var volumeCarga = document.getElementById("volume-carga").value;
+  var preco = document.getElementById("preco_veiculo").value;
+  var preco_veiculo = preco.replace(/[^0-9]/g, '')
+  var descricao = document.getElementById("descricao").value;
+ 
 
+
+  var formData = new FormData(); // FormData e um metodo de armazenamemto para envio de arquivos para o lado do servidor
+  formData.append("id_veiculos", id_veiculos)
+  formData.append("categoria", categoria); // armazena as variaveis na funcao FormData
+  formData.append("modelo", modelo);
+  formData.append("marca", marca);
+  formData.append("cor", cor);
+  formData.append("quilometragem", quilometragem);
+  formData.append("cambio", cambio);
+  formData.append("passageiros", passageiros);
+  formData.append("ar_condicionado", arCondicionado);
+  formData.append("airbag", airbag);
+  formData.append("abs", abs);
+  formData.append("volumeCarga", volumeCarga);
+  formData.append("preco_veiculo", preco_veiculo);
+  formData.append("descricao", descricao);
+
+  fetch("php/enviarVeiculo.php", {method: "POST",body: formData,})
+  .then((response)=>response.json())
+  .then((data)=>{
+
+  }).catch(error =>{
+
+  })
+ }
 //deleter//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function deletar() {
   idUser = id
