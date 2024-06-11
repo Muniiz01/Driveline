@@ -1,3 +1,46 @@
+:root{
+  --texto: rgb(0, 0, 0);
+  --sombra: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  --principal: white;
+  
+  
+}
+
+.grupo1{
+  background-color: none;
+    border-radius: 2rem;
+    width: auto;
+}
+.grupo1{
+  margin-left: 0%;
+}
+.grupo1 .btn-padrao{
+  outline: none;
+    font-size: 100%;
+    width: 5rem;
+    height: 2rem;
+    border: none;
+    border-radius: 2rem;
+    transition: 0.5s;
+}
+
+.btn-padrao{
+  background-color: var(--principal);
+  color: var(--texto);
+
+}.btn-padrao:hover{
+  outline: none;
+  opacity: 1;
+  box-shadow: var(--sombra);
+}
+#switch_tema{/*id do botao de tema*/
+  width: 4rem;
+}
+
+#icon_sol{
+  display: none;
+}
+
 
 .btn-hover{
   transition: 0.5s;

@@ -14,22 +14,41 @@ window.addEventListener("load", function () {
         window.location.replace("../index.html");
       }
     });
-    var theme = localStorage.getItem("theme")
-    document.documentElement.setAttribute('data-bs-theme', theme)
+  var theme = localStorage.getItem("theme")
+  document.documentElement.setAttribute('data-bs-theme', theme)
+
+
+  if (theme == 'dark') {
+    icone_sol.style.display = "block"
+    icone_lua.style.display = "none"
+
+    root.style.setProperty('--texto', 'white');
+    root.style.setProperty('--principal', '#2b3035');
+
+    tema_site = 0
+  } else {
+    icone_sol.style.display = "none"
+    icone_lua.style.display = "block"
+    root.style.setProperty('--texto', 'rgb(0, 0, 0)')
+    root.style.setProperty('--principal', 'white')
+
+
+    tema_site = 1
+  }
 });
 
-function fetchText(a,b,c,d){
+function fetchText(a, b, c, d) {
 
   fetch(`${a}`, {
     method: b,
     body: c,
   })
-  .then((response) => response.text())
-  .then((data) => {
-    return console.log(data)
-  }).catch((error) => {
-    return console.log(error)
-  })
+    .then((response) => response.text())
+    .then((data) => {
+      return console.log(data)
+    }).catch((error) => {
+      return console.log(error)
+    })
 }
 
 
@@ -97,17 +116,17 @@ function enviarFormFunc() {
 //exibir/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------------------
 
-function fetchJson(){
+function fetchJson() {
   fetch(`${a}`, {
     method: b,
     body: c,
   })
-  .then((response) => response.json())
-  .then((data) => {
-    return data
-  }).catch((error) => {
-    return error
-  })
+    .then((response) => response.json())
+    .then((data) => {
+      return data
+    }).catch((error) => {
+      return error
+    })
 }
 
 function exibirUsuarios() {
@@ -129,7 +148,7 @@ function exibirUsuarios() {
         </tr>
         `
       );
-      
+      document.getElementById('tableT1').innerHTML = "#id"
       document.getElementById('tableT2').innerHTML = "Nome"
       document.getElementById('tableT3').innerHTML = "Email"
       document.getElementById('tableT4').innerHTML = "Telefone"
@@ -147,11 +166,11 @@ function exibirUsuarios() {
       console.error("Erro ao buscar os dados dos usuários:", error);
       dadosDiv.innerHTML = "Nenhum registro encontrado";
     });
-    document.getElementById('barraP').innerHTML = `
+  document.getElementById('barraP').innerHTML = `
     <input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('u')" type="search" placeholder="Search" aria-label="Search">
     `
-    document.getElementById('nomeLista').innerHTML = "Lista de Usuarios"
-  }
+  document.getElementById('nomeLista').innerHTML = "Lista de Usuarios"
+}
 
 
 
@@ -203,14 +222,15 @@ function barraPesquisa(tipo) {
   }).then(response => response.json())
     .then(data => {
       const dadosDiv = document.getElementById('lista')
-      function verificaD(msg,value){
-        if(msg == "v"){
+      function verificaD(msg, value) {
+        if (msg == "v") {
           return dolar(value)
         }
         return value
       }
       const lista = data.map(item => {
         var msg = item.msg
+  
         if (msg == "Nenhum registro encontrado") {
           popup("Nenhum registro encontrado")
         } else {
@@ -256,7 +276,7 @@ function exibirFuncionarios() {
   </tr>
           `
       );
- 
+      document.getElementById('tableT1').innerHTML = "#id"
       document.getElementById('tableT2').innerHTML = "Nome"
       document.getElementById('tableT3').innerHTML = "Email"
       document.getElementById('tableT4').innerHTML = "Telefone"
@@ -274,11 +294,11 @@ function exibirFuncionarios() {
       console.error("Erro ao buscar os dados dos usuários:", error);
       dadosDiv.innerHTML = "Nenhum registro encontrado";
     });
-    document.getElementById('barraP').innerHTML = `
+  document.getElementById('barraP').innerHTML = `
     <input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('f')" type="search" placeholder="Search" aria-label="Search">
     `
-    
-          document.getElementById('nomeLista').innerHTML = "Lista de Funcionarios"
+
+  document.getElementById('nomeLista').innerHTML = "Lista de Funcionarios"
 }
 function alterarFuncionario() {
   var div = document.getElementById("modalAlterar")
@@ -391,7 +411,7 @@ function enviarFuncionario(idUsuario) {
 function exibirVeiculos() {
   selectedDiv = null
   const dadosDiv = document.getElementById("lista"); // Sera atribuido um elemento html do funcionarios.html pelo id 'lista'
-  
+
   fetch("php/listaVeiculos.php", { method: "POST" }) // Comecamos chamando o metodo fetch() e damos os seguintes parametros 'listaVeiculos.php' Ele chama o aqrquivo php com o metodo 'GET' o arquivo php enviara um array no formato json
     .then((response) => response.json())
     .then((data) => {
@@ -409,6 +429,7 @@ function exibirVeiculos() {
         `
       );
       
+    document.getElementById('tableT1').innerHTML = "#id"
       document.getElementById('tableT2').innerHTML = "Categoria"
       document.getElementById('tableT3').innerHTML = "Marca"
       document.getElementById('tableT4').innerHTML = "Modelo"
@@ -427,13 +448,13 @@ function exibirVeiculos() {
       console.error("Erro ao buscar os dados dos veículos:", error);
       document.getElementById("lista").innerHTML = "Nenhum registro encontrado";
     });
-    document.getElementById('barraP').innerHTML = `
+  document.getElementById('barraP').innerHTML = `
       <input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('v')" type="search" placeholder="Search" aria-label="Search">
       `
 
-      document.getElementById('nomeLista').innerHTML = "Lista de Veiculos"
+  document.getElementById('nomeLista').innerHTML = "Lista de Veiculos"
 }
-function alterarVeiculo(){
+function alterarVeiculo() {
   var div = document.getElementById("lista")
   div.innerHTML = `<div id='form-addCars'> 
   <input id='categoria' placeholder='categoria'> 
@@ -493,10 +514,10 @@ function deletar() {
       if (data == 2) {
         exibirFuncionarios()
         var buttonHab = document.getElementById("buttonH")
-    buttonHab.disabled = true
-      }else if(data == 1) {
+        buttonHab.disabled = true
+      } else if (data == 1) {
         exibirUsuarios()
-      }else if(data == 4)
+      } else if (data == 4)
         exibirVeiculos()
     })
     .catch((error) => {
@@ -531,6 +552,46 @@ function enviarUsuario(idUsuario) {
 
   })
 }
+
+function historico(){
+  const dadosDiv = document.getElementById("lista")
+  fetch('php/historico.php', {
+    method: 'GET'
+  }).then(response => response.json())
+  .then(data => {
+    const lista = data.map(
+      (item) => `
+    <tr>
+      <th scope="row">#</th>
+      <td class='item_usuario'>${item.data}</td>
+      <td class='item_usuario'>${item.modelo}</td>
+      <td class='item_usuario'>${item.nome}</td>
+      <td class='item_usuario'>${item.email}</td>
+    </tr>
+      `
+     
+    );
+    document.getElementById('tableT1').innerHTML = "#id"
+    document.getElementById('tableT2').innerHTML = "Data"
+    document.getElementById('tableT3').innerHTML = "Modelo"
+    document.getElementById('tableT4').innerHTML = "Nome"
+    document.getElementById('tableT5').innerHTML = "Email"
+    dadosDiv.innerHTML = lista.join("");
+    document.getElementById('butoesADV').innerHTML = ""
+
+  }).catch(error => {
+    console.error("Erro ao buscar os dados dos veículos:", error);
+      document.getElementById("lista").innerHTML = "Nenhum registro encontrado";
+
+  })
+  document.getElementById('barraP').innerHTML = `
+    <input class="form-control start-0" id='pesquisa' onkeyup="barraPesquisa('h')" type="search" placeholder="Search" aria-label="Search">
+    `
+
+  document.getElementById('nomeLista').innerHTML = "Lista de Historico"
+}
+
+
 //retornaHome/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function retornaHome() {
   window.location.replace("../index.html")
@@ -553,7 +614,7 @@ function popup(msg) {
   var myModal = new bootstrap.Modal(document.getElementById('meuModal'));
   document.getElementById('modalBody').innerHTML = msg
   myModal.show();
-  setTimeout(function() {
+  setTimeout(function () {
     myModal.hide()
-  },3000)
+  }, 3000)
 }

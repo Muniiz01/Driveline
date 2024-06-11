@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -21,6 +21,38 @@
 
 <body>
    
+    
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Minhas Reservas</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table caption-top table-hover w-50 mx-auto">
+                    <caption id="nomeLista" style="font-weight: bold;"></caption>
+                    <thead id="formText">
+                      <tr>
+                        <th id="tableT1"></th>
+                        <th id="tableT2"></th>
+                        <th id="tableT3"></th>
+                        <th id="tableT4"></th>
+                        <th id="tableT5"></th>
+                      </tr>
+                    </thead>
+              
+                    <tbody id="lista">
+                      <!-- js ira gerar os elementos aqui -->
+                    </tbody>
+                  </table>
+            </div>
+            
+          </div>
+        </div>
+      </div>
     <nav id="navbar">
         <div class="grupo1">
             <button class="btn-lg btn-padrao" id="switch_tema" onclick="tema()">
@@ -29,12 +61,13 @@
                 </button>
         </div>
         <div class="input-group grupo2">
-            <button class="btn-lg btn-padrao" id="btn_reservas">Reservas</button>
+            <button class="btn-lg btn-padrao" onclick="historicoIndex()" id="btn_reservas" data-bs-toggle="modal" data-bs-target="#exampleModal" >Reservas</button>
             <button type="button" id="alugue" class="btn-padrao btn-lg dropdown-toggle"
             data-bs-toggle="dropdown" aria-expanded="false">
             Perfil
         </button>
-        <ul class="dropdown-menu">
+        
+        <ul class="dropdown-menu" id="dropdownNav">
             <li><a class="dropdown-item" href="src/login.html">Login</a></li>
             <li><a class="dropdown-item" href="src/cadastro.html">Cadastrar se</a></li>
             <li><button class="dropdown-item" onclick="logout()">Sair</button></li>

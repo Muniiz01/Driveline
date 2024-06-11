@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-bs-theme="">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
     <link rel="stylesheet" href="bootstrap/bootstrap-css/bootstrap.css">
+    <script src="../src/bootstrap/js/bootstrap.bundle.js"></script>
     <link rel="stylesheet" href="style/login_style.css">
     
     <script src="js/senha.js"></script>
@@ -15,6 +16,19 @@
 </head>
 
 <body>
+    <div class="modal fade" id="meuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Driveline diz:</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="msg">
+              ...
+            </div>
+          </div>
+        </div>
+      </div>
     <!-- inicio da tela -->
     <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <form class="tela_login" id="formLogin">

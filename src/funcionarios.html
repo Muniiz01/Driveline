@@ -22,6 +22,12 @@
       <button class="btn" onclick="retornaHome()">
         <i class="fas fa-home"></i> Home
       </button>
+      <div class="grupo1 container-fluid">
+        <button class="btn-lg btn-padrao" id="switch_tema" onclick="tema()">
+          <i id="icon_lua" class="fa-solid fa-moon"></i>
+          <i id="icon_sol" class="fa-solid fa-sun"></i>
+        </button>
+      </div>
 
 
       <button class="btn" type="button" id="sidebarToggle" data-bs-toggle="offcanvas"
@@ -37,13 +43,14 @@
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 p-3">
-            <button type="button" class="btn btn-hover container-fluid text-start fs-5 p-3 "  onclick="exibirUsuarios(); ativar(1)">Usuarios</button>
+            <button type="button" class="btn btn-hover container-fluid text-start fs-5 p-3 "
+              onclick="exibirUsuarios(); ativar(1)">Usuarios</button>
             <li class="nav-item dropdown ">
-              <button type="button" class="btn btn-hover container-fluid text-start fs-5 p-3"
-                role="button" onclick="exibirVeiculos(); ativar(2)"
-                aria-expanded="false">Veiculos</button>
+              <button type="button" class="btn btn-hover container-fluid text-start fs-5 p-3" role="button"
+                onclick="exibirVeiculos(); ativar(2)" aria-expanded="false">Veiculos</button>
             </li>
-            <button type="button" class="btn btn-hover container-fluid text-start fs-5 p-3" onclick="ativar(3)">historio</button>
+            <button type="button" class="btn btn-hover container-fluid text-start fs-5 p-3"
+              onclick="ativar(3)">historico</button>
           </ul>
         </div>
       </div>
@@ -51,72 +58,90 @@
   </nav>
   <!-- Tabela que ira conter a lista de funcionarios e usuarios -->
   <div class="table-responsive mt-6 table-container" id="contr1">
-<!-- Modal barra de pesquisa-->
-<div class="modal fade" id="meuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Driveline diz:</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" id="modalBody">
-        ...
+    <!-- Modal barra de pesquisa-->
+    <div class="modal fade" id="meuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Driveline diz:</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="modalBody">
+            ...
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Registro</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Tem certeza que deseja excluir?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger" onclick="deletar()" data-bs-dismiss="modal">Sim</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<!-- Fim Modals -->
+    <!-- Fim Modals -->
 
     <div class="d-flex mt-3">
-      <div class=" input-group ms-6 w-35 mx-auto" id="barraP"> 
+      <div class=" input-group ms-6 w-35 mx-auto" id="barraP">
       </div>
     </div>
-    
+
     <div class="container-fluid w-50 text-end position-static mt-6" id="butoesADV">
-      
+
     </div>
     <table class="table caption-top table-hover w-50 mx-auto">
       <caption id="nomeLista" style="font-weight: bold;"></caption>
       <thead id="formText">
-                    <tr>
-                      <th >#id</th>
-                      <th id="tableT2"></th>
-                      <th id="tableT3"></th>
-                      <th id="tableT4"></th>
-                      <th id="tableT5"></th>
-                    </tr>
-                  </thead>
-                  
-                  <tbody id="lista">
-                    <!-- js ira gerar os elementos aqui -->
-                  </tbody>
-      </table>
+        <tr>
+          <th id="tableT1"></th>
+          <th id="tableT2"></th>
+          <th id="tableT3"></th>
+          <th id="tableT4"></th>
+          <th id="tableT5"></th>
+        </tr>
+      </thead>
+
+      <tbody id="lista">
+        <!-- js ira gerar os elementos aqui -->
+      </tbody>
+    </table>
   </div>
- 
-<!-- Script para responsividade da pagina -->
-<script>
-    function ativar(x){
+
+  <!-- Script para responsividade da pagina -->
+  <script>
+    function ativar(x) {
       switch (x) {
         case 1:
-        document.getElementById('contr1').style.display = 'block'
-      
-        break;
+          document.getElementById('contr1').style.display = 'block'
+
+          break;
         case 2:
-        document.getElementById('contr1').style.display = 'block'
-             
-        break;
-        case 3: 
-        document.getElementById('contr1').style.display = 'block'
-        
-        break;
-        default: 
-        console.log('nenhuma funcao selecionada')
-        document.getElementById('contr1').style.display = 'none'
-        
+          document.getElementById('contr1').style.display = 'block'
+
+          break;
+        case 3:
+          document.getElementById('contr1').style.display = 'block'
+
+          break;
+        default:
+          console.log('nenhuma funcao selecionada')
+          document.getElementById('contr1').style.display = 'none'
+
+      }
     }
-  }
-</script>
+  </script>
 
   <script>
 
@@ -161,6 +186,38 @@
 
     }
     )
+    var tema_site
+    var theme = localStorage.getItem("theme")
+
+    var root = document.documentElement
+    var icone_lua = document.getElementById('icon_lua')
+    var icone_sol = document.getElementById('icon_sol')
+
+
+    function tema() {
+      if (tema_site == 1) {//escuro
+        icone_sol.style.display = "block"
+        icone_lua.style.display = "none"
+
+        root.style.setProperty('--texto', 'white');
+        root.style.setProperty('--principal', '#2b3035');
+
+        localStorage.setItem("theme", "dark")
+        tema_site = 0
+      } else {//claro
+
+        icone_sol.style.display = "none"
+        icone_lua.style.display = "block"
+        root.style.setProperty("--fundo", "rgb(216, 216, 216)")
+        root.style.setProperty("--barra-pesquisa", "white")
+
+        tema_site = 1
+        localStorage.setItem("theme", "light")
+
+      }
+      document.documentElement.setAttribute('data-bs-theme', theme)
+      window.location.reload()
+    }
   </script>
 
 

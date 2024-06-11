@@ -25,7 +25,8 @@ var tema_site
 
 window.addEventListener('load', function(){
     var theme = localStorage.getItem("theme")
-    
+    var theme = localStorage.getItem("theme")
+    document.documentElement.setAttribute('data-bs-theme', theme)
     if(theme == 'dark'){
         icone_sol.style.display = "block"
         icone_lua.style.display = "none"
@@ -151,5 +152,39 @@ function veiculo_selecionado(id_veiculos){
     console.log(id_veiculos)
     window.location.href = "src/veiculo.html";
 }
+function historicoIndex(){
+    const dadosDiv = document.getElementById("lista")
+    fetch('src/php/historicoIndex.php', {
+      method: 'GET'
+    }).then(response => response.json())
+    .then(data => {
+      const lista = data.map(
+        (item) => `
+      <tr>
+        <th scope="row">#</th>
+        <td class='item_usuario'>${item.data}</td>
+        <td class='item_usuario'>${item.modelo}</td>
+        <td class='item_usuario'>${item.nome}</td>
+        <td class='item_usuario'>${item.email}</td>
+      </tr>
+        `
+       
+      );
+      document.getElementById('tableT1').innerHTML = "#id"
+      document.getElementById('tableT2').innerHTML = "Data"
+      document.getElementById('tableT3').innerHTML = "Modelo"
+      document.getElementById('tableT4').innerHTML = "Nome"
+      document.getElementById('tableT5').innerHTML = "Email"
+      dadosDiv.innerHTML = lista.join("");
+  
+    }).catch(error => {
+      console.error("Erro ao buscar os dados dos veículos:", error);
+        document.getElementById("lista").innerHTML = "Nenhum registro encontrado";
+  
+    })
+    document.getElementById('nomeLista').innerHTML = "Lista de Historico"
+  }
+
+
   
 

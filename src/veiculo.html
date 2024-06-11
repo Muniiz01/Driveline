@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,21 +10,25 @@
     <link rel="stylesheet" href="style/pag_veiculo.css">
 
     <script src="bootstrap/js/bootstrap.bundle.js"></script>
-    
+    <script src="js/historico.js"></script>
+
+
+
 </head>
+
 <body>
 
     <nav id="navbar">
         <div class="input-group grupo2">
             <button class="btn-lg btn-padrao" id="btn_reservas">Reservas</button>
-            <button type="button" id="alugue" class="btn-padrao btn-lg dropdown-toggle"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Perfil
-        </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../index.html">Home</a></li>
-            <li><button class="dropdown-item" onclick="logout()">Sair</button></li>
-        </ul>
+            <button type="button" id="alugue" class="btn-padrao btn-lg dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Perfil
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="../index.html">Home</a></li>
+                <li><button class="dropdown-item" onclick="logout()">Sair</button></li>
+            </ul>
         </div>
     </nav>
 
@@ -40,11 +45,14 @@
         <div class="texto_rodape">
             <p class="display-5">Redes sociais</p>
             <p class="display-5 subtitulo">Github</p>
-            <i class="fa-brands fa-github" style="color: white;"></i><a href="https://github.com/JhonnyAnthony" class="pequeno_texto">https://github.com/JhonnyAnthony</a>
+            <i class="fa-brands fa-github" style="color: white;"></i><a href="https://github.com/JhonnyAnthony"
+                class="pequeno_texto">https://github.com/JhonnyAnthony</a>
             <br>
-            <i class="fa-brands fa-github" style="color: white;"></i><a href="https://github.com/Muniiz01" class="pequeno_texto">https://github.com/Muniiz01</a>
+            <i class="fa-brands fa-github" style="color: white;"></i><a href="https://github.com/Muniiz01"
+                class="pequeno_texto">https://github.com/Muniiz01</a>
             <br>
-            <i class="fa-brands fa-github" style="color: white;"></i><a href="https://github.com/vitorSchuster" class="pequeno_texto">https://github.com/vitorSchuster</a>
+            <i class="fa-brands fa-github" style="color: white;"></i><a href="https://github.com/vitorSchuster"
+                class="pequeno_texto">https://github.com/vitorSchuster</a>
         </div>
 
         <div class="copyright">
@@ -54,25 +62,72 @@
     </footer>
 
     <script type="text/javascript">
-        function enviarVeiculo(){
-            
+        function enviarVeiculo() {
+
             var selecionado = localStorage.getItem("id_veiculo")
             console.log(selecionado)
-    
-            fetch("php/carregarveiculos.php",{
-                "method" : "POST",
-                "headers":{
+
+            fetch("php/carregarveiculos.php", {
+                "method": "POST",
+                "headers": {
                     "content-type": "aplication/json; charset=utf-8"
                 },
                 "body": JSON.stringify(selecionado)
-            }).then(function(response){
+            }).then(function (response) {
                 return response.text()
-            }).then(function(data){
+            }).then(function (data) {
                 document.getElementById('get-data').innerHTML = data
             })
         }
         enviarVeiculo()
-        
+        var status = "false"
+        window.addEventListener("load", function () {
+            fetch("php/session.php", { method: "POST" })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data == "Faca o login ou cadastre-se!!") {
+                        console.log(data)
+                        status = "false"
+                    }else{
+                        console.log("usuario entrou")
+                        status = "true"
+                        
+                    }
+                });
+        });
+
+        function logout() {
+
+fetch('php/logout.php', {
+  // funcao fetch() e damos os seguintes parametros 'addVeiculos.php' script do servidor
+  method: "POST", // method: 'POST' que indica o tipo de envio para o servidor
+})
+  .then((response) => response.text())
+  .then((data) => {
+    console.log(data);
+    window.location.reload()
+    // Exibi mensagens caso o servidor receba os dados
+  })
+  .catch((error) => {
+    console.log(error);
+    // exibe mensagens em caso de erro ao enviar os dados
+  });
+}
+
+        function loginVerify(id) {
+            idVeiculo = id
+
+            if (status == "false") {
+                window.location.replace('login.html')
+            } else {
+                historico(idVeiculo)
+
+            }
+
+            // Exibi mensagens caso o servidor receba os dados
+        }
+
     </script>
 </body>
+
 </html>

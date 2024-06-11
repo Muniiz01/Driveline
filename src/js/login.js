@@ -25,6 +25,8 @@ window.addEventListener('load', function(){
 
 
     }
+    var theme = localStorage.getItem("theme")
+    document.documentElement.setAttribute('data-bs-theme', theme)
 })
 
 document.getElementById("formLogin").addEventListener("submit", function (event){
@@ -45,6 +47,7 @@ document.getElementById("formLogin").addEventListener("submit", function (event)
     }).then(response => response.text())
         .then(data => {
             console.log(data)
+            popup(data)
            if(data == 1){
             window.location.replace("../index.html")
            }else if(data == 2){
@@ -57,8 +60,15 @@ document.getElementById("formLogin").addEventListener("submit", function (event)
         }).catch(error => {
             console.log('erro:', error)
             // exibe mensagens em caso de erro ao enviar os dados 
+            
         })
 
 })
+
+function popup(msg) {
+    var myModal = new bootstrap.Modal(document.getElementById('meuModal'));
+    document.getElementById('msg').innerHTML = msg
+    myModal.show();
+}
 
 

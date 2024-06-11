@@ -45,7 +45,7 @@ $output .= '<img src="'.($row["caminho_imagem"]).'" class="rounded float-start">
                 
             </div>
            <div class="d-flex justify-content-end align-items-end">
-                    <button class="btn btn-lg btn-primary mb-2" style="border-radius: 2rem;">Reservar</button>
+                    <button class="btn btn-lg btn-primary mb-2" onclick="loginVerify('.$row["id_veiculos"].')" style="border-radius: 2rem;">Reservar</button>
                 </div>
         </div>
     </div>';
