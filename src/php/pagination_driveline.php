@@ -15,21 +15,23 @@
     }else{
         $page = 1;
     }
-    if(isset($_POST["filter"])){
-        $filter = $_POST['filter'];
-    }else{
-        $filter = "grupo-b";
-    }
     $start_from =($page - 1)*$limit;
+        if(isset($_POST["filter"]) && ($_POST["filter"])!= ""){
+            $filter = $_POST['filter'];
+    
+            $query = mysqli_query($con, "SELECT veiculos.*, img_veiculo.*
+            FROM veiculos
+            JOIN (SELECT idVeiculos, MIN(id_imagem_veiculo) as min_idImg FROM img_veiculo GROUP BY idVeiculos) as img_min ON veiculos.id_veiculos = img_min.idVeiculos
+            JOIN img_veiculo ON img_min.idVeiculos = img_veiculo.idVeiculos AND img_min.min_idImg = img_veiculo.id_imagem_veiculo
+            WHERE veiculos.categoria = '$filter'
+            ORDER BY veiculos.id_veiculos ASC
+            LIMIT $start_from, $limit");//busca no sql
+        }else{
+            $query = mysqli_query($con, "SELECT * from veiculos JOIN img_veiculo ON veiculos.id_veiculos = img_veiculo.idVeiculos ORDER BY id_veiculos ASC LIMIT $start_from, $limit");
+        }
  
     
-$query = mysqli_query($con, "SELECT veiculos.*, img_veiculo.*
-FROM veiculos
-JOIN (SELECT idVeiculos, MIN(id_imagem_veiculo) as min_idImg FROM img_veiculo GROUP BY idVeiculos) as img_min ON veiculos.id_veiculos = img_min.idVeiculos
-JOIN img_veiculo ON img_min.idVeiculos = img_veiculo.idVeiculos AND img_min.min_idImg = img_veiculo.id_imagem_veiculo
-WHERE veiculos.categoria = '$filter'
-ORDER BY veiculos.id_veiculos ASC
-LIMIT $start_from, $limit");//busca no sql
+
     
     ///////////////////////////////
     $output .= " 
@@ -45,7 +47,7 @@ LIMIT $start_from, $limit");//busca no sql
                 <div class='img_carro'><img src='src/".($row["caminho_imagem"])."'></div>
                 <div class='modelo_carro'>Modelo:        ".($row["modelo"])."</div>
                 <article class='desc_veiculo'>
-                    <button class='btn btn-secondary rounded-4 mt-5 ' type='button' onclick='catalogo(".$row["modelo"].")'>
+                    <button class='btn rounded-4 mt-5 ' type='button' onclick='catalogo(".$row["modelo"].")'>
                     Mais Detalhes
                     </button>
                     <div class='desc_veiculo' style='display: none' id='".($row["modelo"])."'>
