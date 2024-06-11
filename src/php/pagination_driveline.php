@@ -15,21 +15,23 @@
     }else{
         $page = 1;
     }
-    if(isset($_POST["filter"])){
-        $filter = $_POST['filter'];
-    }else{
-        $filter = "grupo-b";
-    }
     $start_from =($page - 1)*$limit;
+        if(isset($_POST["filter"]) && ($_POST["filter"])!= ""){
+            $filter = $_POST['filter'];
+    
+            $query = mysqli_query($con, "SELECT veiculos.*, img_veiculo.*
+            FROM veiculos
+            JOIN (SELECT idVeiculos, MIN(id_imagem_veiculo) as min_idImg FROM img_veiculo GROUP BY idVeiculos) as img_min ON veiculos.id_veiculos = img_min.idVeiculos
+            JOIN img_veiculo ON img_min.idVeiculos = img_veiculo.idVeiculos AND img_min.min_idImg = img_veiculo.id_imagem_veiculo
+            WHERE veiculos.categoria = '$filter'
+            ORDER BY veiculos.id_veiculos ASC
+            LIMIT $start_from, $limit");//busca no sql
+        }else{
+            $query = mysqli_query($con, "SELECT * from veiculos JOIN img_veiculo ON veiculos.id_veiculos = img_veiculo.idVeiculos ORDER BY id_veiculos ASC LIMIT $start_from, $limit");
+        }
  
     
-$query = mysqli_query($con, "SELECT veiculos.*, img_veiculo.*
-FROM veiculos
-JOIN (SELECT idVeiculos, MIN(id_imagem_veiculo) as min_idImg FROM img_veiculo GROUP BY idVeiculos) as img_min ON veiculos.id_veiculos = img_min.idVeiculos
-JOIN img_veiculo ON img_min.idVeiculos = img_veiculo.idVeiculos AND img_min.min_idImg = img_veiculo.id_imagem_veiculo
-WHERE veiculos.categoria = '$filter'
-ORDER BY veiculos.id_veiculos ASC
-LIMIT $start_from, $limit");//busca no sql
+
     
     ///////////////////////////////
     $output .= " 
@@ -43,13 +45,11 @@ LIMIT $start_from, $limit");//busca no sql
     $output .= " 
             <section class='info_carro'>
                 <div class='img_carro'><img src='src/".($row["caminho_imagem"])."'></div>
-                <div class='modelo_carro'>Modelo:        ".($row["modelo"])."</div>
-                <article class='desc_veiculo'>
-                    <button class='btn btn-secondary rounded-4 mt-5 ' type='button' onclick='catalogo(".$row["modelo"].")'>
-                    Mais Detalhes
-                    </button>
-                    <div class='desc_veiculo' style='display: none' id='".($row["modelo"])."'>
-                         
+                <div class='modelo_carro'>".($row["marca"])." ".($row["modelo"])."</div>
+                <button class='btn' style = 'border-radius:1rem;' onclick='catalogo(".($row['id_veiculos']).")' id='toggle_catalogo'>Mostrar mais</button>
+                
+                <article class='desc_veiculo' id='".($row['id_veiculos'])."' style = display:none;>
+                
                         <div class='passageiros'>passageiros:    ".($row["passageiros"])."</div>
                         <div class='cor'>cor:                    ".($row["cor"])."</div>
                         <div class='quilometragem'>quilometragem:".($row["quilometragem"])."</div>
@@ -57,8 +57,8 @@ LIMIT $start_from, $limit");//busca no sql
                         <div class='cambio'>cambio:              ".($row["cambio"])."</div>
                         <div class='preco_veiculo'>Preco:        ".($row["preco_veiculo"])."</div>
                     
-                </div>
-                </article>
+                        </article>
+                    
                     <div>
                     <button class ='btn-aluguel' onclick = 'veiculo_selecionado(".($row['id_veiculos']).")'><i class='fa-solid fa-car'></i></button>
                     </div>
