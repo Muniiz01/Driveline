@@ -6,6 +6,8 @@ window.addEventListener("load", function () {
         var nivel = data.map((item) => item.nivel);
         var nome = data.map((item) => item.nome);
         console.log(`Ola ${nome}, seu nivel e: ${nivel}`);
+        document.getElementById('nomeProfile').innerHTML = `Ola, ${nome}`
+
 
         if (nivel != "3") {
           window.location.replace("../index.html");

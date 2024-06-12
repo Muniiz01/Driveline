@@ -7,6 +7,8 @@ window.addEventListener('load', function () {//executa a função ao iniciar a p
         const nivel = data.map((item) => item.nivel);
         const nome = data.map((item) => item.nome);
         console.log(`Ola ${nome}, seu nivel e: ${nivel}`);
+        document.getElementById('nomeProfile').innerHTML = `Ola, ${nome}`
+
 
         if (nivel != "2" && nivel != "3") {
           window.location.replace("../index.html")
