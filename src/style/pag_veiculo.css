@@ -1,4 +1,8 @@
+:root{
+    --fundo-tela-veiculo: white;
+}
 #tela_veiculo{
+    background-color: var(--fundo-tela-veiculo);
     width: 100%;
     height: max-content;
 }
