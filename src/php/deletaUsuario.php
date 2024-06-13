@@ -23,6 +23,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }elseif($nivelAcess == 4){
 
         $sql2 = "SELECT * FROM img_veiculo WHERE idVeiculos = '$idUser'";
+        $sql3 = "DELETE FROM historico WHERE idVeiculos = '$idUser'";
+        $conn->query($sql3);
         $resultado2 = $conn->query($sql2);
         if($resultado2->num_rows > 0){
             while($row = $resultado2->fetch_assoc()){
